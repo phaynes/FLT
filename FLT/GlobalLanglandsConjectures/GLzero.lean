@@ -63,9 +63,9 @@ def ofComplex (c : ℂ) : AutomorphicFormForGLnOverQ 0 ρ := {
     is_smooth := {
       continuous := by continuity
       loc_cst := by
-        rw [IsLocallyConstant]
-        sorry
-        -- aesop -- used to work
+        intro y
+        exact IsLocallyConstant.const
+          (X := GL (Fin 0) (IsDedekindDomain.FiniteAdeleRing ℤ ℚ)) c
       smooth := by simp [contMDiff_const]
     }
     is_periodic := by simp
@@ -82,7 +82,10 @@ def ofComplex (c : ℂ) : AutomorphicFormForGLnOverQ 0 ρ := {
       }
       apply Exists.intro U
       exact {
-          is_open := by sorry -- used to be simp but there's a timeout
+          is_open := by
+            convert isOpen_univ
+            ext x
+            simp [Subsingleton.eq_one x]
           is_compact := by aesop
           finite_level := by simp
       }
@@ -119,9 +122,16 @@ returning the constant function with value `z`. -/
 def ofComplex (z : ℂ) {n : ℕ} (ρ : Weight n) (hρ : ρ.IsTrivial) :
     AutomorphicFormForGLnOverQ n ρ where
       toFun _ := z
-      is_smooth := sorry
-      is_periodic := sorry
-      is_slowly_increasing := sorry
+      is_smooth := {
+        continuous := by continuity
+        loc_cst := by
+          intro y
+          exact IsLocallyConstant.const
+            (X := GL (Fin n) (IsDedekindDomain.FiniteAdeleRing ℤ ℚ)) z
+        smooth := by intro; simp [contMDiff_const]
+      }
+      is_periodic := by simp
+      is_slowly_increasing _ := ⟨‖z‖, 0, by simp⟩
       -- is_finite_cod := sorry -- needs a better name
       has_finite_level := sorry -- needs a better name
 
@@ -129,10 +139,7 @@ def ofComplex (z : ℂ) {n : ℕ} (ρ : Weight n) (hρ : ρ.IsTrivial) :
 /-- The classification of automorphic forms for `GL₀/ℚ` of weight `ρ`: they are in
 bijection with `ℂ`. -/
 noncomputable def classification (ρ : Weight 0) : AutomorphicFormForGLnOverQ 0 ρ ≃ ℂ where
-  toFun f := f 1
-  invFun z := ofComplex z ρ sorry
-  left_inv := sorry
-  right_inv := sorry
+  __ := GL0.classification ρ
 
 -- Can this be beefed up to an isomorphism of complex
 -- vector spaces?

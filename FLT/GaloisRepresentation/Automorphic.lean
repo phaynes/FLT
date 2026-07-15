@@ -8,8 +8,11 @@ module
 public import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Concrete
 public import FLT.DedekindDomain.IntegralClosure
 public import FLT.Deformations.RepresentationTheory.GaloisRep
+public import FLT.Mathlib.Algebra.Central.TensorProduct
+public import FLT.Mathlib.RingTheory.SimpleRing.TensorProduct
 public import Mathlib.NumberTheory.Cyclotomic.CyclotomicCharacter
 public import Mathlib.NumberTheory.Padics.Complex
+public import Mathlib.RingTheory.SimpleRing.Congr
 public import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
@@ -97,7 +100,14 @@ instance {F E D : Type*}
     [Field F]
     [Field E] [Algebra F E]
     [Ring D] [Algebra F D] [IsQuaternionAlgebra F D] :
-    IsQuaternionAlgebra E (E ⊗[F] D) := sorry -- Ask Edison?
+    IsQuaternionAlgebra E (E ⊗[F] D) where
+  isSimpleRing := IsSimpleRing.of_ringEquiv
+    (Algebra.TensorProduct.comm F D E).toRingEquiv
+    (inferInstance : IsSimpleRing (D ⊗[F] E))
+  isCentral := inferInstance
+  dim_four := by
+    rw [Module.rank_baseChange, IsQuaternionAlgebra.dim_four]
+    simp
 
 variable {p : ℕ} [Fact p.Prime] in
 noncomputable instance : NormedSpace ℚ_[p] (PadicAlgCl p) := spectralNorm.normedSpace ..
