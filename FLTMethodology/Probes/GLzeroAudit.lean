@@ -13,4 +13,5 @@ import FLT.GlobalLanglandsConjectures.GLzero
 
 #print axioms AutomorphicForm.GL0.ofComplex
 #print axioms AutomorphicForm.GL0.classification
+#print axioms AutomorphicForm.GLn.Weight.IsTrivial
 #print axioms AutomorphicForm.GLn.classification

@@ -49,7 +49,8 @@ State them first.
 namespace AutomorphicForm
 
 /-- A `GLₙ`-weight `ρ` is trivial if it is the one-dimensional trivial representation. -/
-def GLn.Weight.IsTrivial {n : ℕ} (ρ : Weight n) : Prop := sorry -- (ρ = trivial 1d rep)
+def GLn.Weight.IsTrivial {n : ℕ} (ρ : Weight n) : Prop :=
+  ρ.w.d = 1 ∧ ρ.w.rho = 1
 
 open GLn
 
