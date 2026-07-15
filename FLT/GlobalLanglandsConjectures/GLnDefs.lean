@@ -10,6 +10,7 @@ public import Mathlib.Algebra.Lie.UniversalEnveloping
 public import Mathlib.Analysis.Matrix.Normed
 public import Mathlib.Geometry.Manifold.Algebra.LeftInvariantDerivation
 public import Mathlib.Geometry.Manifold.Instances.UnitsOfNormedAlgebra
+public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import Mathlib.RepresentationTheory.FDRep
 public import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
 public import Mathlib.Topology.LocallyConstant.Basic
@@ -89,8 +90,7 @@ theorem diamond_fix :
   rw [TensorProduct.tmul_sub, mul_comm]
   -- proof used to end here
   norm_num
-  symm
-  sorry
+  simp [Ring.lie_def, Algebra.TensorProduct.tmul_mul_tmul, mul_comm]
 
 
 end
@@ -180,17 +180,41 @@ complexified Lie algebra. -/
 def actionTensorCAlg :
   UniversalEnvelopingAlgebra ℂ (ℂ ⊗[ℝ] LeftInvariantDerivation 𝓘(ℝ, E) G) →ₐ[ℂ]
     ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯) := by
-  have := actionTensorC G E; revert this
-  convert ⇑(UniversalEnvelopingAlgebra.lift ℂ
+  let f : (ℂ ⊗[ℝ] LeftInvariantDerivation 𝓘(ℝ, E) G) →ₗ[ℂ]
+      (ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)) :=
+    (actionTensorC G E).toLinearMap
+  have hf (x y : ℂ ⊗[ℝ] LeftInvariantDerivation 𝓘(ℝ, E) G) :
+      f ⁅x, y⁆ =
+        @Bracket.bracket
+          (ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯))
+          (ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯))
+          (LieAlgebra.ExtendScalars.instBracketTensorProduct ℝ ℂ
+            (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)
+            (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯))
+          (f x) (f y) :=
+    (actionTensorC G E).map_lie x y
+  letI : LieRing
+      (ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)) :=
+    LieRing.ofAssociativeRing
+  letI : LieAlgebra ℂ
+      (ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)) :=
+    LieAlgebra.ofAssociativeAlgebra
+  refine (UniversalEnvelopingAlgebra.lift ℂ
     (L := ℂ ⊗[ℝ] LeftInvariantDerivation 𝓘(ℝ, E) G)
-    (A := ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; ℝ⟯))) using 0
-  congr
-  · dsimp [LieAlgebra.ExtendScalars.instLieRing, LieRing.ofAssociativeRing]; congr
-    apply diamond_fix
-  · change HEq ({..} : LieAlgebra ..) (@LieAlgebra.mk _ _ _ (_) _ _)
-    congr!
-    -- broke after upgrade to module system
-    sorry
+    (A := ℂ ⊗[ℝ] (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯))) ?_
+  exact
+    { __ := f
+      map_lie' := by
+        intro x y
+        change f ⁅x, y⁆ = _
+        rw [hf]
+        change @Bracket.bracket _ _
+            (LieAlgebra.ExtendScalars.instBracketTensorProduct ℝ ℂ
+              (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)
+              (Module.End ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯)) _ _ =
+          @Bracket.bracket _ _ Ring.instBracket _ _
+        rw [diamond_fix]
+        rfl }
 
 /-- Variant of `actionTensorCAlg` whose codomain is the `ℂ`-linear endomorphisms
 of the complexified function space. -/
@@ -207,7 +231,18 @@ def actionTensorCAlg'2 :
   (actionTensorCAlg' G E).comp (SubalgebraClass.val _)
 
 instance : Module ℝ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ := inferInstance
-instance : Module ℂ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ := sorry
+
+instance : SMul ℂ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ where
+  smul z f :=
+    ⟨fun x ↦ z * f x, ((ContinuousLinearMap.mul ℝ ℂ) z).contMDiff.comp f.contMDiff⟩
+
+@[simp]
+lemma coe_complex_smul (z : ℂ) (f : C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯) :
+    ⇑(z • f) = z • ⇑f := rfl
+
+instance : Module ℂ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ :=
+  Function.Injective.module ℂ ContMDiffMap.coeFnAddMonoidHom ContMDiffMap.coe_injective
+    (fun _ _ ↦ rfl)
 
 /-- The universal enveloping algebra over `ℂ` of the complexified Lie algebra of `G`. -/
 def Alg := UniversalEnvelopingAlgebra ℂ (ℂ ⊗[ℝ] LeftInvariantDerivation 𝓘(ℝ, E) G)
@@ -220,9 +255,125 @@ instance : CommRing (Z G E) := (inferInstance : CommRing (Subalgebra.center ℂ 
 instance : AddCommGroup (Z G E) := inferInstanceAs (AddCommGroup (Subalgebra.center ..))
 instance : Algebra ℂ (Z G E) := inferInstanceAs (Algebra ℂ (Subalgebra.center ..))
 
+/-- Embed a real-valued smooth function into the complex-valued smooth functions. -/
+noncomputable def smoothOfReal :
+    C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ →ₗ[ℝ]
+      C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ where
+  toFun f := ⟨fun x ↦ f x, Complex.ofRealCLM.contMDiff.comp f.contMDiff⟩
+  map_add' _ _ := by ext; simp
+  map_smul' _ _ := by ext; simp
+
+/-- Real part of a complex-valued smooth function. -/
+noncomputable def smoothRe :
+    C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ →ₗ[ℝ]
+      C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ where
+  toFun f := ⟨fun x ↦ (f x).re, Complex.reCLM.contMDiff.comp f.contMDiff⟩
+  map_add' _ _ := by ext; simp
+  map_smul' _ _ := by ext; simp
+
+/-- Imaginary part of a complex-valued smooth function. -/
+noncomputable def smoothIm :
+    C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ →ₗ[ℝ]
+      C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ where
+  toFun f := ⟨fun x ↦ (f x).im, Complex.imCLM.contMDiff.comp f.contMDiff⟩
+  map_add' _ _ := by ext; simp
+  map_smul' _ _ := by ext; simp
+
+/-- The canonical complex-linear map from the complexification of real-valued smooth functions to
+complex-valued smooth functions. -/
+noncomputable def smoothComplexificationTo :
+    ℂ ⊗[ℝ] C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ →ₗ[ℂ]
+      C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ :=
+  TensorProduct.AlgebraTensorModule.lift <| LinearMap.mk₂' ℂ ℝ
+    (fun z f ↦ z • smoothOfReal G E f)
+    (by intros; simp [add_smul])
+    (by intros; simp [mul_smul])
+    (by intros; simp [smul_add])
+    (by
+      intro c z f
+      ext x
+      change z * ((c * f x : ℝ) : ℂ) = (c : ℂ) * (z * (f x : ℂ))
+      push_cast
+      ring)
+
+@[simp]
+lemma smoothComplexificationTo_tmul (z : ℂ)
+    (f : C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯) :
+    smoothComplexificationTo G E (z ⊗ₜ[ℝ] f) = z • smoothOfReal G E f := rfl
+
+/-- Complex-valued smooth functions are the scalar extension of real-valued smooth functions. -/
+noncomputable def smoothComplexification :
+    ℂ ⊗[ℝ] C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℝ), ℝ⟯ ≃ₗ[ℂ]
+      C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ where
+  toLinearMap := smoothComplexificationTo G E
+  invFun f :=
+    (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E f + Complex.I ⊗ₜ[ℝ] smoothIm G E f
+  left_inv t := by
+    induction t using TensorProduct.induction_on with
+    | zero =>
+      change (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E 0) +
+        Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E 0) = 0
+      rw [(smoothComplexificationTo G E).map_zero, (smoothRe G E).map_zero,
+        (smoothIm G E).map_zero]
+      simp
+    | tmul z f =>
+      change (1 : ℂ) ⊗ₜ[ℝ]
+          smoothRe G E (smoothComplexificationTo G E (z ⊗ₜ[ℝ] f)) +
+        Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E (z ⊗ₜ[ℝ] f)) =
+          z ⊗ₜ[ℝ] f
+      rw [smoothComplexificationTo_tmul]
+      change (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (z • smoothOfReal G E f) +
+          Complex.I ⊗ₜ[ℝ] smoothIm G E (z • smoothOfReal G E f) = z ⊗ₜ[ℝ] f
+      have hre : smoothRe G E (z • smoothOfReal G E f) = z.re • f := by
+        ext x
+        simp [smoothRe, smoothOfReal]
+      have him : smoothIm G E (z • smoothOfReal G E f) = z.im • f := by
+        ext x
+        simp [smoothIm, smoothOfReal]
+      rw [hre, him, TensorProduct.tmul_smul, TensorProduct.tmul_smul]
+      calc
+        (z.re • (1 : ℂ)) ⊗ₜ[ℝ] f + (z.im • Complex.I) ⊗ₜ[ℝ] f =
+            (z.re • (1 : ℂ) + z.im • Complex.I) ⊗ₜ[ℝ] f :=
+          (TensorProduct.add_tmul _ _ _).symm
+        _ = z ⊗ₜ[ℝ] f := by
+          congr 1
+          apply Complex.ext <;> simp
+    | add x y hx hy =>
+      change (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E x) +
+          Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E x) = x at hx
+      change (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E y) +
+          Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E y) = y at hy
+      change (1 : ℂ) ⊗ₜ[ℝ]
+          smoothRe G E (smoothComplexificationTo G E (x + y)) +
+        Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E (x + y)) = x + y
+      rw [(smoothComplexificationTo G E).map_add, (smoothRe G E).map_add,
+        (smoothIm G E).map_add, TensorProduct.tmul_add, TensorProduct.tmul_add]
+      calc
+        (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E x) +
+              (1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E y) +
+            (Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E x) +
+              Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E y)) =
+            ((1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E x) +
+              Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E x)) +
+            ((1 : ℂ) ⊗ₜ[ℝ] smoothRe G E (smoothComplexificationTo G E y) +
+              Complex.I ⊗ₜ[ℝ] smoothIm G E (smoothComplexificationTo G E y)) := by abel
+        _ = x + y := by rw [hx, hy]
+  right_inv f := by
+    change smoothComplexificationTo G E
+      ((1 : ℂ) ⊗ₜ[ℝ] smoothRe G E f + Complex.I ⊗ₜ[ℝ] smoothIm G E f) = f
+    rw [(smoothComplexificationTo G E).map_add,
+      smoothComplexificationTo_tmul, smoothComplexificationTo_tmul]
+    rw [one_smul]
+    change smoothOfReal G E (smoothRe G E f) +
+      Complex.I • smoothOfReal G E (smoothIm G E f) = f
+    ext x
+    apply Complex.ext <;>
+      simp [smoothRe, smoothIm, smoothOfReal]
+
 /-- The `ℂ`-algebra map from the centre of the universal enveloping algebra to
 the endomorphism algebra of complex-valued smooth functions on `G`. -/
-def actionTensorCAlg'3 : Z G E →ₐ[ℂ] Module.End ℂ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ := sorry
+def actionTensorCAlg'3 : Z G E →ₐ[ℂ] Module.End ℂ C^∞⟮𝓘(ℝ, E), G; 𝓘(ℝ, ℂ), ℂ⟯ :=
+  ((smoothComplexification G E).conjAlgEquiv ℂ).toAlgHom.comp (actionTensorCAlg'2 G E)
 
 
 -- algebra needs to be done
