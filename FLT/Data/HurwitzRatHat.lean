@@ -8,6 +8,7 @@ module
 public import FLT.Data.Hurwitz
 public import FLT.Data.QHat
 import Mathlib.CategoryTheory.Category.Init
+import Mathlib.RingTheory.Flat.TorsionFree
 import Mathlib.Tactic.Positivity.Finset
 
 /-!
@@ -66,12 +67,40 @@ scoped notation "D^" => HurwitzRatHat
 
 noncomputable instance : Ring D^ := Algebra.TensorProduct.instRing
 
+private noncomputable instance : Module.IsTorsionFree ℤ (Quaternion ℝ) :=
+  Module.IsTorsionFree.of_smul_eq_zero fun z q h => by
+    by_cases hz : z = 0
+    · exact Or.inl hz
+    · right
+      have hzR : (z : ℝ) ≠ 0 := by exact_mod_cast hz
+      apply (smul_eq_zero_iff_right hzR).mp
+      simpa [Int.cast_smul_eq_zsmul] using h
+
+private noncomputable instance : Module.IsTorsionFree ℤ 𝓞 :=
+  Hurwitz.toQuaternion_injective.moduleIsTorsionFree Hurwitz.toQuaternion
+    (fun r m => Hurwitz.toQuaternion_zsmul m r)
+
+private noncomputable instance : Module.Flat ℤ ℚ := inferInstance
+
+private noncomputable instance : Module.Flat ℤ 𝓞 := inferInstance
+
+private noncomputable instance : Module.Flat ℤ D := by
+  change Module.Flat ℤ (ℚ ⊗[ℤ] 𝓞)
+  infer_instance
+
+private noncomputable instance : Module.Flat ℤ 𝓞^ := by
+  change Module.Flat ℤ (𝓞 ⊗[ℤ] ZHat)
+  infer_instance
+
 /-- The inclusion from D=ℚ+ℚi+ℚj+ℚk to D ⊗ 𝔸, with 𝔸 the finite adeles of ℚ. -/
 noncomputable abbrev j₁ : D →ₐ[ℤ] D^ := Algebra.TensorProduct.includeLeft
 -- (Algebra.TensorProduct.assoc ℤ ℚ 𝓞 ZHat).symm.trans Algebra.TensorProduct.includeLeft
 
 lemma injective_hRat :
-    Function.Injective j₁ := sorry -- flatness
+    Function.Injective j₁ := by
+  exact Algebra.TensorProduct.includeLeft_injective
+    (R := ℤ) (S := ℤ) (A := D) (B := ZHat)
+    (RingHom.injective_int (algebraMap ℤ ZHat))
 
 -- this stopped working in 4.29
 noncomputable instance : Ring (ℚ ⊗[ℤ] 𝓞^) := Algebra.TensorProduct.instRing
@@ -87,7 +116,13 @@ noncomputable abbrev j₂ : 𝓞^ →ₐ[ℤ] D^ :=
   (Algebra.TensorProduct.includeRight : 𝓞^ →ₐ[ℤ] ℚ ⊗[ℤ] 𝓞^)
 
 lemma injective_zHat :
-    Function.Injective j₂ := sorry -- flatness
+    Function.Injective j₂ := by
+  unfold j₂
+  intro x y hxy
+  apply Algebra.TensorProduct.includeRight_injective
+    (R := ℤ) (A := ℚ) (B := 𝓞^)
+    (RingHom.injective_int (algebraMap ℤ ℚ))
+  exact (Algebra.TensorProduct.assoc ℤ ℤ ℤ ℚ 𝓞 ZHat).symm.injective hxy
 
 -- should I rearrange tensors? Not sure if D^ should be (ℚ ⊗ 𝓞) ⊗ ℤhat or ℚ ⊗ (𝓞 ⊗ Zhat)
 lemma canonicalForm (z : D^) : ∃ (N : ℕ+) (z' : 𝓞^), z = j₁ ((N⁻¹ : ℚ) ⊗ₜ 1 : D) * j₂ z' := by
