@@ -15,3 +15,4 @@ These audits record that both tensor-factor inclusions are injective without adm
 
 #print axioms HurwitzRatHat.injective_hRat
 #print axioms HurwitzRatHat.injective_zHat
+#print axioms HurwitzRatHat.canonicalForm

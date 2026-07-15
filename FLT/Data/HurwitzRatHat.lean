@@ -124,9 +124,58 @@ lemma injective_zHat :
     (RingHom.injective_int (algebraMap ℤ ℚ))
   exact (Algebra.TensorProduct.assoc ℤ ℤ ℤ ℚ 𝓞 ZHat).symm.injective hxy
 
+private lemma tensorRat_canonicalForm (z : ℚ ⊗[ℤ] 𝓞^) :
+    ∃ (N : ℕ+) (z' : 𝓞^), z = (1 / N : ℚ) ⊗ₜ z' := by
+  induction z using TensorProduct.induction_on with
+  | zero =>
+    refine ⟨1, 0, ?_⟩
+    simp
+  | tmul q z =>
+    refine ⟨⟨q.den, q.den_pos⟩, q.num * z, ?_⟩
+    simp_rw [← zsmul_eq_mul, TensorProduct.tmul_smul, TensorProduct.smul_tmul']
+    simp only [PNat.mk_coe, zsmul_eq_mul]
+    simp only [← q.mul_den_eq_num, mul_assoc, one_div, ne_eq, Nat.cast_eq_zero,
+      Rat.den_ne_zero, not_false_eq_true, mul_one, mul_inv_cancel₀]
+  | add x y hx hy =>
+    obtain ⟨N₁, z₁, rfl⟩ := hx
+    obtain ⟨N₂, z₂, rfl⟩ := hy
+    refine ⟨N₁ * N₂, (N₁ : ℤ) * z₂ + (N₂ : ℤ) * z₁, ?_⟩
+    simp only [TensorProduct.tmul_add, ← zsmul_eq_mul,
+      TensorProduct.tmul_smul, TensorProduct.smul_tmul']
+    simp only [one_div, PNat.mul_coe, Nat.cast_mul, mul_inv_rev, zsmul_eq_mul,
+      Int.cast_natCast, ne_eq, Nat.cast_eq_zero, PNat.ne_zero, not_false_eq_true,
+      mul_inv_cancel_left₀]
+    rw [add_comm]
+    congr
+    simp [mul_comm]
+
 -- should I rearrange tensors? Not sure if D^ should be (ℚ ⊗ 𝓞) ⊗ ℤhat or ℚ ⊗ (𝓞 ⊗ Zhat)
-lemma canonicalForm (z : D^) : ∃ (N : ℕ+) (z' : 𝓞^), z = j₁ ((N⁻¹ : ℚ) ⊗ₜ 1 : D) * j₂ z' := by
-  sorry
+lemma canonicalForm (z : D^) :
+    ∃ (N : ℕ+) (z' : 𝓞^), z = j₁ ((N⁻¹ : ℚ) ⊗ₜ 1 : D) * j₂ z' := by
+  let e : D^ ≃ₐ[ℤ] (ℚ ⊗[ℤ] 𝓞^) := by
+    change ((ℚ ⊗[ℤ] 𝓞) ⊗[ℤ] ZHat) ≃ₐ[ℤ] (ℚ ⊗[ℤ] (𝓞 ⊗[ℤ] ZHat))
+    exact Algebra.TensorProduct.assoc ℤ ℤ ℤ ℚ 𝓞 ZHat
+  obtain ⟨N, z', hz⟩ := tensorRat_canonicalForm (e z)
+  refine ⟨N, z', ?_⟩
+  apply e.injective
+  rw [hz, map_mul]
+  have hj₁ : e (j₁ ((N⁻¹ : ℚ) ⊗ₜ 1 : D)) =
+      (N⁻¹ : ℚ) ⊗ₜ (1 : 𝓞^) := by
+    change (Algebra.TensorProduct.assoc ℤ ℤ ℤ ℚ 𝓞 ZHat)
+      ((((N⁻¹ : ℚ) ⊗ₜ[ℤ] (1 : 𝓞)) : D) ⊗ₜ[ℤ] (1 : ZHat)) = _
+    rfl
+  have hj₂ : e (j₂ z') = (1 : ℚ) ⊗ₜ z' := by
+    change e (e.symm ((1 : ℚ) ⊗ₜ[ℤ] z')) = _
+    simp
+  rw [hj₁, hj₂]
+  have hmul : (((N⁻¹ : ℚ) ⊗ₜ[ℤ] (1 : 𝓞^)) *
+      ((1 : ℚ) ⊗ₜ[ℤ] z')) = (N⁻¹ : ℚ) ⊗ₜ[ℤ] z' := by
+    calc
+      _ = ((N⁻¹ : ℚ) * 1) ⊗ₜ[ℤ] ((1 : 𝓞^) * z') :=
+        Algebra.TensorProduct.tmul_mul_tmul (R := ℤ)
+          (N⁻¹ : ℚ) (1 : ℚ) (1 : 𝓞^) z'
+      _ = _ := by rw [mul_one, one_mul]
+  simpa [one_div] using hmul.symm
 
 lemma completed_units (z : D^ˣ) : ∃ (u : Dˣ) (v : 𝓞^ˣ), (z : D^) = j₁ u * j₂ v := sorry
 
