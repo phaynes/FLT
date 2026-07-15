@@ -2,6 +2,13 @@
   "baseline_sha": "ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b",
   "edges": [
     {
+      "edge_id": "E-TATE-TORSION-TORSION-001",
+      "edge_kind": "theorem",
+      "from": "FLT-TATE-TORSION",
+      "justification": "FLT-TORSION-001 directly consumes FLT-TATE-TORSION.",
+      "to": "FLT-TORSION-001"
+    },
+    {
       "edge_id": "E-TORSION-001-HIST-MAZUR",
       "edge_kind": "theorem",
       "from": "FLT-TORSION-001",
@@ -37,10 +44,10 @@
       "to": "FLT-SGOOD-DEF"
     },
     {
-      "edge_id": "E-SGOOD-DEF-DEF-FUNCTOR",
-      "edge_kind": "definition",
-      "from": "FLT-SGOOD-DEF",
-      "justification": "FLT-DEF-FUNCTOR directly consumes FLT-SGOOD-DEF.",
+      "edge_id": "E-SGOOD-SELECTED-DEF-FUNCTOR",
+      "edge_kind": "theorem",
+      "from": "FLT-SGOOD-SELECTED",
+      "justification": "FLT-DEF-FUNCTOR directly consumes FLT-SGOOD-SELECTED.",
       "to": "FLT-DEF-FUNCTOR"
     },
     {
@@ -51,10 +58,10 @@
       "to": "FLT-DEF-FUNCTOR"
     },
     {
-      "edge_id": "E-SGOOD-DEF-LOCAL-GALOIS",
-      "edge_kind": "definition",
-      "from": "FLT-SGOOD-DEF",
-      "justification": "FLT-LOCAL-GALOIS directly consumes FLT-SGOOD-DEF.",
+      "edge_id": "E-SGOOD-SELECTED-LOCAL-GALOIS",
+      "edge_kind": "theorem",
+      "from": "FLT-SGOOD-SELECTED",
+      "justification": "FLT-LOCAL-GALOIS directly consumes FLT-SGOOD-SELECTED.",
       "to": "FLT-LOCAL-GALOIS"
     },
     {
@@ -72,10 +79,10 @@
       "to": "FLT-HECKE-ACTION"
     },
     {
-      "edge_id": "E-SGOOD-DEF-HECKE-ACTION",
-      "edge_kind": "definition",
-      "from": "FLT-SGOOD-DEF",
-      "justification": "FLT-HECKE-ACTION directly consumes FLT-SGOOD-DEF.",
+      "edge_id": "E-SGOOD-SELECTED-HECKE-ACTION",
+      "edge_kind": "theorem",
+      "from": "FLT-SGOOD-SELECTED",
+      "justification": "FLT-HECKE-ACTION directly consumes FLT-SGOOD-SELECTED.",
       "to": "FLT-HECKE-ACTION"
     },
     {
@@ -86,10 +93,24 @@
       "to": "FLT-HECKE-ACTION"
     },
     {
+      "edge_id": "E-AUT-GALOIS-HECKE-ACTION",
+      "edge_kind": "theorem",
+      "from": "FLT-AUT-GALOIS",
+      "justification": "FLT-HECKE-ACTION directly consumes FLT-AUT-GALOIS.",
+      "to": "FLT-HECKE-ACTION"
+    },
+    {
       "edge_id": "E-LOCAL-GALOIS-TW-PRIMES",
       "edge_kind": "theorem",
       "from": "FLT-LOCAL-GALOIS",
       "justification": "FLT-TW-PRIMES directly consumes FLT-LOCAL-GALOIS.",
+      "to": "FLT-TW-PRIMES"
+    },
+    {
+      "edge_id": "E-RESIDUAL-IMAGE-TW-PRIMES",
+      "edge_kind": "theorem",
+      "from": "FLT-RESIDUAL-IMAGE",
+      "justification": "FLT-TW-PRIMES directly consumes FLT-RESIDUAL-IMAGE.",
       "to": "FLT-TW-PRIMES"
     },
     {
@@ -163,6 +184,13 @@
       "to": "FLT-MLT"
     },
     {
+      "edge_id": "E-SGOOD-SELECTED-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-SGOOD-SELECTED",
+      "justification": "FLT-MLT directly consumes FLT-SGOOD-SELECTED.",
+      "to": "FLT-MLT"
+    },
+    {
       "edge_id": "E-AUT-DEF-JL",
       "edge_kind": "definition",
       "from": "FLT-AUT-DEF",
@@ -205,6 +233,13 @@
       "to": "FLT-AUX-CURVE"
     },
     {
+      "edge_id": "E-AUX-LOCAL-FIELD-AUX-CURVE",
+      "edge_kind": "theorem",
+      "from": "FLT-AUX-LOCAL-FIELD",
+      "justification": "FLT-AUX-CURVE directly consumes FLT-AUX-LOCAL-FIELD.",
+      "to": "FLT-AUX-CURVE"
+    },
+    {
       "edge_id": "E-AUX-CURVE-POTMOD",
       "edge_kind": "theorem",
       "from": "FLT-AUX-CURVE",
@@ -223,6 +258,13 @@
       "edge_kind": "theorem",
       "from": "FLT-MLT",
       "justification": "FLT-POTMOD directly consumes FLT-MLT.",
+      "to": "FLT-POTMOD"
+    },
+    {
+      "edge_id": "E-RESIDUAL-IMAGE-POTMOD",
+      "edge_kind": "theorem",
+      "from": "FLT-RESIDUAL-IMAGE",
+      "justification": "FLT-POTMOD directly consumes FLT-RESIDUAL-IMAGE.",
       "to": "FLT-POTMOD"
     },
     {
@@ -345,6 +387,69 @@
       "to": "FLT-COMPAT-CONTRA"
     },
     {
+      "edge_id": "E-SGOOD-DEF-SGOOD-SELECTED",
+      "edge_kind": "definition",
+      "from": "FLT-SGOOD-DEF",
+      "justification": "FLT-SGOOD-SELECTED directly consumes FLT-SGOOD-DEF.",
+      "to": "FLT-SGOOD-SELECTED"
+    },
+    {
+      "edge_id": "E-MLT-SOURCE-SGOOD-SELECTED",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-SOURCE",
+      "justification": "FLT-SGOOD-SELECTED directly consumes FLT-MLT-SOURCE.",
+      "to": "FLT-SGOOD-SELECTED"
+    },
+    {
+      "edge_id": "E-HR-DEF-RESIDUAL-IMAGE",
+      "edge_kind": "definition",
+      "from": "FLT-HR-DEF",
+      "justification": "FLT-RESIDUAL-IMAGE directly consumes FLT-HR-DEF.",
+      "to": "FLT-RESIDUAL-IMAGE"
+    },
+    {
+      "edge_id": "E-MLT-SOURCE-RESIDUAL-IMAGE",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-SOURCE",
+      "justification": "FLT-RESIDUAL-IMAGE directly consumes FLT-MLT-SOURCE.",
+      "to": "FLT-RESIDUAL-IMAGE"
+    },
+    {
+      "edge_id": "E-AUX-CURVE-RESIDUAL-IMAGE",
+      "edge_kind": "theorem",
+      "from": "FLT-AUX-CURVE",
+      "justification": "FLT-RESIDUAL-IMAGE directly consumes FLT-AUX-CURVE.",
+      "to": "FLT-RESIDUAL-IMAGE"
+    },
+    {
+      "edge_id": "E-AUT-DEF-AUT-GALOIS",
+      "edge_kind": "definition",
+      "from": "FLT-AUT-DEF",
+      "justification": "FLT-AUT-GALOIS directly consumes FLT-AUT-DEF.",
+      "to": "FLT-AUT-GALOIS"
+    },
+    {
+      "edge_id": "E-SUPPORT-AUTOMORPHIC-AUT-GALOIS",
+      "edge_kind": "theorem",
+      "from": "FLT-SUPPORT-AUTOMORPHIC",
+      "justification": "FLT-AUT-GALOIS directly consumes FLT-SUPPORT-AUTOMORPHIC.",
+      "to": "FLT-AUT-GALOIS"
+    },
+    {
+      "edge_id": "E-MLT-SOURCE-AUX-LOCAL-FIELD",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-SOURCE",
+      "justification": "FLT-AUX-LOCAL-FIELD directly consumes FLT-MLT-SOURCE.",
+      "to": "FLT-AUX-LOCAL-FIELD"
+    },
+    {
+      "edge_id": "E-MORET-BAILLY-AUX-LOCAL-FIELD",
+      "edge_kind": "theorem",
+      "from": "FLT-MORET-BAILLY",
+      "justification": "FLT-AUX-LOCAL-FIELD directly consumes FLT-MORET-BAILLY.",
+      "to": "FLT-AUX-LOCAL-FIELD"
+    },
+    {
       "edge_id": "E-LIFT-HR-REDUCIBLE",
       "edge_kind": "theorem",
       "from": "FLT-LIFT",
@@ -406,6 +511,34 @@
       "from": "FLT-B1",
       "justification": "FLT-TOP directly consumes FLT-B1.",
       "to": "FLT-TOP"
+    },
+    {
+      "edge_id": "E-TATE-TORSION-SUPPORT-TATE",
+      "edge_kind": "theorem",
+      "from": "FLT-TATE-TORSION",
+      "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-TORSION.",
+      "to": "FLT-SUPPORT-TATE"
+    },
+    {
+      "edge_id": "E-TATE-FLAT-SUPPORT-TATE",
+      "edge_kind": "theorem",
+      "from": "FLT-TATE-FLAT",
+      "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-FLAT.",
+      "to": "FLT-SUPPORT-TATE"
+    },
+    {
+      "edge_id": "E-TATE-UNRAMIFIED-SUPPORT-TATE",
+      "edge_kind": "theorem",
+      "from": "FLT-TATE-UNRAMIFIED",
+      "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-UNRAMIFIED.",
+      "to": "FLT-SUPPORT-TATE"
+    },
+    {
+      "edge_id": "E-TATE-WEIL-SUPPORT-TATE",
+      "edge_kind": "theorem",
+      "from": "FLT-TATE-WEIL",
+      "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-WEIL.",
+      "to": "FLT-SUPPORT-TATE"
     }
   ],
   "gates": [
@@ -455,6 +588,11 @@
   "obligations": [
     {
       "completion_gate": "All four declarations #check at the frozen baseline.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [],
@@ -490,13 +628,21 @@
         "SRC-001",
         "SRC-002"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "galoisRep and every data declaration it uses have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
-      "direct_dependencies": [],
+      "direct_dependencies": [
+        "FLT-TATE-TORSION"
+      ],
       "estimates": {
         "confidence": "low",
         "evidence": "Current file has a cluster of admitted data and the pinned library lacks a turnkey interface.",
@@ -508,7 +654,7 @@
         "tokens_p95": 3000000
       },
       "expected_module": "FLT.EllipticCurve.Torsion",
-      "graph_depth": 0,
+      "graph_depth": 1,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "WeierstrassCurve.galoisRep",
       "lean_risk": "very-high",
@@ -528,10 +674,15 @@
         "SRC-001",
         "SRC-005"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "T2: named finite assumption only; T3: FreyPackage.mazur has standard axiom closure.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "historical-assumption",
       "direct_dependencies": [
@@ -548,7 +699,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.FreyCurve.Mazur",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FreyPackage.mazur",
       "lean_risk": "unbounded",
@@ -566,10 +717,16 @@
       "source_refs": [
         "SRC-006"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Definition and all field types #check; source-condition review passes.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [],
@@ -604,10 +761,16 @@
         "SRC-003",
         "SRC-005"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exported theorem and rank witness have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -626,7 +789,7 @@
         "tokens_p95": 9000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Frey",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FreyCurve.torsion_isHardlyRamified",
       "lean_risk": "very-high",
@@ -647,10 +810,16 @@
         "SRC-003",
         "SRC-005"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Exact source-compatible structure elaborates and is independently reviewed.",
+      "completion_gate": "The temporary four-field target elaborates and is used only as input to source reconciliation.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "definition-gap",
       "direct_dependencies": [
@@ -669,29 +838,33 @@
       "expected_module": "FLT.ModularityLifting.Conditions",
       "graph_depth": 1,
       "kernel_probe_state": "absent",
-      "lean_declaration": "FLTMethodology.ModularityLifting.SGood",
+      "lean_declaration": "FLT.ModularityLifting.BlueprintSGood",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed structure SGood (ell : Nat) (F R V) (S : Finset (HeightOneSpectrum (RingOfIntegers F))) (rho : GaloisRep F R V) : Prop with fields det_cyclotomic, unramified_outside, trace_two_on_Jv, flat_at_ell.",
+      "lean_type": "Proposed source-literal structure with the four temporary blueprint fields: cyclotomic determinant, unramified outside S and ell, trace two on J_v for v in S, and flatness above ell.",
       "library_candidates": [
         "GaloisRepresentation.IsUnramified",
         "DeformationCondition"
       ],
-      "mathematical_name": "Exact S-good deformation condition",
+      "mathematical_name": "Blueprint-temporary S-good condition",
       "mathematical_novelty": "source-unresolved",
       "obligation_id": "FLT-SGOOD-DEF",
-      "proof_pattern": "Freeze only after selecting an exact primary theorem; define local conditions as reusable deformation subfunctors.",
+      "proof_pattern": "Elaborate the four blueprint clauses exactly, with no source-selected refinements.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-SGOOD-DEF",
-      "source_condition_risks": "Blueprint terminology is explicitly temporary and near-references use different local and residual-image conditions.",
+      "source_condition_risks": "This records the blueprint target for source comparison; it is not asserted to equal the local conditions of a selected theorem.",
       "source_refs": [
-        "SRC-004",
-        "SRC-012",
-        "SRC-013"
+        "SRC-004"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Definition and its selected level specialization elaborate without admitted dependencies.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [],
@@ -727,14 +900,20 @@
         "SRC-004",
         "SRC-008"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Universal deformation ring exists with no sorryAx and exact local conditions.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
-        "FLT-SGOOD-DEF",
+        "FLT-SGOOD-SELECTED",
         "FLT-SUPPORT-DEFORMATION"
       ],
       "estimates": {
@@ -748,7 +927,7 @@
         "tokens_p95": 30000000
       },
       "expected_module": "FLT.ModularityLifting.DeformationRing",
-      "graph_depth": 2,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.sGoodLiftFunctor_corepresentable",
       "lean_risk": "unbounded",
@@ -769,14 +948,20 @@
         "SRC-009",
         "SRC-015"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exact dimension theorem is kernel-clean for every place and composes globally.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
-        "FLT-SGOOD-DEF",
+        "FLT-SGOOD-SELECTED",
         "FLT-DEF-FUNCTOR"
       ],
       "estimates": {
@@ -790,7 +975,7 @@
         "tokens_p95": 90000000
       },
       "expected_module": "FLT.ModularityLifting.LocalConditions",
-      "graph_depth": 3,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localConditions_balanced",
       "lean_risk": "unbounded",
@@ -812,16 +997,23 @@
         "SRC-009",
         "SRC-013"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "The localized Hecke action and R-to-T map are kernel-clean with source-compatible hypotheses.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-AUT-DEF",
-        "FLT-SGOOD-DEF",
-        "FLT-SUPPORT-AUTOMORPHIC"
+        "FLT-SGOOD-SELECTED",
+        "FLT-SUPPORT-AUTOMORPHIC",
+        "FLT-AUT-GALOIS"
       ],
       "estimates": {
         "confidence": "low",
@@ -834,7 +1026,7 @@
         "tokens_p95": 110000000
       },
       "expected_module": "FLT.ModularityLifting.Hecke",
-      "graph_depth": 2,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
@@ -855,14 +1047,21 @@
         "SRC-008",
         "SRC-009"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Auxiliary-prime theorem is kernel-clean for the exact residual representation class.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
-        "FLT-LOCAL-GALOIS"
+        "FLT-LOCAL-GALOIS",
+        "FLT-RESIDUAL-IMAGE"
       ],
       "estimates": {
         "confidence": "low",
@@ -875,7 +1074,7 @@
         "tokens_p95": 65000000
       },
       "expected_module": "FLT.ModularityLifting.TaylorWilesPrimes",
-      "graph_depth": 4,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.exists_taylorWiles_primes",
       "lean_risk": "unbounded",
@@ -895,10 +1094,16 @@
       "source_refs": [
         "SRC-009"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Selected R=T consequence is kernel-clean and consumes only independently proved hypotheses.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -918,7 +1123,7 @@
         "tokens_p95": 75000000
       },
       "expected_module": "FLT.ModularityLifting.Patching",
-      "graph_depth": 5,
+      "graph_depth": 7,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.patched_R_eq_T",
       "lean_risk": "unbounded",
@@ -938,10 +1143,15 @@
       "source_refs": [
         "SRC-009"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Forward transfer and the exact descent/image theorem required by MLT have acceptable target-stage axiom closure.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -976,10 +1186,16 @@
       "source_refs": [
         "SRC-004"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Opus mathematical review and a primary-source audit accept one exact elaborated signature.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "definition-gap",
       "direct_dependencies": [
@@ -1015,16 +1231,23 @@
         "SRC-012",
         "SRC-013"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exact source-compatible theorem has no sorryAx and no unapproved custom axiom.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
         "FLT-MLT-SOURCE",
         "FLT-PATCHING",
-        "FLT-CBASE"
+        "FLT-CBASE",
+        "FLT-SGOOD-SELECTED"
       ],
       "estimates": {
         "confidence": "low",
@@ -1037,7 +1260,7 @@
         "tokens_p95": 50000000
       },
       "expected_module": "FLT.ModularityLifting.Main",
-      "graph_depth": 6,
+      "graph_depth": 8,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.modularity_lifting",
       "lean_risk": "unbounded",
@@ -1059,10 +1282,15 @@
         "SRC-012",
         "SRC-013"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "The selected source theorem and required disjointness specialization meet the target-stage axiom policy.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [],
@@ -1097,10 +1325,15 @@
       "source_refs": [
         "SRC-011"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Every bundled field is a separately named theorem with source and target-stage axiom audit.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "definition-gap",
       "direct_dependencies": [],
@@ -1135,10 +1368,15 @@
       "source_refs": [
         "SRC-004"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Transfer theorem meets exact potential-modularity and base-change uses.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1175,10 +1413,15 @@
       "source_refs": [
         "SRC-004"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Kernel-clean theorem supplies the exact auxiliary residual automorphy.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1215,15 +1458,22 @@
       "source_refs": [
         "SRC-004"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Existence theorem is kernel-clean and every local/global side condition is exposed.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
         "FLT-MORET-BAILLY",
-        "FLT-CLASS-FIELD"
+        "FLT-CLASS-FIELD",
+        "FLT-AUX-LOCAL-FIELD"
       ],
       "estimates": {
         "confidence": "low",
@@ -1236,7 +1486,7 @@
         "tokens_p95": 150000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryCurve",
-      "graph_depth": 1,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.exists_auxiliary_curve",
       "lean_risk": "unbounded",
@@ -1257,16 +1507,23 @@
         "SRC-004",
         "SRC-011"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exported potential-modularity theorem is kernel-clean and exactly matches compatible-family construction.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
         "FLT-AUX-CURVE",
         "FLT-INDUCED-MOD",
-        "FLT-MLT"
+        "FLT-MLT",
+        "FLT-RESIDUAL-IMAGE"
       ],
       "estimates": {
         "confidence": "low",
@@ -1279,7 +1536,7 @@
         "tokens_p95": 28000000
       },
       "expected_module": "FLT.PotentialModularity.Main",
-      "graph_depth": 7,
+      "graph_depth": 9,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1300,10 +1557,16 @@
         "SRC-012",
         "SRC-013"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exact existing declaration has no sorryAx and supplies all reviewed downstream invariants.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -1322,7 +1585,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Lift",
-      "graph_depth": 8,
+      "graph_depth": 10,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.lifts",
       "lean_risk": "unbounded",
@@ -1343,10 +1606,16 @@
         "SRC-010",
         "SRC-014"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Definitions elaborate and the required trace-equality specialization is signature-green.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [],
@@ -1381,10 +1650,16 @@
         "SRC-003",
         "SRC-014"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Compatible-family construction is kernel-clean and instantiates the current family interface.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1403,7 +1678,7 @@
         "tokens_p95": 95000000
       },
       "expected_module": "FLT.GaloisRepresentation.CompatibleFamily",
-      "graph_depth": 8,
+      "graph_depth": 10,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.CompatibleFamily.of_potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1423,10 +1698,16 @@
         "SRC-010",
         "SRC-014"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Existing declaration has no sorryAx and source review accepts its strength.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -1445,7 +1726,7 @@
         "tokens_p95": 35000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Family",
-      "graph_depth": 9,
+      "graph_depth": 11,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.mem_isCompatible",
       "lean_risk": "unbounded",
@@ -1465,10 +1746,15 @@
         "SRC-010",
         "SRC-014"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Core theorem has target-stage-appropriate axiom closure and covers all finite coefficient fields.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1506,10 +1792,16 @@
         "SRC-003",
         "SRC-007"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Existing theorem has no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -1546,10 +1838,16 @@
         "SRC-003",
         "SRC-007"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exact theorem has no sorryAx and its use of mod_three is visible.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -1585,10 +1883,15 @@
       "source_refs": [
         "SRC-003"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Comparison theorem has the target-stage axiom closure and exact family specializations.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1624,10 +1927,15 @@
       "source_refs": [
         "SRC-003"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "The exact coefficient-field specialization is kernel-clean.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [],
@@ -1661,10 +1969,16 @@
       "source_refs": [
         "SRC-003"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
       "completion_gate": "Contradiction theorem is kernel-clean and has no circular dependency on generic reducibility.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1684,7 +1998,7 @@
         "tokens_p95": 40000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reduction",
-      "graph_depth": 10,
+      "graph_depth": 12,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.not_isIrreducible_of_family",
       "lean_risk": "unbounded",
@@ -1704,10 +2018,384 @@
         "SRC-003",
         "SRC-010"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "An exact source-compatible structure elaborates and independent review accepts every field.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-SGOOD-DEF",
+        "FLT-MLT-SOURCE"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Opus HR-01 requires the source-selected condition to be separate from the temporary blueprint condition.",
+        "loc_p50": 2000,
+        "loc_p80": 10000,
+        "loc_p95": 40000,
+        "tokens_p50": 250000,
+        "tokens_p80": 1500000,
+        "tokens_p95": 7000000
+      },
+      "expected_module": "FLT.ModularityLifting.Conditions",
+      "graph_depth": 3,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.SelectedGood",
+      "lean_risk": "unbounded",
+      "lean_type": "Definition, after source selection, of the exact determinant, ramification, inertial, p-adic Hodge or finite-flat, weight, and coefficient conditions used by the selected theorem.",
+      "library_candidates": [
+        "DeformationCondition"
+      ],
+      "mathematical_name": "Source-selected modularity-lifting local conditions",
+      "mathematical_novelty": "source-unresolved",
+      "obligation_id": "FLT-SGOOD-SELECTED",
+      "proof_pattern": "Lower the selected theorem hypotheses field-by-field and prove any equivalence with the blueprint target separately.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-SGOOD-SELECTED",
+      "source_condition_risks": "No final signature exists until one exact primary theorem and every bridge are selected.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact source condition is proved for every concrete residual representation entering the lifting theorem.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-HR-DEF",
+        "FLT-MLT-SOURCE",
+        "FLT-AUX-CURVE"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Added from Opus HR-02; no exact source bridge is currently selected.",
+        "loc_p50": 8000,
+        "loc_p80": 40000,
+        "loc_p95": 180000,
+        "tokens_p50": 1000000,
+        "tokens_p80": 6500000,
+        "tokens_p95": 35000000
+      },
+      "expected_module": "FLT.ModularityLifting.ResidualImage",
+      "graph_depth": 5,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.residualImageCondition",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed theorem, source-selected: every residual representation used in the concrete potential-modularity application satisfies the exact cyclotomic absolute-irreducibility, adequacy, or large-image hypothesis required by modularity lifting and Taylor-Wiles prime selection.",
+      "library_candidates": [
+        "GaloisRep.IsIrreducible"
+      ],
+      "mathematical_name": "Residual cyclotomic irreducibility or adequacy bridge",
+      "mathematical_novelty": "source-unresolved",
+      "obligation_id": "FLT-RESIDUAL-IMAGE",
+      "proof_pattern": "After choosing the source, prove the exact restriction/image theorem and isolate every exceptional-image case.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-RESIDUAL-IMAGE",
+      "source_condition_risks": "Irreducibility over the base does not by itself imply the Taylor or Gee residual-image condition; disjointness and exceptional images are load-bearing.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The attached representation and every compatibility used by R-to-T are kernel-clean and exactly sourced.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-AUT-DEF",
+        "FLT-SUPPORT-AUTOMORPHIC"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Opus HR-03 identifies this as a whole programme hidden by the prior umbrella node.",
+        "loc_p50": 30000,
+        "loc_p80": 150000,
+        "loc_p95": 650000,
+        "tokens_p50": 4000000,
+        "tokens_p80": 25000000,
+        "tokens_p95": 140000000
+      },
+      "expected_module": "FLT.Automorphic.AttachedGaloisRepresentation",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.Automorphic.attachedGaloisRepresentation",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed source-faithful construction of the two-dimensional continuous Galois representation attached to the selected quaternionic or Hilbert automorphic eigenform, with Frobenius characteristic-polynomial and required local-global compatibility.",
+      "library_candidates": [
+        "GaloisRep.charFrob",
+        "HeckeOperator"
+      ],
+      "mathematical_name": "Galois representations attached to selected automorphic eigenforms",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-AUT-GALOIS",
+      "proof_pattern": "Separate construction, continuity, Frobenius compatibility, and local conditions; only then build the localized R-to-T map.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-AUT-GALOIS",
+      "source_condition_risks": "Weight, coefficient field, level, normalization, local-global compatibility, and quaternionic-to-GL2 transfer must match the Hecke and deformation interfaces.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-008",
+        "SRC-009"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The selected auxiliary-field condition is source-exact and its Moret-Bailly specialization is kernel-clean.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-MLT-SOURCE",
+        "FLT-MORET-BAILLY"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Added from Opus HR-04; exact cost depends on the selected primary theorem.",
+        "loc_p50": 6000,
+        "loc_p80": 30000,
+        "loc_p95": 120000,
+        "tokens_p50": 800000,
+        "tokens_p80": 5000000,
+        "tokens_p95": 26000000
+      },
+      "expected_module": "FLT.PotentialModularity.AuxiliaryField",
+      "graph_depth": 3,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.PotentialModularity.AuxiliaryFieldCondition",
+      "lean_risk": "unbounded",
+      "lean_type": "Source-selected predicate and existence bridge specifying whether the residual prime is split completely or merely unramified, together with even degree, total reality, Galoisness, and required disjointness.",
+      "library_candidates": [
+        "NumberField",
+        "IsUnramified"
+      ],
+      "mathematical_name": "Auxiliary-field local condition selected for modularity lifting",
+      "mathematical_novelty": "source-unresolved",
+      "obligation_id": "FLT-AUX-LOCAL-FIELD",
+      "proof_pattern": "Select one theorem, encode its exact field conditions, and prove the Moret-Bailly local opens yield them.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-AUX-LOCAL-FIELD",
+      "source_condition_risks": "Taylor and Gee impose different field and residual-image conditions; a disjunction cannot be hidden in the concrete proof route.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-011",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Nine admissions in FLT/EllipticCurve/Torsion.lean.",
+        "loc_p50": 2500,
+        "loc_p80": 7000,
+        "loc_p95": 18000,
+        "tokens_p50": 250000,
+        "tokens_p80": 900000,
+        "tokens_p95": 3000000
+      },
+      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.EllipticCurve.Torsion support closure",
+      "lean_risk": "very-high",
+      "lean_type": "Finite and rank-two torsion, module laws, and the continuous Galois action used by WeierstrassCurve.galoisRep.",
+      "library_candidates": [
+        "EllipticCurve",
+        "TateCurve"
+      ],
+      "mathematical_name": "Elliptic-curve torsion module support",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-TATE-TORSION",
+      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-TATE-TORSION",
+      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Four admissions across Flat.lean and GoodReduction.lean.",
+        "loc_p50": 2500,
+        "loc_p80": 10000,
+        "loc_p95": 35000,
+        "tokens_p50": 300000,
+        "tokens_p80": 1500000,
+        "tokens_p95": 7000000
+      },
+      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.Flat support closure",
+      "lean_risk": "very-high",
+      "lean_type": "Finite-flat group-scheme and good-reduction declarations used to establish flatness of Frey torsion above ell.",
+      "library_candidates": [
+        "EllipticCurve",
+        "TateCurve"
+      ],
+      "mathematical_name": "Finite-flat and good-reduction support",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-TATE-FLAT",
+      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-TATE-FLAT",
+      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Eleven admissions in TateCurve.lean.",
+        "loc_p50": 4500,
+        "loc_p80": 18000,
+        "loc_p95": 65000,
+        "tokens_p50": 550000,
+        "tokens_p80": 2800000,
+        "tokens_p95": 12000000
+      },
+      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.TateCurve support closure",
+      "lean_risk": "very-high",
+      "lean_type": "Tate uniformization and inertia statements used for the Frey representation at the bad prime and away from 2 ell.",
+      "library_candidates": [
+        "EllipticCurve",
+        "TateCurve"
+      ],
+      "mathematical_name": "Tate-curve and bad-reduction support",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-TATE-UNRAMIFIED",
+      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
+      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Admissions in WeilPairing.lean and known-in-1980s torsion support.",
+        "loc_p50": 1000,
+        "loc_p80": 5000,
+        "loc_p95": 18000,
+        "tokens_p50": 120000,
+        "tokens_p80": 700000,
+        "tokens_p95": 3000000
+      },
+      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.WeilPairing support closure",
+      "lean_risk": "very-high",
+      "lean_type": "Weil-pairing and cyclotomic determinant declarations needed for the determinant field of IsHardlyRamified.",
+      "library_candidates": [
+        "EllipticCurve",
+        "TateCurve"
+      ],
+      "mathematical_name": "Weil pairing and determinant support",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-TATE-WEIL",
+      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-TATE-WEIL",
+      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Exact generic B5 theorem elaborates and has no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
@@ -1725,11 +2413,11 @@
         "tokens_p95": 4000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reducible",
-      "graph_depth": 11,
+      "graph_depth": 13,
       "kernel_probe_state": "absent",
       "lean_declaration": "FreyCurve.torsion_not_isIrreducible",
       "lean_risk": "very-high",
-      "lean_type": "Proposed generic theorem matching blueprint B5: for prime ell at least 3 and every two-dimensional hardly-ramified representation over the intended finite residual field, not IsIrreducible rho.",
+      "lean_type": "Proposed generic theorem matching blueprint B5: for prime ell at least 5 and every two-dimensional hardly-ramified representation over the intended finite residual field, not IsIrreducible rho.",
       "library_candidates": [
         "GaloisRepresentation.IsHardlyRamified.lifts"
       ],
@@ -1739,15 +2427,21 @@
       "proof_pattern": "Assume irreducible, obtain lift and compatible family, apply terminal contradiction.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-HR-REDUCIBLE",
-      "source_condition_risks": "The current namespace/name suggested by the blueprint may be Frey-specific despite a generic mathematical statement; exact universes and coefficient fields must be frozen.",
+      "source_condition_risks": "The endpoint is restricted to ell at least 5; ell = 3 remains exclusively in the Fontaine-Odlyzko/mod-three branch.",
       "source_refs": [
         "SRC-003",
         "SRC-010"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "B4_proof has no sorryAx and its exact statement is unchanged.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
@@ -1765,7 +2459,7 @@
         "tokens_p95": 250000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 12,
+      "graph_depth": 14,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B4_proof",
       "lean_risk": "high",
@@ -1784,10 +2478,16 @@
         "SRC-002",
         "SRC-003"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Axiom audit contains no sorryAx and only target-stage-permitted assumptions.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [
@@ -1805,7 +2505,7 @@
         "tokens_p95": 15000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 13,
+      "graph_depth": 15,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B3_proof",
       "lean_risk": "low",
@@ -1823,10 +2523,16 @@
       "source_refs": [
         "SRC-002"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Axiom audit contains no sorryAx and only target-stage-permitted assumptions.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [
@@ -1843,7 +2549,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 14,
+      "graph_depth": 16,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B2_proof",
       "lean_risk": "low",
@@ -1861,10 +2567,16 @@
       "source_refs": [
         "SRC-002"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "For T1, no sorryAx and knownin1980s visible; later targets tighten the closure.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [
@@ -1881,7 +2593,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 15,
+      "graph_depth": 17,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "flt",
       "lean_risk": "low",
@@ -1900,10 +2612,16 @@
         "SRC-001",
         "SRC-002"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "G4: no sorryAx; G5: no knownin1980s; G6: exact standard axiom trio.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [
@@ -1920,7 +2638,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FermatsLastTheorem",
-      "graph_depth": 16,
+      "graph_depth": 18,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "PNat.pow_add_pow_ne_pow",
       "lean_risk": "low",
@@ -1938,10 +2656,15 @@
       "source_refs": [
         "SRC-001"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "No generic knownin1980s dependency remains at T2; standard closure at T3.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
       "critical_path": false,
       "current_state": "historical-assumption",
       "direct_dependencies": [],
@@ -1974,25 +2697,36 @@
       "source_refs": [
         "SRC-001"
       ],
+      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
-      "completion_gate": "Cluster is expanded before scheduling; every transitive declaration used by Frey-HR is sorry-free.",
+      "completion_gate": "All four explicit support subclusters are kernel-clean; the join introduces no admission.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
-      "current_state": "admitted",
-      "direct_dependencies": [],
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-TATE-TORSION",
+        "FLT-TATE-FLAT",
+        "FLT-TATE-UNRAMIFIED",
+        "FLT-TATE-WEIL"
+      ],
       "estimates": {
-        "confidence": "low",
-        "evidence": "Approximately twenty current executable admissions in the cluster.",
-        "loc_p50": 8000,
-        "loc_p80": 30000,
-        "loc_p95": 100000,
-        "tokens_p50": 1000000,
-        "tokens_p80": 4500000,
-        "tokens_p95": 20000000
+        "confidence": "high",
+        "evidence": "Join node only; costs are carried by the decomposed subclusters.",
+        "loc_p50": 0,
+        "loc_p80": 0,
+        "loc_p95": 0,
+        "tokens_p50": 10000,
+        "tokens_p80": 20000,
+        "tokens_p95": 50000
       },
       "expected_module": "FLT.KnownIn1980s.EllipticCurves",
-      "graph_depth": 0,
+      "graph_depth": 1,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.TateCurve support declarations",
       "lean_risk": "very-high",
@@ -2004,7 +2738,7 @@
       "mathematical_name": "Tate-curve and finite-flat elliptic-curve support cluster",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-SUPPORT-TATE",
-      "proof_pattern": "Close existing admitted declarations bottom-up, with individual source and axiom audits.",
+      "proof_pattern": "Inventory join only: each explicit torsion, flatness, Tate-curve, and Weil-pairing subcluster closes first.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-SUPPORT-TATE",
       "source_condition_risks": "This is an inventory cluster, not a theorem shortcut; it must be decomposed into declaration nodes before its wave begins.",
@@ -2012,10 +2746,16 @@
         "SRC-001",
         "SRC-005"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Every support declaration actually reached by selected public theorems has acceptable axiom closure.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [],
@@ -2051,10 +2791,16 @@
         "SRC-001",
         "SRC-004"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
       "completion_gate": "Every selected generic deformation declaration has no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [],
@@ -2090,6 +2836,7 @@
         "SRC-001",
         "SRC-015"
       ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     }
   ],

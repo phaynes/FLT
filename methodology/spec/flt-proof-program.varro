@@ -27,6 +27,8 @@ system flt.proof_program {
     field lean_declaration: string required
     field lean_type: markdown required
     field target_stage: string required
+    field completion_targets: string[] required
+    field stage_completion: markdown required
     field source_refs: string[] required
     field current_state: string required
     field direct_dependencies: string[] required

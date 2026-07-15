@@ -3,7 +3,7 @@
 This document is a human index over the machine-readable graph in
 `control/proof-obligations.ndjson`. The generator derives every edge from the node's declared
 dependencies and fails if the current graph contains a cycle. At this design revision the graph
-contains 41 obligations, 58 direct edges, 40 critical-path obligations, and no cycle. Each strongly
+contains 49 obligations, 77 direct edges, 48 critical-path obligations, and no cycle. Each strongly
 connected component is therefore a singleton and is recorded explicitly by `scc_id`.
 
 The high number of critical nodes does not imply uniform effort: estimates range from already
@@ -37,9 +37,17 @@ The residual reducibility argument has four large joins:
 3. characteristic-zero lift and compatible-family construction via Brauer induction;
 4. mod-3 and 3-adic classification followed by Chebotarev/Brauer-Nesbitt comparison.
 
-The modularity-lifting branch is not statement-frozen. `FLT-MLT-SOURCE` records the blueprint's
-explicit source mismatch. It gates `FLT-MLT`: neither a scaffold nor implementation may invent a
-weaker theorem or silently strengthen the hypotheses of the public route.
+The modularity-lifting branch is not statement-frozen. `FLT-SGOOD-DEF` now records only the
+blueprint's temporary four-clause target. `FLT-MLT-SOURCE` records the explicit source mismatch,
+and `FLT-SGOOD-SELECTED` is downstream of source selection. This breaks the design cycle found in
+review: neither a scaffold nor implementation may invent a final local condition before selecting
+an exact theorem.
+
+The reviewed graph also exposes three previously implicit programmes: the residual-image or
+adequacy bridge (`FLT-RESIDUAL-IMAGE`), the automorphic-form-to-Galois construction
+(`FLT-AUT-GALOIS`), and the source-selected auxiliary-field local condition
+(`FLT-AUX-LOCAL-FIELD`). The Tate support umbrella is decomposed into torsion, finite-flat,
+Tate-curve, and Weil-pairing subclusters before scheduling.
 
 ## Target trace
 
@@ -53,10 +61,10 @@ weaker theorem or silently strengthen the hypotheses of the public route.
 
 | Source area | Principal nodes | Current risk |
 |---|---|---|
-| First reductions and Frey curve | `FLT-DEF-001`, `FLT-TORSION-001`, `FLT-FREY-HR`, `FLT-B4` | Existing admitted data and ramification proof |
+| First reductions and Frey curve | `FLT-DEF-001`, `FLT-TATE-*`, `FLT-TORSION-001`, `FLT-FREY-HR`, `FLT-B4` | Existing admitted data and ramification proof |
 | Hardly-ramified blueprint | `FLT-LIFT`, `FLT-FAMILY`, `FLT-MOD3`, `FLT-THREEADIC`, `FLT-COMPAT-CONTRA` | Four admitted terminals plus absent composition |
 | Potential modularity | `FLT-MORET-BAILLY`, `FLT-AUX-CURVE`, `FLT-INDUCED-MOD`, `FLT-JL`, `FLT-POTMOD` | Mostly prose or absent interfaces |
-| Modularity lifting | `FLT-SGOOD-DEF` through `FLT-MLT` | Exact primary theorem unresolved; large missing programmes |
+| Modularity lifting | `FLT-SGOOD-DEF`, `FLT-MLT-SOURCE`, `FLT-SGOOD-SELECTED`, `FLT-RESIDUAL-IMAGE`, `FLT-AUT-GALOIS` through `FLT-MLT` | Exact primary theorem unresolved; large missing programmes |
 | Compatible families | `FLT-COMPAT-DEF`, `FLT-BRAUER-FAMILY`, `FLT-CHEBOTAREV`, `FLT-BRAUER-NESBITT` | Definition present, construction and terminal comparison absent |
 | Historical boundary | `FLT-HIST-MAZUR`, `FLT-HIST-QUATERNION`, `FLT-FONTAINE-ODLYZKO`, `FLT-CBASE`, `FLT-JL` | T1/T2/T3 treatment differs and must remain explicit |
 
@@ -72,3 +80,9 @@ weaker theorem or silently strengthen the hypotheses of the public route.
 
 The generator, schema, scaffold probes, independent reviews, and monitor provide distinct gates.
 Passing one does not imply any other.
+
+`target_stage` records the first stage at which an obligation becomes explicit.
+`completion_targets` records every terminal closure in which it remains load-bearing. In particular,
+the T2 historical-interface nodes also list T3, and their `stage_completion` requires a
+standard-axiom proof at T3. This represents T3 proof work without pretending that a second, weaker
+mathematical declaration discharges the same proposition.

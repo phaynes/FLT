@@ -105,16 +105,42 @@ varro_source = ROOT / varro_evidence["source"]
 varro_hash = hashlib.sha256(varro_source.read_bytes()).hexdigest()
 varro_valid = bool(varro_evidence["valid"] and varro_hash == varro_evidence["source_sha256"])
 
-convergence_path = ROOT / "methodology/review/CONVERGENCE.md"
-review_complete = convergence_path.exists() and "LOAD-BEARING BLOCKER" not in convergence_path.read_text()
-graph_valid = len({node["obligation_id"] for node in obligations}) == len(obligations)
+review_root = ROOT / "methodology/review"
+convergence_path = review_root / "CONVERGENCE.md"
+sonnet_path = review_root / "sonnet50-initial.md"
+opus_path = review_root / "opus48-initial.md"
+sonnet_complete = sonnet_path.exists() and "NOT RUN" not in sonnet_path.read_text()
+opus_complete = opus_path.exists() and "NOT RUN" not in opus_path.read_text()
+convergence_text = convergence_path.read_text() if convergence_path.exists() else ""
+review_complete = bool(
+    sonnet_complete
+    and opus_complete
+    and "REVIEW CONVERGED" in convergence_text
+    and "LOAD-BEARING BLOCKER" not in convergence_text
+)
+obligation_ids = {node["obligation_id"] for node in obligations}
+stage_coverage = sorted(
+    {stage for node in obligations for stage in node.get("completion_targets", [])}
+)
+graph_valid = bool(
+    len(obligation_ids) == len(obligations)
+    and all(set(node["direct_dependencies"]) <= obligation_ids for node in obligations)
+    and all(node["target_stage"] in node.get("completion_targets", []) for node in obligations)
+    and stage_coverage == ["T1", "T2", "T3"]
+)
 scaffold_enumerated = scaffold_actual == len(scaffold_ledger)
 
 gates = {
     "G0": bool(baseline_is_ancestor and audit.returncode == 0 and build_results["FLT"] is True),
     "G1": bool(graph_valid and varro_valid and review_complete),
     "G2": bool(scaffold_enumerated and build_results["FLTMethodology"] is True and review_complete),
-    "G3": bool(graph_valid and all(node["kernel_probe_state"] != "proof-green" or node["current_state"] != "absent" for node in obligations)),
+    "G3": bool(
+        graph_valid
+        and all(
+            node["kernel_probe_state"] != "proof-green" or node["current_state"] != "absent"
+            for node in obligations
+        )
+    ),
     "G4": bool(top_axioms and "sorryAx" not in top_axioms and set(top_axioms) <= T1_AXIOMS),
     "G5": bool(
         top_axioms
@@ -144,10 +170,20 @@ record = {
         "permitted_t2_axioms": sorted(t2_named_axioms),
         "generic_knownin1980s_present": "knownin1980s" in top_axioms,
     },
-    "graph": {"nodes": len(obligations), "state_counts": state_counts, "critical_path_open": critical_open, "valid": graph_valid},
+    "graph": {
+        "nodes": len(obligations),
+        "state_counts": state_counts,
+        "critical_path_open": critical_open,
+        "completion_target_coverage": stage_coverage,
+        "valid": graph_valid,
+    },
     "current_gate": current_gate,
     "gates": gates,
-    "review_state": "converged" if review_complete else "open",
+    "review_state": {
+        "converged": review_complete,
+        "sonnet_complete": sonnet_complete,
+        "opus_complete": opus_complete,
+    },
     "source_validation": (ROOT / "methodology/SOURCE-REGISTER.md").exists(),
     "varro_validation": {"valid": varro_valid, "source_sha256": varro_hash},
 }

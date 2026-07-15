@@ -24,7 +24,9 @@ by signature and graph position, not by theorem-name resemblance. `#check` probe
 ## Consequential missing interfaces
 
 The searches did not locate exact reusable declarations for: the selected modularity-lifting source
-contract; balanced local finite-flat deformation conditions; Taylor-Wiles prime selection; the
+contract; its residual cyclotomic-irreducibility or adequacy bridge; a source-compatible Galois
+representation attached to the selected quaternionic/Hilbert eigenforms; balanced local finite-flat
+deformation conditions; Taylor-Wiles prime selection; the
 localized Hecke/Galois R-to-T action; Moret-Bailly with the required disjointness; the selected
 Jacquet-Langlands transfer; induced residual automorphy; Brauer compatible-family construction;
 Chebotarev comparison; Brauer-Nesbitt in the required coefficient setting; or the complete

@@ -29,7 +29,7 @@ universe u v
 
 /-- `FLT-HR-REDUCIBLE`: exact generic B5-shaped contract over the upstream coefficient interface. -/
 def HardlyRamifiedReducibilityContract : Prop :=
-  ∀ (ell : ℕ) (hEllOdd : Odd ell) (_ : Fact ell.Prime)
+  ∀ (ell : ℕ) (_hEllFive : 5 ≤ ell) (hEllOdd : Odd ell) (_ : Fact ell.Prime)
     (k : Type u) (_ : Finite k) (_ : Field k)
     (_ : TopologicalSpace k) (_ : DiscreteTopology k)
     (_ : Algebra ℤ_[ell] k) (_ : IsLocalHom (algebraMap ℤ_[ell] k))

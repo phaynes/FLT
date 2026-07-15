@@ -27,6 +27,9 @@ transitive-sorry audits are the authority for individual declarations.
 | Generic patching algebra | `ker_RtoT_le_nilradical` and surrounding patching modules | Substantial verified infrastructure | Adaptable reuse, not yet an FLT modularity theorem |
 | Quaternionic automorphic forms and Hecke operators | `HeckeAlgebra` and related modules | Substantial verified infrastructure with isolated admissions | Modularity-lifting prerequisite |
 | Exact modularity-lifting theorem | Blueprint node `modularity_lifting_theorem` | Absent; current source says far from statement | Load-bearing statement/source blocker |
+| Residual image/adequacy bridge | Required by the candidate lifting theorems | Absent; previously only risk prose | Explicit definition/source gap after Opus HR-02 |
+| Automorphic form to Galois representation | Required before the localized `R → T` map | Absent as a source-compatible integrated construction | Explicit programme after Opus HR-03 |
+| Auxiliary-field prime condition | Unramified in blueprint; split completely in the Taylor near-reference | Source choice unresolved | Explicit definition/source gap after Opus HR-04 |
 | Potential-modularity assembly | Moret-Bailly, auxiliary curve, induced modularity, Jacquet–Langlands | Mostly absent as an integrated Lean route | Critical path |
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
