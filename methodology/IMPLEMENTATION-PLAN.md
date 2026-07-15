@@ -141,3 +141,11 @@ build and a `#print axioms group_theory_lemma` result containing no `sorryAx`. T
 residual is matching the finite abelian group structure theorem to the cardinality hypothesis for
 all divisors of `n`. Work on the two adjacent elliptic-curve division-polynomial theorems remains
 out of scope unless the upstream authors' explicit coordination request is satisfied.
+
+### First bounded construction result
+
+The four `DistribMulAction` laws used by `WeierstrassCurve.galoisRepresentation` were closed as a
+source-independent sub-tranche. `FLT.EllipticCurve.Torsion` builds and the exported instance has
+axiom closure `[propext, Classical.choice, Quot.sound]`. This is a helper-level closure only:
+`FLT-TATE-TORSION` remains open with five admissions in the file, including the exact
+`group_theory_lemma` leaf above.

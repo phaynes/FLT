@@ -106,10 +106,19 @@ noncomputable instance WeierstrassCurve.galoisRepresentationSmul
 noncomputable instance WeierstrassCurve.galoisRepresentation
     (K : Type u) [Field K] [DecidableEq K] [Algebra k K] :
     DistribMulAction (K ≃ₐ[k] K) (E⁄K).Point where
-      one_smul := sorry -- these should all be easy
-      mul_smul := sorry
-      smul_zero := sorry
-      smul_add := sorry
+      one_smul P := by
+        change WeierstrassCurve.Affine.Point.map (AlgHom.id k K) P = P
+        exact DFunLike.congr_fun (WeierstrassCurve.Points.map_id E K) P
+      mul_smul g h P := by
+        change
+          WeierstrassCurve.Affine.Point.map ((g * h).toAlgHom) P =
+            WeierstrassCurve.Affine.Point.map g.toAlgHom
+              (WeierstrassCurve.Affine.Point.map h.toAlgHom P)
+        rw [show (g * h).toAlgHom = g.toAlgHom.comp h.toAlgHom by ext x; rfl]
+        exact
+          (WeierstrassCurve.Affine.Point.map_map (h : K →ₐ[k] K) (g : K →ₐ[k] K) P).symm
+      smul_zero g := map_zero (WeierstrassCurve.Points.map E (g : K →ₐ[k] K))
+      smul_add g P Q := map_add (WeierstrassCurve.Points.map E (g : K →ₐ[k] K)) P Q
 
 -- the next `sorry` is data but the only thing which should be missing is
 -- the continuity argument, which follows from the finiteness asserted above.

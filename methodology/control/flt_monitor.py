@@ -67,6 +67,7 @@ if args.build:
         "build",
         "FLTMethodology.Scaffold",
         "FLTMethodology.Probes.ExistingContracts",
+        "FLTMethodology.Probes.GaloisRepresentationActionAudit",
         "FLTMethodology.Probes.LibraryMatches",
     )
     build_results.update(
