@@ -5,7 +5,7 @@ Authors: Kevin Buzzard, Jonas Bayer
 -/
 module
 
-public import FLT.GlobalLanglandsConjectures.GLnDefs
+public import FLT.GlobalLanglandsConjectures.GLnFiniteAdele
 
 /-!
 # Proof of a case of the global Langlands conjectures.
@@ -134,7 +134,7 @@ def ofComplex (z : ℂ) {n : ℕ} (ρ : Weight n) (hρ : ρ.IsTrivial) :
       is_periodic := by simp
       is_slowly_increasing _ := ⟨‖z‖, 0, by simp⟩
       -- is_finite_cod := sorry -- needs a better name
-      has_finite_level := sorry -- needs a better name
+      has_finite_level := FiniteAdele.constant_has_finite_level z
 
 -- no idea why it's not computable
 /-- The classification of automorphic forms for `GL₀/ℚ` of weight `ρ`: they are in
