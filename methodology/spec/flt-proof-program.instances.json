@@ -1,0 +1,2130 @@
+{
+  "baseline_sha": "ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b",
+  "edges": [
+    {
+      "edge_id": "E-TORSION-001-HIST-MAZUR",
+      "edge_kind": "theorem",
+      "from": "FLT-TORSION-001",
+      "justification": "FLT-HIST-MAZUR directly consumes FLT-TORSION-001.",
+      "to": "FLT-HIST-MAZUR"
+    },
+    {
+      "edge_id": "E-TORSION-001-FREY-HR",
+      "edge_kind": "theorem",
+      "from": "FLT-TORSION-001",
+      "justification": "FLT-FREY-HR directly consumes FLT-TORSION-001.",
+      "to": "FLT-FREY-HR"
+    },
+    {
+      "edge_id": "E-HR-DEF-FREY-HR",
+      "edge_kind": "definition",
+      "from": "FLT-HR-DEF",
+      "justification": "FLT-FREY-HR directly consumes FLT-HR-DEF.",
+      "to": "FLT-FREY-HR"
+    },
+    {
+      "edge_id": "E-SUPPORT-TATE-FREY-HR",
+      "edge_kind": "theorem",
+      "from": "FLT-SUPPORT-TATE",
+      "justification": "FLT-FREY-HR directly consumes FLT-SUPPORT-TATE.",
+      "to": "FLT-FREY-HR"
+    },
+    {
+      "edge_id": "E-HR-DEF-SGOOD-DEF",
+      "edge_kind": "definition",
+      "from": "FLT-HR-DEF",
+      "justification": "FLT-SGOOD-DEF directly consumes FLT-HR-DEF.",
+      "to": "FLT-SGOOD-DEF"
+    },
+    {
+      "edge_id": "E-SGOOD-DEF-DEF-FUNCTOR",
+      "edge_kind": "definition",
+      "from": "FLT-SGOOD-DEF",
+      "justification": "FLT-DEF-FUNCTOR directly consumes FLT-SGOOD-DEF.",
+      "to": "FLT-DEF-FUNCTOR"
+    },
+    {
+      "edge_id": "E-SUPPORT-DEFORMATION-DEF-FUNCTOR",
+      "edge_kind": "definition",
+      "from": "FLT-SUPPORT-DEFORMATION",
+      "justification": "FLT-DEF-FUNCTOR directly consumes FLT-SUPPORT-DEFORMATION.",
+      "to": "FLT-DEF-FUNCTOR"
+    },
+    {
+      "edge_id": "E-SGOOD-DEF-LOCAL-GALOIS",
+      "edge_kind": "definition",
+      "from": "FLT-SGOOD-DEF",
+      "justification": "FLT-LOCAL-GALOIS directly consumes FLT-SGOOD-DEF.",
+      "to": "FLT-LOCAL-GALOIS"
+    },
+    {
+      "edge_id": "E-DEF-FUNCTOR-LOCAL-GALOIS",
+      "edge_kind": "definition",
+      "from": "FLT-DEF-FUNCTOR",
+      "justification": "FLT-LOCAL-GALOIS directly consumes FLT-DEF-FUNCTOR.",
+      "to": "FLT-LOCAL-GALOIS"
+    },
+    {
+      "edge_id": "E-AUT-DEF-HECKE-ACTION",
+      "edge_kind": "definition",
+      "from": "FLT-AUT-DEF",
+      "justification": "FLT-HECKE-ACTION directly consumes FLT-AUT-DEF.",
+      "to": "FLT-HECKE-ACTION"
+    },
+    {
+      "edge_id": "E-SGOOD-DEF-HECKE-ACTION",
+      "edge_kind": "definition",
+      "from": "FLT-SGOOD-DEF",
+      "justification": "FLT-HECKE-ACTION directly consumes FLT-SGOOD-DEF.",
+      "to": "FLT-HECKE-ACTION"
+    },
+    {
+      "edge_id": "E-SUPPORT-AUTOMORPHIC-HECKE-ACTION",
+      "edge_kind": "theorem",
+      "from": "FLT-SUPPORT-AUTOMORPHIC",
+      "justification": "FLT-HECKE-ACTION directly consumes FLT-SUPPORT-AUTOMORPHIC.",
+      "to": "FLT-HECKE-ACTION"
+    },
+    {
+      "edge_id": "E-LOCAL-GALOIS-TW-PRIMES",
+      "edge_kind": "theorem",
+      "from": "FLT-LOCAL-GALOIS",
+      "justification": "FLT-TW-PRIMES directly consumes FLT-LOCAL-GALOIS.",
+      "to": "FLT-TW-PRIMES"
+    },
+    {
+      "edge_id": "E-DEF-FUNCTOR-PATCHING",
+      "edge_kind": "definition",
+      "from": "FLT-DEF-FUNCTOR",
+      "justification": "FLT-PATCHING directly consumes FLT-DEF-FUNCTOR.",
+      "to": "FLT-PATCHING"
+    },
+    {
+      "edge_id": "E-LOCAL-GALOIS-PATCHING",
+      "edge_kind": "theorem",
+      "from": "FLT-LOCAL-GALOIS",
+      "justification": "FLT-PATCHING directly consumes FLT-LOCAL-GALOIS.",
+      "to": "FLT-PATCHING"
+    },
+    {
+      "edge_id": "E-HECKE-ACTION-PATCHING",
+      "edge_kind": "theorem",
+      "from": "FLT-HECKE-ACTION",
+      "justification": "FLT-PATCHING directly consumes FLT-HECKE-ACTION.",
+      "to": "FLT-PATCHING"
+    },
+    {
+      "edge_id": "E-TW-PRIMES-PATCHING",
+      "edge_kind": "theorem",
+      "from": "FLT-TW-PRIMES",
+      "justification": "FLT-PATCHING directly consumes FLT-TW-PRIMES.",
+      "to": "FLT-PATCHING"
+    },
+    {
+      "edge_id": "E-AUT-DEF-CBASE",
+      "edge_kind": "definition",
+      "from": "FLT-AUT-DEF",
+      "justification": "FLT-CBASE directly consumes FLT-AUT-DEF.",
+      "to": "FLT-CBASE"
+    },
+    {
+      "edge_id": "E-SGOOD-DEF-MLT-SOURCE",
+      "edge_kind": "definition",
+      "from": "FLT-SGOOD-DEF",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-SGOOD-DEF.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
+      "edge_id": "E-AUT-DEF-MLT-SOURCE",
+      "edge_kind": "definition",
+      "from": "FLT-AUT-DEF",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-AUT-DEF.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
+      "edge_id": "E-MLT-SOURCE-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-SOURCE",
+      "justification": "FLT-MLT directly consumes FLT-MLT-SOURCE.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-PATCHING-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-PATCHING",
+      "justification": "FLT-MLT directly consumes FLT-PATCHING.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-CBASE-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-CBASE",
+      "justification": "FLT-MLT directly consumes FLT-CBASE.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-AUT-DEF-JL",
+      "edge_kind": "definition",
+      "from": "FLT-AUT-DEF",
+      "justification": "FLT-JL directly consumes FLT-AUT-DEF.",
+      "to": "FLT-JL"
+    },
+    {
+      "edge_id": "E-SUPPORT-AUTOMORPHIC-JL",
+      "edge_kind": "theorem",
+      "from": "FLT-SUPPORT-AUTOMORPHIC",
+      "justification": "FLT-JL directly consumes FLT-SUPPORT-AUTOMORPHIC.",
+      "to": "FLT-JL"
+    },
+    {
+      "edge_id": "E-CLASS-FIELD-INDUCED-MOD",
+      "edge_kind": "theorem",
+      "from": "FLT-CLASS-FIELD",
+      "justification": "FLT-INDUCED-MOD directly consumes FLT-CLASS-FIELD.",
+      "to": "FLT-INDUCED-MOD"
+    },
+    {
+      "edge_id": "E-JL-INDUCED-MOD",
+      "edge_kind": "theorem",
+      "from": "FLT-JL",
+      "justification": "FLT-INDUCED-MOD directly consumes FLT-JL.",
+      "to": "FLT-INDUCED-MOD"
+    },
+    {
+      "edge_id": "E-MORET-BAILLY-AUX-CURVE",
+      "edge_kind": "theorem",
+      "from": "FLT-MORET-BAILLY",
+      "justification": "FLT-AUX-CURVE directly consumes FLT-MORET-BAILLY.",
+      "to": "FLT-AUX-CURVE"
+    },
+    {
+      "edge_id": "E-CLASS-FIELD-AUX-CURVE",
+      "edge_kind": "theorem",
+      "from": "FLT-CLASS-FIELD",
+      "justification": "FLT-AUX-CURVE directly consumes FLT-CLASS-FIELD.",
+      "to": "FLT-AUX-CURVE"
+    },
+    {
+      "edge_id": "E-AUX-CURVE-POTMOD",
+      "edge_kind": "theorem",
+      "from": "FLT-AUX-CURVE",
+      "justification": "FLT-POTMOD directly consumes FLT-AUX-CURVE.",
+      "to": "FLT-POTMOD"
+    },
+    {
+      "edge_id": "E-INDUCED-MOD-POTMOD",
+      "edge_kind": "theorem",
+      "from": "FLT-INDUCED-MOD",
+      "justification": "FLT-POTMOD directly consumes FLT-INDUCED-MOD.",
+      "to": "FLT-POTMOD"
+    },
+    {
+      "edge_id": "E-MLT-POTMOD",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT",
+      "justification": "FLT-POTMOD directly consumes FLT-MLT.",
+      "to": "FLT-POTMOD"
+    },
+    {
+      "edge_id": "E-HR-DEF-LIFT",
+      "edge_kind": "definition",
+      "from": "FLT-HR-DEF",
+      "justification": "FLT-LIFT directly consumes FLT-HR-DEF.",
+      "to": "FLT-LIFT"
+    },
+    {
+      "edge_id": "E-POTMOD-LIFT",
+      "edge_kind": "theorem",
+      "from": "FLT-POTMOD",
+      "justification": "FLT-LIFT directly consumes FLT-POTMOD.",
+      "to": "FLT-LIFT"
+    },
+    {
+      "edge_id": "E-DEF-FUNCTOR-LIFT",
+      "edge_kind": "definition",
+      "from": "FLT-DEF-FUNCTOR",
+      "justification": "FLT-LIFT directly consumes FLT-DEF-FUNCTOR.",
+      "to": "FLT-LIFT"
+    },
+    {
+      "edge_id": "E-POTMOD-BRAUER-FAMILY",
+      "edge_kind": "theorem",
+      "from": "FLT-POTMOD",
+      "justification": "FLT-BRAUER-FAMILY directly consumes FLT-POTMOD.",
+      "to": "FLT-BRAUER-FAMILY"
+    },
+    {
+      "edge_id": "E-COMPAT-DEF-BRAUER-FAMILY",
+      "edge_kind": "definition",
+      "from": "FLT-COMPAT-DEF",
+      "justification": "FLT-BRAUER-FAMILY directly consumes FLT-COMPAT-DEF.",
+      "to": "FLT-BRAUER-FAMILY"
+    },
+    {
+      "edge_id": "E-CBASE-BRAUER-FAMILY",
+      "edge_kind": "theorem",
+      "from": "FLT-CBASE",
+      "justification": "FLT-BRAUER-FAMILY directly consumes FLT-CBASE.",
+      "to": "FLT-BRAUER-FAMILY"
+    },
+    {
+      "edge_id": "E-LIFT-FAMILY",
+      "edge_kind": "theorem",
+      "from": "FLT-LIFT",
+      "justification": "FLT-FAMILY directly consumes FLT-LIFT.",
+      "to": "FLT-FAMILY"
+    },
+    {
+      "edge_id": "E-BRAUER-FAMILY-FAMILY",
+      "edge_kind": "theorem",
+      "from": "FLT-BRAUER-FAMILY",
+      "justification": "FLT-FAMILY directly consumes FLT-BRAUER-FAMILY.",
+      "to": "FLT-FAMILY"
+    },
+    {
+      "edge_id": "E-COMPAT-DEF-FAMILY",
+      "edge_kind": "definition",
+      "from": "FLT-COMPAT-DEF",
+      "justification": "FLT-FAMILY directly consumes FLT-COMPAT-DEF.",
+      "to": "FLT-FAMILY"
+    },
+    {
+      "edge_id": "E-HR-DEF-FONTAINE-ODLYZKO",
+      "edge_kind": "definition",
+      "from": "FLT-HR-DEF",
+      "justification": "FLT-FONTAINE-ODLYZKO directly consumes FLT-HR-DEF.",
+      "to": "FLT-FONTAINE-ODLYZKO"
+    },
+    {
+      "edge_id": "E-FONTAINE-ODLYZKO-MOD3",
+      "edge_kind": "theorem",
+      "from": "FLT-FONTAINE-ODLYZKO",
+      "justification": "FLT-MOD3 directly consumes FLT-FONTAINE-ODLYZKO.",
+      "to": "FLT-MOD3"
+    },
+    {
+      "edge_id": "E-MOD3-THREEADIC",
+      "edge_kind": "theorem",
+      "from": "FLT-MOD3",
+      "justification": "FLT-THREEADIC directly consumes FLT-MOD3.",
+      "to": "FLT-THREEADIC"
+    },
+    {
+      "edge_id": "E-COMPAT-DEF-CHEBOTAREV",
+      "edge_kind": "definition",
+      "from": "FLT-COMPAT-DEF",
+      "justification": "FLT-CHEBOTAREV directly consumes FLT-COMPAT-DEF.",
+      "to": "FLT-CHEBOTAREV"
+    },
+    {
+      "edge_id": "E-FAMILY-COMPAT-CONTRA",
+      "edge_kind": "theorem",
+      "from": "FLT-FAMILY",
+      "justification": "FLT-COMPAT-CONTRA directly consumes FLT-FAMILY.",
+      "to": "FLT-COMPAT-CONTRA"
+    },
+    {
+      "edge_id": "E-THREEADIC-COMPAT-CONTRA",
+      "edge_kind": "theorem",
+      "from": "FLT-THREEADIC",
+      "justification": "FLT-COMPAT-CONTRA directly consumes FLT-THREEADIC.",
+      "to": "FLT-COMPAT-CONTRA"
+    },
+    {
+      "edge_id": "E-CHEBOTAREV-COMPAT-CONTRA",
+      "edge_kind": "theorem",
+      "from": "FLT-CHEBOTAREV",
+      "justification": "FLT-COMPAT-CONTRA directly consumes FLT-CHEBOTAREV.",
+      "to": "FLT-COMPAT-CONTRA"
+    },
+    {
+      "edge_id": "E-BRAUER-NESBITT-COMPAT-CONTRA",
+      "edge_kind": "theorem",
+      "from": "FLT-BRAUER-NESBITT",
+      "justification": "FLT-COMPAT-CONTRA directly consumes FLT-BRAUER-NESBITT.",
+      "to": "FLT-COMPAT-CONTRA"
+    },
+    {
+      "edge_id": "E-LIFT-HR-REDUCIBLE",
+      "edge_kind": "theorem",
+      "from": "FLT-LIFT",
+      "justification": "FLT-HR-REDUCIBLE directly consumes FLT-LIFT.",
+      "to": "FLT-HR-REDUCIBLE"
+    },
+    {
+      "edge_id": "E-COMPAT-CONTRA-HR-REDUCIBLE",
+      "edge_kind": "theorem",
+      "from": "FLT-COMPAT-CONTRA",
+      "justification": "FLT-HR-REDUCIBLE directly consumes FLT-COMPAT-CONTRA.",
+      "to": "FLT-HR-REDUCIBLE"
+    },
+    {
+      "edge_id": "E-FREY-HR-B4",
+      "edge_kind": "theorem",
+      "from": "FLT-FREY-HR",
+      "justification": "FLT-B4 directly consumes FLT-FREY-HR.",
+      "to": "FLT-B4"
+    },
+    {
+      "edge_id": "E-HR-REDUCIBLE-B4",
+      "edge_kind": "theorem",
+      "from": "FLT-HR-REDUCIBLE",
+      "justification": "FLT-B4 directly consumes FLT-HR-REDUCIBLE.",
+      "to": "FLT-B4"
+    },
+    {
+      "edge_id": "E-B4-B3",
+      "edge_kind": "theorem",
+      "from": "FLT-B4",
+      "justification": "FLT-B3 directly consumes FLT-B4.",
+      "to": "FLT-B3"
+    },
+    {
+      "edge_id": "E-HIST-MAZUR-B3",
+      "edge_kind": "theorem",
+      "from": "FLT-HIST-MAZUR",
+      "justification": "FLT-B3 directly consumes FLT-HIST-MAZUR.",
+      "to": "FLT-B3"
+    },
+    {
+      "edge_id": "E-B3-B2",
+      "edge_kind": "theorem",
+      "from": "FLT-B3",
+      "justification": "FLT-B2 directly consumes FLT-B3.",
+      "to": "FLT-B2"
+    },
+    {
+      "edge_id": "E-B2-B1",
+      "edge_kind": "theorem",
+      "from": "FLT-B2",
+      "justification": "FLT-B1 directly consumes FLT-B2.",
+      "to": "FLT-B1"
+    },
+    {
+      "edge_id": "E-B1-TOP",
+      "edge_kind": "theorem",
+      "from": "FLT-B1",
+      "justification": "FLT-TOP directly consumes FLT-B1.",
+      "to": "FLT-TOP"
+    }
+  ],
+  "gates": [
+    {
+      "fail_closed": true,
+      "gate_id": "G0",
+      "predicate": "Frozen baseline build and axiom state reproduced.",
+      "target_stage": "methodology"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G1",
+      "predicate": "Sources, contracts, complete graph, and traceability independently reviewed.",
+      "target_stage": "methodology"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G2",
+      "predicate": "Critical-path scaffold elaborates and every scaffold admission is enumerated.",
+      "target_stage": "methodology"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G3",
+      "predicate": "All proof waves are monitorable and absent targets fail closed.",
+      "target_stage": "methodology"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G4",
+      "predicate": "Top theorem has no sorryAx; knownin1980s is explicitly visible.",
+      "target_stage": "T1"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G5",
+      "predicate": "knownin1980s is removed and named historical assumptions are exposed.",
+      "target_stage": "T2"
+    },
+    {
+      "fail_closed": true,
+      "gate_id": "G6",
+      "predicate": "Top theorem depends only on propext, Classical.choice, and Quot.sound.",
+      "target_stage": "T3"
+    }
+  ],
+  "obligations": [
+    {
+      "completion_gate": "All four declarations #check at the frozen baseline.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Declarations already elaborate at the frozen commit.",
+        "loc_p50": 0,
+        "loc_p80": 0,
+        "loc_p95": 0,
+        "tokens_p50": 1000,
+        "tokens_p80": 2000,
+        "tokens_p95": 5000
+      },
+      "expected_module": "FLT.Proof",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FLT.Bosses.B1; FLT.Bosses.B2; FLT.Bosses.B3; FLT.Bosses.B4",
+      "lean_risk": "low",
+      "lean_type": "Exact declarations in FLT/Proof.lean; B4 states reducibility of the p-torsion representation of every Frey package.",
+      "library_candidates": [
+        "FermatLastTheorem",
+        "FreyPackage",
+        "GaloisRep.IsIrreducible"
+      ],
+      "mathematical_name": "Existing FLT, Frey-package, and boss definitions",
+      "mathematical_novelty": "standard",
+      "obligation_id": "FLT-DEF-001",
+      "proof_pattern": "Reuse frozen upstream definitions without changing their meaning.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-DEF-001",
+      "source_condition_risks": "None at the interface; transitive construction dependencies are separate nodes.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "galoisRep and every data declaration it uses have no sorryAx.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Current file has a cluster of admitted data and the pinned library lacks a turnkey interface.",
+        "loc_p50": 2500,
+        "loc_p80": 7000,
+        "loc_p95": 18000,
+        "tokens_p50": 250000,
+        "tokens_p80": 900000,
+        "tokens_p95": 3000000
+      },
+      "expected_module": "FLT.EllipticCurve.Torsion",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "WeierstrassCurve.galoisRep",
+      "lean_risk": "very-high",
+      "lean_type": "(E : WeierstrassCurve K) -> (n : Nat) -> 0 < n -> GaloisRep K (ZMod n) ((E.map (algebraMap K (AlgebraicClosure K))).nTorsion n)",
+      "library_candidates": [
+        "Mathlib.AlgebraicGeometry.EllipticCurve",
+        "Module.torsionBy"
+      ],
+      "mathematical_name": "Elliptic-curve torsion and Galois-representation construction",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-TORSION-001",
+      "proof_pattern": "Construct torsion module, continuity, and Galois action from the algebraic-closure action; discharge module and rank laws.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-TORSION-001",
+      "source_condition_risks": "The current definition includes admitted module laws and finite/rank facts; data equality choices must be coherent.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "T2: named finite assumption only; T3: FreyPackage.mazur has standard axiom closure.",
+      "critical_path": true,
+      "current_state": "historical-assumption",
+      "direct_dependencies": [
+        "FLT-TORSION-001"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Deep historical theorem with only a generic current boundary.",
+        "loc_p50": 10000,
+        "loc_p80": 70000,
+        "loc_p95": 300000,
+        "tokens_p50": 1200000,
+        "tokens_p80": 10000000,
+        "tokens_p95": 60000000
+      },
+      "expected_module": "FLT.FreyCurve.Mazur",
+      "graph_depth": 1,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FreyPackage.mazur",
+      "lean_risk": "unbounded",
+      "lean_type": "(P : FreyPackage) -> let rho := P.freyCurve.galoisRep P.p P.hppos; GaloisRep.IsIrreducible rho",
+      "library_candidates": [
+        "Mazur_statement"
+      ],
+      "mathematical_name": "Mazur irreducibility input for Frey packages",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-HIST-MAZUR",
+      "proof_pattern": "T1 exposes knownin1980s; T2 names the exact sourced isogeny theorem; T3 formalizes the modular-curve/Eisenstein-ideal route or an equivalent unconditional derivation.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-HIST-MAZUR",
+      "source_condition_risks": "The exact theorem used is a consequence of Mazur's isogeny theorem, not merely the torsion theorem; hypotheses and exceptional primes require a source audit.",
+      "source_refs": [
+        "SRC-006"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Definition and all field types #check; source-condition review passes.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Definition already elaborates; risk is source reconciliation.",
+        "loc_p50": 50,
+        "loc_p80": 200,
+        "loc_p95": 600,
+        "tokens_p50": 5000,
+        "tokens_p80": 20000,
+        "tokens_p95": 60000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Defs",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified",
+      "lean_risk": "medium",
+      "lean_type": "Exact four-condition structure in FLT/GaloisRepresentation/HardlyRamified/Defs.lean covering determinant, ramification, the place 2, and finite flatness at ell.",
+      "library_candidates": [
+        "GaloisRepresentation.IsUnramified",
+        "GaloisRepresentation.IsFlatAt"
+      ],
+      "mathematical_name": "Hardly-ramified Galois representation predicate",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-HR-DEF",
+      "proof_pattern": "Reuse exact upstream structure and audit each field against sources.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-HR-DEF",
+      "source_condition_risks": "The formal predicate must continue to match every source theorem used downstream.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-005"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exported theorem and rank witness have no sorryAx.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-TORSION-001",
+        "FLT-HR-DEF",
+        "FLT-SUPPORT-TATE"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Existing Tate-curve and finite-flat support files contain many admissions.",
+        "loc_p50": 5000,
+        "loc_p80": 18000,
+        "loc_p95": 50000,
+        "tokens_p50": 600000,
+        "tokens_p80": 2500000,
+        "tokens_p95": 9000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Frey",
+      "graph_depth": 1,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FreyCurve.torsion_isHardlyRamified",
+      "lean_risk": "very-high",
+      "lean_type": "(P : FreyPackage) -> IsHardlyRamified P.hp_odd (rank-two proof) (P.freyCurve.galoisRep P.p P.hppos)",
+      "library_candidates": [
+        "EllipticCurve.GaloisRepresentation.det",
+        "TateCurve",
+        "finite-flat torsion APIs"
+      ],
+      "mathematical_name": "Frey p-torsion is hardly ramified",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-FREY-HR",
+      "proof_pattern": "Prove the four structure fields independently and assemble; replace admitted rank evidence first.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-FREY-HR",
+      "source_condition_risks": "Semistability at 2, unramifiedness outside 2p, determinant, and flatness at p require distinct source locators.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-005"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact source-compatible structure elaborates and is independently reviewed.",
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-HR-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "No integrated formal definition exists and the source theorem is unresolved.",
+        "loc_p50": 3000,
+        "loc_p80": 12000,
+        "loc_p95": 45000,
+        "tokens_p50": 350000,
+        "tokens_p80": 1800000,
+        "tokens_p95": 8000000
+      },
+      "expected_module": "FLT.ModularityLifting.Conditions",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLTMethodology.ModularityLifting.SGood",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed structure SGood (ell : Nat) (F R V) (S : Finset (HeightOneSpectrum (RingOfIntegers F))) (rho : GaloisRep F R V) : Prop with fields det_cyclotomic, unramified_outside, trace_two_on_Jv, flat_at_ell.",
+      "library_candidates": [
+        "GaloisRepresentation.IsUnramified",
+        "DeformationCondition"
+      ],
+      "mathematical_name": "Exact S-good deformation condition",
+      "mathematical_novelty": "source-unresolved",
+      "obligation_id": "FLT-SGOOD-DEF",
+      "proof_pattern": "Freeze only after selecting an exact primary theorem; define local conditions as reusable deformation subfunctors.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-SGOOD-DEF",
+      "source_condition_risks": "Blueprint terminology is explicitly temporary and near-references use different local and residual-image conditions.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Definition and its selected level specialization elaborate without admitted dependencies.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "Predicate exists; surrounding automorphic infrastructure remains incomplete.",
+        "loc_p50": 500,
+        "loc_p80": 2500,
+        "loc_p95": 9000,
+        "tokens_p50": 60000,
+        "tokens_p80": 300000,
+        "tokens_p95": 1200000
+      },
+      "expected_module": "FLT.GaloisRepresentation.Automorphic",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRep.IsAutomorphicOfLevel",
+      "lean_risk": "high",
+      "lean_type": "Exact predicate in FLT/GaloisRepresentation/Automorphic.lean relating a Galois representation over a totally real field to a quaternionic automorphic eigenform of specified level.",
+      "library_candidates": [
+        "AutomorphicForm",
+        "HeckeOperator",
+        "IsQuaternionAlgebra"
+      ],
+      "mathematical_name": "Automorphy of a two-dimensional Galois representation at quaternionic level",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-AUT-DEF",
+      "proof_pattern": "Reuse definition, then probe all specializations demanded by MLT.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-AUT-DEF",
+      "source_condition_risks": "Must match the automorphy notion used by the selected lifting theorem and compatible-family construction.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-008"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Universal deformation ring exists with no sorryAx and exact local conditions.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-SGOOD-DEF",
+        "FLT-SUPPORT-DEFORMATION"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Generic infrastructure exists but key corepresentability results are admitted and no S-good subfunctor exists.",
+        "loc_p50": 12000,
+        "loc_p80": 45000,
+        "loc_p95": 150000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 7000000,
+        "tokens_p95": 30000000
+      },
+      "expected_module": "FLT.ModularityLifting.DeformationRing",
+      "graph_depth": 2,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.sGoodLiftFunctor_corepresentable",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: for an absolutely irreducible residual representation rhobar satisfying SGood, the subfunctor of determinant-fixed SGood lifts is CorepresentableBy a complete local Noetherian coefficient algebra.",
+      "library_candidates": [
+        "Deformation.SLiftFunctor",
+        "CorepresentableBy",
+        "narrowSLiftFunctor"
+      ],
+      "mathematical_name": "S-good global deformation functor and representability",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-DEF-FUNCTOR",
+      "proof_pattern": "Instantiate and extend existing deformation-functor infrastructure; isolate representability and unframing.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-DEF-FUNCTOR",
+      "source_condition_risks": "Schlessinger hypotheses, framing, determinant, and local-condition stability must match the selected theorem.",
+      "source_refs": [
+        "SRC-009",
+        "SRC-015"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact dimension theorem is kernel-clean for every place and composes globally.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-SGOOD-DEF",
+        "FLT-DEF-FUNCTOR"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Blueprint lists this as a direct prerequisite and current library support is partial.",
+        "loc_p50": 25000,
+        "loc_p80": 100000,
+        "loc_p95": 400000,
+        "tokens_p50": 3500000,
+        "tokens_p80": 18000000,
+        "tokens_p95": 90000000
+      },
+      "expected_module": "FLT.ModularityLifting.LocalConditions",
+      "graph_depth": 3,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.localConditions_balanced",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed theorem: the tangent and obstruction dimensions for the selected local deformation conditions satisfy the numerical balance required by Taylor-Wiles patching.",
+      "library_candidates": [
+        "ContinuousCohomology",
+        "GaloisCohomology",
+        "FiniteFlatGroupScheme"
+      ],
+      "mathematical_name": "Local Galois cohomology and finite-flat deformation conditions",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-LOCAL-GALOIS",
+      "proof_pattern": "Build local complexes, duality, Euler characteristic, and deformation tangent-space comparison as separate reviewed clusters.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-LOCAL-GALOIS",
+      "source_condition_risks": "Poitou-Tate duality and flat local deformation rings differ across candidate source theorems.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-009",
+        "SRC-013"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The localized Hecke action and R-to-T map are kernel-clean with source-compatible hypotheses.",
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-AUT-DEF",
+        "FLT-SGOOD-DEF",
+        "FLT-SUPPORT-AUTOMORPHIC"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Substantial exploratory infrastructure exists but the load-bearing localized action is absent.",
+        "loc_p50": 30000,
+        "loc_p80": 130000,
+        "loc_p95": 500000,
+        "tokens_p50": 4000000,
+        "tokens_p80": 22000000,
+        "tokens_p95": 110000000
+      },
+      "expected_module": "FLT.ModularityLifting.Hecke",
+      "graph_depth": 2,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed data: a finite Hecke module localized at the residual maximal ideal, a complete local Hecke algebra T, and a compatible map R -> T identifying Frobenius traces.",
+      "library_candidates": [
+        "HeckeAlgebra",
+        "AutomorphicForm",
+        "GaloisRep.charFrob"
+      ],
+      "mathematical_name": "Quaternionic Hecke module and Galois-compatible Hecke algebra action",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-HECKE-ACTION",
+      "proof_pattern": "Separate automorphic module, Hecke localization, Galois representation, and R-to-T construction.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-HECKE-ACTION",
+      "source_condition_risks": "Level, weight, localization, multiplicity one, and existence of the attached Galois representation must align.",
+      "source_refs": [
+        "SRC-008",
+        "SRC-009"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Auxiliary-prime theorem is kernel-clean for the exact residual representation class.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-LOCAL-GALOIS"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "No selected exact theorem or integrated Chebotarev/cohomology API.",
+        "loc_p50": 18000,
+        "loc_p80": 80000,
+        "loc_p95": 300000,
+        "tokens_p50": 2200000,
+        "tokens_p80": 12000000,
+        "tokens_p95": 65000000
+      },
+      "expected_module": "FLT.ModularityLifting.TaylorWilesPrimes",
+      "graph_depth": 4,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.exists_taylorWiles_primes",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed theorem: for every patching level n, there is a finite set Q_n of Taylor-Wiles primes satisfying congruence, cardinality, disjointness, and dual-Selmer killing conditions.",
+      "library_candidates": [
+        "Chebotarev",
+        "FinitePlace",
+        "GaloisCohomology"
+      ],
+      "mathematical_name": "Taylor-Wiles auxiliary primes and numerical control",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-TW-PRIMES",
+      "proof_pattern": "Chebotarev selection plus cohomological linear algebra; expose every image hypothesis.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-TW-PRIMES",
+      "source_condition_risks": "Adequacy/large-image hypotheses and the selected local deformation problem determine the exact prime conditions.",
+      "source_refs": [
+        "SRC-009"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Selected R=T consequence is kernel-clean and consumes only independently proved hypotheses.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-DEF-FUNCTOR",
+        "FLT-LOCAL-GALOIS",
+        "FLT-HECKE-ACTION",
+        "FLT-TW-PRIMES"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Generic patching is present but specialization and many prerequisites are absent.",
+        "loc_p50": 20000,
+        "loc_p80": 90000,
+        "loc_p95": 350000,
+        "tokens_p50": 2500000,
+        "tokens_p80": 14000000,
+        "tokens_p95": 75000000
+      },
+      "expected_module": "FLT.ModularityLifting.Patching",
+      "graph_depth": 5,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.patched_R_eq_T",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed theorem: under the exact deformation, Hecke, freeness, depth, and auxiliary-prime hypotheses, the universal deformation map R -> T is an isomorphism (or the exact nearly-faithful conclusion needed by lifting).",
+      "library_candidates": [
+        "ker_RtoT_le_nilradical",
+        "FLT.Patching",
+        "IsNoetherianRing"
+      ],
+      "mathematical_name": "Taylor-Wiles patching terminal",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-PATCHING",
+      "proof_pattern": "Specialize existing patching algebra after proving all module and dimension hypotheses; avoid restating the conclusion as a premise.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-PATCHING",
+      "source_condition_risks": "Existing generic patching terminal may yield only nilradical containment; exact faithfulness needed by MLT must be checked.",
+      "source_refs": [
+        "SRC-009"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Forward transfer and the exact descent/image theorem required by MLT have acceptable target-stage axiom closure.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-AUT-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Current theorem is admitted and surrounding analytic representation theory is incomplete.",
+        "loc_p50": 15000,
+        "loc_p80": 70000,
+        "loc_p95": 300000,
+        "tokens_p50": 1800000,
+        "tokens_p80": 10000000,
+        "tokens_p95": 60000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.Automorphic",
+      "graph_depth": 1,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "cyclic_base_change",
+      "lean_risk": "unbounded",
+      "lean_type": "Exact theorem in FLT/GaloisRepresentation/Automorphic.lean transferring IsAutomorphicOfLevel across a cyclic extension subject to the current hypotheses.",
+      "library_candidates": [
+        "cyclic_base_change"
+      ],
+      "mathematical_name": "Cyclic base change and descent characterization",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-CBASE",
+      "proof_pattern": "T1 may expose this as a sourced historical boundary; T2 names exact Langlands/Jacquet-Langlands assumptions; T3 formalizes the transfer and descent.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-CBASE",
+      "source_condition_risks": "The Skinner-Wiles reduction also needs characterization of the image and multiplicity one, not only forward base change.",
+      "source_refs": [
+        "SRC-004"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Opus mathematical review and a primary-source audit accept one exact elaborated signature.",
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-SGOOD-DEF",
+        "FLT-AUT-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Upstream blueprint explicitly records uncertainty about the exact theorem.",
+        "loc_p50": 500,
+        "loc_p80": 2500,
+        "loc_p95": 10000,
+        "tokens_p50": 80000,
+        "tokens_p80": 400000,
+        "tokens_p95": 1800000
+      },
+      "expected_module": "FLT.ModularityLifting.Statement",
+      "graph_depth": 2,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.SelectedSourceContract",
+      "lean_risk": "unbounded",
+      "lean_type": "Definition gap: a source-faithful contract must be selected between or derived from Taylor 2006 Theorem 3.3, Gee 2022 Theorem 5.2, or another exact primary theorem; no Lean proposition is frozen until every mismatch is resolved.",
+      "library_candidates": [],
+      "mathematical_name": "Exact primary-source modularity-lifting theorem selection",
+      "mathematical_novelty": "source-unresolved",
+      "obligation_id": "FLT-MLT-SOURCE",
+      "proof_pattern": "Primary-source hypothesis table, then either select an exact theorem or add proved bridge nodes for every mismatch.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-MLT-SOURCE",
+      "source_condition_risks": "The blueprint target assumes ell unramified while Taylor's near-reference assumes split; Gee's near-reference has a stronger residual-image condition.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact source-compatible theorem has no sorryAx and no unapproved custom axiom.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-MLT-SOURCE",
+        "FLT-PATCHING",
+        "FLT-CBASE"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Terminal itself is shorter than its prerequisite programmes but source and integration risks dominate.",
+        "loc_p50": 12000,
+        "loc_p80": 60000,
+        "loc_p95": 250000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 9000000,
+        "tokens_p95": 50000000
+      },
+      "expected_module": "FLT.ModularityLifting.Main",
+      "graph_depth": 6,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.modularity_lifting",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed only after FLT-MLT-SOURCE: if rhobar is absolutely irreducible on the required cyclotomic extension, SGood, and automorphic of the selected level, then every SGood characteristic-zero lift rho is automorphic of that level.",
+      "library_candidates": [
+        "ker_RtoT_le_nilradical"
+      ],
+      "mathematical_name": "Modularity lifting for the selected S-good representations",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-MLT",
+      "proof_pattern": "Skinner-Wiles reduction to minimal case, then specialized R=T and eigenform/Galois comparison.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-MLT",
+      "source_condition_risks": "All hypotheses must be those of the selected source or proved bridge theorems; no desired automorphy conclusion may be hidden in structures.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-008",
+        "SRC-009",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The selected source theorem and required disjointness specialization meet the target-stage axiom policy.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Central theorem and much of its geometric setting are absent.",
+        "loc_p50": 25000,
+        "loc_p80": 120000,
+        "loc_p95": 500000,
+        "tokens_p50": 3000000,
+        "tokens_p80": 18000000,
+        "tokens_p95": 100000000
+      },
+      "expected_module": "FLT.PotentialModularity.MoretBailly",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.PotentialModularity.moret_bailly_point",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed source-faithful existence theorem for a finite totally real extension and rational point satisfying finitely many prescribed local open conditions on the selected moduli variety.",
+      "library_candidates": [
+        "Variety",
+        "IsOpen",
+        "NumberField"
+      ],
+      "mathematical_name": "Moret-Bailly prescribed-local-behaviour point theorem",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-MORET-BAILLY",
+      "proof_pattern": "T1 may use a named sourced historical boundary only if pre-1990 scope is accepted; T3 requires algebraic-geometry and approximation formalization.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-MORET-BAILLY",
+      "source_condition_risks": "The exact variety, smoothness/geometric-integrality, local sets, and field-disjointness conclusion must match the source.",
+      "source_refs": [
+        "SRC-011"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Every bundled field is a separately named theorem with source and target-stage axiom audit.",
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Broad existing number-field infrastructure, but exact composition is absent.",
+        "loc_p50": 12000,
+        "loc_p80": 60000,
+        "loc_p95": 250000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 9000000,
+        "tokens_p95": 50000000
+      },
+      "expected_module": "FLT.PotentialModularity.ClassField",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.PotentialModularity.classField_package",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction.",
+      "library_candidates": [
+        "NumberField.AdeleRing",
+        "IsLocalClassField",
+        "ContinuousCharacter"
+      ],
+      "mathematical_name": "Global and local class-field interfaces used in potential modularity",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-CLASS-FIELD",
+      "proof_pattern": "Inventory Mathlib local/global class-field results, then introduce only missing named interfaces.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-CLASS-FIELD",
+      "source_condition_risks": "A package must enumerate exact theorems rather than bundle a generic authority axiom.",
+      "source_refs": [
+        "SRC-004"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Transfer theorem meets exact potential-modularity and base-change uses.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-AUT-DEF",
+        "FLT-SUPPORT-AUTOMORPHIC"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Blueprint lists it as required and current implementation is not integrated.",
+        "loc_p50": 30000,
+        "loc_p80": 150000,
+        "loc_p95": 600000,
+        "tokens_p50": 4000000,
+        "tokens_p80": 25000000,
+        "tokens_p95": 130000000
+      },
+      "expected_module": "FLT.Automorphic.JacquetLanglands",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.Automorphic.jacquet_langlands",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed equivalence/transfer between the selected GL2 automorphic representations and totally definite quaternionic automorphic forms, preserving the required Hecke eigenvalues and level.",
+      "library_candidates": [
+        "AutomorphicForm",
+        "QuaternionAlgebra"
+      ],
+      "mathematical_name": "Jacquet-Langlands transfer for the selected quaternionic forms",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-JL",
+      "proof_pattern": "T1 named historical boundary if allowed; T2 finite exact assumptions; T3 analytic representation theory.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-JL",
+      "source_condition_risks": "Global/local components, normalization, multiplicity one, and level compatibility must be explicit.",
+      "source_refs": [
+        "SRC-004"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Kernel-clean theorem supplies the exact auxiliary residual automorphy.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-CLASS-FIELD",
+        "FLT-JL"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "No load-bearing implementation found.",
+        "loc_p50": 20000,
+        "loc_p80": 100000,
+        "loc_p95": 400000,
+        "tokens_p50": 2500000,
+        "tokens_p80": 15000000,
+        "tokens_p95": 80000000
+      },
+      "expected_module": "FLT.PotentialModularity.Induced",
+      "graph_depth": 2,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.PotentialModularity.induced_rep_isAutomorphic",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: an irreducible odd two-dimensional representation induced from a finite-order character of the required extension is automorphic with the exact weight and level needed downstream.",
+      "library_candidates": [
+        "Representation.induced",
+        "AutomorphicForm"
+      ],
+      "mathematical_name": "Irreducible two-dimensional induced representations are modular",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-INDUCED-MOD",
+      "proof_pattern": "Separate automorphic induction/converse theorem from Jacquet-Langlands specialization.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-INDUCED-MOD",
+      "source_condition_risks": "Converse-theorem input, parity, conductor, infinity type, and quaternionic transfer must match.",
+      "source_refs": [
+        "SRC-004"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Existence theorem is kernel-clean and every local/global side condition is exposed.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-MORET-BAILLY",
+        "FLT-CLASS-FIELD"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Central construction is presently blueprint prose.",
+        "loc_p50": 35000,
+        "loc_p80": 160000,
+        "loc_p95": 650000,
+        "tokens_p50": 4500000,
+        "tokens_p80": 28000000,
+        "tokens_p95": 150000000
+      },
+      "expected_module": "FLT.PotentialModularity.AuxiliaryCurve",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.PotentialModularity.exists_auxiliary_curve",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed existence of an even-degree totally real Galois extension F disjoint from the residual kernel and an elliptic curve A/F whose mod-ell representation matches rho|G_F and whose mod-p representation is induced with all local conditions required by MLT.",
+      "library_candidates": [
+        "EllipticCurve",
+        "FreyPackage",
+        "Variety"
+      ],
+      "mathematical_name": "Auxiliary elliptic curve with prescribed mod-ell and mod-p representations",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-AUX-CURVE",
+      "proof_pattern": "Formalize the moduli variety and use Moret-Bailly with explicitly verified local nonempty opens.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-AUX-CURVE",
+      "source_condition_risks": "The moduli problem, disjointness, parity, local flatness, and two residual identifications must all be proved.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-011"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exported potential-modularity theorem is kernel-clean and exactly matches compatible-family construction.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-AUX-CURVE",
+        "FLT-INDUCED-MOD",
+        "FLT-MLT"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Assembly depends on several absent programmes.",
+        "loc_p50": 8000,
+        "loc_p80": 35000,
+        "loc_p95": 140000,
+        "tokens_p50": 1000000,
+        "tokens_p80": 5500000,
+        "tokens_p95": 28000000
+      },
+      "expected_module": "FLT.PotentialModularity.Main",
+      "graph_depth": 7,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.potentially_automorphic",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: for an irreducible hardly-ramified ell-adic rho, there exists an even-degree totally real Galois F/Q, unramified at ell and disjoint from the residual kernel, such that rho restricted to G_F is automorphic in the exact IsAutomorphicOfLevel sense.",
+      "library_candidates": [
+        "GaloisRep.IsAutomorphicOfLevel"
+      ],
+      "mathematical_name": "Potential modularity of hardly-ramified lifts",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-POTMOD",
+      "proof_pattern": "Auxiliary mod-p automorphy, MLT to the curve, identify mod-ell, then MLT to rho.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-POTMOD",
+      "source_condition_risks": "The lifting theorem must apply twice with the auxiliary curve and selected local conditions; restriction/base-change orientations must agree.",
+      "source_refs": [
+        "SRC-004",
+        "SRC-011",
+        "SRC-012",
+        "SRC-013"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact existing declaration has no sorryAx and supplies all reviewed downstream invariants.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-HR-DEF",
+        "FLT-POTMOD",
+        "FLT-DEF-FUNCTOR"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Statement exists, but proof depends on major absent infrastructure.",
+        "loc_p50": 15000,
+        "loc_p80": 70000,
+        "loc_p95": 300000,
+        "tokens_p50": 1800000,
+        "tokens_p80": 10000000,
+        "tokens_p95": 60000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Lift",
+      "graph_depth": 8,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.lifts",
+      "lean_risk": "unbounded",
+      "lean_type": "Exact existential characteristic-zero lift signature in FLT/GaloisRepresentation/HardlyRamified/Lift.lean.",
+      "library_candidates": [
+        "Deformation.SLiftFunctor",
+        "CorepresentableBy"
+      ],
+      "mathematical_name": "Lift an irreducible hardly-ramified residual representation",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-LIFT",
+      "proof_pattern": "Use deformation existence/nontriviality with potential modularity and precise coefficient-ring extraction.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-LIFT",
+      "source_condition_risks": "The existing conclusion does not explicitly assert irreducibility of the characteristic-zero generic fibre; downstream needs must be checked against exact fields.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-010",
+        "SRC-014"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Definitions elaborate and the required trace-equality specialization is signature-green.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "Definitions exist; adequacy for terminal comparison is not yet reviewed.",
+        "loc_p50": 500,
+        "loc_p80": 2500,
+        "loc_p95": 10000,
+        "tokens_p50": 60000,
+        "tokens_p80": 300000,
+        "tokens_p95": 1200000
+      },
+      "expected_module": "FLT.Deformations.RepresentationTheory.GaloisRepFamily",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepFamily; GaloisRepFamily.isCompatible",
+      "lean_risk": "high",
+      "lean_type": "Exact definitions in FLT/Deformations/RepresentationTheory/GaloisRepFamily.lean.",
+      "library_candidates": [
+        "GaloisRep.charFrob",
+        "NumberField.FinitePlace"
+      ],
+      "mathematical_name": "Weak compatible family definition and Frobenius polynomial compatibility",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-COMPAT-DEF",
+      "proof_pattern": "Probe the exact consequences needed before proving the family existence theorem.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-COMPAT-DEF",
+      "source_condition_risks": "Definition must be strong enough for the Chebotarev/Brauer-Nesbitt comparison used at the terminal.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-014"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Compatible-family construction is kernel-clean and instantiates the current family interface.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-POTMOD",
+        "FLT-COMPAT-DEF",
+        "FLT-CBASE"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Only the target family structure exists; construction is absent.",
+        "loc_p50": 25000,
+        "loc_p80": 110000,
+        "loc_p95": 450000,
+        "tokens_p50": 3200000,
+        "tokens_p80": 18000000,
+        "tokens_p95": 95000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.CompatibleFamily",
+      "graph_depth": 8,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.CompatibleFamily.of_potentially_automorphic",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: a potentially automorphic irreducible ell-adic representation with the selected local conditions belongs to a weak compatible family over a number field, preserving the original member.",
+      "library_candidates": [
+        "GaloisRepFamily",
+        "GaloisRepFamily.isCompatible"
+      ],
+      "mathematical_name": "Brauer-induction construction of a compatible family",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-BRAUER-FAMILY",
+      "proof_pattern": "Construct virtual family by solvable base changes, prove descent and positivity/integrality, then identify original member.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-BRAUER-FAMILY",
+      "source_condition_risks": "Brauer induction uses automorphic base change and descent; coefficient fields and semisimplification must align with current family type.",
+      "source_refs": [
+        "SRC-010",
+        "SRC-014"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Existing declaration has no sorryAx and source review accepts its strength.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-LIFT",
+        "FLT-BRAUER-FAMILY",
+        "FLT-COMPAT-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Exact statement exists but all construction content is admitted.",
+        "loc_p50": 10000,
+        "loc_p80": 45000,
+        "loc_p95": 180000,
+        "tokens_p50": 1200000,
+        "tokens_p80": 7000000,
+        "tokens_p95": 35000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Family",
+      "graph_depth": 9,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.mem_isCompatible",
+      "lean_risk": "unbounded",
+      "lean_type": "Exact existential family signature in FLT/GaloisRepresentation/HardlyRamified/Family.lean, including every odd specialization and recovery of rho at p.",
+      "library_candidates": [
+        "GaloisRepFamily.isCompatible"
+      ],
+      "mathematical_name": "Hardly-ramified lift belongs to a compatible family",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-FAMILY",
+      "proof_pattern": "Instantiate compatible-family construction, normalize coefficient rings, and transport hardly-ramified fields.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-FAMILY",
+      "source_condition_risks": "Quantification over every odd ell and scalar-tower witnesses is stronger than informal prose; ensure source construction yields exactly this.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-010",
+        "SRC-014"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Core theorem has target-stage-appropriate axiom closure and covers all finite coefficient fields.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-HR-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Some PGL2 and discriminant infrastructure exists, but the integrated classification is absent.",
+        "loc_p50": 18000,
+        "loc_p80": 80000,
+        "loc_p95": 300000,
+        "tokens_p50": 2200000,
+        "tokens_p80": 12000000,
+        "tokens_p95": 65000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.ModThreeCore",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.HardlyRamified.modThree_classification_core",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed theorem yielding a Galois-stable one-dimensional trivial quotient for every two-dimensional hardly-ramified representation over a finite field of characteristic 3.",
+      "library_candidates": [
+        "Odlyzko_statement",
+        "FiniteFlatGroupScheme",
+        "PGL2 finite subgroup classification"
+      ],
+      "mathematical_name": "Mod-3 hardly-ramified classification via finite-flat groups and discriminant bounds",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-FONTAINE-ODLYZKO",
+      "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
+      "source_condition_risks": "The discriminant estimate, finite group classification, and finite-flat local constraints must collectively exclude every irreducible image.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-007"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Existing theorem has no sorryAx.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-FONTAINE-ODLYZKO"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Terminal is concise once the classification core exists.",
+        "loc_p50": 1500,
+        "loc_p80": 6000,
+        "loc_p95": 20000,
+        "tokens_p50": 180000,
+        "tokens_p80": 800000,
+        "tokens_p95": 3000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.ModThree",
+      "graph_depth": 2,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.mod_three",
+      "lean_risk": "high",
+      "lean_type": "Exact existential surjective linear functional fixed by G_Q signature in FLT/GaloisRepresentation/HardlyRamified/ModThree.lean.",
+      "library_candidates": [
+        "LinearMap.ker",
+        "GaloisRep.IsIrreducible"
+      ],
+      "mathematical_name": "Export mod-3 hardly-ramified quotient theorem",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-MOD3",
+      "proof_pattern": "Extract the invariant quotient and transport it to the current representation type.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-MOD3",
+      "source_condition_risks": "The core classification must produce the orientation of the quotient used by the exact Lean statement.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-007"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact theorem has no sorryAx and its use of mod_three is visible.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-MOD3"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Current file contains only the terminal statement.",
+        "loc_p50": 7000,
+        "loc_p80": 30000,
+        "loc_p95": 120000,
+        "tokens_p50": 850000,
+        "tokens_p80": 4500000,
+        "tokens_p95": 22000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Threeadic",
+      "graph_depth": 3,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.three_adic",
+      "lean_risk": "very-high",
+      "lean_type": "Exact theorem in FLT/GaloisRepresentation/HardlyRamified/Threeadic.lean: trace at every prime p at least 5 equals 1+p.",
+      "library_candidates": [
+        "GaloisRep.toLocal",
+        "LinearMap.trace"
+      ],
+      "mathematical_name": "3-adic hardly-ramified Frobenius trace classification",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-THREEADIC",
+      "proof_pattern": "Prove a stable rank-one quotient or trace congruences at all powers of 3, pass to the complete ring, then compute Frobenius trace.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-THREEADIC",
+      "source_condition_risks": "Lifting the invariant quotient from residual to 3-adic coefficients requires exact finite-flat/deformation control, not only mod-3 reducibility.",
+      "source_refs": [
+        "SRC-003"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Comparison theorem has the target-stage axiom closure and exact family specializations.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-COMPAT-DEF"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "No exact theorem found in the pinned library.",
+        "loc_p50": 12000,
+        "loc_p80": 55000,
+        "loc_p95": 220000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 8000000,
+        "tokens_p95": 45000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.CompatibleFamilyComparison",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.CompatibleFamily.equal_of_charFrob_eq",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: semisimple continuous Galois representations with equal characteristic polynomials on all but finitely many Frobenius elements are isomorphic (or have the exact trace consequence needed).",
+      "library_candidates": [
+        "NumberField.chebotarev",
+        "GaloisRep.charFrob"
+      ],
+      "mathematical_name": "Chebotarev density specialization for compatible Galois representations",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-CHEBOTAREV",
+      "proof_pattern": "Use sourced Chebotarev plus trace continuity and Brauer-Nesbitt.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-CHEBOTAREV",
+      "source_condition_risks": "Continuity, semisimplicity, coefficient embeddings, and density topology must be explicit.",
+      "source_refs": [
+        "SRC-003"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "The exact coefficient-field specialization is kernel-clean.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Likely reusable algebra exists, but no exact declaration was located in the first survey.",
+        "loc_p50": 5000,
+        "loc_p80": 22000,
+        "loc_p95": 80000,
+        "tokens_p50": 600000,
+        "tokens_p80": 3000000,
+        "tokens_p95": 14000000
+      },
+      "expected_module": "FLT.RepresentationTheory.BrauerNesbitt",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.Representation.brauer_nesbitt",
+      "lean_risk": "very-high",
+      "lean_type": "Proposed: finite-dimensional semisimple representations over the selected characteristic-zero fields with equal traces/characteristic polynomials are linearly equivalent.",
+      "library_candidates": [
+        "RepresentationTheory.Character",
+        "Module.Free"
+      ],
+      "mathematical_name": "Brauer-Nesbitt representation comparison",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-BRAUER-NESBITT",
+      "proof_pattern": "Adapt finite-dimensional character theory and semisimple module decomposition.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-BRAUER-NESBITT",
+      "source_condition_risks": "Field perfection/algebraic closure and finite-dimensionality assumptions must match each specialization.",
+      "source_refs": [
+        "SRC-003"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Contradiction theorem is kernel-clean and has no circular dependency on generic reducibility.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-FAMILY",
+        "FLT-THREEADIC",
+        "FLT-CHEBOTAREV",
+        "FLT-BRAUER-NESBITT"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Blueprint supplies only a sketch and exact descent infrastructure is absent.",
+        "loc_p50": 12000,
+        "loc_p80": 50000,
+        "loc_p95": 200000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 7500000,
+        "tokens_p95": 40000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reduction",
+      "graph_depth": 10,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "GaloisRepresentation.IsHardlyRamified.not_isIrreducible_of_family",
+      "lean_risk": "unbounded",
+      "lean_type": "Proposed: an irreducible hardly-ramified residual representation that lifts into the current compatible family leads, via the 3-adic trace formula and compatibility, to a reducible original representation, contradiction.",
+      "library_candidates": [
+        "GaloisRepFamily.isCompatible",
+        "GaloisRep.IsIrreducible"
+      ],
+      "mathematical_name": "Compatible-family 3-adic specialization contradicts residual irreducibility",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-COMPAT-CONTRA",
+      "proof_pattern": "Choose the 3-adic member, derive trace 1+p, transfer Frobenius polynomials, compare with 1 plus cyclotomic, then descend a stable line and contradict irreducibility.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-COMPAT-CONTRA",
+      "source_condition_risks": "The trace identity must imply reducibility over the original residual field; semisimplification and scalar-extension descent are load-bearing.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-010"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Exact generic B5 theorem elaborates and has no sorryAx.",
+      "critical_path": true,
+      "current_state": "absent",
+      "direct_dependencies": [
+        "FLT-LIFT",
+        "FLT-COMPAT-CONTRA"
+      ],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "Short composition after the long prerequisites.",
+        "loc_p50": 1500,
+        "loc_p80": 7000,
+        "loc_p95": 30000,
+        "tokens_p50": 180000,
+        "tokens_p80": 900000,
+        "tokens_p95": 4000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reducible",
+      "graph_depth": 11,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FreyCurve.torsion_not_isIrreducible",
+      "lean_risk": "very-high",
+      "lean_type": "Proposed generic theorem matching blueprint B5: for prime ell at least 3 and every two-dimensional hardly-ramified representation over the intended finite residual field, not IsIrreducible rho.",
+      "library_candidates": [
+        "GaloisRepresentation.IsHardlyRamified.lifts"
+      ],
+      "mathematical_name": "Every hardly-ramified residual representation is reducible",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-HR-REDUCIBLE",
+      "proof_pattern": "Assume irreducible, obtain lift and compatible family, apply terminal contradiction.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-HR-REDUCIBLE",
+      "source_condition_risks": "The current namespace/name suggested by the blueprint may be Frey-specific despite a generic mathematical statement; exact universes and coefficient fields must be frozen.",
+      "source_refs": [
+        "SRC-003",
+        "SRC-010"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "B4_proof has no sorryAx and its exact statement is unchanged.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [
+        "FLT-FREY-HR",
+        "FLT-HR-REDUCIBLE"
+      ],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "Composition is local once prerequisites exist.",
+        "loc_p50": 100,
+        "loc_p80": 500,
+        "loc_p95": 2000,
+        "tokens_p50": 15000,
+        "tokens_p80": 70000,
+        "tokens_p95": 250000
+      },
+      "expected_module": "FLT.Proof",
+      "graph_depth": 12,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FLT.Bosses.B4_proof",
+      "lean_risk": "high",
+      "lean_type": "FLT.Bosses.B4",
+      "library_candidates": [
+        "FreyCurve.torsion_isHardlyRamified"
+      ],
+      "mathematical_name": "Frey p-torsion reducibility",
+      "mathematical_novelty": "standard",
+      "obligation_id": "FLT-B4",
+      "proof_pattern": "Introduce Frey package, apply generic reducibility to the proved hardly-ramified torsion representation.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-B4",
+      "source_condition_risks": "Instantiation must align the actual ZMod p torsion module, rank proof, and hardly-ramified generic theorem.",
+      "source_refs": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Axiom audit contains no sorryAx and only target-stage-permitted assumptions.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [
+        "FLT-B4",
+        "FLT-HIST-MAZUR"
+      ],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Proof term already exists.",
+        "loc_p50": 0,
+        "loc_p80": 20,
+        "loc_p95": 100,
+        "tokens_p50": 1000,
+        "tokens_p80": 4000,
+        "tokens_p95": 15000
+      },
+      "expected_module": "FLT.Proof",
+      "graph_depth": 13,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FLT.Bosses.B3_proof",
+      "lean_risk": "low",
+      "lean_type": "FLT.Bosses.B3",
+      "library_candidates": [
+        "FLT.Bosses.B4_implies_B3"
+      ],
+      "mathematical_name": "No Frey package",
+      "mathematical_novelty": "routine",
+      "obligation_id": "FLT-B3",
+      "proof_pattern": "Apply existing B4_implies_B3.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-B3",
+      "source_condition_risks": "At T1 the Mazur dependency is explicit; T2/T3 change its assumption closure, not this theorem statement.",
+      "source_refs": [
+        "SRC-002"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Axiom audit contains no sorryAx and only target-stage-permitted assumptions.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [
+        "FLT-B3"
+      ],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Proof term already exists.",
+        "loc_p50": 0,
+        "loc_p80": 10,
+        "loc_p95": 50,
+        "tokens_p50": 500,
+        "tokens_p80": 2000,
+        "tokens_p95": 8000
+      },
+      "expected_module": "FLT.Proof",
+      "graph_depth": 14,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "FLT.Bosses.B2_proof",
+      "lean_risk": "low",
+      "lean_type": "FLT.Bosses.B2",
+      "library_candidates": [
+        "FreyPackage.fermatLastTheoremFor_p_ge_5"
+      ],
+      "mathematical_name": "FLT for prime exponents at least five",
+      "mathematical_novelty": "routine",
+      "obligation_id": "FLT-B2",
+      "proof_pattern": "Apply existing B3_implies_B2.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-B2",
+      "source_condition_risks": "No new risk beyond B3 closure.",
+      "source_refs": [
+        "SRC-002"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "For T1, no sorryAx and knownin1980s visible; later targets tighten the closure.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [
+        "FLT-B2"
+      ],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Proof term already exists.",
+        "loc_p50": 0,
+        "loc_p80": 10,
+        "loc_p95": 50,
+        "tokens_p50": 500,
+        "tokens_p80": 2000,
+        "tokens_p95": 8000
+      },
+      "expected_module": "FLT.Proof",
+      "graph_depth": 15,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "flt",
+      "lean_risk": "low",
+      "lean_type": "FermatLastTheorem",
+      "library_candidates": [
+        "FermatLastTheorem.of_p_ge_5"
+      ],
+      "mathematical_name": "Fermat's Last Theorem in Mathlib form",
+      "mathematical_novelty": "routine",
+      "obligation_id": "FLT-B1",
+      "proof_pattern": "Reuse B1_proof.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-B1",
+      "source_condition_risks": "No new risk beyond the boss chain.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "G4: no sorryAx; G5: no knownin1980s; G6: exact standard axiom trio.",
+      "critical_path": true,
+      "current_state": "proved",
+      "direct_dependencies": [
+        "FLT-B1"
+      ],
+      "estimates": {
+        "confidence": "high",
+        "evidence": "Terminal proof term already exists.",
+        "loc_p50": 0,
+        "loc_p80": 10,
+        "loc_p95": 50,
+        "tokens_p50": 500,
+        "tokens_p80": 2000,
+        "tokens_p95": 8000
+      },
+      "expected_module": "FermatsLastTheorem",
+      "graph_depth": 16,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "PNat.pow_add_pow_ne_pow",
+      "lean_risk": "low",
+      "lean_type": "(x y z : PNat) (n : Nat) (hn : n > 2) -> x^n + y^n != z^n",
+      "library_candidates": [
+        "PNat.pow_add_pow_ne_pow_of_FermatLastTheorem"
+      ],
+      "mathematical_name": "Positive-natural Fermat's Last Theorem",
+      "mathematical_novelty": "routine",
+      "obligation_id": "FLT-TOP",
+      "proof_pattern": "Apply the existing Mathlib bridge to flt.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-TOP",
+      "source_condition_risks": "Completion is entirely determined by the transitive axiom closure.",
+      "source_refs": [
+        "SRC-001"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "No generic knownin1980s dependency remains at T2; standard closure at T3.",
+      "critical_path": false,
+      "current_state": "historical-assumption",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "One direct generic historical invocation.",
+        "loc_p50": 1000,
+        "loc_p80": 5000,
+        "loc_p95": 20000,
+        "tokens_p50": 120000,
+        "tokens_p80": 650000,
+        "tokens_p95": 2800000
+      },
+      "expected_module": "FLT.AutomorphicForm.QuaternionAlgebra.Basic",
+      "graph_depth": 0,
+      "kernel_probe_state": "signature-green",
+      "lean_declaration": "QuaternionAlgebra.exists_isQuaternionAlgebra_baseChange",
+      "lean_risk": "high",
+      "lean_type": "Exact declaration surrounding the direct knownin1980s invocation in FLT/AutomorphicForm/QuaternionAlgebra/Basic.lean.",
+      "library_candidates": [
+        "IsQuaternionAlgebra"
+      ],
+      "mathematical_name": "Quaternion-algebra historical boundary currently using knownin1980s",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-HIST-QUATERNION",
+      "proof_pattern": "Name and source at T2; prove from central-simple-algebra invariants at T3.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-HIST-QUATERNION",
+      "source_condition_risks": "Must be traced to exact algebra source if it enters the final MLT closure.",
+      "source_refs": [
+        "SRC-001"
+      ],
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "Cluster is expanded before scheduling; every transitive declaration used by Frey-HR is sorry-free.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Approximately twenty current executable admissions in the cluster.",
+        "loc_p50": 8000,
+        "loc_p80": 30000,
+        "loc_p95": 100000,
+        "tokens_p50": 1000000,
+        "tokens_p80": 4500000,
+        "tokens_p95": 20000000
+      },
+      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.TateCurve support declarations",
+      "lean_risk": "very-high",
+      "lean_type": "Exact admitted declarations in TateCurve.lean, Flat.lean, GoodReduction.lean, Torsion.lean, and WeilPairing.lean that are reached by FLT-FREY-HR.",
+      "library_candidates": [
+        "Mathlib.AlgebraicGeometry.EllipticCurve",
+        "TateCurve"
+      ],
+      "mathematical_name": "Tate-curve and finite-flat elliptic-curve support cluster",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-SUPPORT-TATE",
+      "proof_pattern": "Close existing admitted declarations bottom-up, with individual source and axiom audits.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-SUPPORT-TATE",
+      "source_condition_risks": "This is an inventory cluster, not a theorem shortcut; it must be decomposed into declaration nodes before its wave begins.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-005"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Every support declaration actually reached by selected public theorems has acceptable axiom closure.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Large analytic and representation-theoretic programme remains exploratory.",
+        "loc_p50": 30000,
+        "loc_p80": 150000,
+        "loc_p95": 650000,
+        "tokens_p50": 4000000,
+        "tokens_p80": 26000000,
+        "tokens_p95": 150000000
+      },
+      "expected_module": "FLT.GlobalLanglandsConjectures",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.GlobalLanglandsConjectures and automorphic support declarations",
+      "lean_risk": "unbounded",
+      "lean_type": "Current admitted definitions and laws in GLnDefs.lean, GLzero.lean, HurwitzRatHat.lean, and related automorphic modules reached by MLT/Jacquet-Langlands.",
+      "library_candidates": [
+        "SmoothRepresentation",
+        "AdeleRing",
+        "HaarMeasure"
+      ],
+      "mathematical_name": "Automorphic-analysis and adelic support cluster",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-SUPPORT-AUTOMORPHIC",
+      "proof_pattern": "First freeze the MLT/JL interfaces, then decompose only the dependency closure into exact nodes.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-SUPPORT-AUTOMORPHIC",
+      "source_condition_risks": "Exploratory definitions may not match the final selected theorem; do not close irrelevant admissions merely to reduce a raw count.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-004"
+      ],
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Every selected generic deformation declaration has no sorryAx.",
+      "critical_path": true,
+      "current_state": "admitted",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Several explicit admissions with source hints exist.",
+        "loc_p50": 6000,
+        "loc_p80": 25000,
+        "loc_p95": 90000,
+        "tokens_p50": 750000,
+        "tokens_p80": 3500000,
+        "tokens_p95": 16000000
+      },
+      "expected_module": "FLT.Deformations",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "Deformation.corepresentable and SLiftFunctor support",
+      "lean_risk": "very-high",
+      "lean_type": "Current admitted representability and lift-functor declarations in FLT/Deformations that are candidates for FLT-DEF-FUNCTOR.",
+      "library_candidates": [
+        "CategoryTheory.Functor",
+        "CorepresentableBy",
+        "CompleteLocalRing"
+      ],
+      "mathematical_name": "Generic deformation representability support cluster",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-SUPPORT-DEFORMATION",
+      "proof_pattern": "Close generic categorical and commutative-algebra admissions before specialization.",
+      "review_state": "unreviewed",
+      "scc_id": "SCC-FLT-SUPPORT-DEFORMATION",
+      "source_condition_risks": "Generic representability theorems must be strong enough for constrained deformation subfunctors and must not import classical existence as an axiom.",
+      "source_refs": [
+        "SRC-001",
+        "SRC-015"
+      ],
+      "target_stage": "T1"
+    }
+  ],
+  "targets": [
+    {
+      "completion_rule": "The public terminal has no sorryAx and every knownin1980s dependency is visible.",
+      "name": "Sorry-free modulo 1980s",
+      "permitted_axioms": [
+        "knownin1980s",
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "target_id": "T1"
+    },
+    {
+      "completion_rule": "The generic knownin1980s axiom is absent and every custom assumption is finite, typed, named, and sourced.",
+      "name": "Finite historical-assumption interface",
+      "permitted_axioms": [
+        "named historical assumptions",
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "target_id": "T2"
+    },
+    {
+      "completion_rule": "The public terminal axiom closure is exactly the standard trio.",
+      "name": "Unconditional kernel-clean FLT",
+      "permitted_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "target_id": "T3"
+    }
+  ]
+}

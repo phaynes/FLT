@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/phaynes/FLT/methodology/spec/flt-proof-program.instances.schema.json",
+  "title": "FLT proof-program instances",
+  "type": "object",
+  "required": ["baseline_sha", "targets", "obligations", "edges", "gates"],
+  "properties": {
+    "baseline_sha": {"const": "ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b"},
+    "targets": {
+      "type": "array",
+      "minItems": 3,
+      "items": {"$ref": "#/$defs/target"}
+    },
+    "obligations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/obligation"}
+    },
+    "edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/edge"}
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 7,
+      "items": {"$ref": "#/$defs/gate"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "target": {
+      "type": "object",
+      "required": ["target_id", "name", "permitted_axioms", "completion_rule"],
+      "properties": {
+        "target_id": {"enum": ["T1", "T2", "T3"]},
+        "name": {"type": "string", "minLength": 1},
+        "permitted_axioms": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "completion_rule": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "obligation": {
+      "type": "object",
+      "required": ["obligation_id", "mathematical_name", "lean_declaration", "lean_type", "target_stage", "source_refs", "current_state", "direct_dependencies", "graph_depth", "scc_id", "critical_path", "library_candidates", "source_condition_risks", "mathematical_novelty", "lean_risk", "proof_pattern", "expected_module", "estimates", "review_state", "kernel_probe_state", "completion_gate"],
+      "properties": {
+        "obligation_id": {"type": "string", "pattern": "^FLT-[A-Z0-9-]+$"},
+        "mathematical_name": {"type": "string", "minLength": 1},
+        "lean_declaration": {"type": "string", "minLength": 1},
+        "lean_type": {"type": "string", "minLength": 1},
+        "target_stage": {"enum": ["T1", "T2", "T3"]},
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "current_state": {"enum": ["proved", "admitted", "absent", "definition-gap", "historical-assumption"]},
+        "direct_dependencies": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "graph_depth": {"type": "integer", "minimum": 0},
+        "scc_id": {"type": "string", "minLength": 1},
+        "critical_path": {"type": "boolean"},
+        "library_candidates": {"type": "array", "items": {"type": "string"}},
+        "source_condition_risks": {"type": "string"},
+        "mathematical_novelty": {"enum": ["routine", "standard", "specialist", "research-level", "source-unresolved"]},
+        "lean_risk": {"enum": ["low", "medium", "high", "very-high", "unbounded"]},
+        "proof_pattern": {"type": "string"},
+        "expected_module": {"type": "string"},
+        "estimates": {"$ref": "#/$defs/estimates"},
+        "review_state": {"enum": ["unreviewed", "reviewed", "revision-required", "blocked"]},
+        "kernel_probe_state": {"enum": ["absent", "signature-green", "proof-green", "integrated"]},
+        "completion_gate": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "estimates": {
+      "type": "object",
+      "required": ["loc_p50", "loc_p80", "loc_p95", "tokens_p50", "tokens_p80", "tokens_p95", "confidence", "evidence"],
+      "properties": {
+        "loc_p50": {"type": "integer", "minimum": 0},
+        "loc_p80": {"type": "integer", "minimum": 0},
+        "loc_p95": {"type": "integer", "minimum": 0},
+        "tokens_p50": {"type": "integer", "minimum": 0},
+        "tokens_p80": {"type": "integer", "minimum": 0},
+        "tokens_p95": {"type": "integer", "minimum": 0},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "evidence": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": ["edge_id", "from", "to", "edge_kind", "justification"],
+      "properties": {
+        "edge_id": {"type": "string", "minLength": 1},
+        "from": {"type": "string", "minLength": 1},
+        "to": {"type": "string", "minLength": 1},
+        "edge_kind": {"enum": ["definition", "theorem", "source", "review", "monitor"]},
+        "justification": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "gate": {
+      "type": "object",
+      "required": ["gate_id", "target_stage", "predicate", "fail_closed"],
+      "properties": {
+        "gate_id": {"pattern": "^G[0-6]$"},
+        "target_stage": {"enum": ["methodology", "T1", "T2", "T3"]},
+        "predicate": {"type": "string", "minLength": 1},
+        "fail_closed": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  }
+}

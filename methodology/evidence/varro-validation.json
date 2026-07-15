@@ -1,0 +1,9 @@
+{
+  "source": "methodology/spec/flt-proof-program.varro",
+  "source_sha256": "dbf81e288d5c40626566e9dfb50eba4940735aa48f815826a2da3283e27e0ada",
+  "validator": "varro-protocol parse_and_compile_vsl_with_source_context",
+  "valid": true,
+  "errors": 0,
+  "warnings": 0,
+  "systems": 1
+}

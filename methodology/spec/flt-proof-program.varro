@@ -1,0 +1,121 @@
+# Independent public proof-methodology contract for the FLT fork.
+
+system flt.proof_program {
+  mission "Represent, review, monitor, and implement the complete FLT proof route without confusing elaborated scaffolds, historical assumptions, or admitted declarations with kernel-clean proof"
+  authority lane "maintainer:methodology-experiment"
+  domain software
+  maturity draft
+  context root = "helios://public/software/phaynes-flt/methodology/home?view=proof-program&tab=state&bind=auto"
+
+  compile proof-program-contract -> helios.contracts.context-bundle
+
+  runtime execution {
+    host governed
+  }
+
+  type CompletionTarget {
+    field target_id: string required
+    field name: string required
+    field permitted_axioms: string[] required
+    field forbidden_axioms: string[] required
+    field completion_rule: markdown required
+  }
+
+  type ProofObligation {
+    field obligation_id: string required
+    field mathematical_name: string required
+    field lean_declaration: string required
+    field lean_type: markdown required
+    field target_stage: string required
+    field source_refs: string[] required
+    field current_state: string required
+    field direct_dependencies: string[] required
+    field graph_depth: integer required
+    field scc_id: string required
+    field critical_path: bool required
+    field library_candidates: string[] optional
+    field source_condition_risks: markdown required
+    field mathematical_novelty: string required
+    field lean_risk: string required
+    field proof_pattern: markdown required
+    field expected_module: string required
+    field estimated_loc_p50: integer required
+    field estimated_loc_p80: integer required
+    field estimated_loc_p95: integer required
+    field estimated_tokens_p50: integer required
+    field estimated_tokens_p80: integer required
+    field estimated_tokens_p95: integer required
+    field estimate_confidence: string required
+    field estimate_evidence: markdown required
+    field review_state: string required
+    field kernel_probe_state: string required
+    field completion_gate: markdown required
+  }
+
+  type GraphEdge {
+    field edge_id: string required
+    field from_obligation: string required
+    field to_obligation: string required
+    field edge_kind: string required
+    field justification: markdown required
+  }
+
+  type LibraryMatch {
+    field match_id: string required
+    field obligation_id: string required
+    field declaration: string required
+    field match_class: string required
+    field normalized_signature: markdown required
+    field specialization_probe: string required
+    field verdict: string required
+    field rationale: markdown required
+  }
+
+  type ReviewFinding {
+    field finding_id: string required
+    field reviewer_model: string required
+    field severity: string required
+    field obligation_ids: string[] required
+    field source_refs: string[] required
+    field finding: markdown required
+    field repair: markdown required
+    field evidence_required: string required
+    field state: string required
+  }
+
+  type MonitorGate {
+    field gate_id: string required
+    field target_stage: string required
+    field predicate: markdown required
+    field fail_closed: bool required
+  }
+
+  workflow validate-design {
+    inspect selection
+    check authority
+    emit route proof.graph
+  }
+
+  workflow probe-obligation {
+    inspect selection
+    check authority
+    emit route proof.probes
+  }
+
+  workflow review-design {
+    inspect selection
+    check authority
+    emit route proof.review
+  }
+
+  workflow monitor-proof {
+    inspect selection
+    check authority
+    emit route proof.progress
+  }
+
+  route proof.graph = "helios://public/software/phaynes-flt/methodology/proof-program/graph"
+  route proof.probes = "helios://public/software/phaynes-flt/methodology/proof-program/probes"
+  route proof.review = "helios://public/software/phaynes-flt/methodology/proof-program/review"
+  route proof.progress = "helios://public/software/phaynes-flt/methodology/proof-program/progress"
+}

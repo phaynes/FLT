@@ -30,3 +30,9 @@ globs = ["FLT", "FermatsLastTheorem"]
 [[lean_lib]]
 name = "FLTTest"
 globs = ["FLTTest.*"] # Build `FLTTest.lean` and all files in the directory `FLTTest`.
+
+# Methodology-only signatures and probes. This library is deliberately not imported by `FLT` or
+# `FermatsLastTheorem`; admissions here test architecture and cannot enter the verified root.
+[[lean_lib]]
+name = "FLTMethodology"
+globs = ["FLTMethodology.*"]
