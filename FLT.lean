@@ -14,6 +14,7 @@ public import FLT.AutomorphicForm.Stuff
 public import FLT.Basic.Lemmas
 public import FLT.Components.BossInterface
 public import FLT.Components.Contracts.BrauerNesbitt
+public import FLT.Components.Contracts.QuaternionRelativeIndex
 public import FLT.Components.Existing
 public import FLT.Data.Hurwitz
 public import FLT.Data.HurwitzRatHat

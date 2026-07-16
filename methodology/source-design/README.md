@@ -28,6 +28,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
 - `mazur`: `PARTIAL`; Serre's exact Frey irreducibility proposition, its character-dichotomy source,
   and Mazur's torsion theorem are pinned to primary pages. Semistability, quotient-isogeny, and
   non-vacuous finite-torsion interfaces must be frozen before construction.
+- `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
+  by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
+  is reusable, but compact-open-to-order and quotient-injection bridges remain open.
 - `modularity-lifting`: `PARTIAL`; Taylor 2018 is selected and source hypotheses are reviewed, but
   the honest source signature cannot elaborate until coefficient, p-adic Hodge, and RACAR
   vocabulary exists.
