@@ -164,6 +164,21 @@ affine specialization, and infinity specializations. Consequently recurrence alg
 performed directly on representative pairs `[X,Z]`, without dividing by `Z` or losing the infinity
 case.
 
+The polynomial normalization boundary is now explicit rather than implicit. The methodology probe
+defines `kummerBiquadraticPolynomial`, proves that evaluation recovers the scalar bihomogeneous
+form, and proves for every integer `n` the parity-normalization identity
+
+```text
+(X * ΨSqₙ - Φₙ)² = ΨSqₙ₊₁ * ΨSqₙ₋₁.
+```
+
+Thus the coordinate-gap denominator is no longer an open part of the recurrence. The remaining
+pure polynomial statement is named `KummerDivisionPolynomialRecurrence`; it says that applying the
+Kummer biquadratic to `[Φₙ,ΨSqₙ]` and `[X,1]` gives `Φₙ₊₁Φₙ₋₁`. Its cases `n = 0,1,2`
+are kernel-clean. A direct fully expanded `n = 3` experiment was deliberately stopped after its
+normal form became computationally disproportionate; the next implementation should use the
+binary `normEDSRec` structure, not repeat coefficient expansion at arbitrary indices.
+
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
 case derives the fixed-point condition
@@ -192,7 +207,8 @@ Build in this order:
    Prove the homogeneous relation for arbitrary `n` from the affine group law and
    division-polynomial recurrences. The distinct-x differential-addition/Kummer
    component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
-   polynomial recurrence normalization. Its bihomogeneous scaling and infinity laws are closed.
+   complete `KummerDivisionPolynomialRecurrence` by binary EDS induction. Its coordinate-gap square
+   identity, cases `n = 0,1,2`, bihomogeneous scaling, and infinity laws are closed.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -226,4 +242,6 @@ to `DivisionPolynomialXFormula` and `PsiSqDetectsNTorsion` are now proved. The f
 Lean goal is a recurrence step
 for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
 the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
-resulting `kummerBiquadratic` expression to Mathlib's odd/even `preΨ`, `ΨSq`, and `Φ` recurrences.
+resulting `kummerBiquadratic` expression. The denominator-gap square is already proved generally;
+the remaining exact algebraic target is `KummerDivisionPolynomialRecurrence E n`, whose first three
+cases are proved and whose general proof should follow Mathlib's `normEDSRec` decomposition.

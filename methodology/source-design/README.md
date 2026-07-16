@@ -46,7 +46,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   the remaining recurrence to stay x-only rather than requiring a new y-coordinate polynomial. A
   branch-free homogeneous `xRep` formulation is kernel-cleanly equivalent to the relation and is
   now the preferred induction boundary; the Kummer biquadratic has also been homogenized with
-  kernel-clean scaling, symmetry, affine, and infinity laws.
+  kernel-clean scaling, symmetry, affine, and infinity laws. The associated polynomial boundary is
+  now explicit: the squared division-polynomial coordinate gap is proved equal to the product of
+  adjacent `ΨSq` terms for every integer, and the remaining Kummer polynomial recurrence is
+  kernel-clean at `n = 0,1,2`. Its general proof should use the binary normalized-EDS recursion rather
+  than unbounded coefficient expansion.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness

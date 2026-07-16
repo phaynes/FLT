@@ -290,6 +290,72 @@ theorem kummerBiquadraticHomogeneous_comm
   rw [kummerBiquadraticHomogeneous_comm]
   exact kummerBiquadraticHomogeneous_infinity_left E X Z
 
+/-- Polynomial-valued form of the Kummer biquadratic. This is the normalization boundary between
+the affine differential-addition law and Mathlib's univariate division polynomials. -/
+def kummerBiquadraticPolynomial (E : WeierstrassCurve k)
+    (X₁ Z₁ X₂ Z₂ : k[X]) : k[X] :=
+  X₁ ^ 2 * X₂ ^ 2 - C E.b₄ * X₁ * X₂ * Z₁ * Z₂ -
+    C E.b₆ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ -
+      C E.b₈ * (Z₁ * Z₂) ^ 2
+
+@[simp] theorem eval_kummerBiquadraticPolynomial
+    (E : WeierstrassCurve k) (X₁ Z₁ X₂ Z₂ : k[X]) (x : k) :
+    (kummerBiquadraticPolynomial E X₁ Z₁ X₂ Z₂).eval x =
+      kummerBiquadraticHomogeneous E
+        (X₁.eval x) (Z₁.eval x) (X₂.eval x) (Z₂.eval x) := by
+  simp only [kummerBiquadraticPolynomial, kummerBiquadraticHomogeneous,
+    eval_sub, eval_add, eval_mul, eval_pow, eval_C]
+
+/-- The numerator of `x - Φₙ / Ψₙ²`, before cancelling its sign. -/
+def divisionPolynomialDifference (E : WeierstrassCurve k) (n : ℤ) : k[X] :=
+  X * E.ΨSq n - E.Φ n
+
+/-- Mathlib's parity-normalized definitions make the squared coordinate difference exactly the
+product of the two adjacent squared division polynomials. -/
+theorem divisionPolynomialDifference_sq (E : WeierstrassCurve k) (n : ℤ) :
+    divisionPolynomialDifference E n ^ 2 = E.ΨSq (n + 1) * E.ΨSq (n - 1) := by
+  simp only [divisionPolynomialDifference, WeierstrassCurve.Φ, WeierstrassCurve.ΨSq,
+    Int.even_add_one, Int.even_sub_one, ite_not]
+  by_cases hn : Even n
+  · simp only [hn, if_pos]
+    ring
+  · simp only [hn, not_false_eq_true, if_neg]
+    ring
+
+/-- Pure polynomial recurrence predicted by differential addition for the pair `nP` and `P`.
+The general recurrence is the remaining division-polynomial normalization obligation. -/
+def KummerDivisionPolynomialRecurrence (E : WeierstrassCurve k) (n : ℤ) : Prop :=
+  kummerBiquadraticPolynomial E (E.Φ n) (E.ΨSq n) X 1 =
+    E.Φ (n + 1) * E.Φ (n - 1)
+
+theorem kummerDivisionPolynomialRecurrence_zero (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialRecurrence E 0 := by
+  simp [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial]
+  ring_nf
+
+theorem kummerDivisionPolynomialRecurrence_one (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialRecurrence E 1 := by
+  simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial,
+    show (1 + 1 : ℤ) = 2 by rfl, show (1 - 1 : ℤ) = 0 by rfl,
+    E.ΨSq_one, E.Φ_one, E.Φ_two, E.Φ_zero, mul_one, pow_two]
+  simp only [C_mul, map_ofNat]
+  ring
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 2000000 in
+-- The explicit `n = 2` normalization expands the generalized Weierstrass coefficients completely.
+theorem kummerDivisionPolynomialRecurrence_two (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialRecurrence E 2 := by
+  simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial]
+  rw [show (2 + 1 : ℤ) = 3 by rfl, show (2 - 1 : ℤ) = 1 by rfl,
+    E.ΨSq_two, E.Φ_two, E.Φ_three, E.Φ_one]
+  simp only [pow_two, mul_one]
+  simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+    WeierstrassCurve.preΨ₄, WeierstrassCurve.b₂, WeierstrassCurve.b₄,
+    WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  simp only [map_ofNat, C_add, C_sub, C_mul, C_pow]
+  ring
+
 /-- The x-only differential-addition product for two affine points with distinct x-coordinates.
 It removes the need for a separate y-coordinate division polynomial in the scalar recurrence. -/
 theorem addX_mul_addNegX_kummer
@@ -643,6 +709,13 @@ theorem n_torsion_finite_of_psiSq_detection
 #check kummerBiquadraticHomogeneous_comm
 #check kummerBiquadraticHomogeneous_infinity_left
 #check kummerBiquadraticHomogeneous_infinity_right
+#check kummerBiquadraticPolynomial
+#check eval_kummerBiquadraticPolynomial
+#check divisionPolynomialDifference_sq
+#check KummerDivisionPolynomialRecurrence
+#check kummerDivisionPolynomialRecurrence_zero
+#check kummerDivisionPolynomialRecurrence_one
+#check kummerDivisionPolynomialRecurrence_two
 #check addX_mul_addNegX_kummer
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
@@ -668,6 +741,11 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms kummerBiquadraticHomogeneous_affine
 #print axioms kummerBiquadraticHomogeneous_smul
 #print axioms kummerBiquadraticHomogeneous_comm
+#print axioms eval_kummerBiquadraticPolynomial
+#print axioms divisionPolynomialDifference_sq
+#print axioms kummerDivisionPolynomialRecurrence_zero
+#print axioms kummerDivisionPolynomialRecurrence_one
+#print axioms kummerDivisionPolynomialRecurrence_two
 #print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one
