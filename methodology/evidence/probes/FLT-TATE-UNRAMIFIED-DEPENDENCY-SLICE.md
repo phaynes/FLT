@@ -189,4 +189,36 @@ Thus `tateEquiv` is not a third mathematical source theorem: those two input lea
 The provider still contains a direct admission until this assembly proof is migrated under an
 implementation-authorized task.
 
+The source boundary is now pinned more precisely in
+`methodology/source-design/tate-uniformization.md`. Tate's primary Theorem 1 states exactly that
+the explicit map from the multiplicative group is a surjective homomorphism with kernel `q^Z`; its
+proof includes the characteristic-two surjectivity case. The same paper later supplies the
+functorial finite-algebra quotient, finite-flat torsion model, canonical torsion exact sequence, and
+Weil-pairing formula up to sign. These source statements do not provide the absent Lean point-map,
+finite-flat, or Weil-pairing objects.
+
+Silverman V.5.3 is the direct source route for the other leaf: split multiplicative reduction
+characterizes when the same-`j` Tate form is isomorphic over the base local field. Consequently the
+two residual Props in `TateLocalFormBoundary.lean` are a valid alternative decomposition, but are
+not intrinsically two separate theorems that must be formalized. The printed hypothesis scope of
+V.5.3 must still be visually checked before provider construction, especially for equal
+characteristic and residue characteristic two.
+
+`FLTMethodology/Probes/TateExplicitPointMapBoundary.lean` now gives an exact Lean signature for
+Tate Theorem 1 before quotienting: an additive map from `Additive kˣ` to the Tate-curve point
+group, surjectivity, and kernel equal to `(Subgroup.zpowers q).toAddSubgroup`. Mathlib's
+`QuotientAddGroup.liftEquiv` turns exactly those fields into the existing `tateCurveEquiv` type.
+The construction and its `Nonempty` packaging have axiom closure
+`[propext, Classical.choice, Quot.sound]`. Therefore quotient descent is no longer a Lean-design
+risk; the remaining work is the source-faithful analytic point map, exact kernel, and surjectivity.
+
+A deeper repository audit found that `TateCurveConstruction.lean` already defines the formal
+`TateCurve.X` and `TateCurve.Y` series over `RatFunc ℚ` and proves their Weierstrass equation
+with the standard axiom trio. `TateCoordinatePointMapBoundary.lean` now isolates the concrete
+bridge: local-field coordinate functions satisfying that equation define a point function which is
+zero exactly on `q^ℤ`. Once the multiplication/addition law and surjectivity are supplied, the
+probe constructs `tateCurveEquiv`; its exact-kernel proof is automatic and standard-axiom clean.
+Thus the analytic leaf is narrower than previously recorded: concrete evaluation, the addition
+law, and surjectivity remain, rather than construction of the formal coordinate identity.
+
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
