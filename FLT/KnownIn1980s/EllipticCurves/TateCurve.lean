@@ -112,6 +112,65 @@ end TateCurve
 variable {k : Type*} [Field k] [ValuativeRel k] [TopologicalSpace k]
   [IsNonarchimedeanLocalField k]
 
+namespace TateCurve
+
+open PowerSeries
+
+/-- The discriminant power series obtained by substituting the formal Tate coefficients
+`a₄Formal` and `a₆Formal` into the polynomial discriminant of
+`y² + xy = x³ + a₄x + a₆`. This is deliberately defined independently of the product
+expansion `ΔFormal`; identifying the two formal series is not needed for ellipticity. -/
+noncomputable def weierstrassDiscriminantFormal : ℤ⟦X⟧ :=
+  -a₆Formal + a₄Formal ^ 2 - 64 * a₄Formal ^ 3 - 432 * a₆Formal ^ 2 +
+    72 * a₄Formal * a₆Formal
+
+@[simp]
+theorem constantCoeff_weierstrassDiscriminantFormal :
+    constantCoeff weierstrassDiscriminantFormal = 0 := by
+  have h₄ : constantCoeff a₄Formal = 0 := by
+    rw [← coeff_zero_eq_constantCoeff, coeff_a₄Formal]
+    norm_num
+  have h₆ : constantCoeff a₆Formal = 0 := by
+    rw [← coeff_zero_eq_constantCoeff, coeff_a₆Formal]
+    norm_num
+  simp [weierstrassDiscriminantFormal, h₄, h₆]
+
+theorem coeff_one_weierstrassDiscriminantFormal :
+    coeff 1 weierstrassDiscriminantFormal = 1 := by
+  have h₄₀ : constantCoeff a₄Formal = 0 := by
+    rw [← coeff_zero_eq_constantCoeff, coeff_a₄Formal]
+    norm_num
+  have h₆₀ : constantCoeff a₆Formal = 0 := by
+    rw [← coeff_zero_eq_constantCoeff, coeff_a₆Formal]
+    norm_num
+  have h₆₁ : coeff 1 a₆Formal = -1 := by
+    rw [coeff_a₆Formal]
+    norm_num [ArithmeticFunction.sigma_apply]
+  simp [weierstrassDiscriminantFormal, coeff_one_mul, coeff_one_pow, h₄₀, h₆₀, h₆₁]
+
+private noncomputable def evalIntRingHom (q : k) (hq : valuation k q < 1) : ℤ⟦X⟧ →+* k where
+  toFun := evalInt q
+  map_one' := by simp [evalInt]
+  map_mul' F G := evalInt_mul q hq F G
+  map_zero' := by simp [evalInt]
+  map_add' F G := evalInt_add (summable_evalInt q hq F) (summable_evalInt q hq G)
+
+/-- Evaluation of the formal Weierstrass discriminant is the corresponding polynomial in
+the evaluated Tate coefficients. -/
+theorem evalInt_weierstrassDiscriminantFormal (q : k) (hq : valuation k q < 1) :
+    evalInt q weierstrassDiscriminantFormal =
+      -evalInt q a₆Formal + evalInt q a₄Formal ^ 2 -
+        64 * evalInt q a₄Formal ^ 3 - 432 * evalInt q a₆Formal ^ 2 +
+          72 * evalInt q a₄Formal * evalInt q a₆Formal := by
+  change evalIntRingHom q hq weierstrassDiscriminantFormal =
+    -evalIntRingHom q hq a₆Formal + evalIntRingHom q hq a₄Formal ^ 2 -
+      64 * evalIntRingHom q hq a₄Formal ^ 3 - 432 * evalIntRingHom q hq a₆Formal ^ 2 +
+        72 * evalIntRingHom q hq a₄Formal * evalIntRingHom q hq a₆Formal
+  simp [weierstrassDiscriminantFormal]
+  norm_num [map_ofNat]
+
+end TateCurve
+
 -- `DecidableEq k` is needed for the group law on the points
 variable [DecidableEq k] in
 /-- Tate's uniformisation of the Tate curve `E_q`, given by the explicit power series
@@ -308,6 +367,28 @@ theorem WeierstrassCurve.tateA₆_eq_evalInt (q : k) (hq : valuation k q < 1) :
   simp only [hc]
   push_cast
   ring
+
+/-- The discriminant of the Tate curve is the evaluation of its formal Weierstrass
+discriminant polynomial. -/
+theorem WeierstrassCurve.tateCurve_Δ_eq_evalInt (q : k) (hq : valuation k q < 1) :
+    (tateCurve q).Δ = TateCurve.evalInt q TateCurve.weierstrassDiscriminantFormal := by
+  rw [TateCurve.evalInt_weierstrassDiscriminantFormal q hq]
+  rw [← tateA₄_eq_evalInt q hq, ← tateA₆_eq_evalInt q hq]
+  simp only [Δ, b₂, b₄, b₆, b₈, tateCurve]
+  ring
+
+/-- A Tate curve with nonzero parameter in the open unit disc is elliptic. Its
+discriminant has the same nonzero valuation as the parameter because the associated
+formal discriminant has zero constant coefficient and linear coefficient `1`. -/
+theorem WeierstrassCurve.isElliptic_tateCurve (q : kˣ)
+    (hq : valuation k (q : k) < 1) : (tateCurve (q : k)).IsElliptic := by
+  rw [isElliptic_iff, tateCurve_Δ_eq_evalInt (q : k) hq, isUnit_iff_ne_zero]
+  intro hzero
+  have hval := TateCurve.valuation_evalInt_eq (q : k) q.ne_zero hq
+    TateCurve.constantCoeff_weierstrassDiscriminantFormal
+    TateCurve.coeff_one_weierstrassDiscriminantFormal
+  rw [hzero, map_zero] at hval
+  exact ((valuation k).ne_zero_iff.mpr q.ne_zero) hval.symm
 
 /-! ### Functoriality
 
