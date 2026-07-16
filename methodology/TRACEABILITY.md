@@ -41,7 +41,8 @@ The modularity-lifting route is selected but not statement-frozen in Lean. Taylo
 2.1.1 is the governing source theorem. Its witness-unramifiedness hypothesis is local at places
 `v | ell`, and its conclusion is level-free GL2 automorphy. `FLT-MLT-COEFFICIENTS`,
 `FLT-MLT-PADIC-HODGE`, and `FLT-RACAR-DEF` expose the missing source vocabulary before
-`FLT-MLT-SOURCE`. `FLT-SGOOD-DEF` remains only the blueprint's temporary target, while
+`FLT-MLT-SOURCE`. `FLT-SGOOD-DEF` is now a reviewed kernel-clean encoding of the blueprint's
+temporary four-field target, while
 `FLT-SGOOD-SELECTED` is a separate repository-local bundle whose bridge to the source theorem must
 be proved. No scaffold may identify either source boundary with `IsAutomorphicOfLevel S`.
 

@@ -45,3 +45,16 @@ reviewed.
 
 No modularity-lifting implementation is authorized by this record. Source-independent W02 work may
 continue.
+
+## Dependency-first follow-up
+
+- `FLT-SGOOD-DEF` is now kernel-clean at `9b8d1d0` and both Fable 5 and GPT-5.6 xhigh independently
+  accepted its exact four-field signature. This node is reviewed and complete.
+- Both reviewers rejected the first provisional coefficient boundary because an arbitrary
+  `Algebra R k` could describe a generic-fibre extension rather than residual reduction. The
+  repaired relation explicitly requires the maximal ideal of `R` to lie in the coefficient-map
+  kernel and retains the standard axiom trio.
+- The coefficient node remains open: stable-lattice existence and independence, residual
+  semisimplification uniqueness, and comparison over the fixed residual algebraic closure still
+  depend on a kernel-clean Brauer--Nesbitt interface absent from the pinned library.
+- W04--W06 remain unauthorized.

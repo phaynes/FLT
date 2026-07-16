@@ -52,7 +52,9 @@ Its axiom audit is the standard trio. This is a banked partial signature, not cl
 The next coefficient-boundary tranche adds three provisional, kernel-clean relations:
 
 - `IsSemisimplifiedResidualModel`, requiring semisimplicity plus equality of characteristic
-  polynomials with the reduction of the chosen integral model for every Galois element;
+  polynomials with the reduction of the chosen integral model for every Galois element. The
+  coefficient map must kill the local ring's maximal ideal, so the relation cannot be satisfied by
+  an unrelated generic-fibre extension;
 - `SemisimpleResidualEquivalent`, requiring an actual linear equivalence conjugating the two
   selected residual models; and
 - `ResidualModelsAgreeAfterExtension`, comparing models over different residue fields only after
@@ -61,6 +63,12 @@ The next coefficient-boundary tranche adds three provisional, kernel-clean relat
 These relations do **not** construct a semisimplification, prove lattice independence, or close
 `FLT-MLT-COEFFICIENTS`; those remain named dependencies before the Taylor source contract can be
 frozen.
+
+The common comparison field is intended to be an algebraic closure of the relevant residue field.
+Uniqueness of semisimple models from the characteristic-polynomial relation is a separate
+Brauer--Nesbitt obligation; it is not silently assumed by these definitions. The exact same-field
+target now elaborates as the proposition `SemisimplifiedResidualModelsUnique`, but no proof of that
+proposition is claimed.
 
 The first three W00 definition nodes are:
 

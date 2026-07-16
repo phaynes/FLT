@@ -46,34 +46,36 @@ transitive-sorry audits are the authority for individual declarations.
 ## Live W00 classification
 
 The refreshed graph exposes three source-vocabulary prerequisites in addition to the original four
-W00 gate nodes. Therefore the live denominator is seven; the original core remains zero of four.
+W00 gate nodes. Therefore the live denominator is seven; one refreshed node and one original core
+node are now complete.
 
 | Node | Classification | Immediate reason |
 |---|---|---|
-| `FLT-MLT-COEFFICIENTS` | ACTIVE | First dependency-free source-signature node; lattice, residual reduction, and semisimplification are absent |
+| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations are signature-green after repair; stable-lattice independence and Brauer--Nesbitt uniqueness remain open |
 | `FLT-MLT-PADIC-HODGE` | BLOCKED | Depends on the coefficient/lattice boundary |
 | `FLT-RACAR-DEF` | BLOCKED | Depends on coefficient data and the admitted automorphic support cluster |
-| `FLT-SGOOD-DEF` | ACTIVE | `FLT-HR-DEF` is present; exact blueprint-local structure still absent |
+| `FLT-SGOOD-DEF` | COMPLETE | Exact four-field definition builds with the standard axiom trio and independent Fable/GPT reviews accept it |
 | `FLT-MLT-SOURCE` | BLOCKED | Taylor 2018 is selected, but the three source-vocabulary nodes and exact Lean signature remain open |
 | `FLT-SGOOD-SELECTED` | BLOCKED | Depends on the source contract and explicit finite-flat/p-adic-Hodge bridge |
 | `FLT-AUX-LOCAL-FIELD` | BLOCKED | Depends on the source contract and absent Moret--Bailly specialization |
 
-W00: `0 / 7` refreshed nodes complete (`0 / 4` original core nodes).
+W00: `1 / 7` refreshed nodes complete (`1 / 4` original core nodes).
 
 ## Live W02 classification
 
 | Node | Classification | Reachable live admission summary |
 |---|---|---|
-| `FLT-TATE-TORSION` | ACTIVE | Two admissions remain in `FLT/EllipticCurve/Torsion.lean` |
-| `FLT-TATE-FLAT` | TODO | Two admissions in `Flat.lean`, plus its exact good-reduction consumer closure to audit |
-| `FLT-TATE-UNRAMIFIED` | TODO | Tate-curve support has nine admission sites in the live grep census |
-| `FLT-TATE-WEIL` | TODO | One admission in `WeilPairing.lean` plus imported support audit |
+| `FLT-TATE-TORSION` | BLOCKED | Two admissions remain, and the file explicitly requires coordination with KB and David Angdinata before work on them |
+| `FLT-TATE-FLAT` | ACTIVE | Three admissions remain across `Flat.lean` and `GoodReduction.lean`; three inertia helpers are clean, but the pinned library lacks the required point-specialization/injectivity theorem |
+| `FLT-TATE-UNRAMIFIED` | TODO | Eight Tate-uniformization admissions remain |
+| `FLT-TATE-WEIL` | TODO | `weilPairing` and `weilPairing_tatePoint` remain admitted |
 | `FLT-SUPPORT-TATE` | BLOCKED | Join waits for all four support subclusters |
 | `FLT-TORSION-001` | BLOCKED | `WeierstrassCurve.galoisRep` waits for `FLT-TATE-TORSION` closure |
 | `FLT-FREY-HR` | BLOCKED | Two direct admissions and dependencies on torsion and the support join |
 
-W02: `0 / 7` nodes complete. Existing helper and source-body proofs do not close an aggregate node
-while an exported consumer still has `sorryAx`.
+W02: `0 / 7` nodes complete. The exact missing good-reduction specialization contract is now
+signature-green, but existing helpers do not close an aggregate node while an exported consumer
+still has `sorryAx`.
 
 ## Status vocabulary
 

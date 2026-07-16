@@ -57,7 +57,8 @@ def IsSemisimplifiedResidualModel
     {W : Type*} [AddCommGroup W] [Module k W]
       [Module.Finite k W] [Module.Free k W]
     (ρbar : GaloisRep F k W) : Prop :=
-  Representation.IsSemisimpleRepresentation ρbar.toRepresentation ∧
+  IsLocalRing.maximalIdeal R ≤ RingHom.ker (algebraMap R k) ∧
+    Representation.IsSemisimpleRepresentation ρbar.toRepresentation ∧
     ∀ σ, ((ρ₀.baseChange k) σ).charpoly = (ρbar σ).charpoly
 
 /-- Isomorphism of two chosen semisimple residual models. -/
@@ -83,14 +84,35 @@ def ResidualModelsAgreeAfterExtension
     (ρ₁ : GaloisRep F k₁ W₁) (ρ₂ : GaloisRep F k₂ W₂) : Prop :=
   SemisimpleResidualEquivalent (ρ₁.baseChange kbar) (ρ₂.baseChange kbar)
 
+/-- Exact same-field uniqueness claim left for the Brauer--Nesbitt proof node. This definition
+freezes the proposition only; it does not prove it. -/
+def SemisimplifiedResidualModelsUnique
+    {F : Type*} [Field F] [NumberField F]
+    {R : Type*} [CommRing R] [IsLocalRing R]
+      [TopologicalSpace R] [IsTopologicalRing R]
+    {V₀ : Type*} [AddCommGroup V₀] [Module R V₀]
+      [Module.Finite R V₀] [Module.Free R V₀]
+    (ρ₀ : GaloisRep F R V₀)
+    {k : Type*} [Field k] [TopologicalSpace k] [IsTopologicalRing k]
+      [Algebra R k] [ContinuousSMul R k]
+    {W₁ W₂ : Type*}
+      [AddCommGroup W₁] [Module k W₁] [Module.Finite k W₁] [Module.Free k W₁]
+      [AddCommGroup W₂] [Module k W₂] [Module.Finite k W₂] [Module.Free k W₂]
+    (ρbar₁ : GaloisRep F k W₁) (ρbar₂ : GaloisRep F k W₂) : Prop :=
+  IsSemisimplifiedResidualModel ρ₀ ρbar₁ →
+    IsSemisimplifiedResidualModel ρ₀ ρbar₂ →
+    SemisimpleResidualEquivalent ρbar₁ ρbar₂
+
 #check HasIntegralModel
 #check IsSemisimplifiedResidualModel
 #check SemisimpleResidualEquivalent
 #check ResidualModelsAgreeAfterExtension
+#check SemisimplifiedResidualModelsUnique
 #print axioms HasIntegralModel
 #print axioms IsSemisimplifiedResidualModel
 #print axioms SemisimpleResidualEquivalent
 #print axioms ResidualModelsAgreeAfterExtension
+#print axioms SemisimplifiedResidualModelsUnique
 
 end FLTMethodology.Taylor2018
 

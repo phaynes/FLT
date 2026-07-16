@@ -618,6 +618,13 @@
       "to": "FLT-SUPPORT-TATE"
     },
     {
+      "edge_id": "E-BRAUER-NESBITT-MLT-COEFFICIENTS",
+      "edge_kind": "theorem",
+      "from": "FLT-BRAUER-NESBITT",
+      "justification": "FLT-MLT-COEFFICIENTS directly consumes FLT-BRAUER-NESBITT.",
+      "to": "FLT-MLT-COEFFICIENTS"
+    },
+    {
       "edge_id": "E-MLT-COEFFICIENTS-MLT-PADIC-HODGE",
       "edge_kind": "theorem",
       "from": "FLT-MLT-COEFFICIENTS",
@@ -919,13 +926,13 @@
         "T3"
       ],
       "critical_path": true,
-      "current_state": "definition-gap",
+      "current_state": "proved",
       "direct_dependencies": [
         "FLT-HR-DEF"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "No integrated formal definition exists and the source theorem is unresolved.",
+        "evidence": "The exact declaration builds and independent Fable 5 and GPT-5.6 xhigh reviews accept all four fields.",
         "loc_p50": 3000,
         "loc_p80": 12000,
         "loc_p95": 45000,
@@ -935,21 +942,22 @@
       },
       "expected_module": "FLT.ModularityLifting.Conditions",
       "graph_depth": 1,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "proof-green",
       "lean_declaration": "FLT.ModularityLifting.BlueprintSGood",
-      "lean_risk": "unbounded",
-      "lean_type": "Proposed source-literal structure with the four temporary blueprint fields: cyclotomic determinant, unramified outside S and ell, trace two on J_v for v in S, and flatness above ell.",
+      "lean_risk": "low",
+      "lean_type": "Kernel-clean source-literal structure with exactly the four temporary blueprint fields: cyclotomic determinant, unramified outside S and ell, trace two on the repository's J_v subgroup for v in S, and flatness above ell.",
       "library_candidates": [
-        "GaloisRepresentation.IsUnramified",
-        "DeformationCondition"
+        "GaloisRep.IsUnramifiedAt",
+        "GaloisRep.IsFlatAt",
+        "localTameAbelianInertiaGroup"
       ],
       "mathematical_name": "Blueprint-temporary S-good condition",
-      "mathematical_novelty": "source-unresolved",
+      "mathematical_novelty": "standard",
       "obligation_id": "FLT-SGOOD-DEF",
-      "proof_pattern": "Elaborate the four blueprint clauses exactly, with no source-selected refinements.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Reuse the existing determinant, local-inertia, tame-kernel and finite-flat predicates without encoding Taylor 2018 or an automorphy conclusion.",
+      "review_state": "reviewed",
       "scc_id": "SCC-FLT-SGOOD-DEF",
-      "source_condition_risks": "This records the blueprint target for source comparison; it is not asserted to equal the local conditions of a selected theorem.",
+      "source_condition_risks": "The repository's localTameAbelianInertiaGroup is the intended J_v but retains an upstream TODO proving its concrete fixed-field definition is the canonical kernel; this is a dependency caveat rather than a defect in the four-field signature.",
       "source_refs": [
         "SRC-004"
       ],
@@ -1025,7 +1033,7 @@
         "tokens_p95": 30000000
       },
       "expected_module": "FLT.ModularityLifting.DeformationRing",
-      "graph_depth": 4,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.sGoodLiftFunctor_corepresentable",
       "lean_risk": "unbounded",
@@ -1073,7 +1081,7 @@
         "tokens_p95": 90000000
       },
       "expected_module": "FLT.ModularityLifting.LocalConditions",
-      "graph_depth": 5,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localConditions_balanced",
       "lean_risk": "unbounded",
@@ -1124,7 +1132,7 @@
         "tokens_p95": 110000000
       },
       "expected_module": "FLT.ModularityLifting.Hecke",
-      "graph_depth": 4,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
@@ -1173,7 +1181,7 @@
         "tokens_p95": 65000000
       },
       "expected_module": "FLT.ModularityLifting.TaylorWilesPrimes",
-      "graph_depth": 6,
+      "graph_depth": 7,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.exists_taylorWiles_primes",
       "lean_risk": "unbounded",
@@ -1222,7 +1230,7 @@
         "tokens_p95": 75000000
       },
       "expected_module": "FLT.ModularityLifting.Patching",
-      "graph_depth": 7,
+      "graph_depth": 8,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.patched_point_factors_through_hecke",
       "lean_risk": "unbounded",
@@ -1316,7 +1324,7 @@
         "tokens_p95": 12000000
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Statement",
-      "graph_depth": 2,
+      "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.SourceContract",
       "lean_risk": "unbounded",
@@ -1365,7 +1373,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.ModularityLifting.Main",
-      "graph_depth": 8,
+      "graph_depth": 9,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.modularity_lifting_weight_two_of_taylor2018",
       "lean_risk": "unbounded",
@@ -1591,7 +1599,7 @@
         "tokens_p95": 150000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryCurve",
-      "graph_depth": 4,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.exists_auxiliary_curve",
       "lean_risk": "unbounded",
@@ -1642,7 +1650,7 @@
         "tokens_p95": 45000000
       },
       "expected_module": "FLT.PotentialModularity.Main",
-      "graph_depth": 9,
+      "graph_depth": 10,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1690,7 +1698,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Lift",
-      "graph_depth": 10,
+      "graph_depth": 11,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.lifts",
       "lean_risk": "unbounded",
@@ -1783,7 +1791,7 @@
         "tokens_p95": 95000000
       },
       "expected_module": "FLT.GaloisRepresentation.CompatibleFamily",
-      "graph_depth": 10,
+      "graph_depth": 11,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.CompatibleFamily.of_potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1831,7 +1839,7 @@
         "tokens_p95": 35000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Family",
-      "graph_depth": 11,
+      "graph_depth": 12,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.mem_isCompatible",
       "lean_risk": "unbounded",
@@ -2036,7 +2044,7 @@
       "target_stage": "T2"
     },
     {
-      "completion_gate": "The exact coefficient-field specialization is kernel-clean.",
+      "completion_gate": "The residual and characteristic-zero coefficient-field specializations are kernel-clean.",
       "completion_targets": [
         "T2",
         "T3"
@@ -2046,7 +2054,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Likely reusable algebra exists, but no exact declaration was located in the first survey.",
+        "evidence": "Both coefficient-boundary reviewers found Mathlib semisimplicity but no Brauer-Nesbitt or Noether-Deuring terminal.",
         "loc_p50": 5000,
         "loc_p80": 22000,
         "loc_p95": 80000,
@@ -2059,18 +2067,19 @@
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Representation.brauer_nesbitt",
       "lean_risk": "very-high",
-      "lean_type": "Proposed: finite-dimensional semisimple representations over the selected characteristic-zero fields with equal traces/characteristic polynomials are linearly equivalent.",
+      "lean_type": "Proposed: finite-dimensional semisimple representations over a field with equal characteristic polynomials on every group element are linearly equivalent; required both for residual semisimplification and the compatible-family terminal.",
       "library_candidates": [
-        "RepresentationTheory.Character",
+        "Representation.IsSemisimpleRepresentation",
+        "Subrepresentation",
         "Module.Free"
       ],
       "mathematical_name": "Brauer-Nesbitt representation comparison",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
-      "proof_pattern": "Adapt finite-dimensional character theory and semisimple module decomposition.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Adapt finite-dimensional semisimple module decomposition and characteristic-polynomial comparison, then prove the required scalar-extension specializations.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
-      "source_condition_risks": "Field perfection/algebraic closure and finite-dimensionality assumptions must match each specialization.",
+      "source_condition_risks": "The exact theorem must cover the residual characteristic specialization as well as characteristic zero; field, finite-dimensionality and scalar-extension assumptions must match both consumers.",
       "source_refs": [
         "SRC-003"
       ],
@@ -2103,7 +2112,7 @@
         "tokens_p95": 40000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reduction",
-      "graph_depth": 12,
+      "graph_depth": 13,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.not_isIrreducible_of_family",
       "lean_risk": "unbounded",
@@ -2152,7 +2161,7 @@
         "tokens_p95": 10000000
       },
       "expected_module": "FLT.ModularityLifting.Conditions",
-      "graph_depth": 3,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.SelectedGood",
       "lean_risk": "unbounded",
@@ -2200,7 +2209,7 @@
         "tokens_p95": 42000000
       },
       "expected_module": "FLT.ModularityLifting.ResidualImage",
-      "graph_depth": 5,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.cyclotomicRestrictionIrreducible",
       "lean_risk": "unbounded",
@@ -2248,7 +2257,7 @@
         "tokens_p95": 165000000
       },
       "expected_module": "FLT.Automorphic.AttachedGaloisRepresentation",
-      "graph_depth": 2,
+      "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.attachedGaloisRepresentation",
       "lean_risk": "unbounded",
@@ -2297,7 +2306,7 @@
         "tokens_p95": 30000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryField",
-      "graph_depth": 3,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.AuxiliaryFieldCondition",
       "lean_risk": "unbounded",
@@ -2377,7 +2386,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Four admissions across Flat.lean and GoodReduction.lean.",
+        "evidence": "Three live admissions remain across Flat.lean and GoodReduction.lean; the exact missing specialization contract now elaborates and three downstream inertia helpers are kernel-clean.",
         "loc_p50": 2500,
         "loc_p80": 10000,
         "loc_p95": 35000,
@@ -2387,21 +2396,22 @@
       },
       "expected_module": "FLT.KnownIn1980s.EllipticCurves",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.Flat support closure",
       "lean_risk": "very-high",
       "lean_type": "Finite-flat group-scheme and good-reduction declarations used to establish flatness of Frey torsion above ell.",
       "library_candidates": [
-        "EllipticCurve",
-        "TateCurve"
+        "WeierstrassCurve.reduction",
+        "FLTMethodology.GoodReduction.PointSpecializationContract",
+        "ValuationSubring.inertiaSubgroup"
       ],
       "mathematical_name": "Finite-flat and good-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-FLAT",
-      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "proof_pattern": "Construct the compatible local map, normalized projective point specialization, inertia compatibility, and formal-group/kernel-of-reduction injectivity before applying the banked torsion-fixed criterion.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-FLAT",
-      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_condition_risks": "The pinned library reduces curve coefficients but has no projective point-specialization map or proof that specialization is injective on prime-to-residue-characteristic torsion.",
       "source_refs": [
         "SRC-001",
         "SRC-005"
@@ -2521,7 +2531,7 @@
         "tokens_p95": 4000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reducible",
-      "graph_depth": 13,
+      "graph_depth": 14,
       "kernel_probe_state": "absent",
       "lean_declaration": "FreyCurve.torsion_not_isIrreducible",
       "lean_risk": "very-high",
@@ -2567,7 +2577,7 @@
         "tokens_p95": 250000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 14,
+      "graph_depth": 15,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B4_proof",
       "lean_risk": "high",
@@ -2613,7 +2623,7 @@
         "tokens_p95": 15000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 15,
+      "graph_depth": 16,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B3_proof",
       "lean_risk": "low",
@@ -2657,7 +2667,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 16,
+      "graph_depth": 17,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B2_proof",
       "lean_risk": "low",
@@ -2701,7 +2711,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 17,
+      "graph_depth": 18,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "flt",
       "lean_risk": "low",
@@ -2746,7 +2756,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FermatsLastTheorem",
-      "graph_depth": 18,
+      "graph_depth": 19,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "PNat.pow_add_pow_ne_pow",
       "lean_risk": "low",
@@ -2956,10 +2966,12 @@
       ],
       "critical_path": true,
       "current_state": "definition-gap",
-      "direct_dependencies": [],
+      "direct_dependencies": [
+        "FLT-BRAUER-NESBITT"
+      ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The corrected source review identifies this as the first absent vocabulary chain.",
+        "evidence": "Fable 5 and GPT-5.6 xhigh independently found the missing residual-map condition and absent Brauer-Nesbitt terminal; the repaired relations elaborate with the standard axiom trio.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -2968,23 +2980,23 @@
         "tokens_p95": 25000000
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Coefficients",
-      "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "graph_depth": 1,
+      "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.CoefficientData",
       "lean_risk": "unbounded",
-      "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction, semisimplification, and coefficient-extension comparison.",
+      "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction through the maximal ideal, semisimplification, and coefficient-extension comparison.",
       "library_candidates": [
         "GaloisRep.baseChange",
-        "PadicAlgCl",
-        "IsLocalRing.ResidueField"
+        "Representation.IsSemisimpleRepresentation",
+        "IsLocalRing.maximalIdeal"
       ],
       "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
-      "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately and probe each specialization.",
+      "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately; prove uniqueness through the explicit Brauer-Nesbitt dependency before freezing the source contract.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "A generic integral-O lift is not the theorem's Qbar_ell representation; lattice independence and semisimplification may not be hidden in equality assumptions.",
+      "source_condition_risks": "A generic-fibre base change is not residual reduction. The provisional relation now requires the maximal ideal to lie in the coefficient-map kernel, but stable-lattice existence, lattice independence, Brauer-Nesbitt uniqueness, and the fixed residual algebraic-closure instantiation remain explicit obligations.",
       "source_refs": [
         "SRC-016"
       ],
@@ -3014,7 +3026,7 @@
         "tokens_p95": 70000000
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.PadicHodge",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.PadicHodgeData",
       "lean_risk": "unbounded",
@@ -3059,7 +3071,7 @@
         "tokens_p95": 55000000
       },
       "expected_module": "FLT.Automorphic.RACAR",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.RACAR",
       "lean_risk": "unbounded",
