@@ -1,0 +1,38 @@
+# FLT-205 source-design register
+
+Task: `task:fg-flt-ra-math-source-design-20260716`
+
+This directory is the mathematical definition-of-ready gate between the frozen component BOM and
+provider implementation. A component is `READY` only when all seven evidence fields below are
+complete for every obligation it owns:
+
+1. exact primary source and locator;
+2. source-to-Lean hypothesis translation;
+3. proof architecture;
+4. acyclic sublemma graph;
+5. counterexample and false-weakening review;
+6. pinned-library matches and negative searches; and
+7. an elaborating Lean signature with a standard-axiom audit.
+
+The machine-readable authority is `methodology/control/source-design.ndjson`. A `BLOCKED` or
+`PARTIAL` row is progress evidence, not permission to start a provider and not proof completion.
+The seven existing-contract rows are ready because they contain no new mathematical provider: they
+are exact definitions or elementary adapters already audited in FLT-204.
+
+## Current frontier
+
+- `existing-*`: 7 `READY` contract/adapter components.
+- `brauer-nesbitt`: `PARTIAL`; exact signature, counterexamples, library survey, and the
+  finite-joint-image reduction are kernel-clean. The exact primary-source theorem and the finite
+  algebra terminal remain open.
+- `modularity-lifting`: `PARTIAL`; Taylor 2018 is selected and source hypotheses are reviewed, but
+  the honest source signature cannot elaborate until coefficient, p-adic Hodge, and RACAR
+  vocabulary exists.
+- `coefficients`: `PARTIAL`; provisional residual relations elaborate, but lattice existence,
+  semisimplification, and uniqueness remain open.
+- `tate-frey`: `PARTIAL`; the downstream signatures and several support reductions are known, but
+  four geometric construction families remain and no current Mathlib theorem supplies them.
+- all remaining components: `BLOCKED` at this global gate until their own complete packet exists.
+
+This deliberately prevents a single attractive theorem from authorizing downstream construction
+while another obligation owned by the same scheduling envelope is still source-ambiguous.
