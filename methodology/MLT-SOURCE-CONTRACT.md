@@ -44,6 +44,11 @@ source-faithful coefficient/lattice/semisimplification package, crystalline and 
 predicates, or a totally-real RACAR object with attached representation. Therefore an exact Lean
 signature for Theorem 2.1.1 cannot yet elaborate honestly.
 
+`FLTMethodology.Probes.MLTSourceBoundary` now contains a kernel-clean
+`FLTMethodology.Taylor2018.HasIntegralModel` definition matching the existing integral-model shape.
+Its axiom audit is the standard trio. This is a banked partial signature, not closure of
+`FLT-MLT-COEFFICIENTS`: residual reduction, semisimplification, and lattice-independence remain.
+
 The first three W00 definition nodes are:
 
 1. `FLT-MLT-COEFFICIENTS`;
