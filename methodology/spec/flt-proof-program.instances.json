@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Live refresh at review SHA found exactly two executable admissions in FLT/EllipticCurve/Torsion.lean; earlier module-law helpers are now proved.",
+        "evidence": "Exactly two provider admissions remain. The generic detector-to-finiteness assembly is kernel-clean; current Mathlib still lacks the point/division-polynomial dictionary and elliptic multiplication morphism.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
@@ -2375,24 +2375,25 @@
       },
       "expected_module": "FLT.EllipticCurve.Torsion",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "partial",
       "lean_declaration": "FLT.EllipticCurve.Torsion support closure",
       "lean_risk": "very-high",
       "lean_type": "Finite and rank-two torsion facts and the continuous Galois action used by WeierstrassCurve.galoisRep.",
       "library_candidates": [
         "EllipticCurve",
-        "TateCurve"
+        "DivisionPolynomial",
+        "TorsionXDetector"
       ],
       "mathematical_name": "Elliptic-curve torsion module support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-TORSION",
-      "proof_pattern": "Close n_torsion_finite and card_n_torsion bottom-up, then audit galoisRep and torsion_rank.",
+      "proof_pattern": "Use the kernel-clean detector assembly for prime-to-characteristic finiteness; separately close the all-characteristic finite-morphism and n-squared point-count lanes, then audit galoisRep and torsion_rank.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "The two remaining admitted torsion cardinality/finite declarations must be closed and their exported consumers audited.",
+      "source_condition_risks": "The point/division-polynomial dictionary, the characteristic-dividing finiteness lane, and the exact finite-etale point-count bridge remain open.",
       "source_refs": [
         "SRC-001",
-        "SRC-023"
+        "SRC-025"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
