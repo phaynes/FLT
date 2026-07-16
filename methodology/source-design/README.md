@@ -49,8 +49,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
   kernel-clean scaling, symmetry, affine, and infinity laws. The associated polynomial boundary is
   now explicit: the squared division-polynomial coordinate gap is proved equal to the product of
   adjacent `ΨSq` terms for every integer, and the remaining Kummer polynomial recurrence is
-  kernel-clean at `n = 0,1,2`. Its general proof should use the binary normalized-EDS recursion rather
-  than unbounded coefficient expansion.
+  kernel-clean for the complete `n = 0,1,2,3,4` base block. The last two normalizations factor
+  through the proved `b₂b₆ - b₄² - 4b₈ = 0` invariant. Its two general steps should use the binary
+  normalized-EDS recursion rather than unbounded coefficient expansion.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness

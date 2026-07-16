@@ -356,6 +356,72 @@ theorem kummerDivisionPolynomialRecurrence_two (E : WeierstrassCurve k) :
   simp only [map_ofNat, C_add, C_sub, C_mul, C_pow]
   ring
 
+/-- The single algebraic relation among the generalized Weierstrass `b`-invariants needed by the
+Kummer recurrence normalizations. -/
+theorem b_two_mul_b_six_sub_b_four_sq (E : WeierstrassCurve k) :
+    E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈ = 0 := by
+  simp only [WeierstrassCurve.b₂, WeierstrassCurve.b₄,
+    WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  ring
+
+theorem prePsi_five (E : WeierstrassCurve k) :
+    E.preΨ 5 = E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3 := by
+  rw [show (5 : ℤ) = (5 : ℕ) by rfl, E.preΨ_ofNat,
+    show 5 = 2 * (0 + 2) + 1 by rfl, E.preΨ'_odd]
+  simp
+
+theorem prePsi_six (E : WeierstrassCurve k) :
+    E.preΨ 6 = E.Ψ₃ * (E.preΨ 5 - E.preΨ₄ ^ 2) := by
+  rw [show (6 : ℤ) = (6 : ℕ) by rfl, E.preΨ_ofNat,
+    show 6 = 2 * (0 + 3) by rfl, E.preΨ'_even]
+  simp only [E.preΨ'_two, E.preΨ'_three, E.preΨ'_one, E.preΨ'_four,
+    one_pow, one_mul]
+  rw [← E.preΨ_ofNat 5]
+  ring
+
+theorem psiSq_five (E : WeierstrassCurve k) :
+    E.ΨSq 5 = E.preΨ 5 ^ 2 := by
+  simp [WeierstrassCurve.ΨSq, show ¬ Even (5 : ℤ) by decide]
+
+theorem phi_five (E : WeierstrassCurve k) :
+    E.Φ 5 = X * E.preΨ 5 ^ 2 - E.preΨ 6 * E.preΨ₄ * E.Ψ₂Sq := by
+  rw [WeierstrassCurve.Φ]
+  simp only [show (5 + 1 : ℤ) = 6 by rfl, show (5 - 1 : ℤ) = 4 by rfl,
+    if_neg (show ¬ Even (5 : ℤ) by decide)]
+  rw [psiSq_five, E.preΨ_four]
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 1000000 in
+-- Factoring through the `b₂b₆ - b₄² - 4b₈` relation avoids a huge coefficient expansion.
+theorem kummerDivisionPolynomialRecurrence_three (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialRecurrence E 3 := by
+  simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial]
+  rw [show (3 + 1 : ℤ) = 4 by rfl, show (3 - 1 : ℤ) = 2 by rfl,
+    E.ΨSq_three, E.Φ_three, E.Φ_four, E.Φ_two]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 3 * E.Ψ₂Sq * E.Ψ₃ * E.preΨ₄ * hb
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 2000000 in
+-- The fourth base case has a degree-32 normalization; the same invariant factor keeps it finite.
+theorem kummerDivisionPolynomialRecurrence_four (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialRecurrence E 4 := by
+  simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial]
+  rw [show (4 + 1 : ℤ) = 5 by rfl, show (4 - 1 : ℤ) = 3 by rfl,
+    E.ΨSq_four, E.Φ_four, phi_five, E.Φ_three, prePsi_six]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  rw [prePsi_five E]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 3 * E.Ψ₂Sq * E.preΨ₄ ^ 2 *
+      (E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3) * hb
+
 /-- The x-only differential-addition product for two affine points with distinct x-coordinates.
 It removes the need for a separate y-coordinate division polynomial in the scalar recurrence. -/
 theorem addX_mul_addNegX_kummer
@@ -716,6 +782,13 @@ theorem n_torsion_finite_of_psiSq_detection
 #check kummerDivisionPolynomialRecurrence_zero
 #check kummerDivisionPolynomialRecurrence_one
 #check kummerDivisionPolynomialRecurrence_two
+#check b_two_mul_b_six_sub_b_four_sq
+#check prePsi_five
+#check prePsi_six
+#check psiSq_five
+#check phi_five
+#check kummerDivisionPolynomialRecurrence_three
+#check kummerDivisionPolynomialRecurrence_four
 #check addX_mul_addNegX_kummer
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
@@ -746,6 +819,13 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms kummerDivisionPolynomialRecurrence_zero
 #print axioms kummerDivisionPolynomialRecurrence_one
 #print axioms kummerDivisionPolynomialRecurrence_two
+#print axioms b_two_mul_b_six_sub_b_four_sq
+#print axioms prePsi_five
+#print axioms prePsi_six
+#print axioms psiSq_five
+#print axioms phi_five
+#print axioms kummerDivisionPolynomialRecurrence_three
+#print axioms kummerDivisionPolynomialRecurrence_four
 #print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one

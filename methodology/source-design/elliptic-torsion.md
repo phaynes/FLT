@@ -174,10 +174,11 @@ form, and proves for every integer `n` the parity-normalization identity
 
 Thus the coordinate-gap denominator is no longer an open part of the recurrence. The remaining
 pure polynomial statement is named `KummerDivisionPolynomialRecurrence`; it says that applying the
-Kummer biquadratic to `[Φₙ,ΨSqₙ]` and `[X,1]` gives `Φₙ₊₁Φₙ₋₁`. Its cases `n = 0,1,2`
-are kernel-clean. A direct fully expanded `n = 3` experiment was deliberately stopped after its
-normal form became computationally disproportionate; the next implementation should use the
-binary `normEDSRec` structure, not repeat coefficient expansion at arbitrary indices.
+Kummer biquadratic to `[Φₙ,ΨSqₙ]` and `[X,1]` gives `Φₙ₊₁Φₙ₋₁`. Its complete base
+block `n = 0,1,2,3,4` is kernel-clean. The initially disproportionate coefficient expansions at
+`n = 3,4` were reduced to explicit multiples of the genuine generalized-Weierstrass invariant
+relation `b₂b₆ - b₄² - 4b₈ = 0`; Lean checks those factorizations. The next implementation should use
+the binary `normEDSRec` structure for the arbitrary index, not repeat coefficient expansion.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
@@ -208,7 +209,7 @@ Build in this order:
    division-polynomial recurrences. The distinct-x differential-addition/Kummer
    component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
    complete `KummerDivisionPolynomialRecurrence` by binary EDS induction. Its coordinate-gap square
-   identity, cases `n = 0,1,2`, bihomogeneous scaling, and infinity laws are closed.
+   identity, complete `n = 0,1,2,3,4` base block, bihomogeneous scaling, and infinity laws are closed.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -243,5 +244,6 @@ Lean goal is a recurrence step
 for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
 the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
 resulting `kummerBiquadratic` expression. The denominator-gap square is already proved generally;
-the remaining exact algebraic target is `KummerDivisionPolynomialRecurrence E n`, whose first three
-cases are proved and whose general proof should follow Mathlib's `normEDSRec` decomposition.
+the remaining exact algebraic target is `KummerDivisionPolynomialRecurrence E n`, whose complete
+five-case base block is proved and whose two general steps should follow Mathlib's `normEDSRec`
+decomposition.

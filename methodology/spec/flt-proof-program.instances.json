@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2; a branch-free homogeneous xRep statement is kernel-cleanly equivalent. Generalized-Weierstrass Kummer differential addition and its bihomogeneous scaling, symmetry, affine, and infinity laws are kernel-clean. The polynomial denominator-gap square identity is now proved for every integer, and the remaining named Kummer recurrence is kernel-clean at n=0,1,2; binary EDS induction, equal-x branches, and point-level assembly remain.",
+        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2; a branch-free homogeneous xRep statement is kernel-cleanly equivalent. Generalized-Weierstrass Kummer differential addition and its bihomogeneous scaling, symmetry, affine, and infinity laws are kernel-clean. The polynomial denominator-gap square identity is proved for every integer, and the named Kummer recurrence now has its complete n=0,1,2,3,4 base block; the n=3,4 cases factor through the proved Weierstrass b-invariant relation. Two binary EDS steps, equal-x branches, and point-level assembly remain.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
