@@ -2,6 +2,7 @@ import FLTMethodology.Probes.AutomorphicInfrastructureAudit
 import FLTMethodology.Probes.BrauerNesbittBoundary
 import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
 import FLTMethodology.Probes.ExistingContracts
+import FLTMethodology.Probes.FreyTwoTorsionBoundary
 import FLTMethodology.Probes.FreyTorsionRankAudit
 import FLTMethodology.Probes.GLnActionAudit
 import FLTMethodology.Probes.GLzeroAudit
@@ -11,6 +12,7 @@ import FLTMethodology.Probes.GoodReductionBoundary
 import FLTMethodology.Probes.HurwitzRatHatAudit
 import FLTMethodology.Probes.LibraryMatches
 import FLTMethodology.Probes.MLTSourceBoundary
+import FLTMethodology.Probes.MazurSourceBoundary
 import FLTMethodology.Probes.PGL2ClassificationAudit
 import FLTMethodology.Probes.TateCoordinatePointMapBoundary
 import FLTMethodology.Probes.TateDeltaAnalyticBridge

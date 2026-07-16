@@ -26,8 +26,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   finite-joint-image reduction are kernel-clean. The exact primary-source theorem and the finite
   algebra terminal remain open.
 - `mazur`: `PARTIAL`; Serre's exact Frey irreducibility proposition, its character-dichotomy source,
-  and Mazur's torsion theorem are pinned to primary pages. Semistability, quotient-isogeny, and
-  non-vacuous finite-torsion interfaces must be frozen before construction.
+  and Mazur's torsion theorem are pinned to primary pages. Semistability, the non-vacuous finite
+  torsion bound, full two-torsion, the exact line/quotient character dichotomy, and the terminal
+  `4p > 16` contradiction are now signature-green. The concrete Frey full-two-torsion provider is
+  additionally kernel-clean: all two-torsion points are explicitly classified and shown distinct.
+  Frey semistability, the concrete character theorem, and quotient-isogeny geometry remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.
