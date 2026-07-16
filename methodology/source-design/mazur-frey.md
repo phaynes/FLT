@@ -111,6 +111,8 @@ Reusable:
   `FLTMethodology.Mazur.freyCurve_hasFullRationalTwoTorsion`; and
 - the kernel-clean explicit Frey semistability provider
   `FLTMethodology.Mazur.freyCurve_isSemistableOverQ`; and
+- the kernel-clean generic torsion and irreducibility assembly in
+  `FLTMethodology/Probes/MazurTorsionAssembly.lean`; and
 - the exact T2 boundary `Mazur_statement`.
 
 Missing:
@@ -173,6 +175,26 @@ Thus `freyCurve_isSemistableOverQ` proves the exact `IsSemistableOverQ P.freyCur
 only `[propext, Classical.choice, Quot.sound]`, including the prime `2` case. This closes the
 semistability construction boundary rather than leaving it as a source-level assertion.
 
+The post-geometry assembly is now kernel-clean in
+`FLTMethodology/Probes/MazurTorsionAssembly.lean`:
+
+- `largeTorsion_of_fullTwoTorsion_of_pEmbedding` proves that four two-torsion points and an
+  injective `ZMod p` rational-point line give `4*p` distinct torsion points;
+- `FreyTorsionRouteWitness` freezes the exact output of the two character cases: either the Frey
+  curve or its odd-degree quotient, with full rational two-torsion and an embedded rational
+  `p`-torsion line;
+- `ReducibleCharacterContract` and `CharacterToTorsionRouteContract` separate Serre's character
+  theorem from quotient-isogeny geometry; and
+- `irreducible_of_component_contracts` proves irreducibility once those two providers and the
+  non-vacuous Mazur torsion bound are supplied.
+
+Every declaration in this assembly has only `[propext, Classical.choice, Quot.sound]`. The concrete
+specialization at `P.freyCurve.galoisRep P.p P.hppos` cannot yet have that audit: the existing
+`WeierstrassCurve.galoisRep` constructor transitively uses the admitted
+`WeierstrassCurve.n_torsion_finite`. This is the already modeled dependency
+`FLT-TATE-TORSION → FLT-TORSION-001 → FLT-HIST-MAZUR`, not a new Mazur assumption. It must close
+before the final concrete irreducibility theorem can be standard-axiom clean.
+
 The exact terminal source, primary intermediate sources, consumer signature, proof architecture,
 counterexample review, and library gap analysis are now fixed. Provider construction must not begin
 as one monolithic proof. The next definition-ready units are, in order:
@@ -180,9 +202,11 @@ as one monolithic proof. The next definition-ready units are, in order:
 1. prove that reducibility of the concrete `p`-torsion representation supplies
    `SemistableReducibleCharacterDichotomy`;
 2. freeze and implement an `EllipticCurveQuotientIsogenyContract` for the cyclotomic-line case;
-3. prove odd-degree quotient isogenies preserve full rational two-torsion and that either character
-   case supplies `HasLargeRationalTorsion`; and
-4. replace `Mazur_statement` by a provider of `RationalTorsionBound16`.
+3. prove odd-degree quotient isogenies preserve full rational two-torsion and instantiate the
+   kernel-clean `FreyTorsionRouteWitness` assembly;
+4. replace `Mazur_statement` by a provider of `RationalTorsionBound16`; and
+5. close `FLT-TATE-TORSION`, so the exact Frey Galois-representation specialization no longer
+   carries `sorryAx` from its constructor.
 
 Only after the remaining geometric signatures elaborate and are source-reviewed should `FreyPackage.mazur` move
 from `PARTIAL` to `READY` for provider implementation.
