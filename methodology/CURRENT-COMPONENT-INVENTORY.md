@@ -40,7 +40,7 @@ transitive-sorry audits are the authority for individual declarations.
 | Auxiliary-field prime condition | Unramified in blueprint; split completely in the Taylor near-reference | Source choice unresolved | Explicit definition/source gap after Opus HR-04 |
 | Potential-modularity assembly | Moret-Bailly, auxiliary curve, induced modularity, Jacquet–Langlands | Mostly absent as an integrated Lean route | Critical path |
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
-| Brauer--Nesbitt comparison | `FLTProbe.BrauerNesbitt.GroupContract` and its consumer bridges | Joint-image reduction, residual specialization, and residual rank transport are kernel-clean; reviewed narrowing is partial only and the terminal theorem remains absent | Coefficient and compatible-family prerequisite |
+| Brauer--Nesbitt comparison | `FLTProbe.BrauerNesbitt.GroupContract` and its consumer bridges | Joint-image reduction, group-algebra trace extension, product-module equivalence, residual specialization, and residual rank transport are kernel-clean; reviewed narrowing is partial only and the central projector/character terminal remains absent | Coefficient and compatible-family prerequisite |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
 | Top theorem | `flt`, `PNat.pow_add_pow_ne_pow` | Compiles upstream but is not kernel-clean | T1–T3 terminal |
 
@@ -52,7 +52,7 @@ node are now complete.
 
 | Node | Classification | Immediate reason |
 |---|---|---|
-| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations and the exact Brauer--Nesbitt consumer boundary are signature-green; stable-lattice independence and the arbitrary-field Brauer--Nesbitt proof remain open |
+| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations and the exact Brauer--Nesbitt consumer boundary are signature-green; trace extension and product-module transport are kernel-clean, while stable-lattice independence and the central Brauer--Nesbitt character/projector theorem remain open |
 | `FLT-MLT-PADIC-HODGE` | BLOCKED | Depends on the coefficient/lattice boundary |
 | `FLT-RACAR-DEF` | BLOCKED | Depends on coefficient data and the admitted automorphic support cluster |
 | `FLT-SGOOD-DEF` | COMPLETE | Exact four-field definition builds with the standard axiom trio and independent Fable/GPT reviews accept it |
@@ -68,7 +68,7 @@ W00: `1 / 7` refreshed nodes complete (`1 / 4` original core nodes).
 |---|---|---|
 | `FLT-TATE-TORSION` | BLOCKED | Two admissions remain, and the file explicitly requires coordination with KB and David Angdinata before work on them |
 | `FLT-TATE-FLAT` | BLOCKED | The resultant degree normalization is kernel-clean; the universal division-polynomial identity, easy Neron--Ogg--Shafarevich theorem, local/global torsion-action bridge, and finite-flat group-scheme/Hopf-algebra input at `P.p` remain |
-| `FLT-TATE-UNRAMIFIED` | ACTIVE | Four Galois-action helpers, Tate-curve ellipticity, and the concrete/formal reciprocal-j bridge are kernel-clean; nine admissions remain, with the first construction leaf blocked on the integral Euler-product discriminant identity and local-field descent |
+| `FLT-TATE-UNRAMIFIED` | ACTIVE | Four Galois-action helpers, Tate-curve ellipticity, the concrete/formal reciprocal-j bridge, and the algebraic/Eisenstein half of the discriminant comparison are kernel-clean; nine admissions remain, with the first construction leaf blocked on the exact formal-product/q-expansion bridge and local-field descent |
 | `FLT-TATE-WEIL` | BLOCKED | The current pairing type admits the zero map, which fails the frozen Tate normalization consumer; a source-faithful Weil-pairing construction is absent |
 | `FLT-SUPPORT-TATE` | BLOCKED | Join waits for all four support subclusters |
 | `FLT-TORSION-001` | BLOCKED | `WeierstrassCurve.galoisRep` waits for `FLT-TATE-TORSION` closure |

@@ -61,6 +61,13 @@ sufficient for the unchanged full contract. The residual proposition remains sub
 semisimplicity, characteristic-polynomial equality on all group elements, and the extracted finite
 basis, prove the representation equivalence. No `sorryAx` is hidden in the reduction.
 
+Two further bridges are now kernel-clean. `trace_asAlgebraHom_eq` extends trace equality on group
+elements linearly to every element of the group algebra. `prodAsModuleEquiv` identifies the module
+of the product representation with the product of the two individual representation modules;
+`prod_asAlgebraHom_apply` supplies its load-bearing action calculation. These remove the group-
+algebra linearity and product-module API gaps. They do not prove the remaining central isotypic-
+projector/simple-character theorem.
+
 ## Two architectures tested
 
 ### A. Full arbitrary-field theorem
@@ -116,8 +123,8 @@ Build command:
 lake env lean FLTMethodology/Probes/BrauerNesbittBoundary.lean
 ```
 
-Expected axiom audit for the proved bridges, joint-image reduction, trace helper, and finite
-regression:
+Expected axiom audit for the proved bridges, joint-image reduction, trace and product-module
+helpers, and finite regression:
 
 ```text
 [propext, Classical.choice, Quot.sound]

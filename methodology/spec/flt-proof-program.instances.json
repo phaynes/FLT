@@ -2062,7 +2062,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The joint-image reduction, specialized residual consumer, and residual rank transport are kernel-clean. Independent Fable 5 and GPT-5.6 xhigh reviews returned NARROWING PARTIAL ONLY because the compatible-family branch has characteristic-zero coefficients and only almost-all Frobenius comparison.",
+        "evidence": "The joint-image reduction, group-algebra trace extension, product-module equivalence, specialized residual consumer, and residual rank transport are kernel-clean. Independent Fable 5 and GPT-5.6 xhigh reviews returned NARROWING PARTIAL ONLY because the compatible-family branch has characteristic-zero coefficients and only almost-all Frobenius comparison.",
         "loc_p50": 5000,
         "loc_p80": 22000,
         "loc_p95": 80000,
@@ -2085,7 +2085,7 @@
       "mathematical_name": "Brauer-Nesbitt representation comparison",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
-      "proof_pattern": "Retain the umbrella until either its finite joint-image terminal is proved or exact residual and characteristic-zero branches are both frozen. Reuse residualModel_finrank_eq_two for the residual branch; do not hide the compatible-family Chebotarev/semisimplicity terminal.",
+      "proof_pattern": "Retain the umbrella until either its finite joint-image terminal is proved or exact residual and characteristic-zero branches are both frozen. Reuse trace_asAlgebraHom_eq and prodAsModuleEquiv for the algebraically closed character/projector argument, and residualModel_finrank_eq_two for the residual branch; do not hide the compatible-family Chebotarev/semisimplicity terminal.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
       "source_condition_risks": "The arbitrary-field contract is true and signature-green, but the documented finite separable splitting-field route is incomplete over imperfect fields. The reviewed rank-two algebraically closed shortcut can serve only the residual coefficient branch; it cannot serve characteristic-zero compatible-family members or replace the absent Chebotarev bridge.",
@@ -2443,7 +2443,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Four quotient-action helpers, ellipticity, and seven reciprocal-j bridge declarations are standard-axiom clean. The exact remaining coefficient goal is the classical Lambert-series/Euler-product discriminant identity; Mathlib has only an unbridged complex-analytic version.",
+        "evidence": "Four quotient-action helpers, ellipticity, seven reciprocal-j bridge declarations, and seven algebraic/Eisenstein discriminant-route declarations are standard-axiom clean. The exact remaining coefficient goal is the formal Euler product's equality with the modular discriminant qExpansion.",
         "loc_p50": 4500,
         "loc_p80": 18000,
         "loc_p95": 65000,
@@ -2468,10 +2468,10 @@
       "mathematical_name": "Tate-curve and bad-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-UNRAMIFIED",
-      "proof_pattern": "Prove the integral discriminant Euler-product identity and evaluate the existing substitution inverse to obtain the j round-trip; then descend the variable change to k, construct tateEquiv, and prove the remaining functoriality/uniformization declarations. Reuse the kernel-clean ellipticity, reciprocal-j, and Tate-quotient action helpers.",
+      "proof_pattern": "Prove the formal-product/qExpansion bridge isolated by TateDeltaFormalRoute, use map injectivity for the integral discriminant identity, and evaluate the existing substitution inverse to obtain the j round-trip; then descend the variable change to k, construct tateEquiv, and prove the remaining functoriality/uniformization declarations. Reuse the kernel-clean ellipticity, reciprocal-j, and Tate-quotient action helpers.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
-      "source_condition_risks": "Nine admissions remain. Ellipticity and the reciprocal-j formal/concrete bridge are kernel-clean. The next exact theorem is weierstrassDiscriminantFormal = \u0394Formal, an integral formal-series Euler-product identity not supplied by the pinned complex-analytic modular-form API. The variable change must then descend from a separable closure to the local field, for which pinned descent APIs do not supply the route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
+      "source_condition_risks": "Nine admissions remain. Ellipticity, the reciprocal-j formal/concrete bridge, and the algebraic/Eisenstein half of the discriminant comparison are kernel-clean. The exact missing theorem identifies the mapped formal Euler product \u0394Formal with the complex modular-discriminant qExpansion; pinned Mathlib supplies the two sides but no bridge. The variable change must then descend from a separable closure to the local field, for which pinned descent APIs do not supply the route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
       "source_refs": [
         "SRC-001",
         "SRC-005"

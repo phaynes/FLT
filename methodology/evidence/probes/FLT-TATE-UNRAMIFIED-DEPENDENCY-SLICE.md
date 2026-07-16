@@ -74,8 +74,22 @@ assumes `IsSepClosed k`, while the needed variable change must descend to the or
 Existing repository descent infrastructure covers fixed data over a quadratic extension, not this
 separable-closure descent.
 
+`FLTMethodology/Probes/TateDeltaFormalRoute.lean` now makes the first boundary exact. It proves,
+with the standard axiom trio, that the integral `E₄` and `E₆` series map to Mathlib's complex
+q-expansions, that `weierstrassDiscriminantFormal` maps to the modular discriminant q-expansion,
+and that the sole remaining bridge
+
+```lean
+PowerSeries.map (Int.castRingHom ℂ) TateCurve.ΔFormal =
+  UpperHalfPlane.qExpansion 1 CuspForm.discriminant
+```
+
+implies `weierstrassDiscriminantFormal = ΔFormal` by injectivity. Pinned Mathlib supplies both the
+analytic Euler-product theorem and the formal convergent product, but no declaration relating the
+analytic q-product's Taylor series to that formal t-product.
+
 This is a mathematical identity and proof/API obstruction, not a counterexample. The next exact
-prerequisites are the formal discriminant identity, evaluation of the resulting substitution
-identity, and descent of the variable change to `k`.
+prerequisites are the displayed formal-product/q-expansion bridge, evaluation of the resulting
+substitution identity, and descent of the variable change to `k`.
 
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
