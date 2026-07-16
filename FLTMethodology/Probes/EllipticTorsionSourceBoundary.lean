@@ -153,6 +153,50 @@ def DivisionPolynomialXRelation
     | .zero => (E.ΨSq (n : ℤ)).eval x = 0
     | .some xn _ _ => xn * (E.ΨSq (n : ℤ)).eval x = (E.Φ (n : ℤ)).eval x
 
+/-- The same x-coordinate relation in branch-free homogeneous form using Mathlib's `xRep` Kummer
+coordinate. This is the preferred scalar-recurrence boundary. -/
+def DivisionPolynomialXHomogeneous
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop :=
+  ∀ {x y : k} (h : E.toAffine.Nonsingular x y),
+    let Q : (E⁄k).Point :=
+      (n : ℤ) • (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point)
+    Q.xRep 0 * (E.ΨSq (n : ℤ)).eval x = Q.xRep 1 * (E.Φ (n : ℤ)).eval x
+
+theorem xHomogeneous_of_xRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hr : DivisionPolynomialXRelation E n) : DivisionPolynomialXHomogeneous E n := by
+  intro x y h
+  have hrel := hr h
+  generalize hpoint : (n : ℤ) •
+      (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) = Q at hrel ⊢
+  cases Q with
+  | zero =>
+      dsimp only at hrel ⊢
+      simpa [WeierstrassCurve.Affine.Point.xRep] using hrel
+  | some xn yn hn =>
+      dsimp only at hrel ⊢
+      simpa [WeierstrassCurve.Affine.Point.xRep] using hrel
+
+theorem xRelation_of_xHomogeneous
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hh : DivisionPolynomialXHomogeneous E n) : DivisionPolynomialXRelation E n := by
+  intro x y h
+  have hhom := hh h
+  generalize hpoint : (n : ℤ) •
+      (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) = Q at hhom ⊢
+  cases Q with
+  | zero =>
+      dsimp only at hhom ⊢
+      simpa [WeierstrassCurve.Affine.Point.xRep] using hhom
+  | some xn yn hn =>
+      dsimp only at hhom ⊢
+      simpa [WeierstrassCurve.Affine.Point.xRep] using hhom
+
+theorem xHomogeneous_iff_xRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ} :
+    DivisionPolynomialXHomogeneous E n ↔ DivisionPolynomialXRelation E n :=
+  ⟨xRelation_of_xHomogeneous E, xHomogeneous_of_xRelation E⟩
+
 theorem psiSqDetectsNTorsion_of_xRelation
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hr : DivisionPolynomialXRelation E n) : PsiSqDetectsNTorsion E n := by
@@ -545,6 +589,10 @@ theorem n_torsion_finite_of_psiSq_detection
 #check psiSq_two_eval_eq_negY_gap_sq
 #check divisionPolynomialXFormula_two
 #check DivisionPolynomialXRelation
+#check DivisionPolynomialXHomogeneous
+#check xHomogeneous_of_xRelation
+#check xRelation_of_xHomogeneous
+#check xHomogeneous_iff_xRelation
 #check psiSqDetectsNTorsion_of_xRelation
 #check divisionPolynomialXFormula_of_xRelation
 #check divisionPolynomialXRelation_zero
@@ -566,6 +614,9 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms psiSq_two_eval_eq_negY_gap_sq
 #print axioms divisionPolynomialXFormula_two
 #print axioms psiSqDetectsNTorsion_of_xRelation
+#print axioms xHomogeneous_of_xRelation
+#print axioms xRelation_of_xHomogeneous
+#print axioms xHomogeneous_iff_xRelation
 #print axioms divisionPolynomialXFormula_of_xRelation
 #print axioms divisionPolynomialXRelation_zero
 #print axioms divisionPolynomialXRelation_one

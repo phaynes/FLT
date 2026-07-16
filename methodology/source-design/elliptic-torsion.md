@@ -78,6 +78,9 @@ theorem psiSqDetectsNTorsion_of_xFormula
 def DivisionPolynomialXRelation
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop
 
+def DivisionPolynomialXHomogeneous
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop
+
 theorem divisionPolynomialXFormula_of_xRelation
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hr : DivisionPolynomialXRelation E n) : DivisionPolynomialXFormula E n
@@ -131,6 +134,18 @@ case splits. Kernel-clean adapters derive both the exact x-coordinate formula an
 detector from it. The relation is proved for `n = 0,1,2`; therefore the new recurrence interface is
 tested across infinity, identity, vertical-doubling, and nonvertical-doubling branches.
 
+`DivisionPolynomialXHomogeneous` is a branch-free equivalent using Mathlib's existing
+`Affine.Point.xRep` Kummer coordinate. For `Q = n • P` it states
+
+```text
+Q.xRep[0] * ΨSqₙ(x) = Q.xRep[1] * Φₙ(x).
+```
+
+At infinity `xRep = [1,0]`, so this is `ΨSqₙ(x)=0`; at an affine point `xRep = [x(Q),1]`,
+so it is the cross-multiplied x-coordinate formula. Both directions of equivalence to the
+match-based relation are kernel-clean. This is the preferred induction statement because it
+eliminates branch syntax from the algebraic recurrence.
+
 The apparent need for a separate y-coordinate division polynomial has also been removed from the
 design. `addX_mul_addNegX_kummer` proves the generalized-Weierstrass differential-addition identity
 for two affine points with distinct x-coordinates: the product of the x-coordinates of `P + Q` and
@@ -168,9 +183,10 @@ Build in this order:
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
 3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full detector block `n = 0,1,2,3,4` is closed. The
-   denominator-free `DivisionPolynomialXRelation` implies both the exact x-coordinate formula and
-   the detector and is proved for `n = 0,1,2`. Prove this relation for arbitrary `n` from the affine
-   group law and division-polynomial recurrences. The distinct-x differential-addition/Kummer
+   branch-free `DivisionPolynomialXHomogeneous` is equivalent to the denominator-free relation,
+   which implies both the exact x-coordinate formula and detector and is proved for `n = 0,1,2`.
+   Prove the homogeneous relation for arbitrary `n` from the affine group law and
+   division-polynomial recurrences. The distinct-x differential-addition/Kummer
    component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
    polynomial recurrence normalization.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
@@ -198,11 +214,12 @@ Build in this order:
 The next bounded theorem to attempt is the general provider for:
 
 ```lean
-FLTMethodology.Torsion.DivisionPolynomialXRelation E n
+FLTMethodology.Torsion.DivisionPolynomialXHomogeneous E n
 ```
 
-Its `n = 0,1,2` cases and its implications to `DivisionPolynomialXFormula` and
-`PsiSqDetectsNTorsion` are now proved. The first likely residual Lean goal is a recurrence step
+Its equivalence to the match-based relation, that relation's `n = 0,1,2` cases, and its implications
+to `DivisionPolynomialXFormula` and `PsiSqDetectsNTorsion` are now proved. The first likely residual
+Lean goal is a recurrence step
 for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
 the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
 resulting `kummerBiquadratic` expression to Mathlib's odd/even `preΨ`, `ΨSq`, and `Φ` recurrences.
