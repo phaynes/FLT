@@ -2457,13 +2457,13 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The formal Euler-product/qExpansion bridge and integral discriminant identity now compile in a methodology probe with only propext, Classical.choice, and Quot.sound. Four quotient-action helpers, ellipticity, and seven reciprocal-j bridge declarations are also standard-axiom clean; provider migration, substitution evaluation, and local-field descent remain.",
-        "loc_p50": 4500,
-        "loc_p80": 18000,
-        "loc_p95": 65000,
-        "tokens_p50": 550000,
-        "tokens_p80": 2800000,
-        "tokens_p95": 12000000
+        "evidence": "The formal Euler-product/qExpansion bridge, integral discriminant identity, general substitution-evaluation theorem, both concrete inverse laws, and explicit Tate-curve split-multiplicative reduction now compile in methodology probes with only propext, Classical.choice, and Quot.sound. Four quotient-action helpers, ellipticity, and seven reciprocal-j bridge declarations are also standard-axiom clean; provider migration and local-field same-j form classification remain.",
+        "loc_p50": 3500,
+        "loc_p80": 15000,
+        "loc_p95": 58000,
+        "tokens_p50": 450000,
+        "tokens_p80": 2300000,
+        "tokens_p95": 10500000
       },
       "expected_module": "FLT.KnownIn1980s.EllipticCurves",
       "graph_depth": 0,
@@ -2476,16 +2476,19 @@
         "WeierstrassCurve.isElliptic_tateCurve",
         "WeierstrassCurve.exists_variableChange_of_j_eq",
         "ModularForm.discriminant_eq_q_prod",
+        "PowerSeries.comp_aeval",
+        "WeierstrassCurve.nodePoly",
+        "WeierstrassCurve.exists_smul_eq_or_exists_smul_eq_quadraticTwist",
         "QuotientGroup.congr",
         "ValuativeExtension"
       ],
       "mathematical_name": "Tate-curve and bad-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-UNRAMIFIED",
-      "proof_pattern": "Migrate the kernel-clean TateDeltaAnalyticBridge proof into a verified provider, consume the integral discriminant identity, and evaluate the existing substitution inverse to obtain the j round-trip; then descend the variable change to k, construct tateEquiv, and prove the remaining functoriality/uniformization declarations. Reuse the kernel-clean ellipticity, reciprocal-j, and Tate-quotient action helpers.",
+      "proof_pattern": "Migrate the kernel-clean TateDeltaAnalyticBridge, TateSubstitutionBridge, and TateReductionBridge proofs into a verified provider; use the resulting same-j and split-reduction facts to prove the source-faithful local-field form-classification theorem, then construct tateEquiv and prove the remaining functoriality/uniformization declarations. Reuse the kernel-clean quadratic-twist classification, ellipticity, reciprocal-j, and Tate-quotient action helpers.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
-      "source_condition_risks": "Nine provider admissions remain. Ellipticity and the reciprocal-j formal/concrete bridge are kernel-clean. Methodology probes now prove the mapped formal Euler product equals the modular-discriminant qExpansion and derive weierstrassDiscriminantFormal = \u0394Formal with the standard axiom trio, but these declarations are not yet migrated into the verified FLT root. The variable change must still be evaluated and descend from a separable closure to the local field, for which pinned descent APIs do not supply the route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
+      "source_condition_risks": "Nine provider admissions remain. Ellipticity and the reciprocal-j formal/concrete bridge are kernel-clean. Methodology probes now prove the mapped formal Euler product equals the modular-discriminant qExpansion, derive weierstrassDiscriminantFormal = \u0394Formal, prove evaluation commutes with formal substitution, obtain both concrete Tate-parameter inverse laws, and prove that the explicit Tate curve is minimal with split multiplicative reduction, all with the standard axiom trio; these declarations are not yet migrated into the verified FLT root. The variable change must still be constructed over the original local field. The pinned same-j theorem only applies over a separably closed field. Existing quadratic-twist classification is promising, but the theorem excluding a second split-multiplicative twist is not packaged. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
       "source_refs": [
         "SRC-001",
         "SRC-005"

@@ -37,8 +37,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
 - `coefficients`: `PARTIAL`; provisional residual relations elaborate, but lattice existence,
   semisimplification, and uniqueness remain open.
 - `tate-frey`: `PARTIAL`; the downstream signatures and several support reductions are known. The
-  formal Euler-product/q-expansion identity is now kernel-clean in a methodology probe, but provider
-  migration, local-field descent, and the remaining geometric construction families are open.
+  formal Euler-product/q-expansion identity, substitution-evaluation bridge, and concrete
+  Tate-parameter round trip, and split-multiplicative reduction of the explicit Tate curve are now
+  kernel-clean in methodology probes, but provider migration, local-field form classification, and
+  the remaining geometric construction families are open.
 - all remaining components: `BLOCKED` at this global gate until their own complete packet exists.
 
 This deliberately prevents a single attractive theorem from authorizing downstream construction

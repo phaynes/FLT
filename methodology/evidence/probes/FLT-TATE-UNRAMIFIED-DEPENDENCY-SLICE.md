@@ -59,8 +59,8 @@ These identify the reciprocal concrete Tate `j`-invariant with evaluation of the
 Weierstrass-derived formal series. Their exact shared axiom closure is
 `[propext, Classical.choice, Quot.sound]`.
 
-The remaining construction leaf, `exists_variableChange_tateCurve`, now exposes two exact
-mathematical boundaries. First it needs the integral formal identity
+The remaining construction leaf, `exists_variableChange_tateCurve`, exposed two exact
+mathematical boundaries. The first was the integral formal identity
 
 ```lean
 TateCurve.weierstrassDiscriminantFormal = TateCurve.ΔFormal
@@ -68,8 +68,7 @@ TateCurve.weierstrassDiscriminantFormal = TateCurve.ΔFormal
 
 equating the Lambert-series discriminant polynomial with the Euler product
 `X * (∏' m, (1 - X ^ (m + 1))) ^ 24`. Mathlib has complex-analytic modular-form versions, but no
-bridge to these integral formal series. Once this identity is supplied, the existing substitution
-inverse can finish the analytic `j(tateCurve q)` round-trip. Second, the pinned same-`j` theorem
+bridge to these integral formal series. The second is geometric: the pinned same-`j` theorem
 assumes `IsSepClosed k`, while the needed variable change must descend to the original local field.
 Existing repository descent infrastructure covers fixed data over a quadratic extension, not this
 separable-closure descent.
@@ -121,8 +120,44 @@ Both declarations have axiom closure `[propext, Classical.choice, Quot.sound]`. 
 the verified FLT root and therefore do not by themselves remove any of the nine admissions in
 `TateCurve.lean`; provider migration and downstream consumption are separate gates.
 
-The formal-product/q-expansion obstruction is therefore discharged at methodology-probe level. The
-next exact prerequisites are migration of this theorem into a verified provider, evaluation of the
-resulting substitution identity, and descent of the variable change to `k`.
+`FLTMethodology/Probes/TateSubstitutionBridge.lean` now also closes the evaluation boundary. It
+proves the reusable nonarchimedean identity
+
+```lean
+TateCurve.evalInt q (PowerSeries.subst G F) =
+  TateCurve.evalInt (TateCurve.evalInt q G) F
+```
+
+for every integral `G` with zero constant coefficient and every `q` in the open unit disc. The proof
+evaluates in the linearly topologized ring of integers, uses Mathlib's `PowerSeries.comp_aeval`, and
+then transports the result back to the local field. Applying the theorem to `jInv` and
+`jInvReverse`, and consuming the discriminant identity above, gives both concrete round trips
+
+```lean
+WeierstrassCurve.tateParameter (WeierstrassCurve.tateCurve (q : k)).j = (q : k)
+WeierstrassCurve.tateCurve (WeierstrassCurve.tateParameter j) |>.j = j
+```
+
+with axiom closure `[propext, Classical.choice, Quot.sound]`.
+
+`FLTMethodology/Probes/TateReductionBridge.lean` closes the other premise needed to distinguish
+the local-field form. For nonzero `q` in the open unit disc it proves that `tateCurve q` is
+integral, minimal, multiplicative, and split multiplicative. The last step computes the reduced
+node polynomial as
+
+```lean
+X ^ 2 + X = X * (X + 1),
+```
+
+so the argument is uniform in the residue characteristic. The load-bearing declaration
+`TateReductionProbe.tateCurve_hasSplitMultiplicativeReduction` has axiom closure
+`[propext, Classical.choice, Quot.sound]`.
+
+The formal-product/q-expansion and substitution-evaluation obstructions are therefore discharged at
+methodology-probe level. The next exact prerequisites are migration into a verified provider and a
+source-faithful proof that two split-multiplicative local-field curves with the same nonintegral
+`j` are related by a change of variables over `k`. The repository's quadratic-twist classification
+is a promising route, but the no-second-split-twist consequence is not yet packaged as a theorem.
+Equality of `j`-invariants alone only gives a change over a separably closed field.
 
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
