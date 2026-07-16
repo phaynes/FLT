@@ -33,10 +33,22 @@ only two provider propositions for each package and a proof that they cannot bot
 irreducibility and reducibility meanings belong to a separately audited adapter.
 -/
 structure FreyContradictionInterface where
+  /--
+  An abstract proposition supplied by a later adapter. This field alone does not assert or encode
+  Galois-representation irreducibility; the concrete adapter must separately be audited to identify
+  it definitionally with that proposition.
+  -/
   Irreducible : FreyPackage → Prop
+  /--
+  An abstract proposition supplied by a later adapter. Its concrete reducibility meaning is not
+  enforced by this provider-neutral type and must be established at the adapter boundary.
+  -/
   Reducible : FreyPackage → Prop
+  /-- Provider evidence for the abstract `Irreducible` socket. -/
   irreducible : ∀ P, Irreducible P
+  /-- Provider evidence for the abstract `Reducible` socket. -/
   reducible : ∀ P, Reducible P
+  /-- The two abstract provider conclusions are incompatible for each hypothetical package. -/
   incompatible : ∀ P, Irreducible P → Reducible P → False
 
 namespace FreyContradictionInterface
