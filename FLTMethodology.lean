@@ -2,6 +2,7 @@ import FLTMethodology.Probes.AutomorphicInfrastructureAudit
 import FLTMethodology.Probes.BrauerNesbittBoundary
 import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
 import FLTMethodology.Probes.ExistingContracts
+import FLTMethodology.Probes.FreySemistabilityBoundary
 import FLTMethodology.Probes.FreyTwoTorsionBoundary
 import FLTMethodology.Probes.FreyTorsionRankAudit
 import FLTMethodology.Probes.GLnActionAudit

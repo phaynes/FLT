@@ -30,7 +30,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
   torsion bound, full two-torsion, the exact line/quotient character dichotomy, and the terminal
   `4p > 16` contradiction are now signature-green. The concrete Frey full-two-torsion provider is
   additionally kernel-clean: all two-torsion points are explicitly classified and shown distinct.
-  Frey semistability, the concrete character theorem, and quotient-isogeny geometry remain open.
+  The concrete Frey semistability provider is also kernel-clean: explicit `c₄` and discriminant
+  unit arguments give good or multiplicative reduction at every rational prime. The concrete
+  character theorem and quotient-isogeny geometry remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

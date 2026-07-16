@@ -45,7 +45,7 @@ Mazur's paper was insufficient: Mazur's torsion theorem does not by itself state
 | `B ≡ 0 (mod 32)` | `P.hb2`, `P.hp5`, and divisibility of an odd-prime power of an even integer | bridge open |
 | curve `y²=x(x-A)(x+B)` | `P.freyCurve` is definitionally the corresponding Weierstrass model up to the sign convention above | exact model audit open |
 | prime `p ≥ 5` | `P.pp`, `P.hp5` | exact |
-| semistability | proved on paper from the explicit model; no repository `IsSemistable` vocabulary exists | definition gap |
+| semistability | `FLTMethodology.Mazur.freyCurve_isSemistableOverQ` proves good or multiplicative reduction of the chosen minimal model at every rational prime | kernel-clean methodology provider |
 | full rational 2-torsion | `FLTMethodology.Mazur.freyCurve_hasFullRationalTwoTorsion` explicitly classifies the four points on the transformed model | kernel-clean methodology provider |
 | rational `p`-torsion after selecting `E` or `E/X` | Serre 1972 Lemma 6 plus quotient by a rational subgroup | quotient-isogeny API absent |
 | rational torsion has order at most 16 | current `Mazur_statement` matches the numerical consequence | named axiom at T2; T3 proof open |
@@ -109,18 +109,20 @@ Reusable:
 - `AddCommGroup.torsion`, `Set.ncard`, and finite-cardinality lemmas; and
 - the kernel-clean explicit Frey two-torsion provider
   `FLTMethodology.Mazur.freyCurve_hasFullRationalTwoTorsion`; and
+- the kernel-clean explicit Frey semistability provider
+  `FLTMethodology.Mazur.freyCurve_isSemistableOverQ`; and
 - the exact T2 boundary `Mazur_statement`.
 
 Missing:
 
-- an elliptic-curve semistability predicate and the proof for `P.freyCurve`;
 - quotienting an elliptic curve by a finite Galois-stable subgroup and the induced isogeny;
 - the Serre stable-line character dichotomy in repository vocabulary;
 - preservation of that 2-torsion under an odd-degree quotient isogeny; and
 - a standard-axiom proof of Mazur Theorem 8.
 
-The current and isolated latest-Mathlib scans found no quotient-isogeny or semistability API that
-closes these gaps.
+The current and isolated latest-Mathlib scans found no quotient-isogeny API that closes the
+remaining geometric gap. The existing minimal-model reduction API was sufficient to construct the
+concrete Frey semistability provider below.
 
 ## Definition-of-ready decision
 
@@ -157,17 +159,30 @@ Consequently `freyCurve_hasFullRationalTwoTorsion` proves the exact
 `[propext, Classical.choice, Quot.sound]`. This removes the earlier construction-API risk rather
 than merely freezing its signature.
 
+The concrete semistability provider is now kernel-clean in
+`FLTMethodology/Probes/FreySemistabilityBoundary.lean`:
+
+- at a prime dividing `a*b*c`, pairwise coprimality and the two explicit `c₄` formulas prove that
+  `c₄` is a local unit;
+- away from that support, the explicit discriminant identity proves that the discriminant is a
+  local unit;
+- both unit facts are transported through the integral model to the chosen minimal model; and
+- every rational prime therefore has good or multiplicative reduction.
+
+Thus `freyCurve_isSemistableOverQ` proves the exact `IsSemistableOverQ P.freyCurve` contract with
+only `[propext, Classical.choice, Quot.sound]`, including the prime `2` case. This closes the
+semistability construction boundary rather than leaving it as a source-level assertion.
+
 The exact terminal source, primary intermediate sources, consumer signature, proof architecture,
 counterexample review, and library gap analysis are now fixed. Provider construction must not begin
 as one monolithic proof. The next definition-ready units are, in order:
 
-1. prove `IsSemistableOverQ P.freyCurve` from the explicit Frey discriminant and `c₄` valuations;
-2. prove that reducibility of the concrete `p`-torsion representation supplies
+1. prove that reducibility of the concrete `p`-torsion representation supplies
    `SemistableReducibleCharacterDichotomy`;
-3. freeze and implement an `EllipticCurveQuotientIsogenyContract` for the cyclotomic-line case;
-4. prove odd-degree quotient isogenies preserve full rational two-torsion and that either character
+2. freeze and implement an `EllipticCurveQuotientIsogenyContract` for the cyclotomic-line case;
+3. prove odd-degree quotient isogenies preserve full rational two-torsion and that either character
    case supplies `HasLargeRationalTorsion`; and
-5. replace `Mazur_statement` by a provider of `RationalTorsionBound16`.
+4. replace `Mazur_statement` by a provider of `RationalTorsionBound16`.
 
 Only after the remaining geometric signatures elaborate and are source-reviewed should `FreyPackage.mazur` move
 from `PARTIAL` to `READY` for provider implementation.
