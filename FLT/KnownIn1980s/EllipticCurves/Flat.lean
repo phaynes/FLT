@@ -217,6 +217,26 @@ Reference for the resultant identity in short Weierstrass form: M. Ayad, *Points
 S-entiers des courbes elliptiques*, Manuscripta Math. 76 (1992), 305–324.
 -/
 
+/-- The explicitly padded degrees used by `resultant_Φ_ΨSq` give the same resultant as
+Mathlib's default degree parameters.  The only possible discrepancy is padding the degree of
+`ΨSq n` in residue characteristics dividing `n`; `Φ n` is monic of the prescribed degree, so
+`Polynomial.resultant_add_right_deg` shows that this padding contributes only a power of `1`. -/
+theorem WeierstrassCurve.resultant_Φ_ΨSq_explicit_eq_default
+    {R₀ : Type*} [CommRing R₀] (W : WeierstrassCurve R₀) (n : ℤ) :
+    (W.Φ n).resultant (W.ΨSq n) (n.natAbs ^ 2) (n.natAbs ^ 2 - 1) =
+      (W.Φ n).resultant (W.ΨSq n) := by
+  nontriviality R₀
+  let m := n.natAbs ^ 2
+  let d := n.natAbs ^ 2 - 1
+  have hΦ : (W.Φ n).natDegree = m := by simp [m]
+  have hΨ : (W.ΨSq n).natDegree ≤ d := by simpa [d] using W.natDegree_ΨSq_le n
+  have hd : (W.ΨSq n).natDegree + (d - (W.ΨSq n).natDegree) = d :=
+    Nat.add_sub_of_le hΨ
+  rw [show n.natAbs ^ 2 = m by rfl, show n.natAbs ^ 2 - 1 = d by rfl,
+    ← hd, Polynomial.resultant_add_right_deg (W.Φ n) (W.ΨSq n) m
+      (W.ΨSq n).natDegree (d - (W.ΨSq n).natDegree) le_rfl]
+  simp [hΦ, m, W.coeff_Φ]
+
 /-- The resultant of the division polynomials `Φ n` (taken with degree `n²`) and `ΨSq n`
 (taken with degree `n² - 1`) is `±Δ ^ ((n⁴ - n²)/6)`. The sign presumably depends on `n`
 and on the conventions in `Polynomial.resultant`; whoever proves this should pin it down
