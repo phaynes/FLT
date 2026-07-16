@@ -148,6 +148,12 @@ theorem coeff_one_weierstrassDiscriminantFormal :
     norm_num [ArithmeticFunction.sigma_apply]
   simp [weierstrassDiscriminantFormal, coeff_one_mul, coeff_one_pow, h₄₀, h₆₀, h₆₁]
 
+/-- The formal `c₄` series is the polynomial `1 - 48a₄` for the Tate equation. -/
+theorem c₄Formal_eq_one_sub_mul_a₄Formal : c₄Formal = 1 - 48 * a₄Formal := by
+  ext n
+  simp [c₄Formal, a₄Formal, sInt]
+  ring_nf
+
 private noncomputable def evalIntRingHom (q : k) (hq : valuation k q < 1) : ℤ⟦X⟧ →+* k where
   toFun := evalInt q
   map_one' := by simp [evalInt]
@@ -168,6 +174,42 @@ theorem evalInt_weierstrassDiscriminantFormal (q : k) (hq : valuation k q < 1) :
         72 * evalIntRingHom q hq a₄Formal * evalIntRingHom q hq a₆Formal
   simp [weierstrassDiscriminantFormal]
   norm_num [map_ofNat]
+
+/-- Evaluation carries the formal `c₄` identity to the local field. -/
+theorem evalInt_c₄Formal (q : k) (hq : valuation k q < 1) :
+    evalInt q c₄Formal = 1 - 48 * evalInt q a₄Formal := by
+  change evalIntRingHom q hq c₄Formal = 1 - 48 * evalIntRingHom q hq a₄Formal
+  rw [c₄Formal_eq_one_sub_mul_a₄Formal]
+  simp
+  norm_num [map_ofNat]
+
+/-- Evaluation of the formal inverse of `c₄Formal³` is the inverse of its evaluation. -/
+theorem evalInt_invOfUnit_c₄Formal_pow_three (q : k) (hq : valuation k q < 1) :
+    evalInt q (invOfUnit (c₄Formal ^ 3) 1) = (evalInt q c₄Formal ^ 3)⁻¹ := by
+  have hc₄ : constantCoeff c₄Formal = 1 := by
+    rw [← coeff_zero_eq_constantCoeff]
+    simp [c₄Formal, sInt]
+  have hformal : invOfUnit (c₄Formal ^ 3) 1 * c₄Formal ^ 3 = 1 :=
+    invOfUnit_mul _ _ (by simp [hc₄])
+  have hmapped := congrArg (evalIntRingHom q hq) hformal
+  rw [map_mul, map_pow, map_one] at hmapped
+  change evalInt q (invOfUnit (c₄Formal ^ 3) 1) * evalInt q c₄Formal ^ 3 = 1 at hmapped
+  exact eq_inv_of_mul_eq_one_left hmapped
+
+/-- The reciprocal-`j` series built from the Weierstrass discriminant polynomial. The
+remaining formal round-trip boundary is to identify its discriminant factor with the
+infinite-product series `ΔFormal` used by `jInv`. -/
+noncomputable def weierstrassJInvFormal : ℤ⟦X⟧ :=
+  weierstrassDiscriminantFormal * invOfUnit (c₄Formal ^ 3) 1
+
+theorem evalInt_weierstrassJInvFormal (q : k) (hq : valuation k q < 1) :
+    evalInt q weierstrassJInvFormal =
+      evalInt q weierstrassDiscriminantFormal * (evalInt q c₄Formal ^ 3)⁻¹ := by
+  change evalIntRingHom q hq weierstrassJInvFormal = _
+  rw [weierstrassJInvFormal, map_mul]
+  change evalInt q weierstrassDiscriminantFormal *
+      evalInt q (invOfUnit (c₄Formal ^ 3) 1) = _
+  rw [evalInt_invOfUnit_c₄Formal_pow_three q hq]
 
 end TateCurve
 
@@ -377,6 +419,13 @@ theorem WeierstrassCurve.tateCurve_Δ_eq_evalInt (q : k) (hq : valuation k q < 1
   simp only [Δ, b₂, b₄, b₆, b₈, tateCurve]
   ring
 
+/-- The `c₄` invariant of the Tate curve is the evaluation of its formal `c₄` series. -/
+theorem WeierstrassCurve.tateCurve_c₄_eq_evalInt (q : k) (hq : valuation k q < 1) :
+    (tateCurve q).c₄ = TateCurve.evalInt q TateCurve.c₄Formal := by
+  rw [TateCurve.evalInt_c₄Formal q hq, ← tateA₄_eq_evalInt q hq]
+  simp only [c₄, b₂, b₄, tateCurve]
+  ring
+
 /-- A Tate curve with nonzero parameter in the open unit disc is elliptic. Its
 discriminant has the same nonzero valuation as the parameter because the associated
 formal discriminant has zero constant coefficient and linear coefficient `1`. -/
@@ -389,6 +438,18 @@ theorem WeierstrassCurve.isElliptic_tateCurve (q : kˣ)
     TateCurve.coeff_one_weierstrassDiscriminantFormal
   rw [hzero, map_zero] at hval
   exact ((valuation k).ne_zero_iff.mpr q.ne_zero) hval.symm
+
+/-- The reciprocal of the concrete Tate curve's `j`-invariant is the evaluation of the
+Weierstrass-derived reciprocal-`j` series. -/
+theorem WeierstrassCurve.tateCurve_j_inv_eq_evalInt_weierstrassJInvFormal (q : kˣ)
+    (hq : valuation k (q : k) < 1) :
+    letI := isElliptic_tateCurve q hq
+    (tateCurve (q : k)).j⁻¹ = TateCurve.evalInt (q : k) TateCurve.weierstrassJInvFormal := by
+  letI := isElliptic_tateCurve q hq
+  rw [TateCurve.evalInt_weierstrassJInvFormal (q : k) hq]
+  rw [← tateCurve_Δ_eq_evalInt (q : k) hq, ← tateCurve_c₄_eq_evalInt (q : k) hq]
+  simp [j, mul_inv_rev]
+  ring
 
 /-! ### Functoriality
 
