@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The detector-to-finiteness assembly and detector cases n=0 through n=4 are kernel-clean. A denominator-free x-coordinate relation now implies both the exact division-polynomial formula and detector and is kernel-clean for n=0,1,2, including all doubling branches; current Mathlib still lacks the arbitrary-index relation and elliptic multiplication morphism.",
+        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2. The generalized-Weierstrass Kummer differential-addition identity is also kernel-clean, so the arbitrary-index recurrence can remain x-only; degenerate branches and recurrence normalization remain.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,

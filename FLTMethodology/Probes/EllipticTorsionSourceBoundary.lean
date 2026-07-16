@@ -205,6 +205,43 @@ theorem divisionPolynomialXFormula_one
     DivisionPolynomialXFormula E 1 :=
   divisionPolynomialXFormula_of_xRelation E (divisionPolynomialXRelation_one E)
 
+/-- The biquadratic x-only expression used by differential addition on a generalized Weierstrass
+curve. -/
+def kummerBiquadratic (E : WeierstrassCurve k) (x₁ x₂ : k) : k :=
+  x₁ ^ 2 * x₂ ^ 2 - E.b₄ * x₁ * x₂ - E.b₆ * (x₁ + x₂) - E.b₈
+
+/-- The x-only differential-addition product for two affine points with distinct x-coordinates.
+It removes the need for a separate y-coordinate division polynomial in the scalar recurrence. -/
+theorem addX_mul_addNegX_kummer
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {x₁ x₂ y₁ y₂ : k} (h₁ : E.toAffine.Nonsingular x₁ y₁)
+    (h₂ : E.toAffine.Nonsingular x₂ y₂) (hx : x₁ ≠ x₂) :
+    let xplus := E.toAffine.addX x₁ x₂ (E.toAffine.slope x₁ x₂ y₁ y₂)
+    let xminus := E.toAffine.addX x₁ x₂
+      (E.toAffine.slope x₁ x₂ y₁ (E.toAffine.negY x₂ y₂))
+    xplus * xminus * (x₁ - x₂) ^ 2 = kummerBiquadratic E x₁ x₂ := by
+  dsimp only [kummerBiquadratic]
+  rw [E.toAffine.slope_of_X_ne hx]
+  rw [E.toAffine.slope_of_X_ne hx]
+  simp only [WeierstrassCurve.Affine.addX, WeierstrassCurve.Affine.negY]
+  field_simp [sub_ne_zero.mpr hx]
+  have heq₁ := h₁.1
+  have heq₂ := h₂.1
+  rw [E.toAffine.equation_iff] at heq₁ heq₂
+  simp only [WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  linear_combination
+    (E.a₁ ^ 2 * x₁ * x₂ - E.a₁ ^ 2 * x₂ ^ 2 + E.a₁ * E.a₃ * x₁ -
+      E.a₁ * E.a₃ * x₂ + E.a₁ * x₁ * y₁ + 2 * E.a₁ * x₂ * y₂ -
+      E.a₂ * x₁ ^ 2 + 4 * E.a₂ * x₁ * x₂ - 6 * E.a₂ * x₂ ^ 2 +
+      E.a₃ * y₁ + 2 * E.a₃ * y₂ + E.a₄ * x₁ - 4 * E.a₄ * x₂ - 3 * E.a₆ -
+      x₁ ^ 3 + 2 * x₁ ^ 2 * x₂ + 2 * x₁ * x₂ ^ 2 - 6 * x₂ ^ 3 +
+      y₁ ^ 2 + 2 * y₂ ^ 2) * heq₁ +
+    (-E.a₁ ^ 2 * x₁ ^ 2 + E.a₁ ^ 2 * x₁ * x₂ - E.a₁ * E.a₃ * x₁ +
+      E.a₁ * E.a₃ * x₂ - 4 * E.a₁ * x₁ * y₁ + E.a₁ * x₂ * y₂ +
+      4 * E.a₂ * x₁ * x₂ - E.a₂ * x₂ ^ 2 - 4 * E.a₃ * y₁ + E.a₃ * y₂ +
+      2 * E.a₄ * x₁ + E.a₄ * x₂ + 3 * E.a₆ + 2 * x₁ ^ 2 * x₂ +
+      2 * x₁ * x₂ ^ 2 - x₂ ^ 3 - 4 * y₁ ^ 2 + y₂ ^ 2) * heq₂
+
 theorem psiSq_two_eval_eq_negY_gap_sq
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
     {x y : k} (h : E.toAffine.Nonsingular x y) :
@@ -515,6 +552,8 @@ theorem n_torsion_finite_of_psiSq_detection
 #check divisionPolynomialXRelation_two
 #check divisionPolynomialXFormula_zero
 #check divisionPolynomialXFormula_one
+#check kummerBiquadratic
+#check addX_mul_addNegX_kummer
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
 #check psiSqDetectsNTorsion_two
@@ -533,6 +572,7 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms divisionPolynomialXRelation_two
 #print axioms divisionPolynomialXFormula_zero
 #print axioms divisionPolynomialXFormula_one
+#print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one
 #print axioms psiSqDetectsNTorsion_two

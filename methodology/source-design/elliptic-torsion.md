@@ -82,6 +82,10 @@ theorem divisionPolynomialXFormula_of_xRelation
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hr : DivisionPolynomialXRelation E n) : DivisionPolynomialXFormula E n
 
+theorem addX_mul_addNegX_kummer
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] ... :
+    xplus * xminus * (x₁ - x₂) ^ 2 = kummerBiquadratic E x₁ x₂
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -127,6 +131,20 @@ case splits. Kernel-clean adapters derive both the exact x-coordinate formula an
 detector from it. The relation is proved for `n = 0,1,2`; therefore the new recurrence interface is
 tested across infinity, identity, vertical-doubling, and nonvertical-doubling branches.
 
+The apparent need for a separate y-coordinate division polynomial has also been removed from the
+design. `addX_mul_addNegX_kummer` proves the generalized-Weierstrass differential-addition identity
+for two affine points with distinct x-coordinates: the product of the x-coordinates of `P + Q` and
+`P - Q`, after multiplying by `(x(P)-x(Q))²`, is the biquadratic expression
+
+```text
+x(P)² x(Q)² - b₄ x(P)x(Q) - b₆(x(P)+x(Q)) - b₈.
+```
+
+The proof expands the actual affine slopes and uses both Weierstrass equations; its axiom closure is
+the standard trio. This is the x-only differential-addition primitive required by an adjacent-pair
+or Montgomery-ladder induction. No `ωₙ` library needs to be invented merely to close the x-coordinate
+dictionary. Degenerate equal-x and infinity branches still require explicit recurrence cases.
+
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
 case derives the fixed-point condition
@@ -152,7 +170,9 @@ Build in this order:
 3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full detector block `n = 0,1,2,3,4` is closed. The
    denominator-free `DivisionPolynomialXRelation` implies both the exact x-coordinate formula and
    the detector and is proved for `n = 0,1,2`. Prove this relation for arbitrary `n` from the affine
-   group law and division-polynomial recurrences.
+   group law and division-polynomial recurrences. The distinct-x differential-addition/Kummer
+   component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
+   polynomial recurrence normalization.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -183,7 +203,6 @@ FLTMethodology.Torsion.DivisionPolynomialXRelation E n
 
 Its `n = 0,1,2` cases and its implications to `DivisionPolynomialXFormula` and
 `PsiSqDetectsNTorsion` are now proved. The first likely residual Lean goal is a recurrence step
-relating affine addition of the points
-described by the `m` and `m+1` formulas to Mathlib's odd/even recurrences for `Φ` and `ΨSq`. The
-match-based contract already follows the actual scalar multiple, so this avoids separately proving
-that a nonzero denominator implies a non-infinity result at every induction step.
+for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
+the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
+resulting `kummerBiquadratic` expression to Mathlib's odd/even `preΨ`, `ΨSq`, and `Φ` recurrences.
