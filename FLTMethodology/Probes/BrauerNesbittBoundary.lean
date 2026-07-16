@@ -86,6 +86,39 @@ theorem trace_asAlgebraHom_eq
   | hsmul r x hx =>
       simpa only [map_smul] using congrArg (r • .) hx
 
+/-- The action of the group algebra on the product representation is the componentwise action. -/
+theorem prod_asAlgebraHom_apply
+    {k G V W : Type*} [Field k] [Group G]
+    [AddCommGroup V] [Module k V]
+    [AddCommGroup W] [Module k W]
+    (rho : Representation k G V) (sigma : Representation k G W)
+    (a : k[G]) (x : V × W) :
+    (rho.prod sigma).asAlgebraHom a x =
+      (rho.asAlgebraHom a x.1, sigma.asAlgebraHom a x.2) := by
+  induction a using MonoidAlgebra.induction_on with
+  | hM g =>
+      simpa only [Representation.asAlgebraHom_of] using
+        Representation.prod_apply_apply rho sigma g x
+  | hadd a b ha hb =>
+      simpa [map_add, LinearMap.add_apply] using congrArg₂ (fun x y => x + y) ha hb
+  | hsmul c a ha =>
+      simpa [map_smul, LinearMap.smul_apply] using congrArg (c • .) ha
+
+/-- The module associated to a product representation is canonically the product of the two
+associated modules.  This bridge lets semisimplicity be transported to the joint density module. -/
+noncomputable def prodAsModuleEquiv
+    {k G V W : Type*} [Field k] [Group G]
+    [AddCommGroup V] [Module k V]
+    [AddCommGroup W] [Module k W]
+    (rho : Representation k G V) (sigma : Representation k G W) :
+    (rho.prod sigma).asModule ≃ₗ[k[G]] (rho.asModule × sigma.asModule) where
+  toFun := fun x => x
+  invFun := fun x => x
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_add' _ _ := rfl
+  map_smul' r x := prod_asAlgebraHom_apply rho sigma r x
+
 /-! ### Finite-dimensional joint-image reduction
 
 The possibly infinite group is replaced by the finite-dimensional algebra linearly spanned by its
@@ -408,6 +441,8 @@ end ConsumerBridge
 #check moduleCharacter
 #check trace_eq_of_charpoly_eq
 #check trace_asAlgebraHom_eq
+#check prod_asAlgebraHom_apply
+#check prodAsModuleEquiv
 #check jointImagePoint
 #check jointImageSpan
 #check jointImageAlgebra
@@ -431,6 +466,8 @@ end ConsumerBridge
 #print axioms moduleCharacter
 #print axioms trace_eq_of_charpoly_eq
 #print axioms trace_asAlgebraHom_eq
+#print axioms prod_asAlgebraHom_apply
+#print axioms prodAsModuleEquiv
 #print axioms jointImagePoint
 #print axioms jointImageSpan
 #print axioms jointImageAlgebra
