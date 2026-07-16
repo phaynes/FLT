@@ -562,6 +562,13 @@
       "to": "FLT-B4"
     },
     {
+      "edge_id": "E-DEF-001-B4",
+      "edge_kind": "definition",
+      "from": "FLT-DEF-001",
+      "justification": "FLT-B4 directly consumes FLT-DEF-001.",
+      "to": "FLT-B4"
+    },
+    {
       "edge_id": "E-B4-B3",
       "edge_kind": "theorem",
       "from": "FLT-B4",
@@ -623,6 +630,13 @@
       "from": "FLT-TATE-WEIL",
       "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-WEIL.",
       "to": "FLT-SUPPORT-TATE"
+    },
+    {
+      "edge_id": "E-HIST-QUATERNION-SUPPORT-AUTOMORPHIC",
+      "edge_kind": "theorem",
+      "from": "FLT-HIST-QUATERNION",
+      "justification": "FLT-SUPPORT-AUTOMORPHIC directly consumes FLT-HIST-QUATERNION.",
+      "to": "FLT-SUPPORT-AUTOMORPHIC"
     },
     {
       "edge_id": "E-BRAUER-NESBITT-MLT-COEFFICIENTS",
@@ -1514,7 +1528,7 @@
         "tokens_p95": 130000000
       },
       "expected_module": "FLT.Automorphic.JacquetLanglands",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.jacquet_langlands",
       "lean_risk": "unbounded",
@@ -1559,7 +1573,7 @@
         "tokens_p95": 80000000
       },
       "expected_module": "FLT.PotentialModularity.Induced",
-      "graph_depth": 2,
+      "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.induced_rep_isAutomorphic",
       "lean_risk": "unbounded",
@@ -2581,7 +2595,8 @@
       "current_state": "admitted",
       "direct_dependencies": [
         "FLT-FREY-HR",
-        "FLT-HR-REDUCIBLE"
+        "FLT-HR-REDUCIBLE",
+        "FLT-DEF-001"
       ],
       "estimates": {
         "confidence": "medium",
@@ -2608,7 +2623,7 @@
       "proof_pattern": "Introduce Frey package, apply generic reducibility to the proved hardly-ramified torsion representation.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-B4",
-      "source_condition_risks": "Instantiation must align the actual ZMod p torsion module, rank proof, and hardly-ramified generic theorem.",
+      "source_condition_risks": "Instantiation must align the actual ZMod p torsion module, rank proof, hardly-ramified generic theorem, and frozen B4 definition.",
       "source_refs": [
         "SRC-002",
         "SRC-003"
@@ -2795,17 +2810,17 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "No generic knownin1980s dependency remains at T2; standard closure at T3.",
+      "completion_gate": "The exact finite-relative-index instance has no generic knownin1980s dependency at T2 and standard closure at T3.",
       "completion_targets": [
         "T2",
         "T3"
       ],
-      "critical_path": false,
+      "critical_path": true,
       "current_state": "historical-assumption",
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "One direct generic historical invocation.",
+        "evidence": "One direct generic historical invocation in the selected automorphic support module.",
         "loc_p50": 1000,
         "loc_p80": 5000,
         "loc_p95": 20000,
@@ -2816,19 +2831,20 @@
       "expected_module": "FLT.AutomorphicForm.QuaternionAlgebra.Basic",
       "graph_depth": 0,
       "kernel_probe_state": "signature-green",
-      "lean_declaration": "QuaternionAlgebra.exists_isQuaternionAlgebra_baseChange",
+      "lean_declaration": "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.LevelStruct.isFiniteRelIndex_\u0394",
       "lean_risk": "high",
-      "lean_type": "Exact declaration surrounding the direct knownin1980s invocation in FLT/AutomorphicForm/QuaternionAlgebra/Basic.lean.",
+      "lean_type": "For a totally real number field F, a totally definite quaternion algebra D/F, a level structure \u2112, and g in GL\u2082 of the finite adeles, the scalar-unit subgroup has finite relative index in \u2112.\u0394 D g.",
       "library_candidates": [
+        "Subgroup.IsFiniteRelIndex",
         "IsQuaternionAlgebra"
       ],
-      "mathematical_name": "Quaternion-algebra historical boundary currently using knownin1980s",
+      "mathematical_name": "Finiteness of the quaternionic level relative index",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-HIST-QUATERNION",
-      "proof_pattern": "Name and source at T2; prove from central-simple-algebra invariants at T3.",
+      "proof_pattern": "Name and source the exact finite-index instance at T2; construct the order, embed the quotient into norm-one units, and prove finiteness at T3.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-HIST-QUATERNION",
-      "source_condition_risks": "Must be traced to exact algebra source if it enters the final MLT closure.",
+      "source_condition_risks": "The module comment cites the order construction and Voight Lemma 17.7.13; FLT-205 must freeze an exact source chain for discreteness and boundedness of norm-one units.",
       "source_refs": [
         "SRC-001"
       ],
@@ -2893,7 +2909,9 @@
       ],
       "critical_path": true,
       "current_state": "admitted",
-      "direct_dependencies": [],
+      "direct_dependencies": [
+        "FLT-HIST-QUATERNION"
+      ],
       "estimates": {
         "confidence": "low",
         "evidence": "Large analytic and representation-theoretic programme remains exploratory.",
@@ -2905,7 +2923,7 @@
         "tokens_p95": 150000000
       },
       "expected_module": "FLT.GlobalLanglandsConjectures",
-      "graph_depth": 0,
+      "graph_depth": 1,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.GlobalLanglandsConjectures and automorphic support declarations",
       "lean_risk": "unbounded",
@@ -2921,7 +2939,7 @@
       "proof_pattern": "First freeze the MLT/JL interfaces, then decompose only the dependency closure into exact nodes.",
       "review_state": "unreviewed",
       "scc_id": "SCC-FLT-SUPPORT-AUTOMORPHIC",
-      "source_condition_risks": "Exploratory definitions may not match the final selected theorem; do not close irrelevant admissions merely to reduce a raw count.",
+      "source_condition_risks": "Exploratory definitions may not match the final selected theorem; do not close irrelevant admissions merely to reduce a raw count. The selected quaternionic support module currently consumes the finite-relative-index historical boundary.",
       "source_refs": [
         "SRC-001",
         "SRC-004"

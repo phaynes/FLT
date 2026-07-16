@@ -30,8 +30,10 @@ if len(ids) != len(obligations):
 # consume them. Keeping this normalization here makes the relationship reviewable while allowing
 # the hand-authored NDJSON records to stay one record per line.
 extra_dependencies = {
+    "FLT-B4": ["FLT-DEF-001"],
     "FLT-FREY-HR": ["FLT-SUPPORT-TATE"],
     "FLT-DEF-FUNCTOR": ["FLT-SUPPORT-DEFORMATION"],
+    "FLT-SUPPORT-AUTOMORPHIC": ["FLT-HIST-QUATERNION"],
     "FLT-HECKE-ACTION": ["FLT-SUPPORT-AUTOMORPHIC"],
     "FLT-JL": ["FLT-SUPPORT-AUTOMORPHIC"],
 }
