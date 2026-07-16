@@ -154,6 +154,50 @@ theorem psiSqDetectsNTorsion_two
     linear_combination hy
   linear_combination (2 * y + E.a₁ * x + E.a₃) * hlin - 4 * heq
 
+/-- The next detector case exercises affine doubling and confirms that Mathlib's tangent formula
+and `Ψ₃` normalization agree. -/
+theorem psiSqDetectsNTorsion_three
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 3 := by
+  intro x y h hthree
+  let P : (E⁄k).Point := WeierstrassCurve.Affine.Point.some x y h
+  have hthreeP : (3 : ℕ) • P = 0 := by
+    simpa only [P, Int.ofNat_eq_natCast, natCast_zsmul] using hthree
+  have hthree' : (P + P) + P = 0 := by
+    rw [three'_nsmul] at hthreeP
+    exact hthreeP
+  have hdouble : P + P = -P := add_eq_zero_iff_eq_neg.mp hthree'
+  have hyne : y ≠ E.toAffine.negY x y := by
+    intro hy
+    have hpp0 : P + P = 0 := by
+      exact WeierstrassCurve.Affine.Point.add_self_of_Y_eq (W := E⁄k) hy
+    have hnegzero : -P = 0 := hdouble.symm.trans hpp0
+    have hpzero : P = 0 := neg_eq_zero.mp hnegzero
+    exact WeierstrassCurve.Affine.Point.some_ne_zero h hpzero
+  have hxadd :
+      E.toAffine.addX x x (E.toAffine.slope x x y y) = x := by
+    rw [WeierstrassCurve.Affine.Point.add_self_of_Y_ne (W := E⁄k) hyne] at hdouble
+    simp only [P, WeierstrassCurve.Affine.Point.neg_some,
+      WeierstrassCurve.Affine.Point.some.injEq] at hdouble
+    exact hdouble.1
+  rw [E.toAffine.slope_of_Y_ne rfl hyne] at hxadd
+  have hden : y - E.toAffine.negY x y ≠ 0 := sub_ne_zero.mpr hyne
+  simp only [WeierstrassCurve.Affine.addX] at hxadd
+  field_simp [hden] at hxadd
+  change (E.ΨSq 3).eval x = 0
+  rw [E.ΨSq_three]
+  rw [Polynomial.eval_pow, sq_eq_zero_iff]
+  rw [WeierstrassCurve.Ψ₃]
+  simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_pow,
+    Polynomial.eval_X, Polynomial.eval_C, Polynomial.eval_ofNat]
+  have heq := h.1
+  rw [E.toAffine.equation_iff] at heq
+  simp only [WeierstrassCurve.Affine.negY] at hxadd
+  simp only [WeierstrassCurve.b₂, WeierstrassCurve.b₄, WeierstrassCurve.b₆,
+    WeierstrassCurve.b₈]
+  linear_combination -hxadd -
+    (E.a₁ ^ 2 + 4 * E.a₂ + 12 * x) * heq
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -163,9 +207,11 @@ theorem n_torsion_finite_of_psiSq_detection
 #check n_torsion_finite_of_detector
 #check n_torsion_finite_of_psiSq_detection
 #check psiSqDetectsNTorsion_two
+#check psiSqDetectsNTorsion_three
 #print axioms n_torsion_finite_of_detector
 #print axioms n_torsion_finite_of_psiSq_detection
 #print axioms psiSqDetectsNTorsion_two
+#print axioms psiSqDetectsNTorsion_three
 
 end
 end FLTMethodology.Torsion
