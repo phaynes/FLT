@@ -1,4 +1,5 @@
 import Mathlib.LinearAlgebra.Charpoly.ToMatrix
+import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
 import Mathlib.Algebra.Field.ZMod
 import Mathlib.RepresentationTheory.Character
 import Mathlib.RepresentationTheory.Maschke
@@ -62,6 +63,132 @@ theorem trace_eq_of_charpoly_eq
     _ = Matrix.trace (LinearMap.toMatrix bW bW g) :=
       (Matrix.trace_eq_neg_charpoly_nextCoeff _).symm
     _ = LinearMap.trace k W g := (LinearMap.trace_eq_matrix_trace k bW g).symm
+
+/-! ### Finite-dimensional joint-image reduction
+
+The possibly infinite group is replaced by the finite-dimensional algebra linearly spanned by its
+joint action on the two representations. No characteristic-polynomial identity is extended
+linearly here: this tranche only exposes a finite basis consisting of actual group elements.
+-/
+
+universe uK uG uV uW
+
+section JointImage
+
+variable {k : Type uK} {G : Type uG} {V : Type uV} {W : Type uW}
+variable [Field k] [Group G]
+variable [AddCommGroup V] [Module k V]
+variable [AddCommGroup W] [Module k W]
+variable (rho : Representation k G V) (sigma : Representation k G W)
+
+/-- The pair of matrices through which one group element acts on the two representations. -/
+def jointImagePoint (g : G) : Module.End k V × Module.End k W :=
+  (rho g, sigma g)
+
+/-- The linear span of the joint group image. -/
+def jointImageSpan : Submodule k (Module.End k V × Module.End k W) :=
+  Submodule.span k (Set.range (jointImagePoint rho sigma))
+
+/-- The joint-image span is a subalgebra: products of generators are again group-image
+generators, and bilinearity extends this fact to the whole span. -/
+noncomputable def jointImageAlgebra : Subalgebra k (Module.End k V × Module.End k W) where
+  carrier := jointImageSpan rho sigma
+  zero_mem' := (jointImageSpan rho sigma).zero_mem
+  add_mem' := (jointImageSpan rho sigma).add_mem
+  one_mem' := by
+    apply Submodule.subset_span
+    exact ⟨1, by simp [jointImagePoint]⟩
+  mul_mem' := by
+    intro x y hx hy
+    apply LinearMap.BilinMap.apply_apply_mem_of_mem_span
+      (jointImageSpan rho sigma) (Set.range (jointImagePoint rho sigma))
+      (Set.range (jointImagePoint rho sigma))
+      (LinearMap.mul k (Module.End k V × Module.End k W))
+    · rintro _ ⟨g, rfl⟩ _ ⟨h, rfl⟩
+      apply Submodule.subset_span
+      exact ⟨g * h, by simp [jointImagePoint]⟩
+    · exact hx
+    · exact hy
+  algebraMap_mem' := by
+    intro r
+    rw [Algebra.algebraMap_eq_smul_one]
+    exact (jointImageSpan rho sigma).smul_mem r (by
+      apply Submodule.subset_span
+      exact ⟨1, by simp [jointImagePoint]⟩)
+
+/-- First projection of the joint-image algebra, recovering its action on `V`. -/
+noncomputable def jointImageFst :
+    jointImageAlgebra rho sigma →ₐ[k] Module.End k V :=
+  (AlgHom.fst k (Module.End k V) (Module.End k W)).comp
+    (jointImageAlgebra rho sigma).val
+
+/-- Second projection of the joint-image algebra, recovering its action on `W`. -/
+noncomputable def jointImageSnd :
+    jointImageAlgebra rho sigma →ₐ[k] Module.End k W :=
+  (AlgHom.snd k (Module.End k V) (Module.End k W)).comp
+    (jointImageAlgebra rho sigma).val
+
+/-- A group element regarded as an element of the joint-image algebra. -/
+noncomputable def jointImageElement (g : G) : jointImageAlgebra rho sigma :=
+  ⟨jointImagePoint rho sigma g, Submodule.subset_span (Set.mem_range_self g)⟩
+
+@[simp]
+theorem jointImageFst_element (g : G) :
+    jointImageFst rho sigma (jointImageElement rho sigma g) = rho g := rfl
+
+@[simp]
+theorem jointImageSnd_element (g : G) :
+    jointImageSnd rho sigma (jointImageElement rho sigma g) = sigma g := rfl
+
+theorem jointImageAlgebra_toSubmodule :
+    (jointImageAlgebra rho sigma).toSubmodule = jointImageSpan rho sigma := rfl
+
+variable [Module.Finite k V] [Module.Finite k W]
+
+/-- A basis of the joint-image span can be selected from actual group-image pairs. Its cardinality
+is exactly the finrank of that span. -/
+theorem exists_jointImage_basis_from_group :
+    ∃ g : Fin (Module.finrank k (jointImageSpan rho sigma)) → G,
+      LinearIndependent k (fun i ↦ jointImagePoint rho sigma (g i)) ∧
+        Submodule.span k (Set.range (fun i ↦ jointImagePoint rho sigma (g i))) =
+          jointImageSpan rho sigma := by
+  unfold jointImageSpan
+  obtain ⟨f, hfS, hfspan, hfli⟩ := Submodule.exists_fun_fin_finrank_span_eq k
+    (Set.range (jointImagePoint rho sigma))
+  choose g hg using hfS
+  have hgf : (fun i ↦ jointImagePoint rho sigma (g i)) = f := funext hg
+  refine ⟨g, ?_, ?_⟩
+  · rw [hgf]
+    exact hfli
+  · rw [hgf]
+    exact hfspan
+
+end JointImage
+
+/-- Exact finite-support remainder after extracting the joint image algebra and a basis of actual
+group elements. This is strictly downstream of `GroupContract`; it remains the open algebraic
+terminal after this tranche. -/
+def FiniteJointImageContract : Prop :=
+  ∀ {k G V W : Type*} [Field k] [Group G]
+    [AddCommGroup V] [Module k V] [Module.Finite k V]
+    [AddCommGroup W] [Module k W] [Module.Finite k W]
+    (rho : Representation k G V) (sigma : Representation k G W),
+    Representation.IsSemisimpleRepresentation rho →
+      Representation.IsSemisimpleRepresentation sigma →
+      (∀ g, (rho g).charpoly = (sigma g).charpoly) →
+      ∀ (g : Fin (Module.finrank k (jointImageSpan rho sigma)) → G),
+        LinearIndependent k (fun i ↦ jointImagePoint rho sigma (g i)) →
+        Submodule.span k (Set.range (fun i ↦ jointImagePoint rho sigma (g i))) =
+          jointImageSpan rho sigma →
+        Nonempty (Representation.Equiv rho sigma)
+
+/-- The finite joint-image contract is sufficient for the unchanged full group contract. -/
+theorem groupContract_of_finiteJointImageContract
+    (hfinite : FiniteJointImageContract.{uK, uG, uV, uW}) :
+    GroupContract.{uK, uG, uV, uW} := by
+  intro k G V W _ _ _ _ _ _ _ _ rho sigma hrho hsigma hchar
+  obtain ⟨g, hli, hspan⟩ := exists_jointImage_basis_from_group rho sigma
+  exact hfinite rho sigma hrho hsigma hchar g hli hspan
 
 /-- First absent terminal in the algebraically closed specialization: distinct simple modules
 over a finite-dimensional algebra have linearly independent characters. The full arbitrary-field
@@ -194,6 +321,18 @@ end ConsumerBridge
 #check GroupContract
 #check moduleCharacter
 #check trace_eq_of_charpoly_eq
+#check jointImagePoint
+#check jointImageSpan
+#check jointImageAlgebra
+#check jointImageFst
+#check jointImageSnd
+#check jointImageElement
+#check jointImageFst_element
+#check jointImageSnd_element
+#check jointImageAlgebra_toSubmodule
+#check exists_jointImage_basis_from_group
+#check FiniteJointImageContract
+#check groupContract_of_finiteJointImageContract
 #check SimpleCharactersLinearIndependentContract
 #check SmallDimensionTraceContract
 #check AlgClosedTwoDimensionalTraceContract
@@ -202,6 +341,18 @@ end ConsumerBridge
 #print axioms GroupContract
 #print axioms moduleCharacter
 #print axioms trace_eq_of_charpoly_eq
+#print axioms jointImagePoint
+#print axioms jointImageSpan
+#print axioms jointImageAlgebra
+#print axioms jointImageFst
+#print axioms jointImageSnd
+#print axioms jointImageElement
+#print axioms jointImageFst_element
+#print axioms jointImageSnd_element
+#print axioms jointImageAlgebra_toSubmodule
+#print axioms exists_jointImage_basis_from_group
+#print axioms FiniteJointImageContract
+#print axioms groupContract_of_finiteJointImageContract
 #print axioms SimpleCharactersLinearIndependentContract
 #print axioms SmallDimensionTraceContract
 #print axioms AlgClosedTwoDimensionalTraceContract
