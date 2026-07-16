@@ -2044,7 +2044,7 @@
       "target_stage": "T2"
     },
     {
-      "completion_gate": "The residual and characteristic-zero coefficient-field specializations are kernel-clean.",
+      "completion_gate": "The arbitrary-field group theorem is kernel-clean and both residual and characteristic-zero coefficient-field consumers are discharged without narrowing their frozen scope.",
       "completion_targets": [
         "T2",
         "T3"
@@ -2054,7 +2054,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Both coefficient-boundary reviewers found Mathlib semisimplicity but no Brauer-Nesbitt or Noether-Deuring terminal.",
+        "evidence": "The exact GroupContract, counter-regression, trace helper, and consumer bridge elaborate. Independent Fable 5 and GPT-5.6 xhigh reviews accept the contract but reject the imperfect-field splitting route; pinned Mathlib lacks the terminal.",
         "loc_p50": 5000,
         "loc_p80": 22000,
         "loc_p95": 80000,
@@ -2064,22 +2064,23 @@
       },
       "expected_module": "FLT.RepresentationTheory.BrauerNesbitt",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Representation.brauer_nesbitt",
       "lean_risk": "very-high",
-      "lean_type": "Proposed: finite-dimensional semisimple representations over a field with equal characteristic polynomials on every group element are linearly equivalent; required both for residual semisimplification and the compatible-family terminal.",
+      "lean_type": "Exact probed contract: finite-dimensional semisimple representations over an arbitrary field with equal characteristic polynomials on every group element are linearly equivalent; required both for residual semisimplification and the compatible-family terminal.",
       "library_candidates": [
         "Representation.IsSemisimpleRepresentation",
-        "Subrepresentation",
+        "IsSemisimpleModule",
+        "IsSemisimpleRing.exists_algEquiv_pi_matrix_of_isAlgClosed",
         "Module.Free"
       ],
       "mathematical_name": "Brauer-Nesbitt representation comparison",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
-      "proof_pattern": "Adapt finite-dimensional semisimple module decomposition and characteristic-polynomial comparison, then prove the required scalar-extension specializations.",
+      "proof_pattern": "Prove the arbitrary-field group contract through the finite-dimensional semisimple joint image and a source-checked spanning-set Brauer-Nesbitt argument; do not rely on a finite separable splitting field over an imperfect base. Use the algebraically closed character-independence specialization only after a separately reviewed consumer narrowing.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
-      "source_condition_risks": "The exact theorem must cover the residual characteristic specialization as well as characteristic zero; field, finite-dimensionality and scalar-extension assumptions must match both consumers.",
+      "source_condition_risks": "The contract is true and signature-green, but the documented finite separable splitting-field route is incomplete over imperfect fields. Wiese is a detailed secondary source; the exact primary arbitrary-field joint-image/spanning-set proof remains to be selected. The rank-two algebraically closed shortcut does not discharge the current generic consumer.",
       "source_refs": [
         "SRC-003"
       ],

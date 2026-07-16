@@ -2,10 +2,10 @@
 
 Baseline inventory at frozen upstream commit `ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b`.
 
-Live execution refresh at methodology commit `5d376d153ad1641113781c317ee9ab69d38f200b`:
+Live execution refresh at methodology commit `d414ef103d98032a12e79ef6c470030064e81e0c`:
 
 - warm `FLT` and methodology builds passed;
-- the monitor counted 28 verified-root admission-shaped lines;
+- the monitor counted 27 executable verified-root admissions;
 - the top axiom closure is `[knownin1980s, propext, sorryAx, Classical.choice, Quot.sound]`;
 - after recording the operator-authorized review substitution and corrected graph, G0--G3 are
   green and G4--G6 remain open.
@@ -40,6 +40,7 @@ transitive-sorry audits are the authority for individual declarations.
 | Auxiliary-field prime condition | Unramified in blueprint; split completely in the Taylor near-reference | Source choice unresolved | Explicit definition/source gap after Opus HR-04 |
 | Potential-modularity assembly | Moret-Bailly, auxiliary curve, induced modularity, Jacquet–Langlands | Mostly absent as an integrated Lean route | Critical path |
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
+| Brauer--Nesbitt comparison | `FLTMethodology.BrauerNesbitt.GroupContract` and `semisimplifiedResidualModelsUnique_of_groupContract` | Exact contract and consumer wiring are signature-green; arbitrary-field theorem remains absent | Coefficient and compatible-family prerequisite |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
 | Top theorem | `flt`, `PNat.pow_add_pow_ne_pow` | Compiles upstream but is not kernel-clean | T1–T3 terminal |
 
@@ -51,7 +52,7 @@ node are now complete.
 
 | Node | Classification | Immediate reason |
 |---|---|---|
-| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations are signature-green after repair; stable-lattice independence and Brauer--Nesbitt uniqueness remain open |
+| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations and the exact Brauer--Nesbitt consumer boundary are signature-green; stable-lattice independence and the arbitrary-field Brauer--Nesbitt proof remain open |
 | `FLT-MLT-PADIC-HODGE` | BLOCKED | Depends on the coefficient/lattice boundary |
 | `FLT-RACAR-DEF` | BLOCKED | Depends on coefficient data and the admitted automorphic support cluster |
 | `FLT-SGOOD-DEF` | COMPLETE | Exact four-field definition builds with the standard axiom trio and independent Fable/GPT reviews accept it |

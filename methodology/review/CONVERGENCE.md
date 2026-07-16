@@ -58,3 +58,23 @@ continue.
   semisimplification uniqueness, and comparison over the fixed residual algebraic closure still
   depend on a kernel-clean Brauer--Nesbitt interface absent from the pinned library.
 - W04--W06 remain unauthorized.
+
+## Brauer--Nesbitt boundary review
+
+Candidate commit: `d414ef103d98032a12e79ef6c470030064e81e0c`.
+
+Fable 5 and GPT-5.6 xhigh independently returned **REVISE BRAUER-NESBITT BOUNDARY**. They
+reproduced the probe build and standard-trio axiom audits, accepted the arbitrary-field
+`GroupContract` as the correct frozen statement, and accepted its non-circular implication to the
+current residual-model uniqueness consumer.
+
+The reviews rejected the documented finite-separable-splitting-field proof as a complete route over
+arbitrary imperfect fields. The algebraically closed simple-character contract remains a valid
+specialization, but it does not discharge the generic consumer. The finite `ZMod 2` regression
+refutes only the recorded one-sided trace weakening.
+
+Consequently `FLT-BRAUER-NESBITT` remains open with a signature-green, reviewed boundary and a
+revision-required proof architecture. The next admissible route is a source-checked
+finite-dimensional joint-image/spanning-set Brauer--Nesbitt argument, or an independently justified
+component-wise descent proof. No field-perfectness, group-finiteness, continuity, finite-image, or
+consumer-narrowing hypothesis is authorized by this review.

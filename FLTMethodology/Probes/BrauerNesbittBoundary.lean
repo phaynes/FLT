@@ -63,9 +63,9 @@ theorem trace_eq_of_charpoly_eq
       (Matrix.trace_eq_neg_charpoly_nextCoeff _).symm
     _ = LinearMap.trace k W g := (LinearMap.trace_eq_matrix_trace k bW g).symm
 
-/-- First absent general algebra lemma in the splitting-field architecture: distinct simple
-modules over a finite-dimensional algebra have linearly independent characters after passing
-to an algebraically closed splitting field. -/
+/-- First absent terminal in the algebraically closed specialization: distinct simple modules
+over a finite-dimensional algebra have linearly independent characters. The full arbitrary-field
+route needs an additional spanning-set/descent argument and is not reduced to this contract. -/
 def SimpleCharactersLinearIndependentContract : Prop :=
   ∀ {k A ι : Type*} [Field k] [IsAlgClosed k] [Ring A] [Algebra k A]
     [Module.Finite k A] [Finite ι]
@@ -161,7 +161,7 @@ open FLTMethodology.Taylor2018
 
 universe uF uR uV0 uk uW1 uW2
 
-/-- Kernel-clean wiring proof: the full group contract is exactly sufficient for the current
+/-- Kernel-clean wiring proof: the full group contract is sufficient for the current
 same-field residual-model uniqueness target. This does not assume or prove the contract. -/
 theorem semisimplifiedResidualModelsUnique_of_groupContract
     (hBN : GroupContract.{uk, uF, uW1, uW2})
