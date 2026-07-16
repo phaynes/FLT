@@ -12,6 +12,8 @@ public import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Local
 public import FLT.AutomorphicForm.QuaternionAlgebra.InnerProduct
 public import FLT.AutomorphicForm.Stuff
 public import FLT.Basic.Lemmas
+public import FLT.Components.BossInterface
+public import FLT.Components.Existing
 public import FLT.Data.Hurwitz
 public import FLT.Data.HurwitzRatHat
 public import FLT.Data.QHat
