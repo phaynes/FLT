@@ -3,7 +3,7 @@
 This document is a human index over the machine-readable graph in
 `control/proof-obligations.ndjson`. The generator derives every edge from the node's declared
 dependencies and fails if the current graph contains a cycle. At this design revision the graph
-contains 52 obligations, 92 direct edges, 51 critical-path obligations, and no cycle. Each strongly
+contains 52 obligations, 95 direct edges, 52 critical-path obligations, and no cycle. Each strongly
 connected component is therefore a singleton and is recorded explicitly by `scc_id`.
 
 The high number of critical nodes does not imply uniform effort: estimates range from already

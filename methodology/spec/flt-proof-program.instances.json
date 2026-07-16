@@ -2820,7 +2820,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "One direct generic historical invocation in the selected automorphic support module.",
+        "evidence": "One direct generic historical invocation remains. The group-index endpoint is now proved; order construction and the quotient model remain.",
         "loc_p50": 1000,
         "loc_p80": 5000,
         "loc_p95": 20000,
@@ -2835,19 +2835,23 @@
       "lean_risk": "high",
       "lean_type": "For a totally real number field F, a totally definite quaternion algebra D/F, a level structure \u2112, and g in GL\u2082 of the finite adeles, the scalar-unit subgroup has finite relative index in \u2112.\u0394 D g.",
       "library_candidates": [
+        "FLT.Components.QuaternionRelativeIndex.isFiniteRelIndex_of_finite_quotient_model",
+        "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact",
+        "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset",
         "Subgroup.IsFiniteRelIndex",
         "IsQuaternionAlgebra"
       ],
       "mathematical_name": "Finiteness of the quaternionic level relative index",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-HIST-QUATERNION",
-      "proof_pattern": "Name and source the exact finite-index instance at T2; construct the order, embed the quotient into norm-one units, and prove finiteness at T3.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Construct a finite quotient model of the adelic stabilizer using order units modulo scalar units, prove that its kernel is exactly the scalar subgroup, then apply the kernel-clean finite-relative-index adapter.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-HIST-QUATERNION",
-      "source_condition_risks": "The module comment cites the order construction and Voight Lemma 17.7.13; FLT-205 must freeze an exact source chain for discreteness and boundedness of norm-one units.",
+      "source_condition_risks": "Voight Lemma 17.7.13 proves only finiteness of norm-one units. The direct scalar-quotient-to-norm-one injection in the upstream comment is false without a square-norm condition. Lemma 26.5.1 gives the correct finite order-unit quotient, but compact-open-to-order and exact-kernel bridges remain open.",
       "source_refs": [
         "SRC-001",
-        "SRC-017"
+        "SRC-017",
+        "SRC-022"
       ],
       "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
