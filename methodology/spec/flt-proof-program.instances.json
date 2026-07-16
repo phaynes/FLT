@@ -52,7 +52,7 @@
     },
     {
       "edge_id": "E-SUPPORT-DEFORMATION-DEF-FUNCTOR",
-      "edge_kind": "definition",
+      "edge_kind": "theorem",
       "from": "FLT-SUPPORT-DEFORMATION",
       "justification": "FLT-DEF-FUNCTOR directly consumes FLT-SUPPORT-DEFORMATION.",
       "to": "FLT-DEF-FUNCTOR"
@@ -66,7 +66,7 @@
     },
     {
       "edge_id": "E-DEF-FUNCTOR-LOCAL-GALOIS",
-      "edge_kind": "definition",
+      "edge_kind": "theorem",
       "from": "FLT-DEF-FUNCTOR",
       "justification": "FLT-LOCAL-GALOIS directly consumes FLT-DEF-FUNCTOR.",
       "to": "FLT-LOCAL-GALOIS"
@@ -115,7 +115,7 @@
     },
     {
       "edge_id": "E-DEF-FUNCTOR-PATCHING",
-      "edge_kind": "definition",
+      "edge_kind": "theorem",
       "from": "FLT-DEF-FUNCTOR",
       "justification": "FLT-PATCHING directly consumes FLT-DEF-FUNCTOR.",
       "to": "FLT-PATCHING"
@@ -332,7 +332,7 @@
     },
     {
       "edge_id": "E-DEF-FUNCTOR-LIFT",
-      "edge_kind": "definition",
+      "edge_kind": "theorem",
       "from": "FLT-DEF-FUNCTOR",
       "justification": "FLT-LIFT directly consumes FLT-DEF-FUNCTOR.",
       "to": "FLT-LIFT"
@@ -2846,7 +2846,8 @@
       "scc_id": "SCC-FLT-HIST-QUATERNION",
       "source_condition_risks": "The module comment cites the order construction and Voight Lemma 17.7.13; FLT-205 must freeze an exact source chain for discreteness and boundedness of norm-one units.",
       "source_refs": [
-        "SRC-001"
+        "SRC-001",
+        "SRC-017"
       ],
       "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"

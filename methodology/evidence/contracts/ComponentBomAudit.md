@@ -57,3 +57,10 @@ then reproduced 52 obligations, 95 edges, 52 critical nodes, and zero cycles.
 
 No proof obligation is claimed complete by this artifact. It freezes component ownership and exposes
 the source/design work that FLT-205 must perform before construction starts.
+
+## Independent review follow-up
+
+Fable 5 independently reproduced the audit and approved the gate. Its three P2 findings were closed:
+component labels now match the approved control map exactly, the quaternion boundary cites Voight as
+`SRC-017`, and the generator uses an explicit definition-obligation set rather than an ID-substring
+heuristic. Regeneration remains at 52 obligations, 95 edges, and zero cycles.

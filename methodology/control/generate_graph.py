@@ -71,6 +71,14 @@ for node in obligations:
 )
 
 edges: list[dict] = []
+definition_obligations = {
+    "FLT-DEF-001",
+    "FLT-HR-DEF",
+    "FLT-SGOOD-DEF",
+    "FLT-AUT-DEF",
+    "FLT-COMPAT-DEF",
+    "FLT-RACAR-DEF",
+}
 for node in obligations:
     for dependency in node["direct_dependencies"]:
         if dependency not in ids:
@@ -80,7 +88,7 @@ for node in obligations:
                 "edge_id": f"E-{dependency.removeprefix('FLT-')}-{node['obligation_id'].removeprefix('FLT-')}",
                 "from": dependency,
                 "to": node["obligation_id"],
-                "edge_kind": "definition" if "DEF" in dependency else "theorem",
+                "edge_kind": "definition" if dependency in definition_obligations else "theorem",
                 "justification": f"{node['obligation_id']} directly consumes {dependency}.",
             }
         )

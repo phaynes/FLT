@@ -22,6 +22,7 @@ that a cited theorem has the hypotheses required here.
 | SRC-014 | Barnet-Lamb, Gee, Geraghty, Taylor, *Potential automorphy and change of weight* (2014) | Route cited as the Brauer-theorem compatible-family trick | Potential automorphy and compatible families | Primary source identified; exact specialization audit open |
 | SRC-015 | P. de Smit and H. Lenstra, representability result cited in source | Proposition 2.3(1), locator recorded in `FLT/Deformations/Representable.lean` | Deformation-functor corepresentability | Exact bibliographic record and source-condition audit open |
 | SRC-016 | R. Taylor, lectures with notes by D. Dore and T. Feng, *Automorphy Lifting* (2018) | Theorem 2.1.1, printed p. 12; applications in sections 2.3.6--2.3.7 | Selected modularity-lifting theorem | Primary PDF visually checked; exact theorem selected, but required Lean vocabulary and repository-level bridges remain absent |
+| SRC-017 | J. Voight, *Quaternion Algebras*, Graduate Texts in Mathematics 288, Springer (2021) | DOI `10.1007/978-3-030-56694-4`, Lemma 17.7.13 | Finiteness of norm-one units used in the finite-relative-index argument for quaternionic level subgroups | Open-access primary source identified from the exact upstream docstring; construction of the order, quotient embedding, discreteness, and boundedness specialization remain to be reconciled in FLT-205 |
 
 ## Load-bearing source warning
 

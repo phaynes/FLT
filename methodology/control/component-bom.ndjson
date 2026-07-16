@@ -11,14 +11,14 @@
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-TW-PRIMES","target_stage":"T1","owner_work_item":"FLT-403","component":"taylor-wiles","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-PATCHING","target_stage":"T1","owner_work_item":"FLT-403","component":"taylor-wiles","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-CBASE","target_stage":"T2","owner_work_item":"FLT-302","component":"cyclic-base-change","coverage":"exact"}
-{"record_type":"ProofObligationBinding","obligation_id":"FLT-MLT-SOURCE","target_stage":"T1","owner_work_item":"FLT-404","component":"modularity-lifting-source","coverage":"exact"}
+{"record_type":"ProofObligationBinding","obligation_id":"FLT-MLT-SOURCE","target_stage":"T1","owner_work_item":"FLT-404","component":"modularity-lifting","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-MLT","target_stage":"T1","owner_work_item":"FLT-415","component":"modularity-lifting-terminal","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-MORET-BAILLY","target_stage":"T2","owner_work_item":"FLT-303","component":"moret-bailly","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-CLASS-FIELD","target_stage":"T2","owner_work_item":"FLT-304","component":"class-field","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-JL","target_stage":"T2","owner_work_item":"FLT-305","component":"jacquet-langlands","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-INDUCED-MOD","target_stage":"T2","owner_work_item":"FLT-306","component":"induced-modularity","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-AUX-CURVE","target_stage":"T1","owner_work_item":"FLT-413","component":"auxiliary-residual-image","coverage":"exact"}
-{"record_type":"ProofObligationBinding","obligation_id":"FLT-POTMOD","target_stage":"T1","owner_work_item":"FLT-409","component":"potential-modularity-terminal","coverage":"exact"}
+{"record_type":"ProofObligationBinding","obligation_id":"FLT-POTMOD","target_stage":"T1","owner_work_item":"FLT-409","component":"potential-modularity","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-LIFT","target_stage":"T1","owner_work_item":"FLT-410","component":"compatible-family","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-COMPAT-DEF","target_stage":"T1","owner_work_item":"FLT-204","component":"existing-compatible-family-vocabulary","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-BRAUER-FAMILY","target_stage":"T1","owner_work_item":"FLT-410","component":"compatible-family","coverage":"exact"}
@@ -29,7 +29,7 @@
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-CHEBOTAREV","target_stage":"T2","owner_work_item":"FLT-308","component":"chebotarev","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-BRAUER-NESBITT","target_stage":"T2","owner_work_item":"FLT-309","component":"brauer-nesbitt","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-COMPAT-CONTRA","target_stage":"T1","owner_work_item":"FLT-411","component":"terminal-reducibility","coverage":"exact"}
-{"record_type":"ProofObligationBinding","obligation_id":"FLT-SGOOD-SELECTED","target_stage":"T1","owner_work_item":"FLT-404","component":"modularity-lifting-source","coverage":"exact"}
+{"record_type":"ProofObligationBinding","obligation_id":"FLT-SGOOD-SELECTED","target_stage":"T1","owner_work_item":"FLT-404","component":"modularity-lifting","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-RESIDUAL-IMAGE","target_stage":"T1","owner_work_item":"FLT-413","component":"auxiliary-residual-image","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-AUT-GALOIS","target_stage":"T1","owner_work_item":"FLT-408","component":"automorphic-galois","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-AUX-LOCAL-FIELD","target_stage":"T1","owner_work_item":"FLT-413","component":"auxiliary-residual-image","coverage":"exact"}
