@@ -77,6 +77,7 @@ if args.build:
         "FLTMethodology.Probes.LibraryMatches",
         "FLTMethodology.Probes.MLTSourceBoundary",
         "FLTMethodology.Probes.GoodReductionBoundary",
+        "FLTMethodology.Probes.WeilPairingBoundary",
         "FLT.ModularityLifting.Conditions",
     )
     build_results.update(

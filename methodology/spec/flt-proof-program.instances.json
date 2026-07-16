@@ -408,6 +408,13 @@
       "to": "FLT-CHEBOTAREV"
     },
     {
+      "edge_id": "E-BRAUER-NESBITT-CHEBOTAREV",
+      "edge_kind": "theorem",
+      "from": "FLT-BRAUER-NESBITT",
+      "justification": "FLT-CHEBOTAREV directly consumes FLT-BRAUER-NESBITT.",
+      "to": "FLT-CHEBOTAREV"
+    },
+    {
       "edge_id": "E-FAMILY-COMPAT-CONTRA",
       "edge_kind": "theorem",
       "from": "FLT-FAMILY",
@@ -2008,11 +2015,12 @@
       "critical_path": true,
       "current_state": "absent",
       "direct_dependencies": [
-        "FLT-COMPAT-DEF"
+        "FLT-COMPAT-DEF",
+        "FLT-BRAUER-NESBITT"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "No exact theorem found in the pinned library.",
+        "evidence": "No exact theorem found in the pinned library; independent consumer reviews confirmed that almost-all Frobenius compatibility does not directly satisfy the all-group-element residual specialization.",
         "loc_p50": 12000,
         "loc_p80": 55000,
         "loc_p95": 220000,
@@ -2033,10 +2041,10 @@
       "mathematical_name": "Chebotarev density specialization for compatible Galois representations",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CHEBOTAREV",
-      "proof_pattern": "Use sourced Chebotarev plus trace continuity and Brauer-Nesbitt.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Use sourced Chebotarev plus trace continuity and the characteristic-zero branch of Brauer--Nesbitt.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-CHEBOTAREV",
-      "source_condition_risks": "Continuity, semisimplicity, coefficient embeddings, and density topology must be explicit.",
+      "source_condition_risks": "Continuity, semisimplicity, coefficient embeddings, density topology, and the characteristic-zero Brauer--Nesbitt terminal must be explicit.",
       "source_refs": [
         "SRC-003"
       ],
@@ -2044,7 +2052,7 @@
       "target_stage": "T2"
     },
     {
-      "completion_gate": "The arbitrary-field group theorem is kernel-clean and both residual and characteristic-zero coefficient-field consumers are discharged without narrowing their frozen scope.",
+      "completion_gate": "Either the arbitrary-field group theorem is kernel-clean, or both exact residual and characteristic-zero branches are proved and every live consumer is discharged without a new public assumption.",
       "completion_targets": [
         "T2",
         "T3"
@@ -2054,7 +2062,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The exact GroupContract, counter-regression, trace helper, and consumer bridge elaborate. Independent Fable 5 and GPT-5.6 xhigh reviews accept the contract but reject the imperfect-field splitting route; pinned Mathlib lacks the terminal.",
+        "evidence": "The joint-image reduction, specialized residual consumer, and residual rank transport are kernel-clean. Independent Fable 5 and GPT-5.6 xhigh reviews returned NARROWING PARTIAL ONLY because the compatible-family branch has characteristic-zero coefficients and only almost-all Frobenius comparison.",
         "loc_p50": 5000,
         "loc_p80": 22000,
         "loc_p95": 80000,
@@ -2067,7 +2075,7 @@
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Representation.brauer_nesbitt",
       "lean_risk": "very-high",
-      "lean_type": "Exact probed contract: finite-dimensional semisimple representations over an arbitrary field with equal characteristic polynomials on every group element are linearly equivalent; required both for residual semisimplification and the compatible-family terminal.",
+      "lean_type": "Exact probed umbrella: finite-dimensional semisimple representations over an arbitrary field with equal characteristic polynomials on every group element are linearly equivalent. A reviewed residual specialization uses a common algebraically closed field, rank exactly two, and odd characteristic; the compatible-family terminal needs a separate characteristic-zero branch.",
       "library_candidates": [
         "Representation.IsSemisimpleRepresentation",
         "IsSemisimpleModule",
@@ -2077,10 +2085,10 @@
       "mathematical_name": "Brauer-Nesbitt representation comparison",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
-      "proof_pattern": "Prove the arbitrary-field group contract through the finite-dimensional semisimple joint image and a source-checked spanning-set Brauer-Nesbitt argument; do not rely on a finite separable splitting field over an imperfect base. Use the algebraically closed character-independence specialization only after a separately reviewed consumer narrowing.",
+      "proof_pattern": "Retain the umbrella until either its finite joint-image terminal is proved or exact residual and characteristic-zero branches are both frozen. Reuse residualModel_finrank_eq_two for the residual branch; do not hide the compatible-family Chebotarev/semisimplicity terminal.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
-      "source_condition_risks": "The contract is true and signature-green, but the documented finite separable splitting-field route is incomplete over imperfect fields. Wiese is a detailed secondary source; the exact primary arbitrary-field joint-image/spanning-set proof remains to be selected. The rank-two algebraically closed shortcut does not discharge the current generic consumer.",
+      "source_condition_risks": "The arbitrary-field contract is true and signature-green, but the documented finite separable splitting-field route is incomplete over imperfect fields. The reviewed rank-two algebraically closed shortcut can serve only the residual coefficient branch; it cannot serve characteristic-zero compatible-family members or replace the absent Chebotarev bridge.",
       "source_refs": [
         "SRC-003"
       ],
@@ -2387,7 +2395,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Three live admissions remain across Flat.lean and GoodReduction.lean; the exact missing specialization contract now elaborates and three downstream inertia helpers are kernel-clean.",
+        "evidence": "The exact consumer slice and concrete Frey specialization were probed. Three downstream inertia helpers are kernel-clean, but pinned FLT/Mathlib has neither point specialization/torsion injectivity nor the local/global torsion transport or finite-flat Hopf-algebra construction.",
         "loc_p50": 2500,
         "loc_p80": 10000,
         "loc_p95": 35000,
@@ -2404,15 +2412,17 @@
       "library_candidates": [
         "WeierstrassCurve.reduction",
         "FLTMethodology.GoodReduction.PointSpecializationContract",
-        "ValuationSubring.inertiaSubgroup"
+        "WeierstrassCurve.torsion_fixed_of_invariant_injective",
+        "ValuationSubring.inertiaSubgroup",
+        "GaloisRep.IsUnramifiedAt"
       ],
       "mathematical_name": "Finite-flat and good-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-FLAT",
-      "proof_pattern": "Construct the compatible local map, normalized projective point specialization, inertia compatibility, and formal-group/kernel-of-reduction injectivity before applying the banked torsion-fixed criterion.",
+      "proof_pattern": "Treat the two consumers separately: construct the Neron--Ogg--Shafarevich point-specialization and local/global action bridge for unramifiedness, then construct the finite-flat Hopf-algebra model used at P.p. The resultant identity is only an arithmetic support lemma and does not replace either construction.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-FLAT",
-      "source_condition_risks": "The pinned library reduces curve coefficients but has no projective point-specialization map or proof that specialization is injective on prime-to-residue-characteristic torsion.",
+      "source_condition_risks": "Consumer specialization does not remove the mathematical boundary. Prime-to-residue-characteristic unramifiedness needs a genuine point-specialization map, inertia compatibility, and torsion injectivity; the Frey consumer additionally needs local/global torsion-action transport. Flatness at residue characteristic P.p separately requires the finite-flat group-scheme/Hopf-algebra theorem.",
       "source_refs": [
         "SRC-001",
         "SRC-005"
@@ -2432,7 +2442,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Eleven admissions in TateCurve.lean.",
+        "evidence": "The admission dependency order is now explicit. Four directly consumed quotient-action helpers are standard-axiom clean; the exists_variableChange_tateCurve probe exposes the ellipticity, analytic round-trip, and local-field descent boundary.",
         "loc_p50": 4500,
         "loc_p80": 18000,
         "loc_p95": 65000,
@@ -2442,21 +2452,23 @@
       },
       "expected_module": "FLT.KnownIn1980s.EllipticCurves",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.TateCurve support closure",
       "lean_risk": "very-high",
       "lean_type": "Tate uniformization and inertia statements used for the Frey representation at the bad prime and away from 2 ell.",
       "library_candidates": [
-        "EllipticCurve",
-        "TateCurve"
+        "WeierstrassCurve.tateCurve",
+        "WeierstrassCurve.exists_variableChange_of_j_eq",
+        "QuotientGroup.congr",
+        "ValuativeExtension"
       ],
       "mathematical_name": "Tate-curve and bad-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-UNRAMIFIED",
-      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "proof_pattern": "Prove Tate-curve ellipticity and the j-invariant round-trip, descend the variable change to k, construct tateEquiv, then prove base-change/Galois compatibility and the separable-closure uniformization in dependency order. Reuse the kernel-clean Tate-quotient Galois action helpers in tatePoint_galois.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
-      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_condition_risks": "Nine admissions remain. The first construction leaf needs ellipticity of the Tate curve, the analytic j(tateCurve q) round-trip, and descent of a separable-closure variable change to the local field; pinned descent APIs do not supply that route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
       "source_refs": [
         "SRC-001",
         "SRC-005"
@@ -2465,7 +2477,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_gate": "A source-faithful pairing construction and Tate normalization theorem are kernel-clean, and every declaration in this subcluster used by Frey-HR has no sorryAx.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2476,7 +2488,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Admissions in WeilPairing.lean and known-in-1980s torsion support.",
+        "evidence": "The admission inventory and permanent zero-pairing regression are signature-green; WeilPairing.lean builds but both exported declarations retain sorryAx and no pinned implementation supplies the required construction.",
         "loc_p50": 1000,
         "loc_p80": 5000,
         "loc_p95": 18000,
@@ -2486,21 +2498,22 @@
       },
       "expected_module": "FLT.KnownIn1980s.EllipticCurves",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.KnownIn1980s.EllipticCurves.WeilPairing support closure",
       "lean_risk": "very-high",
       "lean_type": "Weil-pairing and cyclotomic determinant declarations needed for the determinant field of IsHardlyRamified.",
       "library_candidates": [
-        "EllipticCurve",
-        "TateCurve"
+        "rootsOfUnity",
+        "WeierstrassCurve.tatePoint",
+        "EllipticCurve"
       ],
       "mathematical_name": "Weil pairing and determinant support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-WEIL",
-      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "proof_pattern": "Construct a source-faithful Weil pairing with enough alternating, perfectness, base-change, or Galois-equivariance laws to exclude the zero inhabitant, then prove the exact Tate normalization theorem. Coordinate the latter with FLT-TATE-UNRAMIFIED because it consumes tateEquivSepClosure.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-WEIL",
-      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_condition_risks": "The exported biadditive-map type is inhabited by the zero pairing and does not characterize the Weil pairing. That inhabitant fails the frozen Tate normalization equation for a nontrivial root of unity. Pinned Mathlib has no Weil-pairing, Miller-function, divisor/Picard, or Cartier-duality construction.",
       "source_refs": [
         "SRC-001",
         "SRC-005"

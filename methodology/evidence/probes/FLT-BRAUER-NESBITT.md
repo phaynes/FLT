@@ -45,6 +45,22 @@ source for that arbitrary-field proof remains a source gate.
 
 Reference: <https://math.uni.lu/~wiese/notes/GalRep.pdf>, Theorem 2.4.6 and Remark 2.4.7.
 
+## Kernel-clean joint-image reduction
+
+The arbitrary-field route is now reduced, without changing `GroupContract`, to the exact
+`FiniteJointImageContract`. The probe constructs:
+
+- the finite-dimensional subalgebra of `End(V) × End(W)` spanned by pairs `(rho g, sigma g)`;
+- both projection algebra homomorphisms;
+- the embedded element for each actual group element; and
+- `exists_jointImage_basis_from_group`, a linearly independent spanning family of genuine group
+  image pairs indexed by the finrank of the joint-image span.
+
+`groupContract_of_finiteJointImageContract` is kernel-clean and proves that the finite remainder is
+sufficient for the unchanged full contract. The residual proposition remains substantive: from
+semisimplicity, characteristic-polynomial equality on all group elements, and the extracted finite
+basis, prove the representation equivalence. No `sorryAx` is hidden in the reduction.
+
 ## Two architectures tested
 
 ### A. Full arbitrary-field theorem
@@ -64,10 +80,19 @@ strictly below the characteristic. This removes the repeated `p`th-root and arbi
 tail. Its first absent terminal is `SimpleCharactersLinearIndependentContract`.
 
 The exact type-correct specialization is `AlgClosedTwoDimensionalTraceContract`.
-It does **not** discharge the current generic `SemisimplifiedResidualModelsUnique` consumer, which
-does not assume an algebraically closed field, rank two, or odd residual characteristic. Using this
-shorter route would require a separately reviewed narrowing and a kernel-clean specialized consumer
-bridge; the current graph therefore continues to require `GroupContract`.
+The kernel-clean `specializedResidualModelsUnique` bridge shows that it discharges the residual
+consumer after adding a common algebraically closed field, rank two for both spaces, and odd
+positive characteristic. The generic `SemisimplifiedResidualModelsUnique` consumer does not expose
+those hypotheses, and the separate compatible-family terminal has only almost-all Frobenius data
+until its Chebotarev bridge is built. The specialization therefore does not yet replace the generic
+graph obligation.
+
+The rank-two residual hypothesis is no longer merely anticipated. The kernel-clean theorem
+`residualModel_finrank_eq_two` derives it from integral rank two and the existing residual-model
+characteristic-polynomial comparison at the identity. Independent Fable 5 and GPT-5.6 xhigh
+consumer reviews nevertheless returned **NARROWING PARTIAL ONLY**: the characteristic-zero
+compatible-family branch cannot use the odd residual-characteristic theorem, and it still lacks
+the Chebotarev/continuity and semisimplicity bridge from almost-all Frobenius data.
 
 ## Kernel regression
 
@@ -91,7 +116,8 @@ Build command:
 lake env lean FLTMethodology/Probes/BrauerNesbittBoundary.lean
 ```
 
-Expected axiom audit for the proved bridge, trace helper, and finite regression:
+Expected axiom audit for the proved bridges, joint-image reduction, trace helper, and finite
+regression:
 
 ```text
 [propext, Classical.choice, Quot.sound]
@@ -99,9 +125,10 @@ Expected axiom audit for the proved bridge, trace helper, and finite regression:
 
 ## Stop-loss verdict
 
-The full leaf remains open. Because the current Taylor-2018 consumer is generic, the next graph
-gate remains the arbitrary-field `GroupContract`. Its proof needs a source-checked
-finite-dimensional joint-image/spanning-set argument rather than the incomplete separable
-splitting-field route. The algebraically closed rank-two route is a valid possible optimization
-only after the consumer is explicitly narrowed and independently reviewed; it still requires a new
-proof of the simple-character independence/classification terminal in pinned Mathlib.
+The full leaf remains open. Because the current consumers need two different coefficient regimes,
+the next graph gate remains the arbitrary-field `GroupContract` or an exact two-branch replacement.
+Its proof needs a source-checked finite-dimensional joint-image/spanning-set argument rather than
+the incomplete separable splitting-field route. The reviewed algebraically closed rank-two route
+may serve only the residual branch; it still requires a proof of the simple-character
+independence/classification terminal in pinned Mathlib. The characteristic-zero compatible-family
+branch remains a separate theorem rather than a hidden narrowing.

@@ -78,3 +78,19 @@ revision-required proof architecture. The next admissible route is a source-chec
 finite-dimensional joint-image/spanning-set Brauer--Nesbitt argument, or an independently justified
 component-wise descent proof. No field-perfectness, group-finiteness, continuity, finite-image, or
 consumer-narrowing hypothesis is authorized by this review.
+
+## Brauer--Nesbitt consumer-narrowing review
+
+Candidate commit: `61ca825611de277f22289404f39ffac4df87b650`.
+
+Fable 5 and GPT-5.6 xhigh independently returned **NARROWING PARTIAL ONLY**. They accepted the
+kernel-clean algebraically closed, rank-two, odd-characteristic bridge as a valid residual
+specialization, but found that it does not cover every live consumer.
+
+The residual coefficient branch can use the specialization after proving its common algebraically
+closed residual field and odd characteristic. Its dimension transport is now kernel-clean as
+`residualModel_finrank_eq_two`. The characteristic-zero compatible-family branch still needs its
+own semisimple Brauer--Nesbitt theorem plus the Chebotarev/continuity passage from almost-all
+Frobenius comparison. Consequently the generic `FLT-BRAUER-NESBITT` node remains open and is not
+falsely replaced; a future graph split must preserve both exact branches and any coefficient
+descent.

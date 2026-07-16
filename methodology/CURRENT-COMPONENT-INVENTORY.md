@@ -2,7 +2,7 @@
 
 Baseline inventory at frozen upstream commit `ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b`.
 
-Live execution refresh at methodology commit `d414ef103d98032a12e79ef6c470030064e81e0c`:
+Live execution refresh at pre-checkpoint commit `0fa2249cb7abd649df86846eafcea1adfaadf631`:
 
 - warm `FLT` and methodology builds passed;
 - the monitor counted 27 executable verified-root admissions;
@@ -40,7 +40,7 @@ transitive-sorry audits are the authority for individual declarations.
 | Auxiliary-field prime condition | Unramified in blueprint; split completely in the Taylor near-reference | Source choice unresolved | Explicit definition/source gap after Opus HR-04 |
 | Potential-modularity assembly | Moret-Bailly, auxiliary curve, induced modularity, Jacquet–Langlands | Mostly absent as an integrated Lean route | Critical path |
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
-| Brauer--Nesbitt comparison | `FLTMethodology.BrauerNesbitt.GroupContract` and `semisimplifiedResidualModelsUnique_of_groupContract` | Exact contract and consumer wiring are signature-green; arbitrary-field theorem remains absent | Coefficient and compatible-family prerequisite |
+| Brauer--Nesbitt comparison | `FLTProbe.BrauerNesbitt.GroupContract` and its consumer bridges | Joint-image reduction, residual specialization, and residual rank transport are kernel-clean; reviewed narrowing is partial only and the terminal theorem remains absent | Coefficient and compatible-family prerequisite |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
 | Top theorem | `flt`, `PNat.pow_add_pow_ne_pow` | Compiles upstream but is not kernel-clean | T1–T3 terminal |
 
@@ -67,9 +67,9 @@ W00: `1 / 7` refreshed nodes complete (`1 / 4` original core nodes).
 | Node | Classification | Reachable live admission summary |
 |---|---|---|
 | `FLT-TATE-TORSION` | BLOCKED | Two admissions remain, and the file explicitly requires coordination with KB and David Angdinata before work on them |
-| `FLT-TATE-FLAT` | ACTIVE | Three admissions remain across `Flat.lean` and `GoodReduction.lean`; three inertia helpers are clean, but the pinned library lacks the required point-specialization/injectivity theorem |
-| `FLT-TATE-UNRAMIFIED` | TODO | Eight Tate-uniformization admissions remain |
-| `FLT-TATE-WEIL` | TODO | `weilPairing` and `weilPairing_tatePoint` remain admitted |
+| `FLT-TATE-FLAT` | BLOCKED | Consumer specialization still requires the easy Neron--Ogg--Shafarevich theorem, a local/global torsion-action bridge, and separately the finite-flat group-scheme/Hopf-algebra input at `P.p` |
+| `FLT-TATE-UNRAMIFIED` | ACTIVE | Four Galois-action helpers are kernel-clean; nine admissions remain, with the first construction leaf blocked on Tate-curve ellipticity, the analytic j-invariant round-trip, and local-field descent |
+| `FLT-TATE-WEIL` | BLOCKED | The current pairing type admits the zero map, which fails the frozen Tate normalization consumer; a source-faithful Weil-pairing construction is absent |
 | `FLT-SUPPORT-TATE` | BLOCKED | Join waits for all four support subclusters |
 | `FLT-TORSION-001` | BLOCKED | `WeierstrassCurve.galoisRep` waits for `FLT-TATE-TORSION` closure |
 | `FLT-FREY-HR` | BLOCKED | Two direct admissions and dependencies on torsion and the support join |

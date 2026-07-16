@@ -1,4 +1,5 @@
 import Mathlib.LinearAlgebra.Charpoly.ToMatrix
+import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
 import Mathlib.Algebra.Field.ZMod
 import Mathlib.RepresentationTheory.Character
@@ -19,7 +20,7 @@ one-sided trace weakening.
 
 namespace FLTProbe.BrauerNesbitt
 
-open scoped MonoidAlgebra
+open scoped MonoidAlgebra TensorProduct
 
 /-- Full graph target: semisimple representations with matching characteristic polynomials on
 every group element are equivalent. -/
@@ -316,6 +317,34 @@ theorem semisimplifiedResidualModelsUnique_of_groupContract
   intro g
   exact e.conj_apply_self g
 
+/-- A residual model of an integral rank-two representation is itself rank two.  This is the
+exact dimension-transport obligation used by the proposed algebraically closed residual-field
+specialization; it follows already from the characteristic-polynomial comparison at the identity.
+-/
+theorem residualModel_finrank_eq_two
+    {F : Type uF} [Field F] [NumberField F]
+    {R : Type uR} [CommRing R] [IsLocalRing R]
+      [TopologicalSpace R] [IsTopologicalRing R]
+    {V0 : Type uV0} [AddCommGroup V0] [Module R V0]
+      [Module.Finite R V0] [Module.Free R V0]
+    (rho0 : GaloisRep F R V0)
+    {k : Type uk} [Field k] [TopologicalSpace k] [IsTopologicalRing k]
+      [Algebra R k] [ContinuousSMul R k]
+    {W : Type uW1} [AddCommGroup W] [Module k W]
+      [Module.Finite k W] [Module.Free k W]
+    (rhobar : GaloisRep F k W)
+    (hV0 : Module.rank R V0 = 2)
+    (hres : IsSemisimplifiedResidualModel rho0 rhobar) :
+    Module.finrank k W = 2 := by
+  have hchar := hres.2.2 (1 : Field.absoluteGaloisGroup F)
+  have hdim : Module.finrank k (k ⊗[R] V0) = Module.finrank k W := by
+    have hn := congrArg Polynomial.natDegree hchar
+    simpa only [LinearMap.charpoly_natDegree] using hn
+  have hfinV0 : Module.finrank R V0 = 2 := by
+    rw [← Module.finrank_eq_rank] at hV0
+    exact_mod_cast hV0
+  rw [← hdim, Module.finrank_baseChange, hfinV0]
+
 /-- Exact specialization probe for the intended residual coefficient boundary. It shows that the
 algebraically closed, two-dimensional, odd-characteristic trace contract proves the existing
 same-field consumer once those three additional hypotheses are supplied explicitly. -/
@@ -373,6 +402,7 @@ end ConsumerBridge
 #check SmallDimensionTraceContract
 #check AlgClosedTwoDimensionalTraceContract
 #check RefutedOneSidedTraceContract
+#check residualModel_finrank_eq_two
 #check specializedResidualModelsUnique
 
 #print axioms GroupContract
@@ -396,6 +426,7 @@ end ConsumerBridge
 #print axioms RefutedOneSidedTraceContract
 #print axioms refutedOneSidedTraceContract_false
 #print axioms semisimplifiedResidualModelsUnique_of_groupContract
+#print axioms residualModel_finrank_eq_two
 #print axioms specializedResidualModelsUnique
 
 end FLTProbe.BrauerNesbitt
