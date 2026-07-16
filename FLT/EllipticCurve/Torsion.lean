@@ -380,7 +380,136 @@ noncomputable instance WeierstrassCurve.galoisRepresentation
 no hope of a constructive one with the current definition of algebraic closure. -/
 noncomputable instance : DecidableEq (AlgebraicClosure ℚ) := Classical.typeDecidableEq _
 
+abbrev WeierstrassCurve.AbsoluteTorsion {K : Type u} [Field K]
+    (E : WeierstrassCurve K) [E.IsElliptic] [DecidableEq (AlgebraicClosure K)] (n : ℕ) :=
+  (E.map (algebraMap K (AlgebraicClosure K))).nTorsion n
+
+noncomputable def WeierstrassCurve.torsionGaloisMap
+    {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+    [DecidableEq (AlgebraicClosure K)] (n : ℕ) (σ : Field.absoluteGaloisGroup K) :
+    E.AbsoluteTorsion n →+ E.AbsoluteTorsion n where
+  toFun P := ⟨WeierstrassCurve.Points.map E σ P.1, by
+    rw [Submodule.mem_torsionBy_iff]
+    have hP : (n : ℤ) • P.1 = 0 := (Submodule.mem_torsionBy_iff _ _).mp P.2
+    calc
+      (n : ℤ) • WeierstrassCurve.Points.map E σ.toAlgHom P.1 =
+          WeierstrassCurve.Points.map E σ.toAlgHom ((n : ℤ) • P.1) :=
+        ((WeierstrassCurve.Points.map E σ.toAlgHom).map_zsmul (n : ℤ) P.1).symm
+      _ = WeierstrassCurve.Points.map E σ.toAlgHom 0 := congrArg _ hP
+      _ = 0 := map_zero (WeierstrassCurve.Points.map E σ.toAlgHom)⟩
+  map_zero' := by
+    apply Subtype.ext
+    exact map_zero (WeierstrassCurve.Points.map E σ.toAlgHom)
+  map_add' P Q := by
+    apply Subtype.ext
+    exact map_add (WeierstrassCurve.Points.map E σ.toAlgHom) P.1 Q.1
+
+noncomputable def WeierstrassCurve.torsionGaloisLinearMap
+    {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+    [DecidableEq (AlgebraicClosure K)] (n : ℕ) (σ : Field.absoluteGaloisGroup K) :
+    E.AbsoluteTorsion n →ₗ[ZMod n] E.AbsoluteTorsion n :=
+  (E.torsionGaloisMap n σ).toZModLinearMap n
+
+noncomputable def WeierstrassCurve.torsionGaloisActionHom
+    {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+    [DecidableEq (AlgebraicClosure K)] (n : ℕ) :
+    Field.absoluteGaloisGroup K →* Module.End (ZMod n) (E.AbsoluteTorsion n) where
+  toFun := E.torsionGaloisLinearMap n
+  map_one' := by
+    ext P
+    change WeierstrassCurve.Points.map E
+      (AlgHom.id K (AlgebraicClosure K)) P.1 = P.1
+    exact DFunLike.congr_fun
+      (WeierstrassCurve.Points.map_id E (AlgebraicClosure K)) P.1
+  map_mul' σ τ := by
+    ext P
+    change WeierstrassCurve.Points.map E ((σ * τ).toAlgHom) P.1 =
+      WeierstrassCurve.Points.map E σ.toAlgHom
+        (WeierstrassCurve.Points.map E τ.toAlgHom P.1)
+    rw [show (σ * τ).toAlgHom = σ.toAlgHom.comp τ.toAlgHom by ext x; rfl]
+    exact DFunLike.congr_fun
+      (WeierstrassCurve.Points.map_comp E (AlgebraicClosure K) (AlgebraicClosure K)
+        (AlgebraicClosure K) τ.toAlgHom σ.toAlgHom) P.1 |>.symm
+
+lemma WeierstrassCurve.torsionGaloisPointStabilizer_isOpen
+    {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+    [DecidableEq (AlgebraicClosure K)] (n : ℕ) (P : E.AbsoluteTorsion n) :
+    IsOpen {σ : Field.absoluteGaloisGroup K | E.torsionGaloisActionHom n σ P = P} := by
+  rcases P with ⟨P, hP⟩
+  rcases P with _ | ⟨x, y, hxy⟩
+  · have heq : {σ : Field.absoluteGaloisGroup K | E.torsionGaloisActionHom n σ
+        (⟨.zero, hP⟩ : E.AbsoluteTorsion n) = ⟨.zero, hP⟩} = Set.univ := by
+      ext σ
+      simp only [Set.mem_setOf_eq, Set.mem_univ, iff_true]
+      have hz : (⟨.zero, hP⟩ : E.AbsoluteTorsion n) = 0 := rfl
+      simpa only [hz] using map_zero (E.torsionGaloisActionHom n σ)
+    rw [heq]
+    exact isOpen_univ
+  · have hx : IsOpen
+        (MulAction.stabilizer (Field.absoluteGaloisGroup K) x :
+          Set (Field.absoluteGaloisGroup K)) := stabilizer_isOpen_of_isIntegral x
+    have hy : IsOpen
+        (MulAction.stabilizer (Field.absoluteGaloisGroup K) y :
+          Set (Field.absoluteGaloisGroup K)) := stabilizer_isOpen_of_isIntegral y
+    rw [show {σ : Field.absoluteGaloisGroup K | E.torsionGaloisActionHom n σ
+        (⟨.some x y hxy, hP⟩ : E.AbsoluteTorsion n) = ⟨.some x y hxy, hP⟩} =
+        (MulAction.stabilizer (Field.absoluteGaloisGroup K) x :
+          Set (Field.absoluteGaloisGroup K)) ∩
+        (MulAction.stabilizer (Field.absoluteGaloisGroup K) y :
+          Set (Field.absoluteGaloisGroup K)) by
+      ext σ
+      simp only [Set.mem_setOf_eq, Set.mem_inter_iff]
+      constructor
+      · intro h
+        have h' : WeierstrassCurve.Points.map E σ.toAlgHom (.some x y hxy) =
+            .some x y hxy := congrArg Subtype.val h
+        have hcoords : σ x = x ∧ σ y = y := by
+          simpa [WeierstrassCurve.Points.map] using
+            WeierstrassCurve.Affine.Point.some.inj h'
+        exact ⟨MulAction.mem_stabilizer_iff.mpr hcoords.1,
+          MulAction.mem_stabilizer_iff.mpr hcoords.2⟩
+      · rintro ⟨hx, hy⟩
+        apply Subtype.ext
+        have hx' : σ x = x := MulAction.mem_stabilizer_iff.mp hx
+        have hy' : σ y = y := MulAction.mem_stabilizer_iff.mp hy
+        change WeierstrassCurve.Affine.Point.some (σ x) (σ y) _ = .some x y hxy
+        simpa only [WeierstrassCurve.Affine.Point.some.injEq] using And.intro hx' hy']
+    exact hx.inter hy
+
+lemma WeierstrassCurve.torsionGaloisActionHom_ker_isOpen
+    {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+    [DecidableEq (AlgebraicClosure K)] (n : ℕ) (hn : 0 < n) :
+    IsOpen ((E.torsionGaloisActionHom n).ker : Set (Field.absoluteGaloisGroup K)) := by
+  letI : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  letI : Finite (E.AbsoluteTorsion n) :=
+    (E.map (algebraMap K (AlgebraicClosure K))).n_torsion_finite hn
+  rw [show ((E.torsionGaloisActionHom n).ker : Set (Field.absoluteGaloisGroup K)) =
+      ⋂ P : E.AbsoluteTorsion n,
+        {σ : Field.absoluteGaloisGroup K | E.torsionGaloisActionHom n σ P = P} by
+    ext σ
+    simp only [Set.mem_iInter, Set.mem_setOf_eq]
+    change E.torsionGaloisActionHom n σ = 1 ↔
+      ∀ P : E.AbsoluteTorsion n, E.torsionGaloisActionHom n σ P = P
+    constructor
+    · intro h P
+      rw [h]
+      rfl
+    · intro h
+      ext P
+      simpa using h P]
+  exact isOpen_iInter_of_finite (E.torsionGaloisPointStabilizer_isOpen n)
+
 /-- The continuous Galois representation associated to an elliptic curve over a field. -/
-def WeierstrassCurve.galoisRep {K : Type u} [Field K] (E : WeierstrassCurve K) [E.IsElliptic]
+noncomputable def WeierstrassCurve.galoisRep {K : Type u} [Field K]
+    (E : WeierstrassCurve K) [E.IsElliptic]
     [DecidableEq K] [DecidableEq (AlgebraicClosure K)] (n : ℕ) (hn : 0 < n) :
-  GaloisRep K (ZMod n) ((E.map (algebraMap K (AlgebraicClosure K))).nTorsion n) := sorry
+    GaloisRep K (ZMod n) ((E.map (algebraMap K (AlgebraicClosure K))).nTorsion n) := by
+  letI : NeZero n := ⟨Nat.ne_of_gt hn⟩
+  letI : Finite (E.AbsoluteTorsion n) :=
+    (E.map (algebraMap K (AlgebraicClosure K))).n_torsion_finite hn
+  letI := moduleTopology (ZMod n) (Module.End (ZMod n) (E.AbsoluteTorsion n))
+  letI : ContinuousMul (Module.End (ZMod n) (E.AbsoluteTorsion n)) :=
+    ⟨IsModuleTopology.continuous_mul_of_finite (ZMod n)
+      (Module.End (ZMod n) (E.AbsoluteTorsion n))⟩
+  exact ⟨E.torsionGaloisActionHom n,
+    MonoidHom.continuous_of_isOpen_ker (E.torsionGaloisActionHom_ker_isOpen n hn)⟩
