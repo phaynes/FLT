@@ -65,6 +65,27 @@ theorem trace_eq_of_charpoly_eq
       (Matrix.trace_eq_neg_charpoly_nextCoeff _).symm
     _ = LinearMap.trace k W g := (LinearMap.trace_eq_matrix_trace k bW g).symm
 
+/-- Equality of traces on group elements extends linearly to the full monoid algebra.  This is
+the exact bridge consumed by the Jacobson-density proof of the algebraically closed rank-two
+specialization below. -/
+theorem trace_asAlgebraHom_eq
+    {k G V W : Type*} [Field k] [Group G]
+    [AddCommGroup V] [Module k V] [Module.Finite k V]
+    [AddCommGroup W] [Module k W] [Module.Finite k W]
+    (rho : Representation k G V) (sigma : Representation k G W)
+    (htrace : ∀ g, LinearMap.trace k V (rho g) = LinearMap.trace k W (sigma g)) :
+    ∀ a : k[G],
+      LinearMap.trace k V (rho.asAlgebraHom a) =
+        LinearMap.trace k W (sigma.asAlgebraHom a) := by
+  intro a
+  induction a using MonoidAlgebra.induction_on with
+  | hM g =>
+      simpa only [Representation.asAlgebraHom_of] using htrace g
+  | hadd x y hx hy =>
+      simpa only [map_add] using congrArg₂ (fun a b => a + b) hx hy
+  | hsmul r x hx =>
+      simpa only [map_smul] using congrArg (r • .) hx
+
 /-! ### Finite-dimensional joint-image reduction
 
 The possibly infinite group is replaced by the finite-dimensional algebra linearly spanned by its
@@ -386,6 +407,7 @@ end ConsumerBridge
 #check GroupContract
 #check moduleCharacter
 #check trace_eq_of_charpoly_eq
+#check trace_asAlgebraHom_eq
 #check jointImagePoint
 #check jointImageSpan
 #check jointImageAlgebra
@@ -408,6 +430,7 @@ end ConsumerBridge
 #print axioms GroupContract
 #print axioms moduleCharacter
 #print axioms trace_eq_of_charpoly_eq
+#print axioms trace_asAlgebraHom_eq
 #print axioms jointImagePoint
 #print axioms jointImageSpan
 #print axioms jointImageAlgebra
