@@ -2395,7 +2395,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The exact consumer slice and concrete Frey specialization were probed. Three downstream inertia helpers are kernel-clean, but pinned FLT/Mathlib has neither point specialization/torsion injectivity nor the local/global torsion transport or finite-flat Hopf-algebra construction.",
+        "evidence": "The consumer slice is exact and resultant degree normalization is standard-axiom clean. Pinned FLT/Mathlib has no universal division-polynomial resultant identity, point specialization/torsion injectivity, local/global torsion transport, or finite-flat Hopf-algebra construction.",
         "loc_p50": 2500,
         "loc_p80": 10000,
         "loc_p95": 35000,
@@ -2413,16 +2413,17 @@
         "WeierstrassCurve.reduction",
         "FLTMethodology.GoodReduction.PointSpecializationContract",
         "WeierstrassCurve.torsion_fixed_of_invariant_injective",
+        "WeierstrassCurve.resultant_\u03a6_\u03a8Sq_explicit_eq_default",
         "ValuationSubring.inertiaSubgroup",
         "GaloisRep.IsUnramifiedAt"
       ],
       "mathematical_name": "Finite-flat and good-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-FLAT",
-      "proof_pattern": "Treat the two consumers separately: construct the Neron--Ogg--Shafarevich point-specialization and local/global action bridge for unramifiedness, then construct the finite-flat Hopf-algebra model used at P.p. The resultant identity is only an arithmetic support lemma and does not replace either construction.",
+      "proof_pattern": "Prove/source the universal default-resultant division-polynomial identity. Separately construct the Neron--Ogg--Shafarevich point specialization and local/global action bridge, then the finite-flat Hopf-algebra model at P.p. None of these three mathematical inputs substitutes for another.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-FLAT",
-      "source_condition_risks": "Consumer specialization does not remove the mathematical boundary. Prime-to-residue-characteristic unramifiedness needs a genuine point-specialization map, inertia compatibility, and torsion injectivity; the Frey consumer additionally needs local/global torsion-action transport. Flatness at residue characteristic P.p separately requires the finite-flat group-scheme/Hopf-algebra theorem.",
+      "source_condition_risks": "Consumer specialization does not remove the boundary. The padded resultant is reduced kernel-cleanly to the default resultant, but the universal Res(\u03a6_n,\u03a8_n\u00b2)=\u00b1\u0394^k identity is absent. Prime-to-residue-characteristic unramifiedness still needs point specialization, inertia compatibility, torsion injectivity, and local/global torsion-action transport. Flatness at residue characteristic P.p separately requires the finite-flat group-scheme/Hopf-algebra theorem.",
       "source_refs": [
         "SRC-001",
         "SRC-005"

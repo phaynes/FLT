@@ -30,3 +30,22 @@ the global torsion module under local inertia. The open work is therefore the ma
 specialization plus this local/global torsion-action transport, not a tactic-local rewrite.
 
 No production theorem was weakened and no admission was removed.
+
+## Resultant normalization tranche
+
+`WeierstrassCurve.resultant_Φ_ΨSq_explicit_eq_default` is now kernel-clean. It proves that the
+explicit padded degrees in the admitted theorem agree with Mathlib's default resultant, including
+when the residue characteristic divides `n`. The targeted module builds and the declaration has
+axiom closure `[propext, Classical.choice, Quot.sound]`.
+
+This removes the remaining resultant-API ambiguity. The exact mathematical residual is now the
+default-resultant identity
+
+```lean
+Res(Φ n, ΨSq n) = Δ ^ ((|n| ^ 4 - |n| ^ 2) / 6) ∨
+Res(Φ n, ΨSq n) = -Δ ^ ((|n| ^ 4 - |n| ^ 2) / 6).
+```
+
+No theorem in the pinned library proves this universal division-polynomial identity; its source
+proof remains a separate arithmetic construction. The helper therefore advances the admitted
+consumer without closing it.
