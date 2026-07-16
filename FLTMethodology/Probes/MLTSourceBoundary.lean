@@ -2,6 +2,7 @@ import FLT.GaloisRepresentation.Automorphic
 import FLT.Deformations.Representable
 import FLT.Patching.REqualsT
 import FLT.GaloisRepresentation.HardlyRamified.Defs
+import Mathlib.RepresentationTheory.Semisimple
 
 /-!
 Kernel probe for the current Taylor-2018 modularity-lifting boundary.
@@ -37,8 +38,59 @@ def HasIntegralModel
     (r₀ : (AlgebraicClosure ℚ_[p]) ⊗[R] V₀ ≃ₗ[AlgebraicClosure ℚ_[p]] V),
       (ρ₀.baseChange (AlgebraicClosure ℚ_[p])).conj r₀ = ρ
 
+/-- A semisimple residual representation whose characteristic polynomials agree with the reduction
+of a chosen integral model.
+
+This is a source-level relation, not a construction of semisimplification. It prevents a generic
+`Prop` placeholder from hiding the precise residual comparison while leaving the existence and
+lattice-independence theorems as explicit missing mathematics.
+-/
+def IsSemisimplifiedResidualModel
+    {F : Type*} [Field F] [NumberField F]
+    {R : Type*} [CommRing R] [IsLocalRing R]
+      [TopologicalSpace R] [IsTopologicalRing R]
+    {V₀ : Type*} [AddCommGroup V₀] [Module R V₀]
+      [Module.Finite R V₀] [Module.Free R V₀]
+    (ρ₀ : GaloisRep F R V₀)
+    {k : Type*} [Field k] [TopologicalSpace k] [IsTopologicalRing k]
+      [Algebra R k] [ContinuousSMul R k]
+    {W : Type*} [AddCommGroup W] [Module k W]
+      [Module.Finite k W] [Module.Free k W]
+    (ρbar : GaloisRep F k W) : Prop :=
+  Representation.IsSemisimpleRepresentation ρbar.toRepresentation ∧
+    ∀ σ, ((ρ₀.baseChange k) σ).charpoly = (ρbar σ).charpoly
+
+/-- Isomorphism of two chosen semisimple residual models. -/
+def SemisimpleResidualEquivalent
+    {F k W₁ W₂ : Type*} [Field F] [NumberField F]
+    [Field k] [TopologicalSpace k]
+    [AddCommGroup W₁] [Module k W₁]
+    [AddCommGroup W₂] [Module k W₂]
+    (ρ₁ : GaloisRep F k W₁) (ρ₂ : GaloisRep F k W₂) : Prop :=
+  ∃ e : W₁ ≃ₗ[k] W₂, ρ₁.conj e = ρ₂
+
+/-- Compare residual models after extending their possibly different residue fields to one common
+coefficient field. -/
+def ResidualModelsAgreeAfterExtension
+    {F k₁ k₂ kbar W₁ W₂ : Type*} [Field F] [NumberField F]
+    [Field k₁] [TopologicalSpace k₁] [IsTopologicalRing k₁]
+    [Field k₂] [TopologicalSpace k₂] [IsTopologicalRing k₂]
+    [Field kbar] [TopologicalSpace kbar] [IsTopologicalRing kbar]
+    [Algebra k₁ kbar] [ContinuousSMul k₁ kbar]
+    [Algebra k₂ kbar] [ContinuousSMul k₂ kbar]
+    [AddCommGroup W₁] [Module k₁ W₁] [Module.Finite k₁ W₁] [Module.Free k₁ W₁]
+    [AddCommGroup W₂] [Module k₂ W₂] [Module.Finite k₂ W₂] [Module.Free k₂ W₂]
+    (ρ₁ : GaloisRep F k₁ W₁) (ρ₂ : GaloisRep F k₂ W₂) : Prop :=
+  SemisimpleResidualEquivalent (ρ₁.baseChange kbar) (ρ₂.baseChange kbar)
+
 #check HasIntegralModel
+#check IsSemisimplifiedResidualModel
+#check SemisimpleResidualEquivalent
+#check ResidualModelsAgreeAfterExtension
 #print axioms HasIntegralModel
+#print axioms IsSemisimplifiedResidualModel
+#print axioms SemisimpleResidualEquivalent
+#print axioms ResidualModelsAgreeAfterExtension
 
 end FLTMethodology.Taylor2018
 

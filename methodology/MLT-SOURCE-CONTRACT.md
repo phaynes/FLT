@@ -49,6 +49,19 @@ signature for Theorem 2.1.1 cannot yet elaborate honestly.
 Its axiom audit is the standard trio. This is a banked partial signature, not closure of
 `FLT-MLT-COEFFICIENTS`: residual reduction, semisimplification, and lattice-independence remain.
 
+The next coefficient-boundary tranche adds three provisional, kernel-clean relations:
+
+- `IsSemisimplifiedResidualModel`, requiring semisimplicity plus equality of characteristic
+  polynomials with the reduction of the chosen integral model for every Galois element;
+- `SemisimpleResidualEquivalent`, requiring an actual linear equivalence conjugating the two
+  selected residual models; and
+- `ResidualModelsAgreeAfterExtension`, comparing models over different residue fields only after
+  both have been extended to a common coefficient field.
+
+These relations do **not** construct a semisimplification, prove lattice independence, or close
+`FLT-MLT-COEFFICIENTS`; those remain named dependencies before the Taylor source contract can be
+frozen.
+
 The first three W00 definition nodes are:
 
 1. `FLT-MLT-COEFFICIENTS`;
