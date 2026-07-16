@@ -316,6 +316,42 @@ theorem semisimplifiedResidualModelsUnique_of_groupContract
   intro g
   exact e.conj_apply_self g
 
+/-- Exact specialization probe for the intended residual coefficient boundary. It shows that the
+algebraically closed, two-dimensional, odd-characteristic trace contract proves the existing
+same-field consumer once those three additional hypotheses are supplied explicitly. -/
+theorem specializedResidualModelsUnique
+    (hBN : AlgClosedTwoDimensionalTraceContract.{uk, uF, uW1, uW2})
+    {F : Type uF} [Field F] [NumberField F]
+    {R : Type uR} [CommRing R] [IsLocalRing R]
+      [TopologicalSpace R] [IsTopologicalRing R]
+    {V0 : Type uV0} [AddCommGroup V0] [Module R V0]
+      [Module.Finite R V0] [Module.Free R V0]
+    (rho0 : GaloisRep F R V0)
+    {k : Type uk} [Field k] [IsAlgClosed k]
+      [TopologicalSpace k] [IsTopologicalRing k]
+      [Algebra R k] [ContinuousSMul R k]
+    {W1 : Type uW1} {W2 : Type uW2}
+      [AddCommGroup W1] [Module k W1] [Module.Finite k W1] [Module.Free k W1]
+      [AddCommGroup W2] [Module k W2] [Module.Finite k W2] [Module.Free k W2]
+    (rho1 : GaloisRep F k W1) (rho2 : GaloisRep F k W2)
+    (hW1 : Module.finrank k W1 = 2) (hW2 : Module.finrank k W2 = 2)
+    (hodd : 2 < ringChar k) :
+    SemisimplifiedResidualModelsUnique rho0 rho1 rho2 := by
+  intro h1 h2
+  have hs1 : Representation.IsSemisimpleRepresentation rho1.toRepresentation := h1.2.1
+  have hs2 : Representation.IsSemisimpleRepresentation rho2.toRepresentation := h2.2.1
+  have htrace : ∀ g, LinearMap.trace k W1 (rho1.toRepresentation g) =
+      LinearMap.trace k W2 (rho2.toRepresentation g) := by
+    intro g
+    apply trace_eq_of_charpoly_eq
+    exact (h1.2.2 g).symm.trans (h2.2.2 g)
+  obtain ⟨e⟩ := hBN rho1.toRepresentation rho2.toRepresentation
+    hs1 hs2 hW1 hW2 hodd htrace
+  refine ⟨e.toLinearEquiv, ?_⟩
+  apply GaloisRep.ext
+  intro g
+  exact e.conj_apply_self g
+
 end ConsumerBridge
 
 #check GroupContract
@@ -337,6 +373,7 @@ end ConsumerBridge
 #check SmallDimensionTraceContract
 #check AlgClosedTwoDimensionalTraceContract
 #check RefutedOneSidedTraceContract
+#check specializedResidualModelsUnique
 
 #print axioms GroupContract
 #print axioms moduleCharacter
@@ -359,5 +396,6 @@ end ConsumerBridge
 #print axioms RefutedOneSidedTraceContract
 #print axioms refutedOneSidedTraceContract_false
 #print axioms semisimplifiedResidualModelsUnique_of_groupContract
+#print axioms specializedResidualModelsUnique
 
 end FLTProbe.BrauerNesbitt
