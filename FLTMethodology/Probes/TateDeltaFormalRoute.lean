@@ -16,7 +16,10 @@ upstream FLT proof.
 -/
 
 open scoped ArithmeticFunction.sigma
+open scoped PowerSeries.WithPiTopology
+open scoped Topology
 open PowerSeries
+open Filter
 open MatrixGroups
 open ModularForm ModularFormClass
 
@@ -171,6 +174,59 @@ theorem map_weierstrassDiscriminantFormal_eq_qExpansion_discriminant :
       (UpperHalfPlane.qExpansion 1 CuspForm.discriminant) (Finsupp.single () m)
   exact mul_left_cancel₀ (a := (1728 : ℂ)) (by norm_num) hm
 
+/--
+Each coefficient of the formal Euler product is already determined by its first
+`k` factors. This isolates the remaining bridge from the topology of the formal
+infinite product: later factors have order strictly greater than `k` and cannot
+change coefficient `k`.
+-/
+theorem coeff_tprod_one_sub_X_pow_eq_prod_range (R : Type*) [CommRing R]
+    [TopologicalSpace R] [T2Space R] (k : ℕ) :
+    coeff k (∏' n : ℕ, ((1 : R⟦X⟧) - X ^ (n + 1))) =
+      coeff k (∏ n ∈ Finset.range k, ((1 : R⟦X⟧) - X ^ (n + 1))) := by
+  nontriviality R
+  have hf : Multipliable (fun n : ℕ ↦ (1 : R⟦X⟧) - X ^ (n + 1)) :=
+    PowerSeries.WithPiTopology.multipliable_one_sub_X_pow R
+  have hlim : Tendsto
+      (fun s : Finset ℕ ↦ coeff k (∏ n ∈ s, ((1 : R⟦X⟧) - X ^ (n + 1))))
+      atTop
+      (nhds (coeff k (∏' n : ℕ, ((1 : R⟦X⟧) - X ^ (n + 1))))) :=
+    ((PowerSeries.WithPiTopology.continuous_coeff R k).tendsto _).comp hf.hasProd
+  have hevent : ∀ᶠ s : Finset ℕ in atTop,
+      coeff k (∏ n ∈ s, ((1 : R⟦X⟧) - X ^ (n + 1))) =
+        coeff k (∏ n ∈ Finset.range k, ((1 : R⟦X⟧) - X ^ (n + 1))) := by
+    filter_upwards [eventually_ge_atTop (Finset.range k)] with s hs
+    rw [← Finset.prod_sdiff hs]
+    rw [mul_comm]
+    simpa only using
+      (PowerSeries.coeff_mul_prod_one_sub_of_lt_order k
+        (s \ Finset.range k)
+        (∏ n ∈ Finset.range k, ((1 : R⟦X⟧) - X ^ (n + 1)))
+        (fun i ↦ (X ^ (i + 1) : R⟦X⟧)) (by
+          intro i hi
+          have hik : k ≤ i := by
+            exact Nat.le_of_not_gt ((Finset.mem_sdiff.mp hi).2 ∘ Finset.mem_range.mpr)
+          rw [PowerSeries.order_X_pow]
+          exact_mod_cast Nat.lt_add_one_of_le hik))
+  have hconst : Tendsto
+      (fun _s : Finset ℕ ↦
+        coeff k (∏ n ∈ Finset.range k, ((1 : R⟦X⟧) - X ^ (n + 1))))
+      atTop
+      (nhds (coeff k (∏ n ∈ Finset.range k,
+        ((1 : R⟦X⟧) - X ^ (n + 1))))) := tendsto_const_nhds
+  have hevent' :
+      (fun _s : Finset ℕ ↦ coeff k (∏ n ∈ Finset.range k,
+        ((1 : R⟦X⟧) - X ^ (n + 1)))) =ᶠ[atTop]
+        (fun s : Finset ℕ ↦ coeff k (∏ n ∈ s,
+          ((1 : R⟦X⟧) - X ^ (n + 1)))) := by
+    filter_upwards [hevent] with s hs
+    exact hs.symm
+  have hEq :
+      coeff k (∏' n : ℕ, ((1 : R⟦X⟧) - X ^ (n + 1))) =
+        coeff k (∏ n ∈ Finset.range k, ((1 : R⟦X⟧) - X ^ (n + 1))) :=
+    tendsto_nhds_unique hlim (hconst.congr' hevent')
+  convert hEq using 1
+
 /-- Exact remaining bridge after the algebraic/Eisenstein side has been discharged. -/
 def formalProductQExpansionBridge : Prop :=
   PowerSeries.map (Int.castRingHom ℂ) TateCurve.ΔFormal =
@@ -191,6 +247,7 @@ theorem weierstrassDiscriminantFormal_eq_deltaFormal_of_bridge
 #print axioms map_c₆Formal_eq_qExpansion_E₆
 #print axioms qExpansion_discriminant_mul_1728_eq_E₄_cube_sub_E₆_sq
 #print axioms map_weierstrassDiscriminantFormal_eq_qExpansion_discriminant
+#print axioms coeff_tprod_one_sub_X_pow_eq_prod_range
 #print axioms weierstrassDiscriminantFormal_eq_deltaFormal_of_bridge
 
 end TateCurveRouteProbe

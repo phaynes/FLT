@@ -36,8 +36,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
   vocabulary exists.
 - `coefficients`: `PARTIAL`; provisional residual relations elaborate, but lattice existence,
   semisimplification, and uniqueness remain open.
-- `tate-frey`: `PARTIAL`; the downstream signatures and several support reductions are known, but
-  four geometric construction families remain and no current Mathlib theorem supplies them.
+- `tate-frey`: `PARTIAL`; the downstream signatures and several support reductions are known. The
+  formal Euler-product/q-expansion identity is now kernel-clean in a methodology probe, but provider
+  migration, local-field descent, and the remaining geometric construction families are open.
 - all remaining components: `BLOCKED` at this global gate until their own complete packet exists.
 
 This deliberately prevents a single attractive theorem from authorizing downstream construction
