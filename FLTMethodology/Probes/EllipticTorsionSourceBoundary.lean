@@ -121,6 +121,23 @@ def psiSqTorsionXDetector
   polynomial_ne_zero := E.ΨSq_ne_zero (by simpa using hn)
   detects := hdetect
 
+theorem psiSqDetectsNTorsion_zero
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 0 := by
+  intro x _ _ _
+  change (E.ΨSq 0).eval x = 0
+  simp
+
+theorem psiSqDetectsNTorsion_one
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 1 := by
+  intro _ _ h hone
+  have hpzero :
+      (WeierstrassCurve.Affine.Point.some _ _ h : (E⁄k).Point) = 0 := by
+    change (WeierstrassCurve.Affine.Point.some _ _ h : (E⁄k).Point) = 0 at hone
+    exact hone
+  exact (WeierstrassCurve.Affine.Point.some_ne_zero h hpzero).elim
+
 /-- The detector interface agrees with Mathlib's affine group law and division-polynomial
 normalization in the first nontrivial case. This validates the boundary but does not supply the
 general point/division-polynomial recurrence. -/
@@ -198,6 +215,108 @@ theorem psiSqDetectsNTorsion_three
   linear_combination -hxadd -
     (E.a₁ ^ 2 + 4 * E.a₂ + 12 * x) * heq
 
+/-- The explicit `ψ₄ / ψ₂` doubling identity at an affine non-two-torsion point. -/
+theorem prePsiFour_eval_eq_psiTwo_double
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {x y : k} (h : E.toAffine.Nonsingular x y)
+    (hyne : y ≠ E.toAffine.negY x y) :
+    let ell : k := (E⁄k).slope x x y y
+    let x₂ : k := (E⁄k).addX x x ell
+    let y₂ : k := (E⁄k).addY x x y ell
+    (E.preΨ₄).eval x = (y - E.toAffine.negY x y) ^ 3 *
+      (2 * y₂ + E.a₁ * x₂ + E.a₃) := by
+  dsimp only
+  have hden : y - E.toAffine.negY x y ≠ 0 := sub_ne_zero.mpr hyne
+  have hyne' : y ≠ (E⁄k).negY x y := by
+    simpa [WeierstrassCurve.baseChange] using hyne
+  rw [WeierstrassCurve.preΨ₄]
+  simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_pow,
+    Polynomial.eval_X, Polynomial.eval_C, Polynomial.eval_ofNat]
+  simp only [WeierstrassCurve.Affine.addY, WeierstrassCurve.Affine.negAddY,
+    WeierstrassCurve.Affine.addX]
+  rw [(E⁄k).slope_of_Y_ne rfl hyne']
+  simp only [WeierstrassCurve.Affine.negY]
+  simp [WeierstrassCurve.baseChange]
+  have hde : y - (-y - x * E.toAffine.a₁ - E.toAffine.a₃) ≠ 0 := by
+    convert hden using 1
+    simp only [WeierstrassCurve.Affine.negY]
+    ring
+  have hd : x * E.a₁ + E.a₃ + y * 2 ≠ 0 := by
+    intro hz
+    apply hden
+    simp only [WeierstrassCurve.Affine.negY]
+    linear_combination hz
+  field_simp [hde, hd]
+  have heq := h.1
+  rw [E.toAffine.equation_iff] at heq
+  simp only [WeierstrassCurve.b₂, WeierstrassCurve.b₄, WeierstrassCurve.b₆,
+    WeierstrassCurve.b₈]
+  linear_combination
+    (8 * (4 * (x ^ 3 + E.a₂ * x ^ 2 + E.a₄ * x + E.a₆) +
+          (E.a₁ * x + E.a₃) ^ 2) -
+      (2 * (3 * x ^ 2 + 2 * E.a₂ * x + E.a₄) +
+          E.a₁ * (E.a₁ * x + E.a₃)) *
+        (E.a₁ ^ 2 + 4 * E.a₂ + 12 * x) +
+      16 * (y ^ 2 + E.a₁ * x * y + E.a₃ * y -
+        (x ^ 3 + E.a₂ * x ^ 2 + E.a₄ * x + E.a₆))) * heq
+
+/-- The first recursive even detector case. -/
+theorem psiSqDetectsNTorsion_four
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 4 := by
+  intro x y h hfour
+  let P : (E⁄k).Point := WeierstrassCurve.Affine.Point.some x y h
+  have hfourN : (4 : ℕ) • P = 0 := by
+    simpa only [P, Int.ofNat_eq_natCast, natCast_zsmul] using hfour
+  by_cases htwo : P + P = 0
+  · have hpsi₂ : E.Ψ₂Sq.eval x = 0 := by
+      rw [← E.ΨSq_two]
+      apply psiSqDetectsNTorsion_two E h
+      change P + P = 0
+      exact htwo
+    change (E.ΨSq 4).eval x = 0
+    rw [E.ΨSq_four]
+    simp only [Polynomial.eval_mul, Polynomial.eval_pow, hpsi₂, mul_zero]
+  · have hyne : y ≠ E.toAffine.negY x y := by
+      intro hy
+      apply htwo
+      exact WeierstrassCurve.Affine.Point.add_self_of_Y_eq (W := E⁄k) hy
+    let ell : k := (E⁄k).slope x x y y
+    let x₂ : k := (E⁄k).addX x x ell
+    let y₂ : k := (E⁄k).addY x x y ell
+    let h₂ : (E⁄k).Nonsingular x₂ y₂ :=
+      WeierstrassCurve.Affine.nonsingular_add h h (fun hxy ↦ hyne hxy.2)
+    let Q : (E⁄k).Point :=
+      WeierstrassCurve.Affine.Point.some x₂ y₂ h₂
+    have hPQ : P + P = Q := by
+      simpa only [P, Q, h₂, x₂, y₂, ell] using
+        (WeierstrassCurve.Affine.Point.add_self_of_Y_ne (W := E⁄k) hyne)
+    have hQQ : Q + Q = 0 := by
+      have h22 : (2 : ℕ) • ((2 : ℕ) • P) = 0 := by
+        rw [← mul_nsmul]
+        norm_num
+        exact hfourN
+      simpa only [two_nsmul, hPQ] using h22
+    have hy₂ : y₂ = E.toAffine.negY x₂ y₂ := by
+      by_contra hy₂ne
+      have hadd := WeierstrassCurve.Affine.Point.add_self_of_Y_ne
+        (W := E⁄k) (h₁ := h₂) hy₂ne
+      rw [hadd] at hQQ
+      exact WeierstrassCurve.Affine.Point.some_ne_zero _ hQQ
+    have hpsi₂Q : 2 * y₂ + E.a₁ * x₂ + E.a₃ = 0 := by
+      simp only [WeierstrassCurve.Affine.negY] at hy₂
+      linear_combination hy₂
+    have hpre : (E.preΨ₄).eval x = 0 := by
+      have hid : (E.preΨ₄).eval x =
+          (y - E.toAffine.negY x y) ^ 3 *
+            (2 * y₂ + E.a₁ * x₂ + E.a₃) := by
+        simpa only [ell, x₂, y₂] using prePsiFour_eval_eq_psiTwo_double E h hyne
+      rw [hid, hpsi₂Q, mul_zero]
+    change (E.ΨSq 4).eval x = 0
+    rw [E.ΨSq_four]
+    simp only [Polynomial.eval_mul, Polynomial.eval_pow, hpre, zero_pow two_ne_zero,
+      zero_mul]
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -206,12 +325,20 @@ theorem n_torsion_finite_of_psiSq_detection
 
 #check n_torsion_finite_of_detector
 #check n_torsion_finite_of_psiSq_detection
+#check psiSqDetectsNTorsion_zero
+#check psiSqDetectsNTorsion_one
 #check psiSqDetectsNTorsion_two
 #check psiSqDetectsNTorsion_three
+#check prePsiFour_eval_eq_psiTwo_double
+#check psiSqDetectsNTorsion_four
 #print axioms n_torsion_finite_of_detector
 #print axioms n_torsion_finite_of_psiSq_detection
+#print axioms psiSqDetectsNTorsion_zero
+#print axioms psiSqDetectsNTorsion_one
 #print axioms psiSqDetectsNTorsion_two
 #print axioms psiSqDetectsNTorsion_three
+#print axioms prePsiFour_eval_eq_psiTwo_double
+#print axioms psiSqDetectsNTorsion_four
 
 end
 end FLTMethodology.Torsion

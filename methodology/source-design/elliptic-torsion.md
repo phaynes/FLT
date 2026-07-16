@@ -80,6 +80,12 @@ theorem psiSqDetectsNTorsion_two
 theorem psiSqDetectsNTorsion_three
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 3
+
+theorem prePsiFour_eval_eq_psiTwo_double ...
+
+theorem psiSqDetectsNTorsion_four
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 4
 ```
 
 The proof is elementary and standard-axiom clean. It bounds x-coordinates by roots of the detector
@@ -87,11 +93,15 @@ polynomial, then bounds each y-fibre by the roots of a nonzero monic quadratic. 
 characteristic-prime-to-`n` finiteness lane is reduced to the single exact dictionary proposition
 `PsiSqDetectsNTorsion`.
 
-The `n = 2` and `n = 3` cases are also kernel-clean. The first derives the fixed-point condition
+The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
+first two cases are structural. The `n = 2`
+case derives the fixed-point condition
 under affine negation from `2 • P = 0`, expands `Ψ₂Sq`, and eliminates the Weierstrass equation. The
 second passes through the nonvertical affine doubling formula, clears its tangent denominator, and
-derives the `Ψ₃` equation. Together they confirm the detector interface's normalization and point
-representation in both parity classes. They do not remove the open general recurrence.
+derives the `Ψ₃` equation. The `n = 4` proof then splits on whether the point is already two-torsion,
+doubles the remaining case, and consumes the separately named `preΨ₄`/doubled-`ψ₂` identity. Together
+they confirm the detector interface's normalization and point representation in both parity classes
+and validate one recurrence-shaped step. They do not remove the open arbitrary-index recurrence.
 
 This does not yet prove the frozen general finiteness theorem. When the characteristic divides
 `n`, `ΨSq_ne_zero` is unavailable and the proof needs either a different nonzero detector or the
@@ -105,7 +115,8 @@ Build in this order:
    affine y-coordinates.
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
-3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the `n = 2` and `n = 3` cases are closed; prove the general
+3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full `n = 0,1,2,3` base block and `n = 4` are closed;
+   prove the general
    `PsiSqDetectsNTorsion` statement from the affine group law and division-polynomial recurrences.
    A stronger x-coordinate multiplication formula is an acceptable provider if this theorem is an
    immediate corollary.
@@ -137,7 +148,7 @@ The next bounded theorem to attempt remains the general provider for:
 FLTMethodology.Torsion.PsiSqDetectsNTorsion E n
 ```
 
-The `n = 2` and `n = 3` cases are now proved. The first likely residual Lean goal for arbitrary `n` is the missing
+The `n = 0,1,2,3,4` block is now proved. The first likely residual Lean goal for arbitrary `n` is the missing
 induction theorem relating the binary-recursive affine `nsmul` implementation to the
 division-polynomial recurrence. If that induction does not factor cleanly, first prove the stronger
 point-coordinate formula and derive the detector theorem.

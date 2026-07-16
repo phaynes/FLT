@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The generic detector-to-finiteness assembly and the n=2 and n=3 dictionary cases are kernel-clean; current Mathlib still lacks the general point/division-polynomial dictionary and elliptic multiplication morphism.",
+        "evidence": "Exactly two provider admissions remain. The generic detector-to-finiteness assembly, detector cases n=0 through n=4, and the explicit prePsi4 doubling identity are kernel-clean; current Mathlib still lacks the arbitrary-index point/division-polynomial dictionary and elliptic multiplication morphism.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
