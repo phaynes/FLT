@@ -260,6 +260,16 @@ def kummerBiquadraticHomogeneous (E : WeierstrassCurve k)
   X₁ ^ 2 * X₂ ^ 2 - E.b₄ * X₁ * X₂ * Z₁ * Z₂ -
     E.b₆ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ - E.b₈ * (Z₁ * Z₂) ^ 2
 
+/-- Middle entry of the generalized-Weierstrass Kummer biquadratic matrix. Together with
+`kummerBiquadraticHomogeneous` and the squared coordinate gap, this records the complete
+differential-addition output pair without choosing affine representatives. -/
+def kummerBiquadraticMiddleHomogeneous (E : WeierstrassCurve k)
+    (X₁ Z₁ X₂ Z₂ : k) : k :=
+  2 * X₁ * X₂ * (X₁ * Z₂ + X₂ * Z₁) +
+    E.b₂ * X₁ * X₂ * Z₁ * Z₂ +
+    E.b₄ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ +
+    E.b₆ * (Z₁ * Z₂) ^ 2
+
 @[simp] theorem kummerBiquadraticHomogeneous_affine
     (E : WeierstrassCurve k) (x₁ x₂ : k) :
     kummerBiquadraticHomogeneous E x₁ 1 x₂ 1 = kummerBiquadratic E x₁ x₂ := by
@@ -278,6 +288,31 @@ theorem kummerBiquadraticHomogeneous_comm
       kummerBiquadraticHomogeneous E X₂ Z₂ X₁ Z₁ := by
   simp only [kummerBiquadraticHomogeneous]
   ring
+
+@[simp] theorem kummerBiquadraticMiddleHomogeneous_smul
+    (E : WeierstrassCurve k) (u v X₁ Z₁ X₂ Z₂ : k) :
+    kummerBiquadraticMiddleHomogeneous E (u * X₁) (u * Z₁) (v * X₂) (v * Z₂) =
+      (u * v) ^ 2 * kummerBiquadraticMiddleHomogeneous E X₁ Z₁ X₂ Z₂ := by
+  simp only [kummerBiquadraticMiddleHomogeneous]
+  ring
+
+theorem kummerBiquadraticMiddleHomogeneous_comm
+    (E : WeierstrassCurve k) (X₁ Z₁ X₂ Z₂ : k) :
+    kummerBiquadraticMiddleHomogeneous E X₁ Z₁ X₂ Z₂ =
+      kummerBiquadraticMiddleHomogeneous E X₂ Z₂ X₁ Z₁ := by
+  simp only [kummerBiquadraticMiddleHomogeneous]
+  ring
+
+@[simp] theorem kummerBiquadraticMiddleHomogeneous_infinity_left
+    (E : WeierstrassCurve k) (X Z : k) :
+    kummerBiquadraticMiddleHomogeneous E 1 0 X Z = 2 * X * Z := by
+  simp [kummerBiquadraticMiddleHomogeneous]
+
+@[simp] theorem kummerBiquadraticMiddleHomogeneous_infinity_right
+    (E : WeierstrassCurve k) (X Z : k) :
+    kummerBiquadraticMiddleHomogeneous E X Z 1 0 = 2 * X * Z := by
+  rw [kummerBiquadraticMiddleHomogeneous_comm]
+  exact kummerBiquadraticMiddleHomogeneous_infinity_left E X Z
 
 @[simp] theorem kummerBiquadraticHomogeneous_infinity_left
     (E : WeierstrassCurve k) (X Z : k) :
@@ -298,6 +333,14 @@ def kummerBiquadraticPolynomial (E : WeierstrassCurve k)
     C E.b₆ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ -
       C E.b₈ * (Z₁ * Z₂) ^ 2
 
+/-- Polynomial-valued middle entry of the Kummer biquadratic matrix. -/
+def kummerBiquadraticMiddlePolynomial (E : WeierstrassCurve k)
+    (X₁ Z₁ X₂ Z₂ : k[X]) : k[X] :=
+  2 * X₁ * X₂ * (X₁ * Z₂ + X₂ * Z₁) +
+    C E.b₂ * X₁ * X₂ * Z₁ * Z₂ +
+    C E.b₄ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ +
+    C E.b₆ * (Z₁ * Z₂) ^ 2
+
 @[simp] theorem eval_kummerBiquadraticPolynomial
     (E : WeierstrassCurve k) (X₁ Z₁ X₂ Z₂ : k[X]) (x : k) :
     (kummerBiquadraticPolynomial E X₁ Z₁ X₂ Z₂).eval x =
@@ -305,6 +348,14 @@ def kummerBiquadraticPolynomial (E : WeierstrassCurve k)
         (X₁.eval x) (Z₁.eval x) (X₂.eval x) (Z₂.eval x) := by
   simp only [kummerBiquadraticPolynomial, kummerBiquadraticHomogeneous,
     eval_sub, eval_add, eval_mul, eval_pow, eval_C]
+
+@[simp] theorem eval_kummerBiquadraticMiddlePolynomial
+    (E : WeierstrassCurve k) (X₁ Z₁ X₂ Z₂ : k[X]) (x : k) :
+    (kummerBiquadraticMiddlePolynomial E X₁ Z₁ X₂ Z₂).eval x =
+      kummerBiquadraticMiddleHomogeneous E
+        (X₁.eval x) (Z₁.eval x) (X₂.eval x) (Z₂.eval x) := by
+  simp only [kummerBiquadraticMiddlePolynomial, kummerBiquadraticMiddleHomogeneous,
+    eval_add, eval_mul, eval_pow, eval_C, eval_ofNat]
 
 /-- The numerator of `x - Φₙ / Ψₙ²`, before cancelling its sign. -/
 def divisionPolynomialDifference (E : WeierstrassCurve k) (n : ℤ) : k[X] :=
@@ -327,6 +378,12 @@ The general recurrence is the remaining division-polynomial normalization obliga
 def KummerDivisionPolynomialRecurrence (E : WeierstrassCurve k) (n : ℤ) : Prop :=
   kummerBiquadraticPolynomial E (E.Φ n) (E.ΨSq n) X 1 =
     E.Φ (n + 1) * E.Φ (n - 1)
+
+/-- Middle-coordinate companion to `KummerDivisionPolynomialRecurrence`. The right-hand side is
+the symmetric cross term of the homogeneous representatives at indices `n + 1` and `n - 1`. -/
+def KummerDivisionPolynomialMiddleRecurrence (E : WeierstrassCurve k) (n : ℤ) : Prop :=
+  kummerBiquadraticMiddlePolynomial E (E.Φ n) (E.ΨSq n) X 1 =
+    E.Φ (n + 1) * E.ΨSq (n - 1) + E.ΨSq (n + 1) * E.Φ (n - 1)
 
 theorem kummerDivisionPolynomialRecurrence_zero (E : WeierstrassCurve k) :
     KummerDivisionPolynomialRecurrence E 0 := by
@@ -421,6 +478,132 @@ theorem kummerDivisionPolynomialRecurrence_four (E : WeierstrassCurve k) :
       WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
     -X ^ 3 * E.Ψ₂Sq * E.preΨ₄ ^ 2 *
       (E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3) * hb
+
+theorem kummerDivisionPolynomialMiddleRecurrence_zero (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialMiddleRecurrence E 0 := by
+  simp [KummerDivisionPolynomialMiddleRecurrence, kummerBiquadraticMiddlePolynomial]
+  ring
+
+theorem kummerDivisionPolynomialMiddleRecurrence_one (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialMiddleRecurrence E 1 := by
+  simp only [KummerDivisionPolynomialMiddleRecurrence, kummerBiquadraticMiddlePolynomial,
+    show (1 + 1 : ℤ) = 2 by rfl, show (1 - 1 : ℤ) = 0 by rfl,
+    E.ΨSq_one, E.Φ_one, E.ΨSq_two, E.ΨSq_zero, E.Φ_two, E.Φ_zero,
+    mul_one, mul_zero, one_pow]
+  simp only [WeierstrassCurve.Ψ₂Sq, map_ofNat, C_mul]
+  ring
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 2000000 in
+-- The middle-coordinate normalization expands the explicit generalized-Weierstrass invariants.
+theorem kummerDivisionPolynomialMiddleRecurrence_two (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialMiddleRecurrence E 2 := by
+  simp only [KummerDivisionPolynomialMiddleRecurrence, kummerBiquadraticMiddlePolynomial]
+  rw [show (2 + 1 : ℤ) = 3 by rfl, show (2 - 1 : ℤ) = 1 by rfl,
+    E.ΨSq_two, E.Φ_two, E.ΨSq_three, E.ΨSq_one, E.Φ_three, E.Φ_one]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 2 * E.Ψ₂Sq * hb
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 2000000 in
+-- Factoring through the `b₂b₆ - b₄² - 4b₈` relation bounds the cubic base normalization.
+theorem kummerDivisionPolynomialMiddleRecurrence_three (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialMiddleRecurrence E 3 := by
+  simp only [KummerDivisionPolynomialMiddleRecurrence, kummerBiquadraticMiddlePolynomial]
+  rw [show (3 + 1 : ℤ) = 4 by rfl, show (3 - 1 : ℤ) = 2 by rfl,
+    E.ΨSq_three, E.Φ_three, E.ΨSq_four, E.ΨSq_two, E.Φ_four, E.Φ_two]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 2 * E.Ψ₂Sq * E.Ψ₃ * E.preΨ₄ * hb
+
+set_option maxRecDepth 10000 in
+set_option maxHeartbeats 3000000 in
+-- The fourth middle-coordinate base has the same high-degree normalization as the product entry.
+theorem kummerDivisionPolynomialMiddleRecurrence_four (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialMiddleRecurrence E 4 := by
+  simp only [KummerDivisionPolynomialMiddleRecurrence, kummerBiquadraticMiddlePolynomial]
+  rw [show (4 + 1 : ℤ) = 5 by rfl, show (4 - 1 : ℤ) = 3 by rfl,
+    E.ΨSq_four, E.Φ_four, psiSq_five, E.ΨSq_three, phi_five, E.Φ_three,
+    prePsi_six]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  rw [prePsi_five E]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 2 * E.Ψ₂Sq * E.preΨ₄ ^ 2 *
+      (E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3) * hb
+
+/-- The synchronized product and middle entries of the Kummer differential-addition matrix.
+The denominator entry is supplied unconditionally by `divisionPolynomialDifference_sq`. -/
+def KummerDivisionPolynomialLadder (E : WeierstrassCurve k) (n : ℤ) : Prop :=
+  KummerDivisionPolynomialRecurrence E n ∧
+    KummerDivisionPolynomialMiddleRecurrence E n
+
+theorem kummerDivisionPolynomialLadder_zero (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialLadder E 0 :=
+  ⟨kummerDivisionPolynomialRecurrence_zero E,
+    kummerDivisionPolynomialMiddleRecurrence_zero E⟩
+
+theorem kummerDivisionPolynomialLadder_one (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialLadder E 1 :=
+  ⟨kummerDivisionPolynomialRecurrence_one E,
+    kummerDivisionPolynomialMiddleRecurrence_one E⟩
+
+theorem kummerDivisionPolynomialLadder_two (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialLadder E 2 :=
+  ⟨kummerDivisionPolynomialRecurrence_two E,
+    kummerDivisionPolynomialMiddleRecurrence_two E⟩
+
+theorem kummerDivisionPolynomialLadder_three (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialLadder E 3 :=
+  ⟨kummerDivisionPolynomialRecurrence_three E,
+    kummerDivisionPolynomialMiddleRecurrence_three E⟩
+
+theorem kummerDivisionPolynomialLadder_four (E : WeierstrassCurve k) :
+    KummerDivisionPolynomialLadder E 4 :=
+  ⟨kummerDivisionPolynomialRecurrence_four E,
+    kummerDivisionPolynomialMiddleRecurrence_four E⟩
+
+/-- Exact synchronized even branch required by Mathlib's normalized-EDS recursion principle. -/
+def KummerDivisionPolynomialLadderEvenStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    KummerDivisionPolynomialLadder E (m + 1) →
+    KummerDivisionPolynomialLadder E (m + 2) →
+    KummerDivisionPolynomialLadder E (m + 3) →
+    KummerDivisionPolynomialLadder E (m + 4) →
+    KummerDivisionPolynomialLadder E (m + 5) →
+    KummerDivisionPolynomialLadder E (2 * (m + 3))
+
+/-- Exact synchronized odd branch required by Mathlib's normalized-EDS recursion principle. -/
+def KummerDivisionPolynomialLadderOddStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    KummerDivisionPolynomialLadder E (m + 1) →
+    KummerDivisionPolynomialLadder E (m + 2) →
+    KummerDivisionPolynomialLadder E (m + 3) →
+    KummerDivisionPolynomialLadder E (m + 4) →
+    KummerDivisionPolynomialLadder E (2 * (m + 2) + 1)
+
+/-- The synchronized ladder reduces its arbitrary natural index to two explicit binary steps. -/
+theorem kummerDivisionPolynomialLadder_nat_of_steps
+    (E : WeierstrassCurve k) (heven : KummerDivisionPolynomialLadderEvenStep E)
+    (hodd : KummerDivisionPolynomialLadderOddStep E) (n : ℕ) :
+    KummerDivisionPolynomialLadder E n := by
+  induction n using normEDSRec with
+  | zero => exact kummerDivisionPolynomialLadder_zero E
+  | one => exact kummerDivisionPolynomialLadder_one E
+  | two => exact kummerDivisionPolynomialLadder_two E
+  | three => exact kummerDivisionPolynomialLadder_three E
+  | four => exact kummerDivisionPolynomialLadder_four E
+  | even m h1 h2 h3 h4 h5 => exact heven m h1 h2 h3 h4 h5
+  | odd m h1 h2 h3 h4 => exact hodd m h1 h2 h3 h4
 
 /-- Exact even branch required by Mathlib's normalized-EDS recursion principle. -/
 def KummerDivisionPolynomialEvenStep (E : WeierstrassCurve k) : Prop :=
@@ -809,8 +992,15 @@ theorem n_torsion_finite_of_psiSq_detection
 #check kummerBiquadraticHomogeneous_comm
 #check kummerBiquadraticHomogeneous_infinity_left
 #check kummerBiquadraticHomogeneous_infinity_right
+#check kummerBiquadraticMiddleHomogeneous
+#check kummerBiquadraticMiddleHomogeneous_smul
+#check kummerBiquadraticMiddleHomogeneous_comm
+#check kummerBiquadraticMiddleHomogeneous_infinity_left
+#check kummerBiquadraticMiddleHomogeneous_infinity_right
 #check kummerBiquadraticPolynomial
+#check kummerBiquadraticMiddlePolynomial
 #check eval_kummerBiquadraticPolynomial
+#check eval_kummerBiquadraticMiddlePolynomial
 #check divisionPolynomialDifference_sq
 #check KummerDivisionPolynomialRecurrence
 #check kummerDivisionPolynomialRecurrence_zero
@@ -823,6 +1013,21 @@ theorem n_torsion_finite_of_psiSq_detection
 #check phi_five
 #check kummerDivisionPolynomialRecurrence_three
 #check kummerDivisionPolynomialRecurrence_four
+#check KummerDivisionPolynomialMiddleRecurrence
+#check kummerDivisionPolynomialMiddleRecurrence_zero
+#check kummerDivisionPolynomialMiddleRecurrence_one
+#check kummerDivisionPolynomialMiddleRecurrence_two
+#check kummerDivisionPolynomialMiddleRecurrence_three
+#check kummerDivisionPolynomialMiddleRecurrence_four
+#check KummerDivisionPolynomialLadder
+#check kummerDivisionPolynomialLadder_zero
+#check kummerDivisionPolynomialLadder_one
+#check kummerDivisionPolynomialLadder_two
+#check kummerDivisionPolynomialLadder_three
+#check kummerDivisionPolynomialLadder_four
+#check KummerDivisionPolynomialLadderEvenStep
+#check KummerDivisionPolynomialLadderOddStep
+#check kummerDivisionPolynomialLadder_nat_of_steps
 #check KummerDivisionPolynomialEvenStep
 #check KummerDivisionPolynomialOddStep
 #check kummerDivisionPolynomialRecurrence_nat_of_steps
@@ -851,7 +1056,10 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms kummerBiquadraticHomogeneous_affine
 #print axioms kummerBiquadraticHomogeneous_smul
 #print axioms kummerBiquadraticHomogeneous_comm
+#print axioms kummerBiquadraticMiddleHomogeneous_smul
+#print axioms kummerBiquadraticMiddleHomogeneous_comm
 #print axioms eval_kummerBiquadraticPolynomial
+#print axioms eval_kummerBiquadraticMiddlePolynomial
 #print axioms divisionPolynomialDifference_sq
 #print axioms kummerDivisionPolynomialRecurrence_zero
 #print axioms kummerDivisionPolynomialRecurrence_one
@@ -863,6 +1071,12 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms phi_five
 #print axioms kummerDivisionPolynomialRecurrence_three
 #print axioms kummerDivisionPolynomialRecurrence_four
+#print axioms kummerDivisionPolynomialMiddleRecurrence_zero
+#print axioms kummerDivisionPolynomialMiddleRecurrence_one
+#print axioms kummerDivisionPolynomialMiddleRecurrence_two
+#print axioms kummerDivisionPolynomialMiddleRecurrence_three
+#print axioms kummerDivisionPolynomialMiddleRecurrence_four
+#print axioms kummerDivisionPolynomialLadder_nat_of_steps
 #print axioms kummerDivisionPolynomialRecurrence_nat_of_steps
 #print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero

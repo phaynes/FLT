@@ -164,6 +164,18 @@ affine specialization, and infinity specializations. Consequently recurrence alg
 performed directly on representative pairs `[X,Z]`, without dividing by `Z` or losing the infinity
 case.
 
+The complete Kummer matrix, rather than only its product entry, is now the induction boundary. Its
+middle bihomogeneous entry is
+
+```text
+2 X₁X₂(X₁Z₂ + X₂Z₁) + b₂X₁X₂Z₁Z₂
+  + b₄(X₁Z₂ + X₂Z₁)Z₁Z₂ + b₆(Z₁Z₂)².
+```
+
+Its scaling, symmetry, infinity, and polynomial-evaluation laws are kernel-clean. The coefficient
+of the final term is `b₆`, not `2b₆`: the latter tempting transcription is refuted already at
+`n = 1`, while the corrected form specializes exactly to `Ψ₂Sq` when `P - P` is infinity.
+
 The polynomial normalization boundary is now explicit rather than implicit. The methodology probe
 defines `kummerBiquadraticPolynomial`, proves that evaluation recovers the scalar bihomogeneous
 form, and proves for every integer `n` the parity-normalization identity
@@ -183,12 +195,28 @@ The exact remaining branches are now named `KummerDivisionPolynomialEvenStep` an
 `KummerDivisionPolynomialOddStep`, and a kernel-clean assembly theorem proves the recurrence at
 every natural index from those two contracts plus the five closed bases.
 
+The companion `KummerDivisionPolynomialMiddleRecurrence` states that the matrix's middle entry is
+the symmetric cross term
+
+```text
+Φₙ₊₁ ΨSqₙ₋₁ + ΨSqₙ₊₁ Φₙ₋₁.
+```
+
+Its full `n = 0,1,2,3,4` base block is also kernel-clean; the nontrivial bases factor through the
+same `b₂b₆ - b₄² - 4b₈ = 0` invariant. `KummerDivisionPolynomialLadder` synchronizes the product
+and middle entries, with the denominator entry already supplied for every integer by the squared
+coordinate-gap theorem. Exact synchronized even/odd step contracts and an all-natural-index
+assembly theorem are kernel-clean. The remaining algebraic target is therefore the two concrete
+ladder step implementations, not two independently drifting scalar recurrences.
+
 A scratch algebra audit also rejected a tempting under-strength implementation tactic: treating
 five neighboring Kummer recurrence equalities as relations for an otherwise arbitrary sequence
 does not reduce the even target to zero. The concrete `preΨ` values carry additional normalized-EDS
-history. Therefore the branch proofs must unfold the actual binary `preΨ'_even`/`preΨ'_odd`
-construction or use a stronger ladder/window invariant; they must not assert that the local Kummer
-equalities alone form a complete abstract induction state.
+history. A second scratch audit using the corrected middle coordinate motivates the synchronized
+ladder state but does not yet prove either general step. Therefore the branch proofs must unfold the
+actual binary `preΨ'_even`/`preΨ'_odd` construction or prove that the full ladder/window invariant
+is sufficient; they must not assert that the product equalities alone form a complete abstract
+induction state.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
