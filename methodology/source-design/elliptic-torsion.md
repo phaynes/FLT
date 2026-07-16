@@ -159,6 +159,10 @@ The proof expands the actual affine slopes and uses both Weierstrass equations; 
 the standard trio. This is the x-only differential-addition primitive required by an adjacent-pair
 or Montgomery-ladder induction. No `ωₙ` library needs to be invented merely to close the x-coordinate
 dictionary. Degenerate equal-x and infinity branches still require explicit recurrence cases.
+The corresponding bihomogeneous form is also kernel-clean, including its scaling law, symmetry,
+affine specialization, and infinity specializations. Consequently recurrence algebra can now be
+performed directly on representative pairs `[X,Z]`, without dividing by `Z` or losing the infinity
+case.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
@@ -188,7 +192,7 @@ Build in this order:
    Prove the homogeneous relation for arbitrary `n` from the affine group law and
    division-polynomial recurrences. The distinct-x differential-addition/Kummer
    component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
-   polynomial recurrence normalization.
+   polynomial recurrence normalization. Its bihomogeneous scaling and infinity laws are closed.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.

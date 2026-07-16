@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2; a branch-free homogeneous xRep statement is kernel-cleanly equivalent. The generalized-Weierstrass Kummer differential-addition identity is also kernel-clean, so the arbitrary-index recurrence can remain x-only; degenerate branches and recurrence normalization remain.",
+        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2; a branch-free homogeneous xRep statement is kernel-cleanly equivalent. Generalized-Weierstrass Kummer differential addition and its bihomogeneous scaling, symmetry, affine, and infinity laws are kernel-clean, so the recurrence can remain x-only; equal-x branches and polynomial normalization remain.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,

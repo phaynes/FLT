@@ -254,6 +254,42 @@ curve. -/
 def kummerBiquadratic (E : WeierstrassCurve k) (x₁ x₂ : k) : k :=
   x₁ ^ 2 * x₂ ^ 2 - E.b₄ * x₁ * x₂ - E.b₆ * (x₁ + x₂) - E.b₈
 
+/-- Bihomogeneous form of `kummerBiquadratic` on two Kummer-coordinate representatives. -/
+def kummerBiquadraticHomogeneous (E : WeierstrassCurve k)
+    (X₁ Z₁ X₂ Z₂ : k) : k :=
+  X₁ ^ 2 * X₂ ^ 2 - E.b₄ * X₁ * X₂ * Z₁ * Z₂ -
+    E.b₆ * (X₁ * Z₂ + X₂ * Z₁) * Z₁ * Z₂ - E.b₈ * (Z₁ * Z₂) ^ 2
+
+@[simp] theorem kummerBiquadraticHomogeneous_affine
+    (E : WeierstrassCurve k) (x₁ x₂ : k) :
+    kummerBiquadraticHomogeneous E x₁ 1 x₂ 1 = kummerBiquadratic E x₁ x₂ := by
+  simp only [kummerBiquadraticHomogeneous, kummerBiquadratic, mul_one, pow_two]
+
+@[simp] theorem kummerBiquadraticHomogeneous_smul
+    (E : WeierstrassCurve k) (u v X₁ Z₁ X₂ Z₂ : k) :
+    kummerBiquadraticHomogeneous E (u * X₁) (u * Z₁) (v * X₂) (v * Z₂) =
+      (u * v) ^ 2 * kummerBiquadraticHomogeneous E X₁ Z₁ X₂ Z₂ := by
+  simp only [kummerBiquadraticHomogeneous]
+  ring
+
+theorem kummerBiquadraticHomogeneous_comm
+    (E : WeierstrassCurve k) (X₁ Z₁ X₂ Z₂ : k) :
+    kummerBiquadraticHomogeneous E X₁ Z₁ X₂ Z₂ =
+      kummerBiquadraticHomogeneous E X₂ Z₂ X₁ Z₁ := by
+  simp only [kummerBiquadraticHomogeneous]
+  ring
+
+@[simp] theorem kummerBiquadraticHomogeneous_infinity_left
+    (E : WeierstrassCurve k) (X Z : k) :
+    kummerBiquadraticHomogeneous E 1 0 X Z = X ^ 2 := by
+  simp [kummerBiquadraticHomogeneous]
+
+@[simp] theorem kummerBiquadraticHomogeneous_infinity_right
+    (E : WeierstrassCurve k) (X Z : k) :
+    kummerBiquadraticHomogeneous E X Z 1 0 = X ^ 2 := by
+  rw [kummerBiquadraticHomogeneous_comm]
+  exact kummerBiquadraticHomogeneous_infinity_left E X Z
+
 /-- The x-only differential-addition product for two affine points with distinct x-coordinates.
 It removes the need for a separate y-coordinate division polynomial in the scalar recurrence. -/
 theorem addX_mul_addNegX_kummer
@@ -601,6 +637,12 @@ theorem n_torsion_finite_of_psiSq_detection
 #check divisionPolynomialXFormula_zero
 #check divisionPolynomialXFormula_one
 #check kummerBiquadratic
+#check kummerBiquadraticHomogeneous
+#check kummerBiquadraticHomogeneous_affine
+#check kummerBiquadraticHomogeneous_smul
+#check kummerBiquadraticHomogeneous_comm
+#check kummerBiquadraticHomogeneous_infinity_left
+#check kummerBiquadraticHomogeneous_infinity_right
 #check addX_mul_addNegX_kummer
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
@@ -623,6 +665,9 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms divisionPolynomialXRelation_two
 #print axioms divisionPolynomialXFormula_zero
 #print axioms divisionPolynomialXFormula_one
+#print axioms kummerBiquadraticHomogeneous_affine
+#print axioms kummerBiquadraticHomogeneous_smul
+#print axioms kummerBiquadraticHomogeneous_comm
 #print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one
