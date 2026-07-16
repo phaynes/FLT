@@ -2442,7 +2442,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The admission dependency order is now explicit. Four directly consumed quotient-action helpers are standard-axiom clean; the exists_variableChange_tateCurve probe exposes the ellipticity, analytic round-trip, and local-field descent boundary.",
+        "evidence": "The admission dependency order is explicit. Four quotient-action helpers and the Tate-curve ellipticity theorem are standard-axiom clean; the remaining exists_variableChange_tateCurve probe exposes the analytic round-trip and local-field descent boundary.",
         "loc_p50": 4500,
         "loc_p80": 18000,
         "loc_p95": 65000,
@@ -2458,6 +2458,7 @@
       "lean_type": "Tate uniformization and inertia statements used for the Frey representation at the bad prime and away from 2 ell.",
       "library_candidates": [
         "WeierstrassCurve.tateCurve",
+        "WeierstrassCurve.isElliptic_tateCurve",
         "WeierstrassCurve.exists_variableChange_of_j_eq",
         "QuotientGroup.congr",
         "ValuativeExtension"
@@ -2465,10 +2466,10 @@
       "mathematical_name": "Tate-curve and bad-reduction support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-UNRAMIFIED",
-      "proof_pattern": "Prove Tate-curve ellipticity and the j-invariant round-trip, descend the variable change to k, construct tateEquiv, then prove base-change/Galois compatibility and the separable-closure uniformization in dependency order. Reuse the kernel-clean Tate-quotient Galois action helpers in tatePoint_galois.",
+      "proof_pattern": "Prove the j-invariant round-trip, descend the variable change to k, construct tateEquiv, then prove base-change/Galois compatibility and the separable-closure uniformization in dependency order. Reuse the kernel-clean ellipticity and Tate-quotient Galois action helpers.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
-      "source_condition_risks": "Nine admissions remain. The first construction leaf needs ellipticity of the Tate curve, the analytic j(tateCurve q) round-trip, and descent of a separable-closure variable change to the local field; pinned descent APIs do not supply that route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
+      "source_condition_risks": "Nine admissions remain. Tate-curve ellipticity is kernel-clean; the first construction leaf still needs the analytic j(tateCurve q) round-trip and descent of a separable-closure variable change to the local field, for which pinned descent APIs do not supply the route. The final Weil-pairing compatibility belongs to FLT-TATE-WEIL.",
       "source_refs": [
         "SRC-001",
         "SRC-005"

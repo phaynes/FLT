@@ -1,6 +1,6 @@
 # FLT-TATE-UNRAMIFIED dependency slice
 
-Checkpoint: `0fa2249`.
+Checkpoint: `1acd636`.
 
 The admitted construction order is:
 
@@ -35,14 +35,25 @@ Each has axiom closure `[propext, Classical.choice, Quot.sound]`. They construct
 `k`-algebra automorphism on the multiplicative Tate quotient and are consumed by the future
 `tatePoint_galois` proof. They do not close an admitted export.
 
-The first attempted construction leaf, `exists_variableChange_tateCurve`, currently meets an API
-boundary. The same-`j` route first needs ellipticity of `tateCurve q`; even after postulating that
-instance, the pinned theorem assumes `IsSepClosed k`, while the needed variable change must descend
-to the original local field. Existing repository descent infrastructure covers fixed data over a
-quadratic extension, not this separable-closure descent.
+The first ellipticity prerequisite is now kernel-clean:
 
-This is a proof/API obstruction, not a counterexample. The next exact prerequisites are ellipticity
-of `tateCurve q` for `valuation k q < 1`, the analytic `j(tateCurve q)` round-trip, and descent of the
-resulting variable change to `k`.
+- `TateCurve.weierstrassDiscriminantFormal` and its constant/linear coefficient laws;
+- `TateCurve.evalInt_weierstrassDiscriminantFormal`;
+- `WeierstrassCurve.tateCurve_Δ_eq_evalInt`; and
+- `WeierstrassCurve.isElliptic_tateCurve`.
+
+Every declaration has axiom closure `[propext, Classical.choice, Quot.sound]`. The proof computes
+the polynomial discriminant from the existing formal Tate coefficients and uses
+`valuation_evalInt_eq`; it does not assume the still-unproved product-series identity for
+`ΔFormal`.
+
+The remaining construction leaf, `exists_variableChange_tateCurve`, still meets an API boundary.
+The same-`j` route now has ellipticity, but still needs the analytic `j(tateCurve q)` round-trip.
+Moreover, the pinned same-`j` theorem assumes `IsSepClosed k`, while the needed variable change must
+descend to the original local field. Existing repository descent infrastructure covers fixed data
+over a quadratic extension, not this separable-closure descent.
+
+This is a proof/API obstruction, not a counterexample. The next exact prerequisites are the analytic
+`j(tateCurve q)` round-trip and descent of the resulting variable change to `k`.
 
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
