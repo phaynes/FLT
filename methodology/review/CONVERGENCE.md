@@ -1,24 +1,47 @@
 # Independent-review convergence
 
-Design commit: `5ddc1e6`
+Central review commit: `5d376d153ad1641113781c317ee9ab69d38f200b`
 
-## State
+## Operator-authorized review substitution
 
-**LOAD-BEARING BLOCKER — REVIEW INCOMPLETE**
+The exact Sonnet 5.0 model was unavailable. Its original access-failure record remains in
+`sonnet50-initial.md` and is not reclassified as a mathematical review.
 
-- Opus 4.8: `REVISE`, with source- and graph-specific repairs HR-01 through HR-05.
-- Sonnet 5.0: not run because the exact requested model was unavailable to the authenticated CLI.
-- Cross-review: not run because one blind arm is absent.
+The operator authorized Fable 5 to substitute for that unavailable architecture-review role and
+required an independent GPT-5.6 Max hostile arm plus delta-only cross-review. That bounded process
+has now run. The final source correction was adjudicated by GPT-5.6 xhigh under the updated routing
+policy because both earlier cross-reviews inherited the same misread PDF glyph.
 
-The producer independently reproduced HR-01 through HR-05 from the public graph, source audit,
-blueprint, and Lean scaffold. Those findings may be repaired, but the design cannot pass G1 or G2
-until an independent Lean-architecture reviewer checks the repaired signatures and implementation
-order.
+## Converged findings
 
-Producer audit found that the original graph had no machine-readable T3 work assignment. The
-repaired schema now gives every obligation `completion_targets` and `stage_completion`. Each
-T2-first historical node explicitly remains open at T3 until the same proposition has a
-standard-axiom proof; the monitor requires coverage of all three target stages. This repairs the
-stage-model defect without inventing a second, weaker mathematical declaration.
+**REVIEW CONVERGED — SOURCE ROUTE SELECTED, LEAN BOUNDARY REQUIRES REPAIR**
 
-No proof burn-down is authorized by this convergence record.
+- Taylor 2018, *Automorphy Lifting*, Theorem 2.1.1 is the selected primary theorem.
+- Gee 2022, Theorem 5.2 is incompatible with the induced/dihedral residual seed because of its
+  `SL₂(F_p)` image condition.
+- Taylor 2006, Theorem 3.3 is not the minimal route because its complete-splitting and witness
+  conditions are stronger than the selected route requires.
+- Taylor 2018 hypothesis (3) is an at-`ell` condition: the witness is unramified for `v | ell`.
+  It is not represented by `IsAutomorphicOfLevel ell ... empty`.
+- Taylor's theorem concludes level-free GL2 automorphy. The repository's quaternionic
+  `IsAutomorphicOfLevel S` conclusion is a separate derived boundary.
+- The source contract cannot yet elaborate honestly because stable-lattice/residual,
+  semisimplification, RACAR, attached-representation, crystalline, and Hodge--Tate interfaces are
+  absent.
+- Cyclotomic restriction irreducibility must be proved independently at both auxiliary-curve
+  applications.
+- `ker_RtoT_le_nilradical` is useful but not an `R = T` theorem. For point factorization it must be
+  combined with a proved surjective Hecke map and a reduced coefficient target; Hecke-algebra
+  reducedness is not required for that direction. Eigenform extraction and trace compatibility
+  remain explicit obligations.
+
+## Gate consequence
+
+The methodology review substitution is complete and may satisfy the independent-review component
+of G1/G2 once the graph and source register encode these findings. It does **not** close
+`FLT-MLT-SOURCE`, `FLT-SGOOD-SELECTED`, or authorize W04--W06 construction. Those proof-programme
+nodes remain open until their exact missing definitions and typechecking signatures are built and
+reviewed.
+
+No modularity-lifting implementation is authorized by this record. Source-independent W02 work may
+continue.

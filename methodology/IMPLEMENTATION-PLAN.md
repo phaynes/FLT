@@ -7,16 +7,20 @@ boundaries rather than defects.
 
 ## Current adjudication
 
-The programme is **not yet authorized for unrestricted proof burn-down**. Opus 4.8 returned
-`REVISE`; its graph repairs have been incorporated. The exact requested Sonnet 5.0 model was not
-available, so the independent Lean-architecture and cross-review gates remain open. More
-importantly, `FLT-MLT-SOURCE` is still a genuine source/statement gap: neither candidate
-modularity-lifting theorem currently matches the blueprint target without additional proved
-bridges.
+The programme is **not yet authorized for unrestricted proof burn-down**. The exact requested
+Sonnet 5.0 model was unavailable; the operator authorized Fable 5 as its architecture-review
+substitute and required an independent GPT-5.6 Max arm plus bounded cross-review. That review
+selected Taylor 2018, Theorem 2.1.1 and corrected its witness condition to places `v | ell`.
 
-The safe next construction tranche is restricted to source-independent leaves. It must not enter
-modularity lifting, potential modularity, or compatible families until their signatures are
-source-frozen and reviewed.
+`FLT-MLT-SOURCE` remains a Lean definition gap rather than a source-selection gap: the selected
+theorem needs coefficient/lattice/residual, p-adic Hodge, and RACAR interfaces that do not exist.
+Its level-free GL2 conclusion must remain separate from the repository's quaternionic
+`IsAutomorphicOfLevel S` theorem.
+
+The safe main construction tranche is W02 Tate--Frey support. It must not enter deformation,
+Hecke, patching, modularity lifting, potential modularity, or compatible families until the W00
+source vocabulary, source contract, and repository-local bridge signatures elaborate and are
+reviewed.
 
 ## Discovery and proof direction
 
@@ -25,7 +29,7 @@ hardly-ramified reducibility, characteristic-zero lifts, compatible families, po
 modularity, modularity lifting, and their foundations. Construction reverses that order within
 each dependency component.
 
-The current graph has 49 nodes and 77 direct edges. Forty-eight nodes are on the intended critical
+The current graph has 52 nodes and 91 direct edges. Fifty-one nodes are on the intended critical
 closure. There are no graph cycles after separating the blueprint-temporary S-good condition from
 the source-selected condition. The longest dependency depth is 18.
 
@@ -69,7 +73,7 @@ when an exact source theorem forces a different architecture.
 
 `control/wave-plan.ndjson` is the machine-readable schedule. The principal waves are:
 
-1. source and signature repair for the modularity-lifting boundary;
+1. Taylor-2018 source vocabulary and signature repair for the modularity-lifting boundary;
 2. frozen definitions and exact library contracts;
 3. decomposed Tate/torsion/Frey support;
 4. finite historical-interface freeze, with unconditional discharge continuing in parallel;

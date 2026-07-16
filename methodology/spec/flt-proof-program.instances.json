@@ -163,6 +163,27 @@
       "to": "FLT-MLT-SOURCE"
     },
     {
+      "edge_id": "E-MLT-COEFFICIENTS-MLT-SOURCE",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-MLT-COEFFICIENTS.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
+      "edge_id": "E-MLT-PADIC-HODGE-MLT-SOURCE",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-PADIC-HODGE",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-MLT-PADIC-HODGE.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
+      "edge_id": "E-RACAR-DEF-MLT-SOURCE",
+      "edge_kind": "definition",
+      "from": "FLT-RACAR-DEF",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-RACAR-DEF.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
       "edge_id": "E-MLT-SOURCE-MLT",
       "edge_kind": "theorem",
       "from": "FLT-MLT-SOURCE",
@@ -188,6 +209,27 @@
       "edge_kind": "theorem",
       "from": "FLT-SGOOD-SELECTED",
       "justification": "FLT-MLT directly consumes FLT-SGOOD-SELECTED.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-AUT-GALOIS-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-AUT-GALOIS",
+      "justification": "FLT-MLT directly consumes FLT-AUT-GALOIS.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-JL-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-JL",
+      "justification": "FLT-MLT directly consumes FLT-JL.",
+      "to": "FLT-MLT"
+    },
+    {
+      "edge_id": "E-HECKE-ACTION-MLT",
+      "edge_kind": "theorem",
+      "from": "FLT-HECKE-ACTION",
+      "justification": "FLT-MLT directly consumes FLT-HECKE-ACTION.",
       "to": "FLT-MLT"
     },
     {
@@ -265,6 +307,13 @@
       "edge_kind": "theorem",
       "from": "FLT-RESIDUAL-IMAGE",
       "justification": "FLT-POTMOD directly consumes FLT-RESIDUAL-IMAGE.",
+      "to": "FLT-POTMOD"
+    },
+    {
+      "edge_id": "E-MLT-COEFFICIENTS-POTMOD",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-POTMOD directly consumes FLT-MLT-COEFFICIENTS.",
       "to": "FLT-POTMOD"
     },
     {
@@ -401,6 +450,20 @@
       "to": "FLT-SGOOD-SELECTED"
     },
     {
+      "edge_id": "E-MLT-PADIC-HODGE-SGOOD-SELECTED",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-PADIC-HODGE",
+      "justification": "FLT-SGOOD-SELECTED directly consumes FLT-MLT-PADIC-HODGE.",
+      "to": "FLT-SGOOD-SELECTED"
+    },
+    {
+      "edge_id": "E-MLT-COEFFICIENTS-SGOOD-SELECTED",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-SGOOD-SELECTED directly consumes FLT-MLT-COEFFICIENTS.",
+      "to": "FLT-SGOOD-SELECTED"
+    },
+    {
       "edge_id": "E-HR-DEF-RESIDUAL-IMAGE",
       "edge_kind": "definition",
       "from": "FLT-HR-DEF",
@@ -433,6 +496,20 @@
       "edge_kind": "theorem",
       "from": "FLT-SUPPORT-AUTOMORPHIC",
       "justification": "FLT-AUT-GALOIS directly consumes FLT-SUPPORT-AUTOMORPHIC.",
+      "to": "FLT-AUT-GALOIS"
+    },
+    {
+      "edge_id": "E-RACAR-DEF-AUT-GALOIS",
+      "edge_kind": "definition",
+      "from": "FLT-RACAR-DEF",
+      "justification": "FLT-AUT-GALOIS directly consumes FLT-RACAR-DEF.",
+      "to": "FLT-AUT-GALOIS"
+    },
+    {
+      "edge_id": "E-MLT-COEFFICIENTS-AUT-GALOIS",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-AUT-GALOIS directly consumes FLT-MLT-COEFFICIENTS.",
       "to": "FLT-AUT-GALOIS"
     },
     {
@@ -539,6 +616,27 @@
       "from": "FLT-TATE-WEIL",
       "justification": "FLT-SUPPORT-TATE directly consumes FLT-TATE-WEIL.",
       "to": "FLT-SUPPORT-TATE"
+    },
+    {
+      "edge_id": "E-MLT-COEFFICIENTS-MLT-PADIC-HODGE",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-MLT-PADIC-HODGE directly consumes FLT-MLT-COEFFICIENTS.",
+      "to": "FLT-MLT-PADIC-HODGE"
+    },
+    {
+      "edge_id": "E-MLT-COEFFICIENTS-RACAR-DEF",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFFICIENTS",
+      "justification": "FLT-RACAR-DEF directly consumes FLT-MLT-COEFFICIENTS.",
+      "to": "FLT-RACAR-DEF"
+    },
+    {
+      "edge_id": "E-SUPPORT-AUTOMORPHIC-RACAR-DEF",
+      "edge_kind": "theorem",
+      "from": "FLT-SUPPORT-AUTOMORPHIC",
+      "justification": "FLT-RACAR-DEF directly consumes FLT-SUPPORT-AUTOMORPHIC.",
+      "to": "FLT-RACAR-DEF"
     }
   ],
   "gates": [
@@ -1001,7 +1099,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The localized Hecke action and R-to-T map are kernel-clean with source-compatible hypotheses.",
+      "completion_gate": "The localized Hecke action, trace compatibility, and surjective R-to-T map are kernel-clean with source-compatible hypotheses.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1017,7 +1115,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Substantial exploratory infrastructure exists but the load-bearing localized action is absent.",
+        "evidence": "The localized action and the surjective load-bearing R-to-T map are absent.",
         "loc_p50": 30000,
         "loc_p80": 130000,
         "loc_p95": 500000,
@@ -1030,22 +1128,23 @@
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed data: a finite Hecke module localized at the residual maximal ideal, a complete local Hecke algebra T, and a compatible map R -> T identifying Frobenius traces.",
+      "lean_type": "Proposed data: a finite localized Hecke module, a complete local Hecke algebra T, and a proved surjective compatible map R -> T identifying Frobenius traces.",
       "library_candidates": [
         "HeckeAlgebra",
         "AutomorphicForm",
         "GaloisRep.charFrob"
       ],
-      "mathematical_name": "Quaternionic Hecke module and Galois-compatible Hecke algebra action",
+      "mathematical_name": "Quaternionic Hecke module and surjective Galois-compatible Hecke action",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HECKE-ACTION",
-      "proof_pattern": "Separate automorphic module, Hecke localization, Galois representation, and R-to-T construction.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Separate automorphic module, Hecke localization, attached representation, trace compatibility, and surjectivity of R-to-T.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-HECKE-ACTION",
-      "source_condition_risks": "Level, weight, localization, multiplicity one, and existence of the attached Galois representation must align.",
+      "source_condition_risks": "Surjectivity, level, weight, localization, multiplicity one, coefficient normalization, and the attached representation must align.",
       "source_refs": [
         "SRC-008",
-        "SRC-009"
+        "SRC-009",
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
@@ -1098,7 +1197,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Selected R=T consequence is kernel-clean and consumes only independently proved hypotheses.",
+      "completion_gate": "Nilradical containment, surjective-map point factorization, eigenform extraction, and trace compatibility are kernel-clean and consume only independently proved hypotheses.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1114,7 +1213,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Generic patching is present but specialization and many prerequisites are absent.",
+        "evidence": "The generic nilradical terminal is axiom-clean; specialization, surjectivity, point construction, and eigenform extraction remain absent.",
         "loc_p50": 20000,
         "loc_p80": 90000,
         "loc_p95": 350000,
@@ -1125,23 +1224,24 @@
       "expected_module": "FLT.ModularityLifting.Patching",
       "graph_depth": 7,
       "kernel_probe_state": "absent",
-      "lean_declaration": "FLT.ModularityLifting.patched_R_eq_T",
+      "lean_declaration": "FLT.ModularityLifting.patched_point_factors_through_hecke",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed theorem: under the exact deformation, Hecke, freeness, depth, and auxiliary-prime hypotheses, the universal deformation map R -> T is an isomorphism (or the exact nearly-faithful conclusion needed by lifting).",
+      "lean_type": "Proposed theorem: the exact patching hypotheses give ker(R -> T) <= nilradical R; with the separately proved surjective Hecke map, every point to a reduced coefficient ring factors through T and yields the required eigencharacter.",
       "library_candidates": [
         "ker_RtoT_le_nilradical",
         "FLT.Patching",
         "IsNoetherianRing"
       ],
-      "mathematical_name": "Taylor-Wiles patching terminal",
+      "mathematical_name": "Taylor-Wiles nilradical and point-factorization terminal",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-PATCHING",
-      "proof_pattern": "Specialize existing patching algebra after proving all module and dimension hypotheses; avoid restating the conclusion as a premise.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Specialize the existing axiom-clean nilradical theorem, use surjectivity from FLT-HECKE-ACTION, factor the reduced-target point, and extract the eigencharacter.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-PATCHING",
-      "source_condition_risks": "Existing generic patching terminal may yield only nilradical containment; exact faithfulness needed by MLT must be checked.",
+      "source_condition_risks": "Nilradical containment does not itself prove surjectivity, construct the deformation point, extract an eigenform, or establish trace compatibility; reducedness of T is not required for the factorization direction.",
       "source_refs": [
-        "SRC-009"
+        "SRC-009",
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
@@ -1190,7 +1290,7 @@
       "target_stage": "T2"
     },
     {
-      "completion_gate": "Opus mathematical review and a primary-source audit accept one exact elaborated signature.",
+      "completion_gate": "The source-exact level-free signature elaborates, names every hypothesis, and an independent review confirms the corrected v | ell condition and coefficient/lattice boundary.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1200,42 +1300,44 @@
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-SGOOD-DEF",
-        "FLT-AUT-DEF"
+        "FLT-AUT-DEF",
+        "FLT-MLT-COEFFICIENTS",
+        "FLT-MLT-PADIC-HODGE",
+        "FLT-RACAR-DEF"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Upstream blueprint explicitly records uncertainty about the exact theorem.",
-        "loc_p50": 500,
-        "loc_p80": 2500,
-        "loc_p95": 10000,
-        "tokens_p50": 80000,
-        "tokens_p80": 400000,
-        "tokens_p95": 1800000
+        "evidence": "Fable selected Taylor 2018; the corrected GPT xhigh adjudication verified the at-ell witness condition and level-free boundary.",
+        "loc_p50": 3000,
+        "loc_p80": 15000,
+        "loc_p95": 60000,
+        "tokens_p50": 400000,
+        "tokens_p80": 2500000,
+        "tokens_p95": 12000000
       },
-      "expected_module": "FLT.ModularityLifting.Statement",
+      "expected_module": "FLT.ModularityLifting.Taylor2018.Statement",
       "graph_depth": 2,
       "kernel_probe_state": "absent",
-      "lean_declaration": "FLT.ModularityLifting.SelectedSourceContract",
+      "lean_declaration": "FLT.ModularityLifting.Taylor2018.SourceContract",
       "lean_risk": "unbounded",
-      "lean_type": "Definition gap: a source-faithful contract must be selected between or derived from Taylor 2006 Theorem 3.3, Gee 2022 Theorem 5.2, or another exact primary theorem; no Lean proposition is frozen until every mismatch is resolved.",
+      "lean_type": "Definition gap: exact level-free GL2 automorphy contract for Taylor 2018 Theorem 2.1.1 over an algebraic ell-adic coefficient field, with stable lattice and semisimplified residual reduction, regular algebraicity, crystalline and Fontaine-Laffaille conditions, cyclotomic-restriction irreducibility, a RACAR witness with matching residual representation and Hodge-Tate weights, and witness unramifiedness at every v | ell.",
       "library_candidates": [],
-      "mathematical_name": "Exact primary-source modularity-lifting theorem selection",
-      "mathematical_novelty": "source-unresolved",
+      "mathematical_name": "Taylor 2018 Theorem 2.1.1 source contract",
+      "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
-      "proof_pattern": "Primary-source hypothesis table, then either select an exact theorem or add proved bridge nodes for every mismatch.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Define the missing source vocabulary, elaborate the theorem statement exactly, then prove separate coefficient, residual, and repository-level bridges.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-MLT-SOURCE",
-      "source_condition_risks": "The blueprint target assumes ell unramified while Taylor's near-reference assumes split; Gee's near-reference has a stronger residual-image condition.",
+      "source_condition_risks": "The primary route is selected, but its source vocabulary is absent. The conclusion is level-free GL2 automorphy and must not be replaced by IsAutomorphicOfLevel S or a generic integral-O theorem.",
       "source_refs": [
         "SRC-004",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Exact source-compatible theorem has no sorryAx and no unapproved custom axiom.",
+      "completion_gate": "The source theorem and every repository-level bridge are kernel-clean; the exact IsAutomorphicOfLevel conclusion has no sorryAx or unapproved custom axiom.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1247,40 +1349,43 @@
         "FLT-MLT-SOURCE",
         "FLT-PATCHING",
         "FLT-CBASE",
-        "FLT-SGOOD-SELECTED"
+        "FLT-SGOOD-SELECTED",
+        "FLT-AUT-GALOIS",
+        "FLT-JL",
+        "FLT-HECKE-ACTION"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Terminal itself is shorter than its prerequisite programmes but source and integration risks dominate.",
-        "loc_p50": 12000,
-        "loc_p80": 60000,
-        "loc_p95": 250000,
-        "tokens_p50": 1500000,
-        "tokens_p80": 9000000,
-        "tokens_p95": 50000000
+        "evidence": "The source theorem is selected; every repository-specific bridge remains absent.",
+        "loc_p50": 15000,
+        "loc_p80": 75000,
+        "loc_p95": 300000,
+        "tokens_p50": 1900000,
+        "tokens_p80": 11000000,
+        "tokens_p95": 60000000
       },
       "expected_module": "FLT.ModularityLifting.Main",
       "graph_depth": 8,
       "kernel_probe_state": "absent",
-      "lean_declaration": "FLT.ModularityLifting.modularity_lifting",
+      "lean_declaration": "FLT.ModularityLifting.modularity_lifting_weight_two_of_taylor2018",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed only after FLT-MLT-SOURCE: if rhobar is absolutely irreducible on the required cyclotomic extension, SGood, and automorphic of the selected level, then every SGood characteristic-zero lift rho is automorphic of that level.",
+      "lean_type": "Proposed derived theorem: after the source-exact level-free Taylor theorem and all coefficient, local-global, Hecke, patching, and Jacquet-Langlands bridges, the concrete weight-two S-good lift satisfies the repository's GaloisRep.IsAutomorphicOfLevel predicate at the proved level S.",
       "library_candidates": [
-        "ker_RtoT_le_nilradical"
+        "ker_RtoT_le_nilradical",
+        "GaloisRep.IsAutomorphicOfLevel"
       ],
-      "mathematical_name": "Modularity lifting for the selected S-good representations",
+      "mathematical_name": "Repository-level modularity lifting derived from Taylor 2018",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT",
-      "proof_pattern": "Skinner-Wiles reduction to minimal case, then specialized R=T and eigenform/Galois comparison.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Apply the source theorem at the GL2 boundary, then use independently proved coefficient, local-global, patching/eigenform, and Jacquet-Langlands bridges to derive the repository predicate.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-MLT",
-      "source_condition_risks": "All hypotheses must be those of the selected source or proved bridge theorems; no desired automorphy conclusion may be hidden in structures.",
+      "source_condition_risks": "This is stronger and more concrete than the source theorem statement; the level, coefficient field, attached representation, and quaternionic transfer must be proved, not attributed to Taylor 2.1.1.",
       "source_refs": [
         "SRC-004",
         "SRC-008",
         "SRC-009",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
@@ -1511,7 +1616,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Exported potential-modularity theorem is kernel-clean and exactly matches compatible-family construction.",
+      "completion_gate": "Both concrete Taylor applications and the repository-level transfer are kernel-clean with each source hypothesis discharged independently.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1523,39 +1628,39 @@
         "FLT-AUX-CURVE",
         "FLT-INDUCED-MOD",
         "FLT-MLT",
-        "FLT-RESIDUAL-IMAGE"
+        "FLT-RESIDUAL-IMAGE",
+        "FLT-MLT-COEFFICIENTS"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Assembly depends on several absent programmes.",
-        "loc_p50": 8000,
-        "loc_p80": 35000,
-        "loc_p95": 140000,
-        "tokens_p50": 1000000,
-        "tokens_p80": 5500000,
-        "tokens_p95": 28000000
+        "evidence": "Taylor 2018 sections 2.3.6--2.3.7 give the two-application route; all formal bridges are absent.",
+        "loc_p50": 12000,
+        "loc_p80": 55000,
+        "loc_p95": 220000,
+        "tokens_p50": 1500000,
+        "tokens_p80": 8500000,
+        "tokens_p95": 45000000
       },
       "expected_module": "FLT.PotentialModularity.Main",
       "graph_depth": 9,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.potentially_automorphic",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed: for an irreducible hardly-ramified ell-adic rho, there exists an even-degree totally real Galois F/Q, unramified at ell and disjoint from the residual kernel, such that rho restricted to G_F is automorphic in the exact IsAutomorphicOfLevel sense.",
+      "lean_type": "Proposed: for an irreducible hardly-ramified ell-adic rho, construct a totally real auxiliary field and curve, apply Taylor 2018 at the CM-seed prime and again at the target prime with separately verified hypotheses, then derive the exact repository automorphy predicate.",
       "library_candidates": [
         "GaloisRep.IsAutomorphicOfLevel"
       ],
       "mathematical_name": "Potential modularity of hardly-ramified lifts",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-POTMOD",
-      "proof_pattern": "Auxiliary mod-p automorphy, MLT to the curve, identify mod-ell, then MLT to rho.",
-      "review_state": "unreviewed",
+      "proof_pattern": "CM residual automorphy, first source-level MLT to the auxiliary curve, coefficient transport, second source-level MLT to the target, then repository-level transfer.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-POTMOD",
-      "source_condition_risks": "The lifting theorem must apply twice with the auxiliary curve and selected local conditions; restriction/base-change orientations must agree.",
+      "source_condition_risks": "Both Taylor applications require their own stable-lattice, coefficient, Hodge-Tate, at-prime unramified-witness, and cyclotomic irreducibility proofs; neither application may inherit the old level-empty shortcut.",
       "source_refs": [
         "SRC-004",
         "SRC-011",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
@@ -2022,7 +2127,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "An exact source-compatible structure elaborates and independent review accepts every field.",
+      "completion_gate": "The repository structure elaborates and every source-compatibility bridge has an explicit dependency and independently reviewed signature.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2032,44 +2137,46 @@
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-SGOOD-DEF",
-        "FLT-MLT-SOURCE"
+        "FLT-MLT-SOURCE",
+        "FLT-MLT-PADIC-HODGE",
+        "FLT-MLT-COEFFICIENTS"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus HR-01 requires the source-selected condition to be separate from the temporary blueprint condition.",
-        "loc_p50": 2000,
-        "loc_p80": 10000,
-        "loc_p95": 40000,
-        "tokens_p50": 250000,
-        "tokens_p80": 1500000,
-        "tokens_p95": 7000000
+        "evidence": "The source route is selected, but the corrected review separates the source and repository local-condition boundaries.",
+        "loc_p50": 3000,
+        "loc_p80": 14000,
+        "loc_p95": 55000,
+        "tokens_p50": 400000,
+        "tokens_p80": 2200000,
+        "tokens_p95": 10000000
       },
       "expected_module": "FLT.ModularityLifting.Conditions",
       "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.SelectedGood",
       "lean_risk": "unbounded",
-      "lean_type": "Definition, after source selection, of the exact determinant, ramification, inertial, p-adic Hodge or finite-flat, weight, and coefficient conditions used by the selected theorem.",
+      "lean_type": "Definition gap: repository-local bundle of cyclotomic determinant, unramifiedness outside S and ell, tame rank-one quotient at S, and a finite-flat integral model above ell. Separate bridge theorems must connect it to the source-level crystalline Hodge-Tate conditions.",
       "library_candidates": [
-        "DeformationCondition"
+        "DeformationCondition",
+        "GaloisRep.IsFlatAt"
       ],
-      "mathematical_name": "Source-selected modularity-lifting local conditions",
-      "mathematical_novelty": "source-unresolved",
+      "mathematical_name": "Repository weight-two local conditions selected after Taylor 2018",
+      "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
-      "proof_pattern": "Lower the selected theorem hypotheses field-by-field and prove any equivalence with the blueprint target separately.",
+      "proof_pattern": "Elaborate the repository fields from existing vocabulary, then prove source-hypothesis bridges without hiding p-adic Hodge mathematics in the structure.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
-      "source_condition_risks": "No final signature exists until one exact primary theorem and every bridge are selected.",
+      "source_condition_risks": "This is a repository-local condition bundle, not Taylor's theorem statement. Flat-to-crystalline/Hodge-Tate and coefficient/lattice bridges must be separately proved.",
       "source_refs": [
         "SRC-004",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Exact source condition is proved for every concrete residual representation entering the lifting theorem.",
+      "completion_gate": "Both exact cyclotomic-restriction irreducibility theorems are kernel-clean with all disjointness assumptions proved by the auxiliary-field construction.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2084,40 +2191,39 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Added from Opus HR-02; no exact source bridge is currently selected.",
-        "loc_p50": 8000,
-        "loc_p80": 40000,
-        "loc_p95": 180000,
-        "tokens_p50": 1000000,
-        "tokens_p80": 6500000,
-        "tokens_p95": 35000000
+        "evidence": "The corrected Taylor route requires cyclotomic irreducibility at two separate primes; no SL2 image bridge is used.",
+        "loc_p50": 10000,
+        "loc_p80": 50000,
+        "loc_p95": 210000,
+        "tokens_p50": 1300000,
+        "tokens_p80": 8000000,
+        "tokens_p95": 42000000
       },
       "expected_module": "FLT.ModularityLifting.ResidualImage",
       "graph_depth": 5,
       "kernel_probe_state": "absent",
-      "lean_declaration": "FLT.ModularityLifting.residualImageCondition",
+      "lean_declaration": "FLT.ModularityLifting.cyclotomicRestrictionIrreducible",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed theorem, source-selected: every residual representation used in the concrete potential-modularity application satisfies the exact cyclotomic absolute-irreducibility, adequacy, or large-image hypothesis required by modularity lifting and Taylor-Wiles prime selection.",
+      "lean_type": "Proposed theorem package proving that the CM-induced seed at ell_1 and the auxiliary-curve residual representation at ell_2 remain irreducible after restriction to the corresponding cyclotomic extension, using explicit avoidance and field-disjointness data.",
       "library_candidates": [
         "GaloisRep.IsIrreducible"
       ],
-      "mathematical_name": "Residual cyclotomic irreducibility or adequacy bridge",
-      "mathematical_novelty": "source-unresolved",
+      "mathematical_name": "Cyclotomic restriction irreducibility at both Taylor applications",
+      "mathematical_novelty": "research-level",
       "obligation_id": "FLT-RESIDUAL-IMAGE",
-      "proof_pattern": "After choosing the source, prove the exact restriction/image theorem and isolate every exceptional-image case.",
+      "proof_pattern": "Prove induced-representation irreducibility over the cyclotomic compositum, then prove Moret-Bailly disjointness preserves each concrete image.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-RESIDUAL-IMAGE",
-      "source_condition_risks": "Irreducibility over the base does not by itself imply the Taylor or Gee residual-image condition; disjointness and exceptional images are load-bearing.",
+      "source_condition_risks": "Dihedrality or base-field irreducibility alone is insufficient; both field changes require exact avoidance and nontrivial character-ratio proofs.",
       "source_refs": [
         "SRC-004",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The attached representation and every compatibility used by R-to-T are kernel-clean and exactly sourced.",
+      "completion_gate": "Both attached-representation constructions, coefficient transport, and every compatibility used by R-to-T and level specialization are kernel-clean and exactly sourced.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2127,45 +2233,48 @@
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-AUT-DEF",
-        "FLT-SUPPORT-AUTOMORPHIC"
+        "FLT-SUPPORT-AUTOMORPHIC",
+        "FLT-RACAR-DEF",
+        "FLT-MLT-COEFFICIENTS"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus HR-03 identifies this as a whole programme hidden by the prior umbrella node.",
-        "loc_p50": 30000,
-        "loc_p80": 150000,
-        "loc_p95": 650000,
-        "tokens_p50": 4000000,
-        "tokens_p80": 25000000,
-        "tokens_p95": 140000000
+        "evidence": "The selected source route makes the GL2/RACAR and repository quaternionic boundaries simultaneously load-bearing.",
+        "loc_p50": 35000,
+        "loc_p80": 175000,
+        "loc_p95": 750000,
+        "tokens_p50": 4800000,
+        "tokens_p80": 30000000,
+        "tokens_p95": 165000000
       },
       "expected_module": "FLT.Automorphic.AttachedGaloisRepresentation",
-      "graph_depth": 1,
+      "graph_depth": 2,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.attachedGaloisRepresentation",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed source-faithful construction of the two-dimensional continuous Galois representation attached to the selected quaternionic or Hilbert automorphic eigenform, with Frobenius characteristic-polynomial and required local-global compatibility.",
+      "lean_type": "Proposed source-faithful constructions of two-dimensional continuous Galois representations attached to the selected GL2 RACAR and quaternionic eigenforms, with coefficient transport, Frobenius characteristic polynomials, and the exact local-global compatibility used by level specialization.",
       "library_candidates": [
         "GaloisRep.charFrob",
         "HeckeOperator"
       ],
-      "mathematical_name": "Galois representations attached to selected automorphic eigenforms",
+      "mathematical_name": "Galois representations attached to RACAR and repository eigenforms",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUT-GALOIS",
-      "proof_pattern": "Separate construction, continuity, Frobenius compatibility, and local conditions; only then build the localized R-to-T map.",
+      "proof_pattern": "Separate RACAR attachment, quaternionic attachment, coefficient transport, Frobenius compatibility, monodromy/local conditions, and only then build R-to-T.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-AUT-GALOIS",
-      "source_condition_risks": "Weight, coefficient field, level, normalization, local-global compatibility, and quaternionic-to-GL2 transfer must match the Hecke and deformation interfaces.",
+      "source_condition_risks": "Weight, coefficient field, lattice reduction, semisimplification, local-global normalization, and GL2/quaternionic transfer must match exactly.",
       "source_refs": [
         "SRC-004",
         "SRC-008",
-        "SRC-009"
+        "SRC-009",
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The selected auxiliary-field condition is source-exact and its Moret-Bailly specialization is kernel-clean.",
+      "completion_gate": "The corrected source and project field conditions elaborate separately and the Moret-Bailly specialization proves every condition without an independence assumption.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2179,42 +2288,41 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Added from Opus HR-04; exact cost depends on the selected primary theorem.",
-        "loc_p50": 6000,
-        "loc_p80": 30000,
-        "loc_p95": 120000,
-        "tokens_p50": 800000,
-        "tokens_p80": 5000000,
-        "tokens_p95": 26000000
+        "evidence": "The corrected source audit fixes the route to unramifiedness and two explicit good-reduction/cyclotomic-avoidance applications.",
+        "loc_p50": 7000,
+        "loc_p80": 35000,
+        "loc_p95": 140000,
+        "tokens_p50": 900000,
+        "tokens_p80": 5800000,
+        "tokens_p95": 30000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryField",
       "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.AuxiliaryFieldCondition",
       "lean_risk": "unbounded",
-      "lean_type": "Source-selected predicate and existence bridge specifying whether the residual prime is split completely or merely unramified, together with even degree, total reality, Galoisness, and required disjointness.",
+      "lean_type": "Predicate and existence bridge for a totally real auxiliary field in which both selected primes are unramified, the auxiliary curve has good reduction above them, the field is disjoint from the two residual/cyclotomic avoidance extensions, and project-specific even-degree, Galois, and quaternionic conditions are exposed separately.",
       "library_candidates": [
         "NumberField",
         "IsUnramified"
       ],
-      "mathematical_name": "Auxiliary-field local condition selected for modularity lifting",
-      "mathematical_novelty": "source-unresolved",
+      "mathematical_name": "Taylor-2018-compatible auxiliary-field local and avoidance conditions",
+      "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUX-LOCAL-FIELD",
-      "proof_pattern": "Select one theorem, encode its exact field conditions, and prove the Moret-Bailly local opens yield them.",
+      "proof_pattern": "Encode source and project conditions as distinct fields and prove the Moret-Bailly local opens and disjointness conclusion supply each one.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-AUX-LOCAL-FIELD",
-      "source_condition_risks": "Taylor and Gee impose different field and residual-image conditions; a disjunction cannot be hidden in the concrete proof route.",
+      "source_condition_risks": "Taylor 2018 requires unramifiedness, not complete splitting. Good reduction and two avoidance conditions are needed for the concrete applications; even degree and Galoisness are project/Jacquet-Langlands requirements, not source hypotheses.",
       "source_refs": [
         "SRC-004",
         "SRC-011",
-        "SRC-012",
-        "SRC-013"
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"
     },
     {
-      "completion_gate": "All declarations in this subcluster used by Frey-HR have no sorryAx.",
+      "completion_gate": "All torsion declarations reached by galoisRep and Frey-HR have no sorryAx.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2224,21 +2332,21 @@
       "current_state": "admitted",
       "direct_dependencies": [],
       "estimates": {
-        "confidence": "low",
-        "evidence": "Nine admissions in FLT/EllipticCurve/Torsion.lean.",
-        "loc_p50": 2500,
-        "loc_p80": 7000,
-        "loc_p95": 18000,
-        "tokens_p50": 250000,
-        "tokens_p80": 900000,
-        "tokens_p95": 3000000
+        "confidence": "medium",
+        "evidence": "Live refresh at review SHA found exactly two executable admissions in FLT/EllipticCurve/Torsion.lean; earlier module-law helpers are now proved.",
+        "loc_p50": 900,
+        "loc_p80": 3500,
+        "loc_p95": 12000,
+        "tokens_p50": 120000,
+        "tokens_p80": 500000,
+        "tokens_p95": 2000000
       },
-      "expected_module": "FLT.KnownIn1980s.EllipticCurves",
+      "expected_module": "FLT.EllipticCurve.Torsion",
       "graph_depth": 0,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.EllipticCurve.Torsion support closure",
       "lean_risk": "very-high",
-      "lean_type": "Finite and rank-two torsion, module laws, and the continuous Galois action used by WeierstrassCurve.galoisRep.",
+      "lean_type": "Finite and rank-two torsion facts and the continuous Galois action used by WeierstrassCurve.galoisRep.",
       "library_candidates": [
         "EllipticCurve",
         "TateCurve"
@@ -2246,10 +2354,10 @@
       "mathematical_name": "Elliptic-curve torsion module support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-TORSION",
-      "proof_pattern": "Close the exact transitive declarations bottom-up and audit each exported consumer.",
+      "proof_pattern": "Close n_torsion_finite and card_n_torsion bottom-up, then audit galoisRep and torsion_rank.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "Each admitted declaration must be enumerated before proof scheduling.",
+      "source_condition_risks": "The two remaining admitted torsion cardinality/finite declarations must be closed and their exported consumers audited.",
       "source_refs": [
         "SRC-001",
         "SRC-005"
@@ -2835,6 +2943,137 @@
       "source_refs": [
         "SRC-001",
         "SRC-015"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Every coefficient/lattice/residual definition elaborates and its comparison laws have no sorryAx.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "The corrected source review identifies this as the first absent vocabulary chain.",
+        "loc_p50": 6000,
+        "loc_p80": 30000,
+        "loc_p95": 120000,
+        "tokens_p50": 800000,
+        "tokens_p80": 4800000,
+        "tokens_p95": 25000000
+      },
+      "expected_module": "FLT.ModularityLifting.Taylor2018.Coefficients",
+      "graph_depth": 0,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.Taylor2018.CoefficientData",
+      "lean_risk": "unbounded",
+      "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction, semisimplification, and coefficient-extension comparison.",
+      "library_candidates": [
+        "GaloisRep.baseChange",
+        "PadicAlgCl",
+        "IsLocalRing.ResidueField"
+      ],
+      "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-MLT-COEFFICIENTS",
+      "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately and probe each specialization.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
+      "source_condition_risks": "A generic integral-O lift is not the theorem's Qbar_ell representation; lattice independence and semisimplification may not be hidden in equality assumptions.",
+      "source_refs": [
+        "SRC-016"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The source predicates and finite-flat comparison theorem elaborate, are source-reviewed, and have the required axiom closure.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-MLT-COEFFICIENTS"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "All source-level crystalline and Hodge-Tate identifiers are absent at the frozen SHA.",
+        "loc_p50": 15000,
+        "loc_p80": 80000,
+        "loc_p95": 350000,
+        "tokens_p50": 2000000,
+        "tokens_p80": 12000000,
+        "tokens_p95": 70000000
+      },
+      "expected_module": "FLT.ModularityLifting.Taylor2018.PadicHodge",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.ModularityLifting.Taylor2018.PadicHodgeData",
+      "lean_risk": "unbounded",
+      "lean_type": "Definition gap: exact local predicates and weight data appearing in Taylor 2018 Theorem 2.1.1, together with the separately proved weight-two finite-flat-to-crystalline bridge used by the repository route.",
+      "library_candidates": [
+        "GaloisRep.IsFlatAt"
+      ],
+      "mathematical_name": "Crystalline, Hodge-Tate, regular-algebraic, and Fontaine-Laffaille interfaces",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-MLT-PADIC-HODGE",
+      "proof_pattern": "Freeze source-level predicates first, then formalize the weight-two comparison theorem under exact field and coefficient hypotheses.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
+      "source_condition_risks": "IsFlatAt does not definitionally imply crystallinity or the required Hodge-Tate weights; the bridge is substantial p-adic Hodge mathematics.",
+      "source_refs": [
+        "SRC-016"
+      ],
+      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "The RACAR and local-component source interfaces elaborate without assuming automorphy or attached-representation theorems.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-MLT-COEFFICIENTS",
+        "FLT-SUPPORT-AUTOMORPHIC"
+      ],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "No totally-real RACAR or generic GL2 automorphy object exists at the frozen SHA.",
+        "loc_p50": 12000,
+        "loc_p80": 65000,
+        "loc_p95": 280000,
+        "tokens_p50": 1600000,
+        "tokens_p80": 10000000,
+        "tokens_p95": 55000000
+      },
+      "expected_module": "FLT.Automorphic.RACAR",
+      "graph_depth": 1,
+      "kernel_probe_state": "absent",
+      "lean_declaration": "FLT.Automorphic.RACAR",
+      "lean_risk": "unbounded",
+      "lean_type": "Definition gap: a source-faithful GL2 RACAR object over a totally real field, its local components, Hodge-Tate weights under a coefficient embedding, and the type-level interface to its attached ell-adic Galois representation.",
+      "library_candidates": [],
+      "mathematical_name": "Regular algebraic cuspidal automorphic representations and attached-representation interface",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-RACAR-DEF",
+      "proof_pattern": "Define the automorphic object and local/source data before proving attachment or Jacquet-Langlands bridges.",
+      "review_state": "revision-required",
+      "scc_id": "SCC-FLT-RACAR-DEF",
+      "source_condition_risks": "The repository's quaternionic eigenform predicate is not a generic GL2 RACAR. Local components and at-ell unramifiedness must be expressible without assuming attached-representation existence.",
+      "source_refs": [
+        "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"

@@ -1,6 +1,14 @@
 # Current component inventory
 
-Inventory at frozen upstream commit `ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b`.
+Baseline inventory at frozen upstream commit `ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b`.
+
+Live execution refresh at methodology commit `5d376d153ad1641113781c317ee9ab69d38f200b`:
+
+- warm `FLT` and methodology builds passed;
+- the monitor counted 28 verified-root admission-shaped lines;
+- the top axiom closure is `[knownin1980s, propext, sorryAx, Classical.choice, Quot.sound]`;
+- after recording the operator-authorized review substitution and corrected graph, G0--G3 are
+  green and G4--G6 remain open.
 
 The source scan finds 59 executable-looking `sorry` sites under the verified module root, plus two
 direct tactic uses of `knownin1980s`. This count is supplementary: comments, admitted data, and
@@ -34,6 +42,38 @@ transitive-sorry audits are the authority for individual declarations.
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
 | Top theorem | `flt`, `PNat.pow_add_pow_ne_pow` | Compiles upstream but is not kernel-clean | T1–T3 terminal |
+
+## Live W00 classification
+
+The refreshed graph exposes three source-vocabulary prerequisites in addition to the original four
+W00 gate nodes. Therefore the live denominator is seven; the original core remains zero of four.
+
+| Node | Classification | Immediate reason |
+|---|---|---|
+| `FLT-MLT-COEFFICIENTS` | ACTIVE | First dependency-free source-signature node; lattice, residual reduction, and semisimplification are absent |
+| `FLT-MLT-PADIC-HODGE` | BLOCKED | Depends on the coefficient/lattice boundary |
+| `FLT-RACAR-DEF` | BLOCKED | Depends on coefficient data and the admitted automorphic support cluster |
+| `FLT-SGOOD-DEF` | ACTIVE | `FLT-HR-DEF` is present; exact blueprint-local structure still absent |
+| `FLT-MLT-SOURCE` | BLOCKED | Taylor 2018 is selected, but the three source-vocabulary nodes and exact Lean signature remain open |
+| `FLT-SGOOD-SELECTED` | BLOCKED | Depends on the source contract and explicit finite-flat/p-adic-Hodge bridge |
+| `FLT-AUX-LOCAL-FIELD` | BLOCKED | Depends on the source contract and absent Moret--Bailly specialization |
+
+W00: `0 / 7` refreshed nodes complete (`0 / 4` original core nodes).
+
+## Live W02 classification
+
+| Node | Classification | Reachable live admission summary |
+|---|---|---|
+| `FLT-TATE-TORSION` | ACTIVE | Two admissions remain in `FLT/EllipticCurve/Torsion.lean` |
+| `FLT-TATE-FLAT` | TODO | Two admissions in `Flat.lean`, plus its exact good-reduction consumer closure to audit |
+| `FLT-TATE-UNRAMIFIED` | TODO | Tate-curve support has nine admission sites in the live grep census |
+| `FLT-TATE-WEIL` | TODO | One admission in `WeilPairing.lean` plus imported support audit |
+| `FLT-SUPPORT-TATE` | BLOCKED | Join waits for all four support subclusters |
+| `FLT-TORSION-001` | BLOCKED | `WeierstrassCurve.galoisRep` waits for `FLT-TATE-TORSION` closure |
+| `FLT-FREY-HR` | BLOCKED | Two direct admissions and dependencies on torsion and the support join |
+
+W02: `0 / 7` nodes complete. Existing helper and source-body proofs do not close an aggregate node
+while an exported consumer still has `sorryAx`.
 
 ## Status vocabulary
 

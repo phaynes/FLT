@@ -21,17 +21,20 @@ that a cited theorem has the hypotheses required here.
 | SRC-013 | T. Gee, *Modularity lifting theorems* (2022) | Theorem 5.2 | Near-match for modularity lifting | Allows the prime to be unramified, but requires crystalline local representations with matching bounded distinct Hodge-Tate weights and residual image containing `SL₂(F_p)`; the last condition is stronger than the blueprint target |
 | SRC-014 | Barnet-Lamb, Gee, Geraghty, Taylor, *Potential automorphy and change of weight* (2014) | Route cited as the Brauer-theorem compatible-family trick | Potential automorphy and compatible families | Primary source identified; exact specialization audit open |
 | SRC-015 | P. de Smit and H. Lenstra, representability result cited in source | Proposition 2.3(1), locator recorded in `FLT/Deformations/Representable.lean` | Deformation-functor corepresentability | Exact bibliographic record and source-condition audit open |
+| SRC-016 | R. Taylor, lectures with notes by D. Dore and T. Feng, *Automorphy Lifting* (2018) | Theorem 2.1.1, printed p. 12; applications in sections 2.3.6--2.3.7 | Selected modularity-lifting theorem | Primary PDF visually checked; exact theorem selected, but required Lean vocabulary and repository-level bridges remain absent |
 
 ## Load-bearing source warning
 
-The frozen blueprint states that it is not certain where to find the exact modularity-lifting
-theorem it sketches, and identifies only near-references with mismatched hypotheses. That is a
-statement-design blocker until an exact primary-source route or a proved derivation from sourced
-theorems is fixed. It must not be hidden behind a generic `sorry`, a custom axiom, or an informal
-claim that the result is standard.
+The central review selected Taylor 2018, Theorem 2.1.1. Its exact source hypotheses include a
+regular algebraic representation, a residual automorphic witness with matching Hodge--Tate weights,
+cyclotomic-restriction irreducibility, `ell` unramified in the totally real field, crystallinity and
+a Fontaine--Laffaille weight interval, and witness unramifiedness at places `v | ell`. Its conclusion
+is level-free GL2 automorphy.
 
-A possible repair for review is to strengthen the *constructed auxiliary field* so the prime splits
-completely and then instantiate Taylor's exact theorem, while handling the residual representations
-that fail Taylor's cyclotomic irreducibility condition by a separately sourced induced/solvable-image
-argument. This changes neither FLT nor the public terminal, but it is not accepted until every local
-condition and the residual automorphic input have exact Lean contracts and primary-source support.
+The theorem does not directly state the repository's quaternionic `IsAutomorphicOfLevel S`
+conclusion. The source contract must therefore remain separate from the repository-level derived
+theorem. Coefficient fields, stable lattices and semisimplified residual reduction, p-adic Hodge
+predicates, RACAR and attached Galois representations, cyclotomic irreducibility at both concrete
+applications, local-global compatibility, Jacquet--Langlands, and level specialization are explicit
+open obligations. Until those definitions exist, the source route is selected but its Lean contract
+is still a definition gap; no generic `Prop`, custom axiom, or level-empty shortcut may conceal it.

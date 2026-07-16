@@ -69,6 +69,7 @@ if args.build:
         "FLTMethodology.Probes.ExistingContracts",
         "FLTMethodology.Probes.GaloisRepresentationActionAudit",
         "FLTMethodology.Probes.LibraryMatches",
+        "FLTMethodology.Probes.MLTSourceBoundary",
     )
     build_results.update(
         {
@@ -110,11 +111,26 @@ review_root = ROOT / "methodology/review"
 convergence_path = review_root / "CONVERGENCE.md"
 sonnet_path = review_root / "sonnet50-initial.md"
 opus_path = review_root / "opus48-initial.md"
+fable_path = review_root / "fable5-central-initial.md"
+max_path = review_root / "gpt56max-central-initial.md"
+fable_cross_path = review_root / "fable5-central-cross-review.md"
+max_cross_path = review_root / "gpt56max-central-cross-review.md"
+source_correction_path = review_root / "gpt56xhigh-source-correction.md"
 sonnet_complete = sonnet_path.exists() and "NOT RUN" not in sonnet_path.read_text()
 opus_complete = opus_path.exists() and "NOT RUN" not in opus_path.read_text()
+fable_complete = fable_path.exists() and "NOT RUN" not in fable_path.read_text()
+max_complete = max_path.exists() and "NOT RUN" not in max_path.read_text()
+central_cross_review_complete = all(
+    path.exists() and "NOT RUN" not in path.read_text()
+    for path in (fable_cross_path, max_cross_path, source_correction_path)
+)
 convergence_text = convergence_path.read_text() if convergence_path.exists() else ""
+operator_substitution_authorized = "Operator-authorized review substitution" in convergence_text
 review_complete = bool(
-    sonnet_complete
+    operator_substitution_authorized
+    and fable_complete
+    and max_complete
+    and central_cross_review_complete
     and opus_complete
     and "REVIEW CONVERGED" in convergence_text
     and "LOAD-BEARING BLOCKER" not in convergence_text
@@ -182,8 +198,12 @@ record = {
     "gates": gates,
     "review_state": {
         "converged": review_complete,
+        "operator_substitution_authorized": operator_substitution_authorized,
         "sonnet_complete": sonnet_complete,
         "opus_complete": opus_complete,
+        "fable_complete": fable_complete,
+        "gpt56max_complete": max_complete,
+        "central_cross_review_complete": central_cross_review_complete,
     },
     "source_validation": (ROOT / "methodology/SOURCE-REGISTER.md").exists(),
     "varro_validation": {"valid": varro_valid, "source_sha256": varro_hash},
