@@ -28,6 +28,61 @@ for the general abelian variety case].
 
 open scoped WeierstrassCurve.Affine -- `(E⁄K).Point` notation for the group of `K`-points
 
+namespace ValuationSubring
+
+variable (K : Type*) {L : Type*} [Field K] [Field L] [Algebra K L]
+
+/-- An element of the inertia subgroup acts trivially on the residue field. This is the
+pointwise form of the kernel condition in `ValuationSubring.inertiaSubgroup`. -/
+theorem inertia_smul_residue_eq (A : ValuationSubring L)
+    (σ : A.decompositionSubgroup K) (hσ : σ ∈ A.inertiaSubgroup K)
+    (x : IsLocalRing.ResidueField A) : σ • x = x := by
+  have hσ' :
+      MulSemiringAction.toRingAut (A.decompositionSubgroup K)
+        (IsLocalRing.ResidueField A) σ = 1 := hσ
+  exact DFunLike.congr_fun hσ' x
+
+/-- Reduction of an integral element is unchanged by an element of inertia. -/
+theorem inertia_residue_smul_eq (A : ValuationSubring L)
+    (σ : A.decompositionSubgroup K) (hσ : σ ∈ A.inertiaSubgroup K)
+    (x : A) :
+    algebraMap A (IsLocalRing.ResidueField A) (σ • x) =
+      algebraMap A (IsLocalRing.ResidueField A) x := by
+  simpa using A.inertia_smul_residue_eq K σ hσ
+    (algebraMap A (IsLocalRing.ResidueField A) x)
+
+end ValuationSubring
+
+/-- A reduction map which is injective on `n`-torsion and invariant under a collection
+of field automorphisms proves that those automorphisms fix the `n`-torsion. The geometric
+content of good reduction is isolated in the two hypotheses, while preservation of
+torsion by base change is discharged here. -/
+theorem WeierstrassCurve.torsion_fixed_of_invariant_injective
+    {k ksep : Type*} [Field k] [Field ksep] [Algebra k ksep]
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq ksep]
+    (n : ℕ) {G : Type*} [Group G]
+    (act : G → ksep ≃ₐ[k] ksep) {β : Type*}
+    (I : Set G)
+    (reduce : (E⁄ksep).Point → β)
+    (hinj : Set.InjOn reduce (AddSubgroup.torsionBy (E⁄ksep).Point (n : ℤ)))
+    (hinvariant : ∀ σ ∈ I, ∀ P ∈ AddSubgroup.torsionBy (E⁄ksep).Point (n : ℤ),
+      reduce (Affine.Point.map (act σ).toAlgHom P) = reduce P) :
+    ∀ σ ∈ I, ∀ P ∈ AddSubgroup.torsionBy (E⁄ksep).Point (n : ℤ),
+      Affine.Point.map (act σ).toAlgHom P = P := by
+  intro σ hσ P hP
+  apply hinj
+  · change Affine.Point.map (act σ).toAlgHom P ∈
+      AddSubgroup.torsionBy (E⁄ksep).Point (n : ℤ)
+    rw [AddSubgroup.torsionBy.nsmul_iff]
+    have hP' : n • P = 0 := AddSubgroup.torsionBy.nsmul_iff.mp hP
+    calc
+      n • Affine.Point.map (act σ).toAlgHom P =
+          Affine.Point.map (act σ).toAlgHom (n • P) :=
+        ((Affine.Point.map (W' := E) (act σ).toAlgHom).map_nsmul n P).symm
+      _ = 0 := by rw [hP']; exact map_zero (Affine.Point.map (W' := E) _)
+  · exact hP
+  · exact hinvariant σ hσ P hP
+
 -- let R be a discrete valuation ring with field of fractions k
 variable (R : Type*) [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]
 variable (k : Type*) [Field k] [Algebra R k] [IsFractionRing R k]
