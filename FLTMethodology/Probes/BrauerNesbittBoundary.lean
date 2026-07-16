@@ -73,7 +73,7 @@ def SimpleCharactersLinearIndependentContract : Prop :=
     [∀ i, AddCommGroup (S i)] [∀ i, Module k (S i)] [∀ i, Module A (S i)]
     [∀ i, IsScalarTower k A (S i)] [∀ i, Module.Finite k (S i)]
     [∀ i, IsSimpleModule A (S i)],
-    Pairwise fun i j ↦ IsEmpty (S i ≃ₗ[A] S j) →
+    (Pairwise fun i j ↦ IsEmpty (S i ≃ₗ[A] S j)) →
       LinearIndependent k (fun i ↦ moduleCharacter (k := k) (A := A) (M := S i))
 
 /-- Smaller true specialization suggested by the source proof: trace equality is enough when
