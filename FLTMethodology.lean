@@ -14,6 +14,7 @@ import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.PGL2ClassificationAudit
 import FLTMethodology.Probes.TateDeltaAnalyticBridge
 import FLTMethodology.Probes.TateDeltaFormalRoute
+import FLTMethodology.Probes.TateLocalFormBoundary
 import FLTMethodology.Probes.TateReductionBridge
 import FLTMethodology.Probes.TateSubstitutionBridge
 import FLTMethodology.Probes.TateTorsionTransportAudit

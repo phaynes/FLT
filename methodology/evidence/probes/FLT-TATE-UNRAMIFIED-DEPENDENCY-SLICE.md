@@ -154,10 +154,28 @@ so the argument is uniform in the residue characteristic. The load-bearing decla
 `[propext, Classical.choice, Quot.sound]`.
 
 The formal-product/q-expansion and substitution-evaluation obstructions are therefore discharged at
-methodology-probe level. The next exact prerequisites are migration into a verified provider and a
-source-faithful proof that two split-multiplicative local-field curves with the same nonintegral
-`j` are related by a change of variables over `k`. The repository's quadratic-twist classification
-is a promising route, but the no-second-split-twist consequence is not yet packaged as a theorem.
-Equality of `j`-invariants alone only gives a change over a separably closed field.
+methodology-probe level. `FLTMethodology/Probes/TateLocalFormBoundary.lean` makes the remaining
+local algebra boundary exact. It packages the route as
+
+```text
+SameJQuadraticFormClassification
+                 \
+                  -> LocalSplitSameJClassification -> Tate variable change
+                 /
+QuadraticTwistExcludesSecondSplit
+```
+
+and proves both arrows with axiom closure `[propext, Classical.choice, Quot.sound]`. The two source
+theorems at the left remain unproved: nonexceptional equal-`j` forms must be classified as an
+isomorphism or a quadratic twist over the base field, and a nontrivial quadratic twist of a
+split-multiplicative curve must be excluded from being another split-multiplicative form. The
+repository's existing quadratic-twist classification proves the corresponding result once a
+quadratic splitting extension is supplied; it does not yet construct that extension from equality
+of `j`. Its split-reduction file states the twist-exclusion fact in commentary but does not package
+or prove it.
+
+The next exact prerequisites are therefore provider migration plus these two local source theorems.
+Equality of `j`-invariants alone only gives a change over a separably closed field with the current
+library interface.
 
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
