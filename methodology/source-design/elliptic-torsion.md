@@ -179,6 +179,16 @@ block `n = 0,1,2,3,4` is kernel-clean. The initially disproportionate coefficien
 `n = 3,4` were reduced to explicit multiples of the genuine generalized-Weierstrass invariant
 relation `b₂b₆ - b₄² - 4b₈ = 0`; Lean checks those factorizations. The next implementation should use
 the binary `normEDSRec` structure for the arbitrary index, not repeat coefficient expansion.
+The exact remaining branches are now named `KummerDivisionPolynomialEvenStep` and
+`KummerDivisionPolynomialOddStep`, and a kernel-clean assembly theorem proves the recurrence at
+every natural index from those two contracts plus the five closed bases.
+
+A scratch algebra audit also rejected a tempting under-strength implementation tactic: treating
+five neighboring Kummer recurrence equalities as relations for an otherwise arbitrary sequence
+does not reduce the even target to zero. The concrete `preΨ` values carry additional normalized-EDS
+history. Therefore the branch proofs must unfold the actual binary `preΨ'_even`/`preΨ'_odd`
+construction or use a stronger ladder/window invariant; they must not assert that the local Kummer
+equalities alone form a complete abstract induction state.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
@@ -245,5 +255,7 @@ for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the di
 the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
 resulting `kummerBiquadratic` expression. The denominator-gap square is already proved generally;
 the remaining exact algebraic target is `KummerDivisionPolynomialRecurrence E n`, whose complete
-five-case base block is proved and whose two general steps should follow Mathlib's `normEDSRec`
-decomposition.
+five-case base block is proved. Its even and odd step contracts and their all-natural-index assembly
+are now kernel-clean. The first residual is to prove the even contract while retaining the concrete
+normalized-EDS history (or an explicitly sufficient stronger ladder invariant); the odd contract
+then forms the second and final pure polynomial branch.

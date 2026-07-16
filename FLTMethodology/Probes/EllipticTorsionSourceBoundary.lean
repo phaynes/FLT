@@ -422,6 +422,40 @@ theorem kummerDivisionPolynomialRecurrence_four (E : WeierstrassCurve k) :
     -X ^ 3 * E.Ψ₂Sq * E.preΨ₄ ^ 2 *
       (E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3) * hb
 
+/-- Exact even branch required by Mathlib's normalized-EDS recursion principle. -/
+def KummerDivisionPolynomialEvenStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    KummerDivisionPolynomialRecurrence E (m + 1) →
+    KummerDivisionPolynomialRecurrence E (m + 2) →
+    KummerDivisionPolynomialRecurrence E (m + 3) →
+    KummerDivisionPolynomialRecurrence E (m + 4) →
+    KummerDivisionPolynomialRecurrence E (m + 5) →
+    KummerDivisionPolynomialRecurrence E (2 * (m + 3))
+
+/-- Exact odd branch required by Mathlib's normalized-EDS recursion principle. -/
+def KummerDivisionPolynomialOddStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    KummerDivisionPolynomialRecurrence E (m + 1) →
+    KummerDivisionPolynomialRecurrence E (m + 2) →
+    KummerDivisionPolynomialRecurrence E (m + 3) →
+    KummerDivisionPolynomialRecurrence E (m + 4) →
+    KummerDivisionPolynomialRecurrence E (2 * (m + 2) + 1)
+
+/-- Once the two binary recurrence branches are supplied, the closed five-case base block and
+Mathlib's `normEDSRec` assemble the recurrence at every natural index. -/
+theorem kummerDivisionPolynomialRecurrence_nat_of_steps
+    (E : WeierstrassCurve k) (heven : KummerDivisionPolynomialEvenStep E)
+    (hodd : KummerDivisionPolynomialOddStep E) (n : ℕ) :
+    KummerDivisionPolynomialRecurrence E n := by
+  induction n using normEDSRec with
+  | zero => exact kummerDivisionPolynomialRecurrence_zero E
+  | one => exact kummerDivisionPolynomialRecurrence_one E
+  | two => exact kummerDivisionPolynomialRecurrence_two E
+  | three => exact kummerDivisionPolynomialRecurrence_three E
+  | four => exact kummerDivisionPolynomialRecurrence_four E
+  | even m h1 h2 h3 h4 h5 => exact heven m h1 h2 h3 h4 h5
+  | odd m h1 h2 h3 h4 => exact hodd m h1 h2 h3 h4
+
 /-- The x-only differential-addition product for two affine points with distinct x-coordinates.
 It removes the need for a separate y-coordinate division polynomial in the scalar recurrence. -/
 theorem addX_mul_addNegX_kummer
@@ -789,6 +823,9 @@ theorem n_torsion_finite_of_psiSq_detection
 #check phi_five
 #check kummerDivisionPolynomialRecurrence_three
 #check kummerDivisionPolynomialRecurrence_four
+#check KummerDivisionPolynomialEvenStep
+#check KummerDivisionPolynomialOddStep
+#check kummerDivisionPolynomialRecurrence_nat_of_steps
 #check addX_mul_addNegX_kummer
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
@@ -826,6 +863,7 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms phi_five
 #print axioms kummerDivisionPolynomialRecurrence_three
 #print axioms kummerDivisionPolynomialRecurrence_four
+#print axioms kummerDivisionPolynomialRecurrence_nat_of_steps
 #print axioms addX_mul_addNegX_kummer
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one

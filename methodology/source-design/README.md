@@ -51,7 +51,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
   adjacent `ΨSq` terms for every integer, and the remaining Kummer polynomial recurrence is
   kernel-clean for the complete `n = 0,1,2,3,4` base block. The last two normalizations factor
   through the proved `b₂b₆ - b₄² - 4b₈ = 0` invariant. Its two general steps should use the binary
-  normalized-EDS recursion rather than unbounded coefficient expansion.
+  normalized-EDS recursion rather than unbounded coefficient expansion. Those exact even/odd step
+  contracts and their all-natural-index assembly are now kernel-clean. A scratch audit shows the
+  local Kummer equalities alone are an under-strength abstract induction state, so the steps must
+  retain the concrete `preΨ` construction or a stronger ladder/window invariant.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
