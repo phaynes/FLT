@@ -34,18 +34,24 @@ noncomputable local instance (p : ℕ) [Fact p.Prime] : Algebra ℤ_[p] (ZMod p)
 it is defined in a completely nonconstructive way, so we add the classical instance. -/
 noncomputable instance : DecidableEq (AlgebraicClosure ℚ) := Classical.typeDecidableEq _
 
+theorem FreyCurve.torsion_rank :
+    haveI : Fact (P.p.Prime) := ⟨P.pp⟩
+    Module.rank (ZMod P.p)
+      ((P.freyCurve.map (algebraMap ℚ (AlgebraicClosure ℚ))).nTorsion P.p) = 2 := by
+  letI : Fact (P.p.Prime) := ⟨P.pp⟩
+  have hp0 : (P.p : AlgebraicClosure ℚ) ≠ 0 := by
+    exact_mod_cast P.hppos.ne'
+  obtain ⟨e⟩ :=
+    (P.freyCurve.map (algebraMap ℚ (AlgebraicClosure ℚ))).n_torsion_dimension hp0
+  let eL :
+      (P.freyCurve.map (algebraMap ℚ (AlgebraicClosure ℚ))).nTorsion P.p ≃ₗ[ZMod P.p]
+        (ZMod P.p) × (ZMod P.p) :=
+    LinearEquiv.ofBijective (e.toAddMonoidHom.toZModLinearMap P.p) e.bijective
+  exact eL.rank_eq.trans (by norm_num)
+
 theorem FreyCurve.torsion_isHardlyRamified :
     haveI : Fact (P.p.Prime) := ⟨P.pp⟩
-    IsHardlyRamified P.hp_odd (by
-      have hp0 : (P.p : AlgebraicClosure ℚ) ≠ 0 := by
-        exact_mod_cast P.hppos.ne'
-      obtain ⟨e⟩ :=
-        (P.freyCurve.map (algebraMap ℚ (AlgebraicClosure ℚ))).n_torsion_dimension hp0
-      let eL :
-          (P.freyCurve.map (algebraMap ℚ (AlgebraicClosure ℚ))).nTorsion P.p ≃ₗ[ZMod P.p]
-            (ZMod P.p) × (ZMod P.p) :=
-        LinearEquiv.ofBijective (e.toAddMonoidHom.toZModLinearMap P.p) e.bijective
-      exact eL.rank_eq.trans (by norm_num))
+    IsHardlyRamified P.hp_odd (FreyCurve.torsion_rank P)
       (P.freyCurve.galoisRep P.p (show 0 < P.p from P.hppos)) :=
   sorry
 
