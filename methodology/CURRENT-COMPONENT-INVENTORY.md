@@ -68,7 +68,7 @@ W00: `1 / 7` refreshed nodes complete (`1 / 4` original core nodes).
 |---|---|---|
 | `FLT-TATE-TORSION` | BLOCKED | Two admissions remain, and the file explicitly requires coordination with KB and David Angdinata before work on them |
 | `FLT-TATE-FLAT` | BLOCKED | Consumer specialization still requires the easy Neron--Ogg--Shafarevich theorem, a local/global torsion-action bridge, and separately the finite-flat group-scheme/Hopf-algebra input at `P.p` |
-| `FLT-TATE-UNRAMIFIED` | ACTIVE | Four Galois-action helpers and Tate-curve ellipticity are kernel-clean; nine admissions remain, with the first construction leaf blocked on the analytic j-invariant round-trip and local-field descent |
+| `FLT-TATE-UNRAMIFIED` | ACTIVE | Four Galois-action helpers, Tate-curve ellipticity, and the concrete/formal reciprocal-j bridge are kernel-clean; nine admissions remain, with the first construction leaf blocked on the integral Euler-product discriminant identity and local-field descent |
 | `FLT-TATE-WEIL` | BLOCKED | The current pairing type admits the zero map, which fails the frozen Tate normalization consumer; a source-faithful Weil-pairing construction is absent |
 | `FLT-SUPPORT-TATE` | BLOCKED | Join waits for all four support subclusters |
 | `FLT-TORSION-001` | BLOCKED | `WeierstrassCurve.galoisRep` waits for `FLT-TATE-TORSION` closure |
