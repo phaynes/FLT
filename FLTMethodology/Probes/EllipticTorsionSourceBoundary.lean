@@ -121,6 +121,39 @@ def psiSqTorsionXDetector
   polynomial_ne_zero := E.ΨSq_ne_zero (by simpa using hn)
   detects := hdetect
 
+/-- The detector interface agrees with Mathlib's affine group law and division-polynomial
+normalization in the first nontrivial case. This validates the boundary but does not supply the
+general point/division-polynomial recurrence. -/
+theorem psiSqDetectsNTorsion_two
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 2 := by
+  intro x y h htwo
+  have htwo' :
+      (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) +
+        (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) = 0 := by
+    change
+      (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) +
+        (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) = 0 at htwo
+    exact htwo
+  have hy : y = E.toAffine.negY x y := by
+    by_contra hne
+    have hadd := WeierstrassCurve.Affine.Point.add_self_of_Y_ne
+      (W := E⁄k) (h₁ := h) hne
+    rw [hadd] at htwo'
+    exact WeierstrassCurve.Affine.Point.some_ne_zero _ htwo'
+  change (E.ΨSq 2).eval x = 0
+  rw [E.ΨSq_two]
+  rw [WeierstrassCurve.Ψ₂Sq]
+  simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_pow,
+    Polynomial.eval_X, Polynomial.eval_C]
+  have heq := h.1
+  rw [E.toAffine.equation_iff] at heq
+  simp only [WeierstrassCurve.Affine.negY] at hy
+  simp only [WeierstrassCurve.b₂, WeierstrassCurve.b₄, WeierstrassCurve.b₆]
+  have hlin : 2 * y + E.a₁ * x + E.a₃ = 0 := by
+    linear_combination hy
+  linear_combination (2 * y + E.a₁ * x + E.a₃) * hlin - 4 * heq
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -129,8 +162,10 @@ theorem n_torsion_finite_of_psiSq_detection
 
 #check n_torsion_finite_of_detector
 #check n_torsion_finite_of_psiSq_detection
+#check psiSqDetectsNTorsion_two
 #print axioms n_torsion_finite_of_detector
 #print axioms n_torsion_finite_of_psiSq_detection
+#print axioms psiSqDetectsNTorsion_two
 
 end
 end FLTMethodology.Torsion

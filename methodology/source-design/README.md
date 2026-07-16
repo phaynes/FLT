@@ -37,8 +37,8 @@ are exact definitions or elementary adapters already audited in FLT-204.
   `n_torsion_finite` repair remain open.
 - `elliptic-torsion`: `PARTIAL`; the exact two-admission boundary and its finite-morphism source
   route are frozen. A kernel-clean detector theorem reduces prime-to-characteristic finiteness to
-  the single missing `PsiSqDetectsNTorsion` dictionary. The all-characteristic lane and exact
-  `n²` point count remain open.
+  the missing general `PsiSqDetectsNTorsion` dictionary, whose `n = 2` case is now kernel-clean.
+  The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

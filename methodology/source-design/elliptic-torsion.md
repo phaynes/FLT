@@ -72,12 +72,21 @@ theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
     Finite (E.nTorsion n)
+
+theorem psiSqDetectsNTorsion_two
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    PsiSqDetectsNTorsion E 2
 ```
 
 The proof is elementary and standard-axiom clean. It bounds x-coordinates by roots of the detector
 polynomial, then bounds each y-fibre by the roots of a nonzero monic quadratic. Thus the
 characteristic-prime-to-`n` finiteness lane is reduced to the single exact dictionary proposition
 `PsiSqDetectsNTorsion`.
+
+The `n = 2` case is also kernel-clean. It derives the fixed-point condition under affine negation
+from `2 • P = 0`, expands `Ψ₂Sq`, and eliminates the Weierstrass equation. This confirms that the
+detector interface has the correct normalization and point representation. It does not remove the
+open general recurrence.
 
 This does not yet prove the frozen general finiteness theorem. When the characteristic divides
 `n`, `ΨSq_ne_zero` is unavailable and the proof needs either a different nonzero detector or the
@@ -91,9 +100,10 @@ Build in this order:
    affine y-coordinates.
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
-3. `FLT-TORSION-PSISQ-DICTIONARY` — open: prove `PsiSqDetectsNTorsion` from the affine group law and
-   the division-polynomial recurrences. A stronger x-coordinate multiplication formula is an
-   acceptable provider if this theorem is an immediate corollary.
+3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the `n = 2` base case is closed; prove the general
+   `PsiSqDetectsNTorsion` statement from the affine group law and division-polynomial recurrences.
+   A stronger x-coordinate multiplication formula is an acceptable provider if this theorem is an
+   immediate corollary.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -116,12 +126,13 @@ Build in this order:
 
 ## Next exact theorem
 
-The next bounded theorem to attempt is the provider for:
+The next bounded theorem to attempt remains the general provider for:
 
 ```lean
 FLTMethodology.Torsion.PsiSqDetectsNTorsion E n
 ```
 
-The first likely residual Lean goal is the missing induction theorem relating the binary-recursive
-affine `nsmul` implementation to the division-polynomial recurrence. If that induction does not
-factor cleanly, first prove the stronger point-coordinate formula and derive the detector theorem.
+The `n = 2` case is now proved. The first likely residual Lean goal for arbitrary `n` is the missing
+induction theorem relating the binary-recursive affine `nsmul` implementation to the
+division-polynomial recurrence. If that induction does not factor cleanly, first prove the stronger
+point-coordinate formula and derive the detector theorem.

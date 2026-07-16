@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The generic detector-to-finiteness assembly is kernel-clean; current Mathlib still lacks the point/division-polynomial dictionary and elliptic multiplication morphism.",
+        "evidence": "Exactly two provider admissions remain. The generic detector-to-finiteness assembly and the n=2 dictionary case are kernel-clean; current Mathlib still lacks the general point/division-polynomial dictionary and elliptic multiplication morphism.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
@@ -2390,7 +2390,7 @@
       "proof_pattern": "Use the kernel-clean detector assembly for prime-to-characteristic finiteness; separately close the all-characteristic finite-morphism and n-squared point-count lanes, then audit galoisRep and torsion_rank.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "The point/division-polynomial dictionary, the characteristic-dividing finiteness lane, and the exact finite-etale point-count bridge remain open.",
+      "source_condition_risks": "The general point/division-polynomial dictionary, the characteristic-dividing finiteness lane, and the exact finite-etale point-count bridge remain open.",
       "source_refs": [
         "SRC-001",
         "SRC-025"
