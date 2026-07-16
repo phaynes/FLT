@@ -25,6 +25,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
 - `brauer-nesbitt`: `PARTIAL`; exact signature, counterexamples, library survey, and the
   finite-joint-image reduction are kernel-clean. The exact primary-source theorem and the finite
   algebra terminal remain open.
+- `mazur`: `PARTIAL`; Serre's exact Frey irreducibility proposition, its character-dichotomy source,
+  and Mazur's torsion theorem are pinned to primary pages. Semistability, quotient-isogeny, and
+  non-vacuous finite-torsion interfaces must be frozen before construction.
 - `modularity-lifting`: `PARTIAL`; Taylor 2018 is selected and source hypotheses are reviewed, but
   the honest source signature cannot elaborate until coefficient, p-adic Hodge, and RACAR
   vocabulary exists.
