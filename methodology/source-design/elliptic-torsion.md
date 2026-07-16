@@ -68,6 +68,13 @@ theorem n_torsion_finite_of_detector
 def PsiSqDetectsNTorsion
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop
 
+def DivisionPolynomialXFormula
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop
+
+theorem psiSqDetectsNTorsion_of_xFormula
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hx : DivisionPolynomialXFormula E n) : PsiSqDetectsNTorsion E n
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -76,6 +83,10 @@ theorem n_torsion_finite_of_psiSq_detection
 theorem psiSqDetectsNTorsion_two
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 2
+
+theorem divisionPolynomialXFormula_two
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXFormula E 2
 
 theorem psiSqDetectsNTorsion_three
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
@@ -92,6 +103,15 @@ The proof is elementary and standard-axiom clean. It bounds x-coordinates by roo
 polynomial, then bounds each y-fibre by the roots of a nonzero monic quadratic. Thus the
 characteristic-prime-to-`n` finiteness lane is reduced to the single exact dictionary proposition
 `PsiSqDetectsNTorsion`.
+
+The stronger sufficient contract `DivisionPolynomialXFormula` is now explicit and kernel-cleanly
+connected to the detector: whenever `ΨSq n` is nonzero at an affine point, `n • P` has x-coordinate
+`Φ n / ΨSq n`, so an `n`-torsion point would otherwise be a nonzero affine point equal to infinity.
+The complete `n = 2` instance of this stronger contract is also kernel-clean. Its proof uses the
+actual affine doubling law, proves the tangent denominator nonzero from `ΨSq 2 ≠ 0`, and derives the
+`Φ 2 / ΨSq 2` coordinate identity from the Weierstrass equation. This replaces an informal
+fallback suggestion with a tested Lean interface and confirms that self-base-change and dependent
+point-proof normalization do not obstruct the intended general theorem.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
@@ -116,10 +136,9 @@ Build in this order:
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
 3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full `n = 0,1,2,3` base block and `n = 4` are closed;
-   prove the general
-   `PsiSqDetectsNTorsion` statement from the affine group law and division-polynomial recurrences.
-   A stronger x-coordinate multiplication formula is an acceptable provider if this theorem is an
-   immediate corollary.
+   the exact stronger contract `DivisionPolynomialXFormula` implies the detector and is proved at
+   `n = 2`. Prove this x-coordinate formula for arbitrary `n` from the affine group law and
+   division-polynomial recurrences, or prove the weaker detector directly.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -142,13 +161,14 @@ Build in this order:
 
 ## Next exact theorem
 
-The next bounded theorem to attempt remains the general provider for:
+The next bounded theorem to attempt is the general provider for:
 
 ```lean
-FLTMethodology.Torsion.PsiSqDetectsNTorsion E n
+FLTMethodology.Torsion.DivisionPolynomialXFormula E n
 ```
 
-The `n = 0,1,2,3,4` block is now proved. The first likely residual Lean goal for arbitrary `n` is the missing
-induction theorem relating the binary-recursive affine `nsmul` implementation to the
-division-polynomial recurrence. If that induction does not factor cleanly, first prove the stronger
-point-coordinate formula and derive the detector theorem.
+Its `n = 2` case and its implication to `PsiSqDetectsNTorsion` are now proved. The first likely
+residual Lean goal for arbitrary `n` is a recurrence step relating affine addition of the points
+described by the `m` and `m+1` formulas to Mathlib's odd/even recurrences for `Φ` and `ΨSq`. The
+general theorem must then be connected to the binary-recursive `nsmul` implementation; the tested
+contract shows the endpoint and denominator discipline already elaborate.

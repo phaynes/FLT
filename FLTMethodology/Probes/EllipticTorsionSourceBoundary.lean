@@ -121,6 +121,96 @@ def psiSqTorsionXDetector
   polynomial_ne_zero := E.ΨSq_ne_zero (by simpa using hn)
   detects := hdetect
 
+/-- The exact nonzero-denominator x-coordinate formula needed from division polynomials. Proving
+this uniformly in `n` is sufficient for the detector theorem, without requiring the converse
+statement that every division-polynomial root is torsion. -/
+def DivisionPolynomialXFormula
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop :=
+  ∀ {x y : k} (h : E.toAffine.Nonsingular x y),
+    (E.ΨSq (n : ℤ)).eval x ≠ 0 →
+      ∃ (yn : k) (hn : E.toAffine.Nonsingular
+          ((E.Φ (n : ℤ)).eval x / (E.ΨSq (n : ℤ)).eval x) yn),
+        (n : ℤ) • (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) =
+          WeierstrassCurve.Affine.Point.some
+            ((E.Φ (n : ℤ)).eval x / (E.ΨSq (n : ℤ)).eval x) yn hn
+
+theorem psiSqDetectsNTorsion_of_xFormula
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hx : DivisionPolynomialXFormula E n) : PsiSqDetectsNTorsion E n := by
+  intro x y h htorsion
+  by_contra hpsi
+  obtain ⟨yn, hn, hpoint⟩ := hx h hpsi
+  rw [htorsion] at hpoint
+  exact WeierstrassCurve.Affine.Point.some_ne_zero hn hpoint.symm
+
+theorem psiSq_two_eval_eq_negY_gap_sq
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {x y : k} (h : E.toAffine.Nonsingular x y) :
+    (E.ΨSq 2).eval x = (y - E.toAffine.negY x y) ^ 2 := by
+  rw [E.ΨSq_two, WeierstrassCurve.Ψ₂Sq]
+  simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_pow,
+    Polynomial.eval_X, Polynomial.eval_C]
+  have heq := h.1
+  rw [E.toAffine.equation_iff] at heq
+  simp only [WeierstrassCurve.Affine.negY, WeierstrassCurve.b₂,
+    WeierstrassCurve.b₄, WeierstrassCurve.b₆]
+  linear_combination -4 * heq
+
+/-- The exact division-polynomial x-coordinate contract at `n = 2`. Besides validating the
+contract against Mathlib's affine group law, this exposes the algebraic shape required by the
+uniform recurrence proof. -/
+theorem divisionPolynomialXFormula_two
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXFormula E 2 := by
+  intro x y h hpsi
+  have hgap : y - E.toAffine.negY x y ≠ 0 := by
+    intro hzero
+    apply hpsi
+    change (E.ΨSq 2).eval x = 0
+    rw [psiSq_two_eval_eq_negY_gap_sq E h, hzero, zero_pow two_ne_zero]
+  have hyne : y ≠ E.toAffine.negY x y := sub_ne_zero.mp hgap
+  let ell : k := (E⁄k).slope x x y y
+  let x₂ : k := (E⁄k).addX x x ell
+  let y₂ : k := (E⁄k).addY x x y ell
+  let h₂ : (E⁄k).Nonsingular x₂ y₂ :=
+    WeierstrassCurve.Affine.nonsingular_add h h (fun hxy ↦ hyne hxy.2)
+  have hx₂ : x₂ = (E.Φ 2).eval x / (E.ΨSq 2).eval x := by
+    rw [psiSq_two_eval_eq_negY_gap_sq E h]
+    rw [eq_div_iff (pow_ne_zero 2 hgap)]
+    simp only [x₂, ell, WeierstrassCurve.Affine.addX]
+    have hyne' : y ≠ (E⁄k).negY x y := by
+      simpa [WeierstrassCurve.baseChange] using hyne
+    rw [(E⁄k).slope_of_Y_ne rfl hyne']
+    simp only [WeierstrassCurve.Affine.negY]
+    simp [WeierstrassCurve.baseChange]
+    have hden₁ : y - (-y - E.a₁ * x - E.a₃) ≠ 0 := by
+      simpa [WeierstrassCurve.Affine.negY] using hgap
+    have hden₂ : y - (-y - x * E.a₁ - E.a₃) ≠ 0 := by
+      simpa only [mul_comm x E.a₁] using hden₁
+    field_simp [hden₁, hden₂]
+    have heq := h.1
+    rw [E.toAffine.equation_iff] at heq
+    simp only [WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+    linear_combination -(E.a₁ ^ 2 + 4 * E.a₂ + 8 * x) * heq
+  have h₂E : E.toAffine.Nonsingular x₂ y₂ := by
+    change E.toAffine.Nonsingular x₂ y₂ at h₂
+    exact h₂
+  refine ⟨y₂, hx₂ ▸ h₂E, ?_⟩
+  have hadd := WeierstrassCurve.Affine.Point.add_self_of_Y_ne
+    (W := E⁄k) (h₁ := h) hyne
+  calc
+    (2 : ℤ) •
+        (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) =
+        (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) +
+          (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) := by
+            rw [show (2 : ℤ) = ((2 : ℕ) : ℤ) by rfl, natCast_zsmul, two_nsmul]
+    _ = WeierstrassCurve.Affine.Point.some x₂ y₂ h₂ := by
+      simpa only [x₂, y₂, ell, h₂] using hadd
+    _ = WeierstrassCurve.Affine.Point.some
+          ((E.Φ (2 : ℤ)).eval x / (E.ΨSq (2 : ℤ)).eval x) y₂
+          (hx₂ ▸ h₂E) := by
+      simpa only [WeierstrassCurve.Affine.Point.some.injEq, and_true] using hx₂
+
 theorem psiSqDetectsNTorsion_zero
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 0 := by
@@ -325,6 +415,10 @@ theorem n_torsion_finite_of_psiSq_detection
 
 #check n_torsion_finite_of_detector
 #check n_torsion_finite_of_psiSq_detection
+#check DivisionPolynomialXFormula
+#check psiSqDetectsNTorsion_of_xFormula
+#check psiSq_two_eval_eq_negY_gap_sq
+#check divisionPolynomialXFormula_two
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
 #check psiSqDetectsNTorsion_two
@@ -333,6 +427,9 @@ theorem n_torsion_finite_of_psiSq_detection
 #check psiSqDetectsNTorsion_four
 #print axioms n_torsion_finite_of_detector
 #print axioms n_torsion_finite_of_psiSq_detection
+#print axioms psiSqDetectsNTorsion_of_xFormula
+#print axioms psiSq_two_eval_eq_negY_gap_sq
+#print axioms divisionPolynomialXFormula_two
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one
 #print axioms psiSqDetectsNTorsion_two

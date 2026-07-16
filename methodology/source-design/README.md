@@ -38,7 +38,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
 - `elliptic-torsion`: `PARTIAL`; the exact two-admission boundary and its finite-morphism source
   route are frozen. A kernel-clean detector theorem reduces prime-to-characteristic finiteness to
   the missing general `PsiSqDetectsNTorsion` dictionary, whose complete `n = 0,1,2,3` base block,
-  first recursive even case `n = 4`, and explicit doubling identity are now kernel-clean.
+  first recursive even case `n = 4`, and explicit doubling identity are now kernel-clean. The
+  stronger exact x-coordinate contract is now proved sufficient for that dictionary, and its full
+  affine `n = 2` instance is kernel-clean.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
