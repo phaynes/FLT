@@ -41,8 +41,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
   Tate-parameter round trip, and split-multiplicative reduction of the explicit Tate curve are now
   kernel-clean in methodology probes. The exact local-form boundary is also signature-green and
   reduces to equal-`j` quadratic-form classification plus exclusion of a second split quadratic
-  twist, but those two source theorems, provider migration, and the remaining geometric construction
-  families are open.
+  twist. The general `tateEquiv` integration is now proved to be a mechanical composition of the
+  explicit Tate-curve equivalence and that variable change. Those two local source theorems, the
+  explicit `tateCurveEquiv` construction, provider migration, and the remaining geometric
+  construction families are open.
 - all remaining components: `BLOCKED` at this global gate until their own complete packet exists.
 
 This deliberately prevents a single attractive theorem from authorizing downstream construction

@@ -1,12 +1,12 @@
 # FLT-TATE-UNRAMIFIED dependency slice
 
-Checkpoint: `1acd636`.
+Checkpoint: `66ed11b` plus the current methodology tranche.
 
 The admitted construction order is:
 
 ```text
 tateCurveEquiv -------------------+
-                                  +--> tateEquiv
+                                  +--> tateEquiv [assembly bridge proved]
 exists_variableChange_tateCurve --+
                                         |
                          +--------------+--------------+
@@ -177,5 +177,16 @@ or prove it.
 The next exact prerequisites are therefore provider migration plus these two local source theorems.
 Equality of `j`-invariants alone only gives a change over a separably closed field with the current
 library interface.
+
+`FLTMethodology/Probes/TateUniformizationAssembly.lean` also discharges the integration edge into
+`tateEquiv`. Given the explicit equivalence from the Tate quotient to the points of
+`tateCurve E.q`, and a variable change from `tateCurve E.q` to `E`, it constructs the required
+equivalence to `E(k)` by composing the explicit equivalence with the inverse point map of the
+variable change and transport along the curve equality. Both the constructor and its `Nonempty`
+packaging have axiom closure `[propext, Classical.choice, Quot.sound]`.
+
+Thus `tateEquiv` is not a third mathematical source theorem: those two input leaves are sufficient.
+The provider still contains a direct admission until this assembly proof is migrated under an
+implementation-authorized task.
 
 Nine admissions remain in `TateCurve.lean`, including the separate Weil-pairing terminal.
