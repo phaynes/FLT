@@ -75,6 +75,13 @@ theorem psiSqDetectsNTorsion_of_xFormula
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hx : DivisionPolynomialXFormula E n) : PsiSqDetectsNTorsion E n
 
+def DivisionPolynomialXRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop
+
+theorem divisionPolynomialXFormula_of_xRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hr : DivisionPolynomialXRelation E n) : DivisionPolynomialXFormula E n
+
 theorem n_torsion_finite_of_psiSq_detection
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
@@ -113,6 +120,13 @@ actual affine doubling law, proves the tangent denominator nonzero from `ΨSq 2 
 fallback suggestion with a tested Lean interface and confirms that self-base-change and dependent
 point-proof normalization do not obstruct the intended general theorem.
 
+For the induction itself, `DivisionPolynomialXRelation` now supplies a denominator-free contract:
+if `n • P` is infinity it asserts `ΨSq n = 0`; if it is affine with x-coordinate `xₙ`, it asserts
+`xₙ * ΨSq n = Φ n`. This single match covers both branches that otherwise force repeated denominator
+case splits. Kernel-clean adapters derive both the exact x-coordinate formula and the torsion
+detector from it. The relation is proved for `n = 0,1,2`; therefore the new recurrence interface is
+tested across infinity, identity, vertical-doubling, and nonvertical-doubling branches.
+
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
 case derives the fixed-point condition
@@ -135,10 +149,10 @@ Build in this order:
    affine y-coordinates.
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
-3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full `n = 0,1,2,3` base block and `n = 4` are closed;
-   the exact stronger contract `DivisionPolynomialXFormula` implies the detector and is proved at
-   `n = 2`. Prove this x-coordinate formula for arbitrary `n` from the affine group law and
-   division-polynomial recurrences, or prove the weaker detector directly.
+3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full detector block `n = 0,1,2,3,4` is closed. The
+   denominator-free `DivisionPolynomialXRelation` implies both the exact x-coordinate formula and
+   the detector and is proved for `n = 0,1,2`. Prove this relation for arbitrary `n` from the affine
+   group law and division-polynomial recurrences.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -164,11 +178,12 @@ Build in this order:
 The next bounded theorem to attempt is the general provider for:
 
 ```lean
-FLTMethodology.Torsion.DivisionPolynomialXFormula E n
+FLTMethodology.Torsion.DivisionPolynomialXRelation E n
 ```
 
-Its `n = 2` case and its implication to `PsiSqDetectsNTorsion` are now proved. The first likely
-residual Lean goal for arbitrary `n` is a recurrence step relating affine addition of the points
+Its `n = 0,1,2` cases and its implications to `DivisionPolynomialXFormula` and
+`PsiSqDetectsNTorsion` are now proved. The first likely residual Lean goal is a recurrence step
+relating affine addition of the points
 described by the `m` and `m+1` formulas to Mathlib's odd/even recurrences for `Φ` and `ΨSq`. The
-general theorem must then be connected to the binary-recursive `nsmul` implementation; the tested
-contract shows the endpoint and denominator discipline already elaborate.
+match-based contract already follows the actual scalar multiple, so this avoids separately proving
+that a nonzero denominator implies a non-infinity result at every induction step.

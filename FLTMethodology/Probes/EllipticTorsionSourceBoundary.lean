@@ -143,6 +143,68 @@ theorem psiSqDetectsNTorsion_of_xFormula
   rw [htorsion] at hpoint
   exact WeierstrassCurve.Affine.Point.some_ne_zero hn hpoint.symm
 
+/-- A denominator-free x-coordinate relation which includes the point-at-infinity branch. This is
+the recurrence-friendly form of `DivisionPolynomialXFormula`: it records `ΨSq = 0` when the
+multiple is infinity and otherwise records `x(nP) * ΨSq = Φ`. -/
+def DivisionPolynomialXRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] (n : ℕ) : Prop :=
+  ∀ {x y : k} (h : E.toAffine.Nonsingular x y),
+    match (n : ℤ) • (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) with
+    | .zero => (E.ΨSq (n : ℤ)).eval x = 0
+    | .some xn _ _ => xn * (E.ΨSq (n : ℤ)).eval x = (E.Φ (n : ℤ)).eval x
+
+theorem psiSqDetectsNTorsion_of_xRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hr : DivisionPolynomialXRelation E n) : PsiSqDetectsNTorsion E n := by
+  intro x y h htorsion
+  have hrel := hr h
+  rw [htorsion] at hrel
+  exact hrel
+
+theorem divisionPolynomialXFormula_of_xRelation
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] {n : ℕ}
+    (hr : DivisionPolynomialXRelation E n) : DivisionPolynomialXFormula E n := by
+  intro x y h hpsi
+  have hrel := hr h
+  generalize hpoint : (n : ℤ) •
+      (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) = Q at hrel
+  cases Q with
+  | zero =>
+      exact (hpsi hrel).elim
+  | some xn yn hn =>
+      have hx : xn = (E.Φ (n : ℤ)).eval x / (E.ΨSq (n : ℤ)).eval x :=
+        (eq_div_iff hpsi).2 hrel
+      have hnE : E.toAffine.Nonsingular xn yn := by
+        change E.toAffine.Nonsingular xn yn at hn
+        exact hn
+      refine ⟨yn, hx ▸ hnE, ?_⟩
+      cases hx
+      rfl
+
+theorem divisionPolynomialXRelation_zero
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXRelation E 0 := by
+  intro x y h
+  change (E.ΨSq 0).eval x = 0
+  simp
+
+theorem divisionPolynomialXRelation_one
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXRelation E 1 := by
+  intro x y h
+  change x * (E.ΨSq 1).eval x = (E.Φ 1).eval x
+  simp
+
+theorem divisionPolynomialXFormula_zero
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXFormula E 0 :=
+  divisionPolynomialXFormula_of_xRelation E (divisionPolynomialXRelation_zero E)
+
+theorem divisionPolynomialXFormula_one
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXFormula E 1 :=
+  divisionPolynomialXFormula_of_xRelation E (divisionPolynomialXRelation_one E)
+
 theorem psiSq_two_eval_eq_negY_gap_sq
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
     {x y : k} (h : E.toAffine.Nonsingular x y) :
@@ -210,6 +272,32 @@ theorem divisionPolynomialXFormula_two
           ((E.Φ (2 : ℤ)).eval x / (E.ΨSq (2 : ℤ)).eval x) y₂
           (hx₂ ▸ h₂E) := by
       simpa only [WeierstrassCurve.Affine.Point.some.injEq, and_true] using hx₂
+
+theorem divisionPolynomialXRelation_two
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
+    DivisionPolynomialXRelation E 2 := by
+  intro x y h
+  by_cases hpsi : (E.ΨSq (2 : ℤ)).eval x = 0
+  · have hgapSq : (y - E.toAffine.negY x y) ^ 2 = 0 := by
+      rw [← psiSq_two_eval_eq_negY_gap_sq E h]
+      exact hpsi
+    have hy : y = E.toAffine.negY x y := by
+      exact sub_eq_zero.mp (sq_eq_zero_iff.mp hgapSq)
+    change
+      match
+        (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point) +
+          (WeierstrassCurve.Affine.Point.some x y h : (E⁄k).Point)
+      with
+      | .zero => (E.ΨSq (2 : ℤ)).eval x = 0
+      | .some xn _ _ => xn * (E.ΨSq (2 : ℤ)).eval x = (E.Φ (2 : ℤ)).eval x
+    rw [WeierstrassCurve.Affine.Point.add_self_of_Y_eq (W := E⁄k) hy]
+    exact hpsi
+  · obtain ⟨yn, hn, hpoint⟩ := divisionPolynomialXFormula_two E h hpsi
+    rw [hpoint]
+    change
+      ((E.Φ (2 : ℤ)).eval x / (E.ΨSq (2 : ℤ)).eval x) *
+        (E.ΨSq (2 : ℤ)).eval x = (E.Φ (2 : ℤ)).eval x
+    exact div_mul_cancel₀ _ hpsi
 
 theorem psiSqDetectsNTorsion_zero
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
@@ -419,6 +507,14 @@ theorem n_torsion_finite_of_psiSq_detection
 #check psiSqDetectsNTorsion_of_xFormula
 #check psiSq_two_eval_eq_negY_gap_sq
 #check divisionPolynomialXFormula_two
+#check DivisionPolynomialXRelation
+#check psiSqDetectsNTorsion_of_xRelation
+#check divisionPolynomialXFormula_of_xRelation
+#check divisionPolynomialXRelation_zero
+#check divisionPolynomialXRelation_one
+#check divisionPolynomialXRelation_two
+#check divisionPolynomialXFormula_zero
+#check divisionPolynomialXFormula_one
 #check psiSqDetectsNTorsion_zero
 #check psiSqDetectsNTorsion_one
 #check psiSqDetectsNTorsion_two
@@ -430,6 +526,13 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms psiSqDetectsNTorsion_of_xFormula
 #print axioms psiSq_two_eval_eq_negY_gap_sq
 #print axioms divisionPolynomialXFormula_two
+#print axioms psiSqDetectsNTorsion_of_xRelation
+#print axioms divisionPolynomialXFormula_of_xRelation
+#print axioms divisionPolynomialXRelation_zero
+#print axioms divisionPolynomialXRelation_one
+#print axioms divisionPolynomialXRelation_two
+#print axioms divisionPolynomialXFormula_zero
+#print axioms divisionPolynomialXFormula_one
 #print axioms psiSqDetectsNTorsion_zero
 #print axioms psiSqDetectsNTorsion_one
 #print axioms psiSqDetectsNTorsion_two
