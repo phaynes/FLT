@@ -6,6 +6,7 @@ Authors: Kevin Buzzard
 module
 
 public import Mathlib.AlgebraicGeometry.EllipticCurve.DivisionPolynomial.Basic
+public import Mathlib.AlgebraicGeometry.EllipticCurve.DivisionPolynomial.Degree
 public import Mathlib.AlgebraicGeometry.EllipticCurve.Reduction
 public import Mathlib.RingTheory.Bialgebra.Convolution
 public import Mathlib.RingTheory.Etale.Basic
@@ -238,4 +239,27 @@ over `ℤ[a₁, …, a₆][Δ⁻¹]`. -/
 theorem WeierstrassCurve.isCoprime_Φ_ΨSq {R₀ : Type*} [CommRing R₀] (W : WeierstrassCurve R₀)
     {n : ℤ} (hn : n ≠ 0) (hΔ : IsUnit W.Δ) :
     IsCoprime (W.Φ n) (W.ΨSq n) :=
-  sorry
+  by
+    let m := n.natAbs ^ 2
+    let d := n.natAbs ^ 2 - 1
+    have hm : m ≠ 0 := by
+      simp only [m, pow_ne_zero_iff two_ne_zero]
+      exact Int.natAbs_ne_zero.mpr hn
+    obtain ⟨a, b, _ha, _hb, hab⟩ :=
+      Polynomial.exists_mul_add_mul_eq_C_resultant (W.Φ n) (W.ΨSq n)
+        (by simpa [m] using W.natDegree_Φ_le n)
+        (by simpa [d] using W.natDegree_ΨSq_le n)
+        (Or.inl hm)
+    change W.Φ n * a + W.ΨSq n * b =
+      Polynomial.C ((W.Φ n).resultant (W.ΨSq n) m d) at hab
+    have hres : IsUnit ((W.Φ n).resultant (W.ΨSq n) m d) := by
+      rcases W.resultant_Φ_ΨSq hn with h | h
+      · rw [show (W.Φ n).resultant (W.ΨSq n) m d =
+            W.Δ ^ ((n.natAbs ^ 4 - n.natAbs ^ 2) / 6) by simpa [m, d] using h]
+        exact hΔ.pow _
+      · rw [show (W.Φ n).resultant (W.ΨSq n) m d =
+            -W.Δ ^ ((n.natAbs ^ 4 - n.natAbs ^ 2) / 6) by simpa [m, d] using h]
+        exact (hΔ.pow _).neg
+    exact ⟨Polynomial.C (hres.unit⁻¹).1 * a, Polynomial.C (hres.unit⁻¹).1 * b, by
+      simp only [mul_assoc, ← mul_add, mul_comm a, mul_comm b, hab,
+        ← map_mul, IsUnit.val_inv_mul, map_one]⟩
