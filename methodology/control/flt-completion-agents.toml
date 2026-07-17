@@ -334,3 +334,196 @@ append_system_prompt = """
 Act as a source-faithful FLT mathematical architect. This is the single permitted timeout retry.
 Read the repository but do not edit it, and return exact Lean interfaces and a bounded design.
 """
+
+# Current producer ladder. Opus is the primary design/build producer, GPT-5.6 xhigh is the
+# independent reviewer, and the existing difficulty-tiered Fable designers are conditional
+# alternatives only for difficulty 8-10 after an explicit escalation trigger.
+
+[agents.opus48-primary-designer-d6]
+name = "opus48-primary-designer-d6"
+description = "Difficulty-6/7 primary FLT design producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 2400
+append_system_prompt = """
+Act as the primary source-faithful mathematical and Lean design producer. Read the repository but do
+not edit it. Return exact interfaces, dependency order, counterexample checks, a bounded build plan,
+and a stop-loss verdict. Never treat a citation, scaffold, or model assertion as a proof.
+"""
+
+[agents.opus48-primary-designer-d8]
+name = "opus48-primary-designer-d8"
+description = "Difficulty-8 primary FLT design producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3000
+append_system_prompt = """
+Act as the primary source-faithful mathematical and Lean design producer. Read the repository but do
+not edit it. Return exact interfaces, dependency order, counterexample checks, a bounded build plan,
+and a stop-loss verdict. Never treat a citation, scaffold, or model assertion as a proof.
+"""
+
+[agents.opus48-primary-designer-d10]
+name = "opus48-primary-designer-d10"
+description = "Difficulty-9/10 primary FLT design producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+Act as the primary source-faithful mathematical and Lean design producer. Read the repository but do
+not edit it. Return exact interfaces, dependency order, counterexample checks, a bounded build plan,
+and a stop-loss verdict. Never treat a citation, scaffold, or model assertion as a proof.
+"""
+
+[agents.opus48-primary-builder-d6]
+name = "opus48-primary-builder-d6"
+description = "Difficulty-6/7 primary Lean producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "full-auto"
+output_format = "text"
+timeout_secs = 3000
+append_system_prompt = """
+Implement only the GPT-reviewed bounded design inside the FLT repository. Preserve theorem scope and
+axiom policy, run targeted builds and declaration audits, and stop on a statement-level obstruction.
+The Lean kernel is final authority.
+"""
+
+[agents.opus48-primary-builder-d8]
+name = "opus48-primary-builder-d8"
+description = "Difficulty-8 primary Lean producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "full-auto"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+Implement only the GPT-reviewed bounded design inside the FLT repository. Preserve theorem scope and
+axiom policy, run targeted builds and declaration audits, and stop on a statement-level obstruction.
+The Lean kernel is final authority.
+"""
+
+[agents.opus48-primary-builder-d10]
+name = "opus48-primary-builder-d10"
+description = "Difficulty-9/10 primary Lean producer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "full-auto"
+output_format = "text"
+timeout_secs = 5400
+append_system_prompt = """
+Implement only the GPT-reviewed bounded design inside the FLT repository. Preserve theorem scope and
+axiom policy, run targeted builds and declaration audits, and stop on a statement-level obstruction.
+The Lean kernel is final authority.
+"""
+
+[agents.gpt56xhigh-independent-reviewer-d6]
+name = "gpt56xhigh-independent-reviewer-d6"
+description = "Difficulty-6/7 independent design and build reviewer"
+backend = "codex"
+role = "reviewer"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 1500
+codex_sandbox = "read-only"
+append_system_prompt = """
+Independently review the Opus artifact against exact Lean types, sources, counterexamples, dependency
+closure, and target-stage axiom policy. Return PASS, UNCERTAIN, REVISE, or REFUTED. Do not edit.
+"""
+
+[agents.gpt56xhigh-independent-reviewer-d8]
+name = "gpt56xhigh-independent-reviewer-d8"
+description = "Difficulty-8 independent design and build reviewer"
+backend = "codex"
+role = "reviewer"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 1800
+codex_sandbox = "read-only"
+append_system_prompt = """
+Independently review the Opus artifact against exact Lean types, sources, counterexamples, dependency
+closure, and target-stage axiom policy. Return PASS, UNCERTAIN, REVISE, or REFUTED. Do not edit.
+"""
+
+[agents.gpt56xhigh-independent-reviewer-d10]
+name = "gpt56xhigh-independent-reviewer-d10"
+description = "Difficulty-9/10 independent design and build reviewer"
+backend = "codex"
+role = "reviewer"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 2100
+codex_sandbox = "read-only"
+append_system_prompt = """
+Independently review the Opus artifact against exact Lean types, sources, counterexamples, dependency
+closure, and target-stage axiom policy. Return PASS, UNCERTAIN, REVISE, or REFUTED. Do not edit.
+"""
+
+[agents.opus48-primary-designer-d6-retry]
+name = "opus48-primary-designer-d6-retry"
+description = "Difficulty-6/7 primary FLT design producer single retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+This is the single permitted timeout retry. Act as the primary source-faithful mathematical and Lean
+design producer. Read the repository but do not edit it. Return exact interfaces, dependency order,
+counterexample checks, a bounded build plan, and a stop-loss verdict.
+"""
+
+[agents.opus48-primary-designer-d8-retry]
+name = "opus48-primary-designer-d8-retry"
+description = "Difficulty-8 primary FLT design producer single retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 4500
+append_system_prompt = """
+This is the single permitted timeout retry. Act as the primary source-faithful mathematical and Lean
+design producer. Read the repository but do not edit it. Return exact interfaces, dependency order,
+counterexample checks, a bounded build plan, and a stop-loss verdict.
+"""
+
+[agents.opus48-primary-designer-d10-retry]
+name = "opus48-primary-designer-d10-retry"
+description = "Difficulty-9/10 primary FLT design producer single retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 5400
+append_system_prompt = """
+This is the single permitted timeout retry. Act as the primary source-faithful mathematical and Lean
+design producer. Read the repository but do not edit it. Return exact interfaces, dependency order,
+counterexample checks, a bounded build plan, and a stop-loss verdict.
+"""

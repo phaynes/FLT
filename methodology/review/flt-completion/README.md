@@ -3,20 +3,29 @@
 Authority: typed work order
 `helios-control/work-orders/flt-completion.work-order.ndjson`.
 
-Each component directory records the exact stage prompt and model output. Stage 1 uses three fresh,
-independent contexts:
+Each component directory records the exact stage prompt and model output. The current operator
+assignment is an Opus-first producer ladder:
 
-- `stage-1-sonnet5.md`
-- `stage-1-fable5.md`
-- `stage-1-gpt56xhigh.md`
+1. Opus 4.8 produces the primary design at the component's difficulty-scaled design budget.
+2. GPT-5.6 xhigh independently reviews the design.
+3. If that review is clean, Opus 4.8 performs the bounded Lean build at the scaled build budget.
+4. The Lean kernel build and exact declaration axiom audit decide the build gate; GPT-5.6 xhigh
+   reviews source faithfulness and scope independently.
+5. Fable 5 is a conditional alternative design only for difficulty 8–10, and only after an Opus
+   timeout, a failed build/axiom audit, or a GPT review that explicitly reports design uncertainty.
 
-Produced components then record `stage-2-synthesis-gpt56xhigh.md`,
-`stage-3-review-fable5.md`, and later the bounded build and Opus review evidence. Historical
-components use the same shape but register an exact named T2 axiom rather than claiming a proof.
+If the Opus path is clean and kernel-accepted, no Fable diversity pass is run. Below difficulty 8,
+Fable is not spent. If Fable is unavailable or exhausts its single retry, Opus may supply the
+alternative pass but the collapsed model diversity is flagged for extra human scrutiny. Named T2
+axiomatisations and the terminal theorem audit always retain an explicit human agreement gate.
+
+The earlier three-design prompt and output files are retained as superseded advisory evidence; they
+cannot promote a stage under this ladder.
 
 The model artifacts are advisory. Lean builds and declaration axiom audits are authoritative. A
-component cannot move to `proved` merely because the three designs agree. Fable-bound calls are
-serialized across components; Sonnet, GPT, and Opus calls may run concurrently.
+component cannot move to `proved` merely because a model reports success. Conditional Fable calls
+remain serialized across components; independent Opus producers and GPT reviewers may run in
+parallel across components.
 
 ## Difficulty-scaled timeout and action-cost contract
 
