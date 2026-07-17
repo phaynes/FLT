@@ -16,6 +16,7 @@ import FLTMethodology.Probes.GoodReductionBoundary
 import FLTMethodology.Probes.HurwitzRatHatAudit
 import FLT.EllipticCurve.TorsionProof.KummerProjectivePropagation
 import FLTMethodology.Probes.LibraryMatches
+import FLTMethodology.Probes.ClassFieldCharacterBoundary
 import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.MazurSourceBoundary
 import FLTMethodology.Probes.MazurTorsionAssembly

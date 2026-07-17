@@ -1484,7 +1484,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Broad existing number-field infrastructure, but exact composition is absent.",
+        "evidence": "`FLTMethodology.Probes.ClassFieldCharacterBoundary` builds in the umbrella and its four declarations audit to propext, Classical.choice, and Quot.sound. The complete class-field theorem package remains absent.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1494,22 +1494,21 @@
       },
       "expected_module": "FLT.PotentialModularity.ClassField",
       "graph_depth": 0,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "partial-signature-green",
       "lean_declaration": "FLT.PotentialModularity.classField_package",
       "lean_risk": "unbounded",
       "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction.",
       "library_candidates": [
         "NumberField.AdeleRing",
-        "IsLocalClassField",
-        "ContinuousCharacter"
+        "FLTMethodology.Probes.ClassFieldCharacterBoundary"
       ],
       "mathematical_name": "Global and local class-field interfaces used in potential modularity",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
-      "proof_pattern": "Inventory Mathlib local/global class-field results, then introduce only missing named interfaces.",
+      "proof_pattern": "Bank the standard-trio-clean carrier/idele object layer, then prove or name each remaining source-exact theorem separately without placing full reciprocity on the immediate MLT tame-kernel path.",
       "review_state": "design-synthesis-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "A package must enumerate exact theorems rather than bundle a generic authority axiom.",
+      "source_condition_risks": "The rank-one carrier and idele-object layer is signature-green. Reciprocity, discreteness, profiniteness, globalization, pi-zero algebra, and exact source locators remain separate missing theorem boundaries; no generic package axiom is permitted.",
       "source_refs": [
         "SRC-004"
       ],
