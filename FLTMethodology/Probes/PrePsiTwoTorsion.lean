@@ -19,7 +19,8 @@ recurrence.
 namespace FLTMethodology.Torsion
 
 open Polynomial
-open WeierstrassCurve
+open WeierstrassCurve WeierstrassCurve.Affine
+open scoped WeierstrassCurve.Affine
 
 noncomputable section
 
@@ -113,6 +114,110 @@ theorem prePsi_eval_eq_preNormEDS_at_psiTwoSq_root
   rw [map_pow]
   change preNormEDS' (E.Ψ₂Sq.eval x ^ 2) (E.Ψ₃.eval x) (E.preΨ₄.eval x) n = _
   rw [hq, zero_pow (by norm_num)]
+
+theorem prePsi_eval_ne_zero_of_odd_at_psiTwoSq_root
+    (E : WeierstrassCurve k) [E.IsElliptic] {n : ℕ} (hodd : Odd n)
+    (x : k) (hq : E.Ψ₂Sq.eval x = 0) :
+    (E.preΨ' n).eval x ≠ 0 := by
+  intro hpre
+  let K := AlgebraicClosure k
+  letI : DecidableEq K := Classical.decEq K
+  let EK : WeierstrassCurve K := E.baseChange K
+  letI : EK.IsElliptic := by
+    change (E.map (algebraMap k K)).IsElliptic
+    infer_instance
+  let xK : K := algebraMap k K x
+  have hpreK : (EK.preΨ' n).eval xK = 0 := by
+    rw [show EK.preΨ' n = (E.preΨ' n).map (algebraMap k K) by
+      exact E.map_preΨ' (algebraMap k K) n]
+    dsimp only [xK]
+    rw [Polynomial.eval_map, Polynomial.eval₂_at_apply, hpre, map_zero]
+  have hqK : EK.Ψ₂Sq.eval xK = 0 := by
+    rw [show EK.Ψ₂Sq = E.Ψ₂Sq.map (algebraMap k K) by
+      exact E.map_Ψ₂Sq (algebraMap k K)]
+    dsimp only [xK]
+    rw [Polynomial.eval_map, Polynomial.eval₂_at_apply, hq, map_zero]
+  have hfiberNe : fiberPolynomial EK xK ≠ 0 := fiberPolynomial_ne_zero EK xK
+  have hfiberNatDegree : (fiberPolynomial EK xK).natDegree = 2 :=
+    (isMonicOfDegree_add_add_two
+      (EK.a₁ * xK + EK.a₃)
+      (-(xK ^ 3 + EK.a₂ * xK ^ 2 + EK.a₄ * xK + EK.a₆))).natDegree_eq
+  have hfiberDegree : (fiberPolynomial EK xK).degree ≠ 0 := by
+    rw [Polynomial.degree_eq_natDegree hfiberNe, hfiberNatDegree]
+    norm_num
+  obtain ⟨y, hy⟩ := IsAlgClosed.exists_root (fiberPolynomial EK xK) hfiberDegree
+  have heq : EK.toAffine.Equation xK y :=
+    (equation_iff_eval_fiberPolynomial EK xK y).2 hy
+  have hns : EK.toAffine.Nonsingular xK y :=
+    EK.toAffine.equation_iff_nonsingular.mp heq
+  let P : (EK⁄K).Point := WeierstrassCurve.Affine.Point.some xK y hns
+  have hpsiN : (EK.ΨSq (n : ℤ)).eval xK = 0 := by
+    rw [EK.ΨSq_ofNat, if_neg (Nat.not_even_iff_odd.mpr hodd)]
+    norm_num [hpreK]
+  have hpsiTwo : (EK.ΨSq (2 : ℤ)).eval xK = 0 := by
+    rw [EK.ΨSq_two]
+    exact hqK
+  have hnP : (n : ℤ) • P = 0 :=
+    (psiSq_eval_eq_zero_iff_nsmul_eq_zero EK hns).1 hpsiN
+  have htwoP : (2 : ℤ) • P = 0 :=
+    (psiSq_eval_eq_zero_iff_nsmul_eq_zero EK hns).1 hpsiTwo
+  have hcoprime : IsCoprime (n : ℤ) (2 : ℤ) :=
+    (Nat.coprime_two_right.mpr hodd).isCoprime
+  rcases hcoprime with ⟨a, b, hab⟩
+  have hPzero : P = 0 := by
+    calc
+      P = (1 : ℤ) • P := by simp
+      _ = (a * (n : ℤ) + b * 2) • P := by rw [hab]
+      _ = a • ((n : ℤ) • P) + b • ((2 : ℤ) • P) := by
+        rw [add_zsmul, mul_zsmul, mul_zsmul]
+      _ = 0 := by rw [hnP, htwoP, zsmul_zero, zsmul_zero, add_zero]
+  exact WeierstrassCurve.Affine.Point.some_ne_zero hns hPzero
+
+theorem prePsi_pointwise_coprime_of_even_preNormEDS
+    (E : WeierstrassCurve k) [E.IsElliptic] {n : ℕ} (hn : (n : k) ≠ 0)
+    (hEven : ∀ {c d : k} {m : ℕ}, Even m → (m : k) ≠ 0 → c ≠ 0 →
+      d ^ 2 = -4 * c ^ 3 → preNormEDS' 0 c d m ≠ 0) :
+    ∀ x : k, (E.preΨ' n).eval x = 0 → E.Ψ₂Sq.eval x ≠ 0 := by
+  intro x hpre hq
+  rcases n.even_or_odd with heven | hodd
+  · have h2 : (2 : k) ≠ 0 := by
+      intro hzero
+      rcases heven with ⟨m, hm⟩
+      apply hn
+      rw [hm, Nat.cast_add]
+      calc
+        (m : k) + (m : k) = (2 : k) * (m : k) := by ring
+        _ = 0 := by rw [hzero, zero_mul]
+    have hc : E.Ψ₃.eval x ≠ 0 :=
+      psiThree_eval_ne_zero_of_psiTwoSq_root E x h2 hq
+    have hrel : E.preΨ₄.eval x ^ 2 = -4 * E.Ψ₃.eval x ^ 3 :=
+      prePsiFour_eval_sq_eq_neg_four_psiThree_cube E x h2 hq
+    have hspecial :
+        preNormEDS' 0 (E.Ψ₃.eval x) (E.preΨ₄.eval x) n ≠ 0 :=
+      hEven heven hn hc hrel
+    apply hspecial
+    rw [← prePsi_eval_eq_preNormEDS_at_psiTwoSq_root E x n hq]
+    exact hpre
+  · exact (prePsi_eval_ne_zero_of_odd_at_psiTwoSq_root E hodd x hq) hpre
+
+theorem psiSqAffineZeroCard_of_prePsi_separable_evenPreNormEDS
+    [IsSepClosed k] (E : WeierstrassCurve k) [E.IsElliptic]
+    {n : ℕ} (hn : (n : k) ≠ 0) (hpresep : (E.preΨ' n).Separable)
+    (hEven : ∀ {c d : k} {m : ℕ}, Even m → (m : k) ≠ 0 → c ≠ 0 →
+      d ^ 2 = -4 * c ^ 3 → preNormEDS' 0 c d m ≠ 0) :
+    PsiSqAffineZeroCard E n :=
+  psiSqAffineZeroCard_of_prePsi_separable_coprime E hn hpresep
+    (prePsi_pointwise_coprime_of_even_preNormEDS E hn hEven)
+
+theorem n_torsion_card_of_prePsi_separable_evenPreNormEDS
+    [IsSepClosed k] (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {n : ℕ} (hn : (n : k) ≠ 0) (hpresep : (E.preΨ' n).Separable)
+    (hEven : ∀ {c d : k} {m : ℕ}, Even m → (m : k) ≠ 0 → c ≠ 0 →
+      d ^ 2 = -4 * c ^ 3 → preNormEDS' 0 c d m ≠ 0) :
+    Nat.card (E.nTorsion n) = n ^ 2 := by
+  apply n_torsion_card_of_psiSq_affine_zero_card E
+  · exact Nat.pos_of_ne_zero (fun hnzero ↦ hn (hnzero ▸ Nat.cast_zero))
+  · exact psiSqAffineZeroCard_of_prePsi_separable_evenPreNormEDS E hn hpresep hEven
 
 end
 
