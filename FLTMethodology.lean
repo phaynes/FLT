@@ -12,6 +12,7 @@ import FLTMethodology.Probes.GaloisRepActionAudit
 import FLTMethodology.Probes.GaloisRepresentationActionAudit
 import FLTMethodology.Probes.GoodReductionBoundary
 import FLTMethodology.Probes.HurwitzRatHatAudit
+import FLTMethodology.Probes.KummerProjectivePropagation
 import FLTMethodology.Probes.LibraryMatches
 import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.MazurSourceBoundary

@@ -37,8 +37,7 @@ are exact definitions or elementary adapters already audited in FLT-204.
   `n_torsion_finite` repair remain open.
 - `elliptic-torsion`: `PARTIAL`; the exact two-admission boundary and its finite-morphism source
   route are frozen. A kernel-clean detector theorem reduces prime-to-characteristic finiteness to
-  the missing general `PsiSqDetectsNTorsion` dictionary, whose complete `n = 0,1,2,3` base block,
-  first recursive even case `n = 4`, and explicit doubling identity are now kernel-clean. The
+  the general `PsiSqDetectsNTorsion` dictionary. The
   stronger exact x-coordinate contract is now proved sufficient for that dictionary, and its full
   affine `n = 2` instance is kernel-clean. A denominator-free recurrence relation now covers both
   infinity and affine branches, implies the exact contract, and is kernel-clean for `n = 0,1,2`.
@@ -62,10 +61,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   step contracts, yielding an unconditional all-natural-index synchronized Kummer ladder. The
   point-level add/sub map is now kernel-clean for every pair of points as well: distinct-x,
   doubling, inverse, two-torsion, and infinity branches are covered by one projective theorem,
-  closing the TODO in Mathlib's `Affine.AddSubMap`. The next residual is the projective propagation
-  and cancellation step that combines this point theorem with the polynomial ladder to prove the
-  all-index `DivisionPolynomialXHomogeneous` relation.
-  The all-characteristic lane and exact `n²` point count remain open.
+  closing the TODO in Mathlib's `Affine.AddSubMap`. Projective nonzeroness, scaling, cancellation,
+  and the two-step induction are now kernel-clean too. They export the all-index homogeneous and
+  denominator-free x-coordinate relations, the all-index `PsiSqDetectsNTorsion` dictionary, and
+  prime-to-characteristic rational-torsion finiteness. The all-characteristic lane and exact `n²`
+  point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

@@ -94,6 +94,18 @@ theorem n_torsion_finite_of_psiSq_detection
     (hn : (n : k) ≠ 0) (hdetect : PsiSqDetectsNTorsion E n) :
     Finite (E.nTorsion n)
 
+theorem divisionPolynomialXHomogeneous_nat ... (n : ℕ) :
+    DivisionPolynomialXHomogeneous E n
+
+theorem divisionPolynomialXRelation_nat ... (n : ℕ) :
+    DivisionPolynomialXRelation E n
+
+theorem psiSqDetectsNTorsion_nat ... (n : ℕ) :
+    PsiSqDetectsNTorsion E n
+
+theorem n_torsion_finite_prime_to_char ... {n : ℕ} (hn : (n : k) ≠ 0) :
+    Finite (E.nTorsion n)
+
 theorem psiSqDetectsNTorsion_two
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 2
@@ -245,13 +257,25 @@ second passes through the nonvertical affine doubling formula, clears its tangen
 derives the `Ψ₃` equation. The `n = 4` proof then splits on whether the point is already two-torsion,
 doubles the remaining case, and consumes the separately named `preΨ₄`/doubled-`ψ₂` identity. Together
 they confirm the detector interface's normalization and point representation in both parity classes
-and validate one recurrence-shaped step. They do not remove the open arbitrary-index recurrence.
+and validate one recurrence-shaped step. The later Kummer ladder and projective propagation modules
+now subsume these isolated base-case proofs with an all-natural-index result.
 
-The arbitrary-index polynomial recurrence and the complete point-level add/sub theorem are now
-closed independently. What remains between them is an integration lemma: transport projective
-representatives through the homogeneous map and cancel the already-known adjacent representative
-without admitting the zero vector. This is narrower than either the former polynomial induction or
-the former equal-x case split, but it is still a real theorem rather than wiring.
+`FLTMethodology/Probes/KummerProjectivePropagation.lean` now closes the integration layer. It proves
+that every evaluated representative `![(E.Φ n).eval x, (E.ΨSq n).eval x]` is nonzero by induction
+through Mathlib's `addSubMap_ne_zero`; no universal resultant hypothesis is needed. Generic
+two-coordinate scaling and symmetric-pair cancellation lemmas then transport projective equality
+through the homogeneous map. A two-step induction combines those lemmas with the unconditional
+polynomial ladder and the all-point add/sub theorem to prove, for every natural `n`:
+
+```lean
+divisionPolynomialXHomogeneous_nat E n
+divisionPolynomialXRelation_nat E n
+psiSqDetectsNTorsion_nat E n
+```
+
+The same module exports `n_torsion_finite_prime_to_char`, so the complete
+characteristic-prime-to-`n` finiteness lane is kernel-clean. All load-bearing exports have exactly
+the standard axiom trio.
 
 This does not yet prove the frozen general finiteness theorem. When the characteristic divides
 `n`, `ΨSq_ne_zero` is unavailable and the proof needs either a different nonzero detector or the
@@ -265,14 +289,10 @@ Build in this order:
    affine y-coordinates.
 2. `FLT-TORSION-DETECTOR-FINITE` — closed in the methodology probe: any nonzero x-coordinate
    detector makes `E[n](k)` finite.
-3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full detector block `n = 0,1,2,3,4` is closed. The
-   branch-free `DivisionPolynomialXHomogeneous` is equivalent to the denominator-free relation,
-   which implies both the exact x-coordinate formula and detector and is proved for `n = 0,1,2`.
-   Prove the homogeneous relation for arbitrary `n` by combining the unconditional synchronized
-   Kummer ladder with `addSubMap_sym2x_projective`. Both mathematical sides are now closed,
-   including all degenerate point branches. The residual is a generic projective-representative
-   nonzero/cancellation layer for the adjacent-pair induction.
-4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
+3. `FLT-TORSION-PSISQ-DICTIONARY` — closed in the methodology probe for every natural index. The
+   branch-free homogeneous relation, denominator-free relation, exact x-coordinate consequence,
+   and detector are connected through a kernel-clean projective Kummer induction.
+4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
 6. `FLT-TORSION-ETALE-COUNT` — open: when `(n : k) ≠ 0` and `k` is separably closed, prove the
@@ -294,18 +314,16 @@ Build in this order:
 
 ## Next exact theorem
 
-The next bounded theorem to attempt is the general provider for:
+The division-polynomial/Kummer lane is complete for `(n : k) ≠ 0`. The next bounded mathematical
+obligation must address the case `(n : k) = 0` in the frozen provider signature:
 
 ```lean
-FLTMethodology.Torsion.DivisionPolynomialXHomogeneous E n
+theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) :
+    Finite (E.nTorsion n)
 ```
 
-Its equivalence to the match-based relation, that relation's `n = 0,1,2` cases, and its implications
-to `DivisionPolynomialXFormula` and `PsiSqDetectsNTorsion` are now proved. The synchronized product,
-middle, and gap recurrences are kernel-clean for every natural index, and
-`addSubMap_sym2x_projective` supplies the corresponding point theorem for every branch. The next
-exact intermediate theorem should prove that the evaluated representative
-`![(E.Φ n).eval x, (E.ΨSq n).eval x]` is nonzero and that equality of the symmetric-pair
-projective images cancels a known nonzero adjacent representative. The first likely residual Lean
-goal is a two-coordinate case split selecting a nonzero coordinate of that adjacent vector; no new
-elliptic-curve case split or characteristic restriction should be introduced.
+Do not attempt to reuse `ΨSq_ne_zero` in that branch. The next design spike should select and test
+one exact interface for the characteristic-primary kernel: either a nonzero detector for the
+separable part plus a proved bound on the inseparable-primary fibres, or a source-faithful
+finite-multiplication morphism whose rational-point kernel is explicitly identified with
+`E.nTorsion n`. Provider migration remains separately authorized work.
