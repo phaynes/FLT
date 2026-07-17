@@ -55,8 +55,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   block, is kernel-clean as well. A synchronized ladder now packages the product and middle entries,
   while the denominator entry is already unconditional. Its exact even/odd step contracts and
   all-natural-index assembly are kernel-clean. A scratch audit shows product equalities alone are an
-  under-strength induction state; the two remaining step implementations must retain the concrete
-  `preΨ` construction or prove the stronger full-ladder/window invariant sufficient.
+  under-strength induction state. A named two-equation `preΨ` window invariant is now proved
+  sufficient for both ladder entries in both parity classes. Its `n = 0,1,2,3,4` bases, exact
+  even/odd step contracts, all-natural-index assembly, and Kummer-ladder adapter are kernel-clean.
+  The remaining algebraic obligations are the two window step implementations from the concrete
+  binary `preΨ` construction (or an equivalent elliptic-sequence theorem).
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness

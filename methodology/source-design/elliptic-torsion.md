@@ -209,14 +209,25 @@ coordinate-gap theorem. Exact synchronized even/odd step contracts and an all-na
 assembly theorem are kernel-clean. The remaining algebraic target is therefore the two concrete
 ladder step implementations, not two independently drifting scalar recurrences.
 
+Those steps now have a smaller sufficient invariant. `PrePsiWindowRelation E n` consists of two
+five-term equations: Ward's product relation for `preΨ(n±2)` and a symmetric-sum companion for
+`preΨ(n±2)` weighted by `preΨ(n±1)²`. A kernel-clean theorem proves that this pair implies both
+entries of `KummerDivisionPolynomialLadder E n` in each parity class. The proof is a short linear
+combination, so it avoids expanding any high-index division polynomial. The next mathematical
+obligation is consequently the reusable statement `∀ n, PrePsiWindowRelation E n`. Its full
+`n = 0,1,2,3,4` base block, exact binary even/odd step contracts, `normEDSRec` assembly, and direct
+assembly into the Kummer ladder are kernel-clean. Only the two window step implementations remain;
+once they are proved from the concrete binary `preΨ` recursion, the Kummer recurrence follows
+immediately.
+
 A scratch algebra audit also rejected a tempting under-strength implementation tactic: treating
 five neighboring Kummer recurrence equalities as relations for an otherwise arbitrary sequence
 does not reduce the even target to zero. The concrete `preΨ` values carry additional normalized-EDS
-history. A second scratch audit using the corrected middle coordinate motivates the synchronized
-ladder state but does not yet prove either general step. Therefore the branch proofs must unfold the
-actual binary `preΨ'_even`/`preΨ'_odd` construction or prove that the full ladder/window invariant
-is sufficient; they must not assert that the product equalities alone form a complete abstract
-induction state.
+history. The corrected middle coordinate and window reduction now establish exactly which stronger
+state is sufficient, but do not yet prove the window equations at every index. Therefore the
+remaining induction must unfold the actual binary `preΨ'_even`/`preΨ'_odd` construction (or prove an
+equivalent elliptic-sequence theorem); it must not assert that the product equalities alone form a
+complete abstract induction state.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`

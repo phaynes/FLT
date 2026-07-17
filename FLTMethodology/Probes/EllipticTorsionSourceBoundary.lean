@@ -547,6 +547,155 @@ def KummerDivisionPolynomialLadder (E : WeierstrassCurve k) (n : ℤ) : Prop :=
   KummerDivisionPolynomialRecurrence E n ∧
     KummerDivisionPolynomialMiddleRecurrence E n
 
+/-- The two five-term normalized-EDS identities needed to recover the complete Kummer ladder at
+one index. The first is Ward's product relation; the second is its symmetric-sum companion. -/
+def PrePsiWindowRelation (E : WeierstrassCurve k) (n : ℤ) : Prop :=
+  E.preΨ (n + 2) * E.preΨ (n - 2) =
+      (if Even n then
+        E.preΨ (n + 1) * E.preΨ (n - 1) - E.Ψ₃ * E.preΨ n ^ 2
+      else
+        E.Ψ₂Sq ^ 2 * (E.preΨ (n + 1) * E.preΨ (n - 1)) - E.Ψ₃ * E.preΨ n ^ 2) ∧
+    E.preΨ (n - 1) ^ 2 * E.preΨ (n + 2) +
+        E.preΨ (n - 2) * E.preΨ (n + 1) ^ 2 =
+      (6 * X ^ 2 + C E.b₂ * X + C E.b₄) *
+          E.preΨ (n - 1) * E.preΨ n * E.preΨ (n + 1) -
+        if Even n then E.Ψ₂Sq ^ 2 * E.preΨ n ^ 3 else E.preΨ n ^ 3
+
+/-- The Ward product and symmetric-sum window identities jointly imply both synchronized Kummer
+matrix entries. This is the reusable algebraic boundary for the remaining binary induction. -/
+theorem kummerDivisionPolynomialLadder_of_prePsiWindow
+    (E : WeierstrassCurve k) (n : ℤ) (hw : PrePsiWindowRelation E n) :
+    KummerDivisionPolynomialLadder E n := by
+  by_cases hn : Even n
+  · simp only [PrePsiWindowRelation, hn, if_pos] at hw
+    rcases hw with ⟨hp, hs⟩
+    constructor
+    · simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial,
+        WeierstrassCurve.Φ, WeierstrassCurve.ΨSq, Int.even_add_one, Int.even_sub_one,
+        ite_not, hn, if_pos]
+      linear_combination
+        (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+          map_ofNat, C_mul]; ring))
+        X * E.Ψ₂Sq * E.preΨ n * hs - E.Ψ₂Sq ^ 2 * E.preΨ n ^ 2 * hp
+    · simp only [KummerDivisionPolynomialMiddleRecurrence,
+        kummerBiquadraticMiddlePolynomial, WeierstrassCurve.Φ, WeierstrassCurve.ΨSq,
+        Int.even_add_one, Int.even_sub_one, ite_not, hn, if_pos]
+      linear_combination
+        (norm := (simp only [WeierstrassCurve.Ψ₂Sq, map_ofNat, C_mul]; ring))
+        E.Ψ₂Sq * E.preΨ n * hs
+  · simp only [PrePsiWindowRelation, hn, if_false] at hw
+    rcases hw with ⟨hp, hs⟩
+    constructor
+    · simp only [KummerDivisionPolynomialRecurrence, kummerBiquadraticPolynomial,
+        WeierstrassCurve.Φ, WeierstrassCurve.ΨSq, Int.even_add_one, Int.even_sub_one,
+        hn, not_false_eq_true, if_neg, if_true]
+      linear_combination
+        (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+          map_ofNat, C_mul]; ring))
+        X * E.Ψ₂Sq * E.preΨ n * hs - E.preΨ n ^ 2 * hp
+    · simp only [KummerDivisionPolynomialMiddleRecurrence,
+        kummerBiquadraticMiddlePolynomial, WeierstrassCurve.Φ, WeierstrassCurve.ΨSq,
+        Int.even_add_one, Int.even_sub_one, hn, not_false_eq_true, if_neg, if_true]
+      linear_combination
+        (norm := (simp only [WeierstrassCurve.Ψ₂Sq, map_ofNat, C_mul]; ring))
+        E.Ψ₂Sq * E.preΨ n * hs
+
+theorem prePsiWindowRelation_zero (E : WeierstrassCurve k) :
+    PrePsiWindowRelation E 0 := by
+  simp [PrePsiWindowRelation]
+
+theorem prePsiWindowRelation_one (E : WeierstrassCurve k) :
+    PrePsiWindowRelation E 1 := by
+  simp [PrePsiWindowRelation]
+
+theorem prePsiWindowRelation_two (E : WeierstrassCurve k) :
+    PrePsiWindowRelation E 2 := by
+  simp only [PrePsiWindowRelation, if_pos (show Even (2 : ℤ) by decide),
+    show (2 + 2 : ℤ) = 4 by rfl, show (2 - 2 : ℤ) = 0 by rfl,
+    show (2 + 1 : ℤ) = 3 by rfl, show (2 - 1 : ℤ) = 1 by rfl,
+    E.preΨ_four, E.preΨ_zero, E.preΨ_three, E.preΨ_one, E.preΨ_two,
+    mul_zero, zero_mul, mul_one, one_mul, one_pow, add_zero, sub_self, true_and]
+  have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+    rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+  linear_combination
+    (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+      WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+    -X ^ 2 * hb
+
+theorem prePsiWindowRelation_three (E : WeierstrassCurve k) :
+    PrePsiWindowRelation E 3 := by
+  simp only [PrePsiWindowRelation, if_neg (show ¬Even (3 : ℤ) by decide),
+    show (3 + 2 : ℤ) = 5 by rfl, show (3 - 2 : ℤ) = 1 by rfl,
+    show (3 + 1 : ℤ) = 4 by rfl, show (3 - 1 : ℤ) = 2 by rfl,
+    E.preΨ_one, E.preΨ_two, E.preΨ_three, E.preΨ_four,
+    mul_one, one_mul, one_pow]
+  constructor
+  · rw [prePsi_five E]
+    ring
+  · have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+      rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+    rw [prePsi_five E]
+    linear_combination
+      (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+        WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+      -X ^ 2 * E.preΨ₄ * hb
+
+theorem prePsiWindowRelation_four (E : WeierstrassCurve k) :
+    PrePsiWindowRelation E 4 := by
+  simp only [PrePsiWindowRelation, if_pos (show Even (4 : ℤ) by decide),
+    show (4 + 2 : ℤ) = 6 by rfl, show (4 - 2 : ℤ) = 2 by rfl,
+    show (4 + 1 : ℤ) = 5 by rfl, show (4 - 1 : ℤ) = 3 by rfl,
+    E.preΨ_two, E.preΨ_three, E.preΨ_four, mul_one, one_mul]
+  constructor
+  · rw [prePsi_six E]
+    ring
+  · have hb : C (E.b₂ * E.b₆ - E.b₄ ^ 2 - 4 * E.b₈) = 0 := by
+      rw [b_two_mul_b_six_sub_b_four_sq E, C_0]
+    rw [prePsi_six E, prePsi_five E]
+    linear_combination
+      (norm := (simp only [WeierstrassCurve.Ψ₂Sq, WeierstrassCurve.Ψ₃,
+        WeierstrassCurve.preΨ₄, map_ofNat, C_sub, C_mul, C_pow]; ring))
+      -X ^ 2 * E.preΨ₄ *
+        (E.preΨ₄ * E.Ψ₂Sq ^ 2 - E.Ψ₃ ^ 3) * hb
+
+/-- Exact even branch for the two-equation normalized-EDS window invariant. -/
+def PrePsiWindowEvenStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    PrePsiWindowRelation E (m + 1) →
+    PrePsiWindowRelation E (m + 2) →
+    PrePsiWindowRelation E (m + 3) →
+    PrePsiWindowRelation E (m + 4) →
+    PrePsiWindowRelation E (m + 5) →
+    PrePsiWindowRelation E (2 * (m + 3))
+
+/-- Exact odd branch for the two-equation normalized-EDS window invariant. -/
+def PrePsiWindowOddStep (E : WeierstrassCurve k) : Prop :=
+  ∀ m : ℕ,
+    PrePsiWindowRelation E (m + 1) →
+    PrePsiWindowRelation E (m + 2) →
+    PrePsiWindowRelation E (m + 3) →
+    PrePsiWindowRelation E (m + 4) →
+    PrePsiWindowRelation E (2 * (m + 2) + 1)
+
+/-- The complete base block reduces the all-natural-index window theorem to two binary steps. -/
+theorem prePsiWindowRelation_nat_of_steps
+    (E : WeierstrassCurve k) (heven : PrePsiWindowEvenStep E)
+    (hodd : PrePsiWindowOddStep E) (n : ℕ) : PrePsiWindowRelation E n := by
+  induction n using normEDSRec with
+  | zero => exact prePsiWindowRelation_zero E
+  | one => exact prePsiWindowRelation_one E
+  | two => exact prePsiWindowRelation_two E
+  | three => exact prePsiWindowRelation_three E
+  | four => exact prePsiWindowRelation_four E
+  | even m h1 h2 h3 h4 h5 => exact heven m h1 h2 h3 h4 h5
+  | odd m h1 h2 h3 h4 => exact hodd m h1 h2 h3 h4
+
+theorem kummerDivisionPolynomialLadder_nat_of_prePsiWindowSteps
+    (E : WeierstrassCurve k) (heven : PrePsiWindowEvenStep E)
+    (hodd : PrePsiWindowOddStep E) (n : ℕ) : KummerDivisionPolynomialLadder E n :=
+  kummerDivisionPolynomialLadder_of_prePsiWindow E n
+    (prePsiWindowRelation_nat_of_steps E heven hodd n)
+
 theorem kummerDivisionPolynomialLadder_zero (E : WeierstrassCurve k) :
     KummerDivisionPolynomialLadder E 0 :=
   ⟨kummerDivisionPolynomialRecurrence_zero E,
@@ -1020,6 +1169,17 @@ theorem n_torsion_finite_of_psiSq_detection
 #check kummerDivisionPolynomialMiddleRecurrence_three
 #check kummerDivisionPolynomialMiddleRecurrence_four
 #check KummerDivisionPolynomialLadder
+#check PrePsiWindowRelation
+#check kummerDivisionPolynomialLadder_of_prePsiWindow
+#check prePsiWindowRelation_zero
+#check prePsiWindowRelation_one
+#check prePsiWindowRelation_two
+#check prePsiWindowRelation_three
+#check prePsiWindowRelation_four
+#check PrePsiWindowEvenStep
+#check PrePsiWindowOddStep
+#check prePsiWindowRelation_nat_of_steps
+#check kummerDivisionPolynomialLadder_nat_of_prePsiWindowSteps
 #check kummerDivisionPolynomialLadder_zero
 #check kummerDivisionPolynomialLadder_one
 #check kummerDivisionPolynomialLadder_two
@@ -1076,6 +1236,14 @@ theorem n_torsion_finite_of_psiSq_detection
 #print axioms kummerDivisionPolynomialMiddleRecurrence_two
 #print axioms kummerDivisionPolynomialMiddleRecurrence_three
 #print axioms kummerDivisionPolynomialMiddleRecurrence_four
+#print axioms kummerDivisionPolynomialLadder_of_prePsiWindow
+#print axioms prePsiWindowRelation_zero
+#print axioms prePsiWindowRelation_one
+#print axioms prePsiWindowRelation_two
+#print axioms prePsiWindowRelation_three
+#print axioms prePsiWindowRelation_four
+#print axioms prePsiWindowRelation_nat_of_steps
+#print axioms kummerDivisionPolynomialLadder_nat_of_prePsiWindowSteps
 #print axioms kummerDivisionPolynomialLadder_nat_of_steps
 #print axioms kummerDivisionPolynomialRecurrence_nat_of_steps
 #print axioms addX_mul_addNegX_kummer
