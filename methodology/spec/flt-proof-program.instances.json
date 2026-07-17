@@ -1322,7 +1322,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "T1 may expose this as a sourced historical boundary; T2 names exact Langlands/Jacquet-Langlands assumptions; T3 formalizes the transfer and descent.",
-      "review_state": "diversity-design-queued",
+      "review_state": "diversity-design-running",
       "scc_id": "SCC-FLT-CBASE",
       "source_condition_risks": "The Skinner-Wiles reduction also needs characterization of the image and multiplicity one, not only forward base change.",
       "source_refs": [
