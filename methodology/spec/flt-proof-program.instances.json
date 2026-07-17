@@ -1909,7 +1909,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The charP-three leaf is independently reviewed. The S3 temporary proof was replayed by GPT: all thirteen declarations are standard-trio clean, rank/orientation/choice checks pass, and only a five-declaration production slice is authorized. Trivial quotient action, N1, N2, D, E, F and S11 remain open.",
+        "evidence": "The charP-three leaf is reviewed. The five-declaration S3 reducibility slice is now persisted; targeted and umbrella builds are green and every declaration audits to the standard trio. Cross-family GPT build review is queued. Trivial quotient selection, N1, N2, D, E, F and S11 remain open.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1919,7 +1919,7 @@
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.ModThreeCore",
       "graph_depth": 1,
-      "kernel_probe_state": "charp-leaf-proof-green-reviewed-s3-temporary-proof-green",
+      "kernel_probe_state": "charp-leaf-reviewed-s3-five-declaration-production-green",
       "lean_declaration": "FLT.HardlyRamified.modThree_classification_core",
       "lean_risk": "unbounded",
       "lean_type": "Proposed theorem yielding a Galois-stable one-dimensional trivial quotient for every two-dimensional hardly-ramified representation over a finite field of characteristic 3.",
@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "s3-bounded-build-running-larger-obligation-open",
+      "review_state": "s3-bounded-build-kernel-green-review-queued-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
