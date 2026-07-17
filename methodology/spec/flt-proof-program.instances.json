@@ -765,13 +765,13 @@
         "T3"
       ],
       "critical_path": true,
-      "current_state": "admitted",
+      "current_state": "proved",
       "direct_dependencies": [
         "FLT-TATE-TORSION"
       ],
       "estimates": {
-        "confidence": "low",
-        "evidence": "Current file has a cluster of admitted data and the pinned library lacks a turnkey interface.",
+        "confidence": "high",
+        "evidence": "Full FLT and FLTMethodology builds pass. Fresh kernel audits of n_torsion_finite, n_torsion_card, n_torsion_dimension, point-map identities, Galois action structures, stabilizer/kernel openness, and WeierstrassCurve.galoisRep return exactly propext, Classical.choice, and Quot.sound.",
         "loc_p50": 2500,
         "loc_p80": 7000,
         "loc_p95": 18000,
@@ -781,24 +781,26 @@
       },
       "expected_module": "FLT.EllipticCurve.Torsion",
       "graph_depth": 1,
-      "kernel_probe_state": "signature-green",
+      "kernel_probe_state": "integrated",
       "lean_declaration": "WeierstrassCurve.galoisRep",
       "lean_risk": "very-high",
       "lean_type": "(E : WeierstrassCurve K) -> (n : Nat) -> 0 < n -> GaloisRep K (ZMod n) ((E.map (algebraMap K (AlgebraicClosure K))).nTorsion n)",
       "library_candidates": [
         "Mathlib.AlgebraicGeometry.EllipticCurve",
-        "Module.torsionBy"
+        "Module.torsionBy",
+        "FLT.EllipticCurve.TorsionProvider"
       ],
       "mathematical_name": "Elliptic-curve torsion and Galois-representation construction",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TORSION-001",
-      "proof_pattern": "Construct torsion module, continuity, and Galois action from the algebraic-closure action; discharge module and rank laws.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Completed: construct the torsion action from algebraic-closure coordinate maps, prove point stabilizers and the representation kernel open, and consume the integrated finite torsion provider to obtain continuity.",
+      "review_state": "reviewed",
       "scc_id": "SCC-FLT-TORSION-001",
-      "source_condition_risks": "The current definition includes admitted module laws and finite/rank facts; data equality choices must be coherent.",
+      "source_condition_risks": "No remaining kernel or statement-level obstruction in the Galois-representation constructor. Future torsion-provider or topology changes must retain the full declaration-chain axiom audit and umbrella builds.",
       "source_refs": [
         "SRC-001",
-        "SRC-005"
+        "SRC-005",
+        "SRC-025"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
       "target_stage": "T1"

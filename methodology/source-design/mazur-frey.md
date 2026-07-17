@@ -189,11 +189,10 @@ The post-geometry assembly is now kernel-clean in
   non-vacuous Mazur torsion bound are supplied.
 
 Every declaration in this assembly has only `[propext, Classical.choice, Quot.sound]`. The concrete
-specialization at `P.freyCurve.galoisRep P.p P.hppos` cannot yet have that audit: the existing
-`WeierstrassCurve.galoisRep` constructor transitively uses the admitted
-`WeierstrassCurve.n_torsion_finite`. This is the already modeled dependency
-`FLT-TATE-TORSION → FLT-TORSION-001 → FLT-HIST-MAZUR`, not a new Mazur assumption. It must close
-before the final concrete irreducibility theorem can be standard-axiom clean.
+specialization at `P.freyCurve.galoisRep P.p P.hppos` now has the same audit: the integrated
+`WeierstrassCurve.n_torsion_finite` provider closes the modeled dependency
+`FLT-TATE-TORSION → FLT-TORSION-001`. The remaining irreducibility boundary is therefore the named
+mathematical obligation `FLT-HIST-MAZUR`, not the concrete Galois-representation construction.
 
 The exact terminal source, primary intermediate sources, consumer signature, proof architecture,
 counterexample review, and library gap analysis are now fixed. Provider construction must not begin

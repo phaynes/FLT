@@ -1,13 +1,13 @@
 # Elliptic-curve torsion source and proof design
 
-Status: `PARTIAL`
+Status: `READY — IMPLEMENTED AND INTEGRATED`
 Owner work item: `FLT-401`
 Obligation: `FLT-TATE-TORSION`
 Frozen provider file: `FLT/EllipticCurve/Torsion.lean`
 
 ## Exact frozen boundary
 
-The provider file now has exactly two admissions:
+The frozen provider formerly exposed exactly two admissions:
 
 ```lean
 theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) :
@@ -17,9 +17,9 @@ theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ} (hn : (n : k) 
     Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-The earlier five-admission count is stale. The remaining Galois-action and group-theory code in
-this file is kernel-clean, but `WeierstrassCurve.galoisRep` still transitively consumes
-`n_torsion_finite`.
+Both admissions are now discharged by the retained, source-audited torsion provider. The remaining
+Galois-action and group-theory code is kernel-clean, and `WeierstrassCurve.galoisRep` now audits
+through its complete construction chain to exactly `[propext, Classical.choice, Quot.sound]`.
 
 ## Mathematical source contract
 
