@@ -771,7 +771,7 @@ Weierstrass curve over a field (Sutherland Lemma 6.8, Silverman Exercise III.3.7
 
 The hypothesis `W.Δ ≠ 0` (i.e. the curve is nonsingular) is necessary: for the cusp
 `Y² = X³` (with `Δ = 0`), `Φ₂ = X⁴` and `ΨSq₂ = 4X³` share the common factor `X³`. -/
-theorem isCoprime_Φ_ΨSq (hΔ : W.Δ ≠ 0) (_hn : n ≠ 0) : IsCoprime (W.Φ n) (W.ΨSq n) := by
+theorem isCoprime_Φ_ΨSq_field (hΔ : W.Δ ≠ 0) (_hn : n ≠ 0) : IsCoprime (W.Φ n) (W.ΨSq n) := by
   let f := algebraMap F (AlgebraicClosure F)
   rw [← Polynomial.isCoprime_map f, ← map_Φ, ← map_ΨSq]
   set W' := W.map f with hW'

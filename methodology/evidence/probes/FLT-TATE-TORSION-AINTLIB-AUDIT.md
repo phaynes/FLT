@@ -1,7 +1,8 @@
 # FLT-TATE-TORSION AINTLIB integration audit
 
 Date: 2026-07-17  
-Task: `fg-flt-ra-math-source-design-20260716`  
+Source-design task: `fg-flt-ra-math-source-design-20260716`  
+Provider task: `fg-flt-elliptic-torsion-card-provider-20260717`  
 External repository: `https://github.com/CBirkbeck/AINTLIB.git`  
 Reviewed commit: `b91f668cd447754b83880f353c34e4a1ed236f2c`
 
@@ -21,9 +22,10 @@ The declaration built at the reviewed commit and its axiom audit returned exactl
 [propext, Classical.choice, Quot.sound]
 ```
 
-A disposable module conversion and FLT integration checkout now proves the complete frozen
-`n_torsion_card` contract. AINTLIB's torsion target builds under FLT's pinned Lean `v4.32.0-rc1`
-and Mathlib `a3364faec42918fcd84a03a255b50570129f9ead`; no toolchain upgrade is required.
+The reviewed module conversion and FLT provider are retained in the main worktree and prove the
+complete frozen `n_torsion_card` contract. AINTLIB's torsion target builds under FLT's pinned Lean
+`v4.32.0-rc1` and Mathlib `a3364faec42918fcd84a03a255b50570129f9ead`; no toolchain upgrade is
+required.
 
 The exact imported target slice contains 52 HasseWeil modules and 27,204 source lines after two
 unused admitted declarations and their consumer-free derived declarations are removed. A raw
@@ -32,9 +34,9 @@ source scan of those 52 modules finds no executable `sorry`, `admit`, `axiom`, `
 `HasseWeil.WeilPairing.TorsionGeometric.card_torsion_ell` still audits to exactly the standard
 axiom trio.
 
-## Complete disposable bridge
+## Complete production bridge
 
-The disposable integration proves the following chain:
+The production integration proves the following chain:
 
 1. `fltNTorsionEquivAintlibTorsion` identifies FLT's `E.nTorsion n` subtype with AINTLIB's
    `torsionSubgroup E.toAffine (n : ℤ)`.
@@ -57,20 +59,21 @@ This resolves both previously identified technical mismatches. The legacy source
 to Lean modules mechanically, and the `IsAlgClosed`/`IsSepClosed` gap is bridged without assuming
 that a separably closed field is algebraically closed.
 
-## Why it is still not imported
+## Production retention and compatibility controls
 
-The remaining boundary is governance and dependency provenance, not a missing mathematical lemma:
+The provider task discharged the former governance and dependency boundary as follows:
 
-1. the exact 52-module slice or a pinned module-converted fork must be selected and retained;
-2. the mechanical conversion, promoted helper visibility, and one collision-avoiding helper rename
-   must be reviewed as source changes;
-3. copyright/licence provenance must be packaged with the retained sources; and
-4. the two frozen provider declarations must be migrated under an authorized provider task and all
-   transitive consumers re-audited.
+1. the exact 52-module slice is retained under `vendor/HasseWeil`;
+2. the mechanical module conversion, promoted helper visibility, removed consumer-free admissions,
+   and collision-avoiding field-theorem rename are recorded in `vendor/HasseWeil/PROVENANCE.md`;
+3. copyright and Apache-2.0 licence provenance are retained with the sources; and
+4. the two frozen provider declarations and their dimension, Galois-representation, and rank
+   consumers were rebuilt and axiom-audited.
 
-No AINTLIB dependency, converted source, or provider edit has been retained in the main FLT
-checkout. The successful build and full provider theorem exist only in disposable audit trees and
-temporary probes.
+The first full umbrella build found the name collision between AINTLIB's field-specific
+`WeierstrassCurve.isCoprime_Φ_ΨSq` and FLT's commutative-ring theorem of the same name. The
+retained field theorem is compatibility-named `isCoprime_Φ_ΨSq_field`; its statement and proof
+body are unchanged. Full `FLT` and `FLTMethodology` builds pass after this repair.
 
 ## Reusable mathematical information
 
@@ -87,7 +90,7 @@ It reuses the already-proved characteristic-safe detector, pointwise coprimality
 multiplicities, parity split, and degree formula. This avoids constructing a second elliptic formal
 group solely to repair the external theorem's stronger field assumption.
 
-## Integration options
+## Selected integration
 
 1. Retain and independently review the exact 52-module converted slice, then migrate
    `n_torsion_finite` and `n_torsion_card` through the proved bridge. This is the shortest route
@@ -99,5 +102,6 @@ group solely to repair the external theorem's stronger field assumption.
 4. Continue the native dual-number/formal-group adapter route. It remains mathematically valid but
    is no longer the smallest demonstrated route to the frozen provider theorem.
 
-Option 1 is the smallest verified implementation route. It still requires explicit provider and
-dependency authorization; this source-design tranche does not claim provider or graph closure.
+Option 1 was selected and implemented under the provider task. `FLT-TATE-TORSION` is now integrated,
+its graph row is closed, and its retained regression boundary is the full build, source manifest,
+zero-admission scan, and consumer axiom audit.

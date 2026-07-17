@@ -506,7 +506,7 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — source-design route closed in disposable integration: AINTLIB's
+6. `FLT-TORSION-PARITY-COUNT` — closed in production integration: AINTLIB's
    exact algebraically closed count plus `prePsi_separable_of_n_torsion_card` proves separability
    after base change and descent. The native formal-group adapter remains an optional independent
    route.
@@ -531,7 +531,7 @@ Build in this order:
   requests coordination with Kevin Buzzard and David Angdinata; provenance and task history remain
   part of the retained evidence.
 
-## Targeted production integration and full-graph blocker
+## Production integration result
 
 The division-polynomial/Kummer lane, all-characteristic finiteness theorem, and exact cardinality
 provider build in the production FLT tree. The frozen provider statement remains unchanged:
@@ -552,8 +552,10 @@ The owned 13-module native proof component and exact 52-module dependency slice 
 worktree. The provider, public torsion theorems, dimension theorem, Galois representation, and two
 rank consumers all have axiom closure exactly `[propext, Classical.choice, Quot.sound]`.
 
-The first full `FLT` umbrella build nevertheless found a packaging collision, not a mathematical
-failure: the retained AINTLIB slice and `FLT.KnownIn1980s.EllipticCurves.Flat` both export
-`WeierstrassCurve.isCoprime_Φ_ΨSq`, with different signatures. The minimal repair is to give the
-retained field-specific theorem a compatibility name and update its internal consumers. Until the
-full umbrella build and terminal audit pass after that repair, `FLT-TATE-TORSION` remains open.
+The first full `FLT` umbrella build found and localized a packaging collision, not a mathematical
+failure: the retained AINTLIB slice and `FLT.KnownIn1980s.EllipticCurves.Flat` both exported
+`WeierstrassCurve.isCoprime_Φ_ΨSq`, with different signatures. The retained field-specific theorem
+is now compatibility-named `WeierstrassCurve.isCoprime_Φ_ΨSq_field`, with its type and proof body
+unchanged. Full `FLT` and `FLTMethodology` builds pass after the repair. All provider, dimension,
+Galois-representation, and rank-consumer audits return exactly the standard axiom trio, so
+`FLT-TATE-TORSION` is closed and downstream work can proceed.

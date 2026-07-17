@@ -2361,11 +2361,11 @@
         "T3"
       ],
       "critical_path": true,
-      "current_state": "admitted",
+      "current_state": "proved",
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "The production torsion target and exact downstream rank and Galois consumers build and audit with the standard axiom trio. The first full FLT plus FLTMethodology build fails only when FLT imports Flat after the provider, because the environment already contains WeierstrassCurve.isCoprime_\u03a6_\u03a8Sq from the retained HasseWeil slice. No mathematical statement has failed.",
+        "evidence": "Full lake builds for FLT and FLTMethodology pass after compatibility-renaming the retained field-specific isCoprime_\u03a6_\u03a8Sq declaration. The production torsion provider and downstream n_torsion_dimension, galoisRep, FreyCurve.torsion_rank, and torsion_rank_two consumers each audit to exactly propext, Classical.choice, and Quot.sound. The retained component has zero executable admissions.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
@@ -2375,7 +2375,7 @@
       },
       "expected_module": "FLT.EllipticCurve.Torsion",
       "graph_depth": 0,
-      "kernel_probe_state": "partial",
+      "kernel_probe_state": "integrated",
       "lean_declaration": "FLT.EllipticCurve.Torsion support closure",
       "lean_risk": "very-high",
       "lean_type": "Finite and rank-two torsion facts and the continuous Galois action used by WeierstrassCurve.galoisRep.",
@@ -2388,9 +2388,9 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-TORSION",
       "proof_pattern": "Completed: the retained AINTLIB algebraically closed torsion count composes with the native separability converse and root-fibre count to discharge both frozen providers; downstream rank and Galois consumers are standard-axiom clean.",
-      "review_state": "revision-required",
+      "review_state": "reviewed",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "Targeted provider and consumer builds are standard-axiom clean, but the full FLT umbrella currently rejects a duplicate declaration name: both the retained AINTLIB slice and FLT.KnownIn1980s.EllipticCurves.Flat export WeierstrassCurve.isCoprime_\u03a6_\u03a8Sq with different signatures. A namespace-only compatibility rename is required before closure.",
+      "source_condition_risks": "No remaining statement-level, kernel, or full-graph integration obstruction in this component. The retained AINTLIB slice is a transformed source dependency whose exact upstream commit, module manifest, compatibility edits, namespace-only collision rename, and license are recorded under vendor/HasseWeil; changes to that slice require dependency review.",
       "source_refs": [
         "SRC-001",
         "SRC-025"

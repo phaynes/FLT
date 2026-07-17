@@ -442,7 +442,7 @@ theorem max_natDegree_num_denom_mulByInt {n : ℤ} (hn : n ≠ 0) :
   classical
   have hΨSq_ne : W.ΨSq n ≠ 0 := ΨSq_poly_ne_zero W hn
   have hΔ : W.Δ ≠ 0 := W.coe_Δ' ▸ W.Δ'.ne_zero
-  have hcop : IsCoprime (W.Φ n) (W.ΨSq n) := isCoprime_Φ_ΨSq W hΔ hn
+  have hcop : IsCoprime (W.Φ n) (W.ΨSq n) := isCoprime_Φ_ΨSq_field W hΔ hn
   have hgu : IsUnit (GCDMonoid.gcd (W.Φ n) (W.ΨSq n)) :=
     gcd_isUnit_iff_isRelPrime.mpr hcop.isRelPrime
   obtain ⟨c, hc_unit, hgcd_eq⟩ := Polynomial.isUnit_iff.mp hgu

@@ -17,6 +17,11 @@ copy therefore adds `module`, changes imports to `public import`, exposes the mo
 promotes internal helper declarations where a downstream module consumes them. These changes alter
 visibility and packaging, not theorem statements.
 
+The retained field-specific theorem originally named `WeierstrassCurve.isCoprime_Φ_ΨSq` is
+named `WeierstrassCurve.isCoprime_Φ_ΨSq_field` here. This namespace-only compatibility rename
+avoids a collision with FLT's distinct commutative-ring theorem of the original name; its type and
+proof body are unchanged, and its two retained internal consumers use the compatibility name.
+
 Two upstream admissions were removed from the retained dependency closure after a consumer search
 showed that the declarations were obsolete and unused by the target:
 

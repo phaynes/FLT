@@ -193,7 +193,7 @@ lemma natDegree_Ψ_le (n : ℤ) : (W.Ψ n).natDegree ≤ 1 := by
 /-- `W.ΨSq n` is nonzero for `n ≠ 0` on an elliptic curve. -/
 lemma ΨSq_poly_ne_zero {n : ℤ} (hn : n ≠ 0) : W.ΨSq n ≠ 0 := by
   intro h
-  have hcop := isCoprime_Φ_ΨSq W (W.coe_Δ' ▸ W.Δ'.ne_zero) hn
+  have hcop := isCoprime_Φ_ΨSq_field W (W.coe_Δ' ▸ W.Δ'.ne_zero) hn
   rw [h, isCoprime_zero_right, Polynomial.isUnit_iff] at hcop
   obtain ⟨c, _, hΦ⟩ := hcop
   have hpos := natDegree_Φ_pos W hn
