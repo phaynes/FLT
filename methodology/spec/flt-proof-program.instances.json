@@ -1484,7 +1484,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "`FLTMethodology.Probes.ClassFieldCharacterBoundary` builds in the umbrella and its four declarations audit to propext, Classical.choice, and Quot.sound. The complete class-field theorem package remains absent.",
+        "evidence": "`FLTMethodology.Probes.ClassFieldCharacterBoundary` builds in the umbrella and its four declarations audit to propext, Classical.choice, and Quot.sound. Opus/Fable synthesis is complete and under mandatory fresh GPT review; the complete class-field theorem package remains absent.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1506,7 +1506,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Bank the standard-trio-clean carrier/idele object layer, then prove or name each remaining source-exact theorem separately without placing full reciprocity on the immediate MLT tame-kernel path.",
-      "review_state": "design-synthesis-running",
+      "review_state": "independent-review-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "The rank-one carrier and idele-object layer is signature-green. Reciprocity, discreteness, profiniteness, globalization, pi-zero algebra, and exact source locators remain separate missing theorem boundaries; no generic package axiom is permitted.",
       "source_refs": [
@@ -3079,7 +3079,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "All source-level crystalline and Hodge-Tate identifiers are absent at the frozen SHA.",
+        "evidence": "A read-only corrected AbstractWeightLocalData-style bundle elaborated with the standard axiom trio; GPT independently returned substantive REVISE on the full bundle and bridge.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3089,20 +3089,21 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.PadicHodge",
       "graph_depth": 2,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "temporary-signature-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.PadicHodgeData",
       "lean_risk": "unbounded",
       "lean_type": "Definition gap: exact local predicates and weight data appearing in Taylor 2018 Theorem 2.1.1, together with the separately proved weight-two finite-flat-to-crystalline bridge used by the repository route.",
       "library_candidates": [
-        "GaloisRep.IsFlatAt"
+        "GaloisRep.IsFlatAt",
+        "Algebra.IsUnramifiedIn"
       ],
       "mathematical_name": "Crystalline, Hodge-Tate, regular-algebraic, and Fontaine-Laffaille interfaces",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
-      "proof_pattern": "Freeze source-level predicates first, then formalize the weight-two comparison theorem under exact field and coefficient hypotheses.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "First bank AbstractWeightLocalData over global embeddings with the exact source interval, then expose the integral model, generic-fibre compatibility, and dual/sign comparison before formalizing the weight-two crystalline bridge.",
+      "review_state": "diversity-design-queued",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
-      "source_condition_risks": "IsFlatAt does not definitionally imply crystallinity or the required Hodge-Tate weights; the bridge is substantial p-adic Hodge mathematics.",
+      "source_condition_risks": "The abstract global-embedding weight bundle is signature-viable, but full PadicHodgeData is not. IsFlatAt applies to an integral model while crystallinity applies after generic fibre, and the repository/source dual-sign convention remains unresolved; the bridge is substantial p-adic Hodge mathematics.",
       "source_refs": [
         "SRC-016"
       ],
