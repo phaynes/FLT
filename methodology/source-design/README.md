@@ -58,8 +58,9 @@ are exact definitions or elementary adapters already audited in FLT-204.
   under-strength induction state. A named two-equation `preΨ` window invariant is now proved
   sufficient for both ladder entries in both parity classes. Its `n = 0,1,2,3,4` bases, exact
   even/odd step contracts, all-natural-index assembly, and Kummer-ladder adapter are kernel-clean.
-  The remaining algebraic obligations are the two window step implementations from the concrete
-  binary `preΨ` construction (or an equivalent elliptic-sequence theorem).
+  Generic commutative-ring certificates and their concrete binary-`preΨ` transports now prove both
+  step contracts, yielding an unconditional all-natural-index synchronized Kummer ladder. The next
+  residual is the point-level homogeneous `xRep` assembly, especially the equal-x branches.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness

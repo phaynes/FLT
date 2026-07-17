@@ -206,28 +206,28 @@ Its full `n = 0,1,2,3,4` base block is also kernel-clean; the nontrivial bases f
 same `b₂b₆ - b₄² - 4b₈ = 0` invariant. `KummerDivisionPolynomialLadder` synchronizes the product
 and middle entries, with the denominator entry already supplied for every integer by the squared
 coordinate-gap theorem. Exact synchronized even/odd step contracts and an all-natural-index
-assembly theorem are kernel-clean. The remaining algebraic target is therefore the two concrete
-ladder step implementations, not two independently drifting scalar recurrences.
+assembly theorem are kernel-clean. The concrete step implementations are now kernel-clean as well:
+`PrePsiWindowAlgebra` isolates four generic ideal-membership certificates, while
+`PrePsiWindowSteps` attaches them to Mathlib's binary `preΨ` recursion in both center parities.
+Consequently the synchronized Kummer ladder is now unconditional at every natural index.
 
 Those steps now have a smaller sufficient invariant. `PrePsiWindowRelation E n` consists of two
 five-term equations: Ward's product relation for `preΨ(n±2)` and a symmetric-sum companion for
 `preΨ(n±2)` weighted by `preΨ(n±1)²`. A kernel-clean theorem proves that this pair implies both
 entries of `KummerDivisionPolynomialLadder E n` in each parity class. The proof is a short linear
 combination, so it avoids expanding any high-index division polynomial. The next mathematical
-obligation is consequently the reusable statement `∀ n, PrePsiWindowRelation E n`. Its full
-`n = 0,1,2,3,4` base block, exact binary even/odd step contracts, `normEDSRec` assembly, and direct
-assembly into the Kummer ladder are kernel-clean. Only the two window step implementations remain;
-once they are proved from the concrete binary `preΨ` recursion, the Kummer recurrence follows
-immediately.
+obligation was consequently the reusable statement `∀ n, PrePsiWindowRelation E n`. Its full
+`n = 0,1,2,3,4` base block, concrete binary even/odd steps, `normEDSRec` assembly, and direct
+assembly into the Kummer ladder are now kernel-clean. The public exports include the all-natural
+window theorem and both product and middle Kummer recurrences.
 
 A scratch algebra audit also rejected a tempting under-strength implementation tactic: treating
 five neighboring Kummer recurrence equalities as relations for an otherwise arbitrary sequence
 does not reduce the even target to zero. The concrete `preΨ` values carry additional normalized-EDS
-history. The corrected middle coordinate and window reduction now establish exactly which stronger
-state is sufficient, but do not yet prove the window equations at every index. Therefore the
-remaining induction must unfold the actual binary `preΨ'_even`/`preΨ'_odd` construction (or prove an
-equivalent elliptic-sequence theorem); it must not assert that the product equalities alone form a
-complete abstract induction state.
+history. The corrected two-equation window state is sufficient and is now proved at every natural
+index by unfolding the actual binary `preΨ_even`/`preΨ_odd` construction. The failed product-only
+classifier remains useful negative evidence: downstream work must consume the complete window or
+the exported synchronized ladder, not reconstruct an under-strength abstract induction state.
 
 The full `n = 0,1,2,3` base block and the first recursive even case `n = 4` are kernel-clean. The
 first two cases are structural. The `n = 2`
@@ -293,8 +293,7 @@ Lean goal is a recurrence step
 for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
 the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
 resulting `kummerBiquadratic` expression. The denominator-gap square is already proved generally;
-the remaining exact algebraic target is `KummerDivisionPolynomialRecurrence E n`, whose complete
-five-case base block is proved. Its even and odd step contracts and their all-natural-index assembly
-are now kernel-clean. The first residual is to prove the even contract while retaining the concrete
-normalized-EDS history (or an explicitly sufficient stronger ladder invariant); the odd contract
-then forms the second and final pure polynomial branch.
+the product and middle Kummer recurrences are now kernel-clean for every natural index. The first
+residual is therefore the point-level homogeneous `xRep` recurrence: use the complete Kummer matrix
+for the distinct-x branch, then discharge the equal-x doubling, inverse, and infinity branches
+without adding a characteristic restriction.
