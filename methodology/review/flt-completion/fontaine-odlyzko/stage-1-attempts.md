@@ -28,3 +28,16 @@ estimated.
 
 The full independent-design prompt remains in `stage-1-prompt-non-fable.md` as advisory planning
 evidence. There is no `stage-1-sonnet5.md` or `stage-1-gpt56xhigh.md` result from this lane.
+
+## Opus-first primary producer
+
+The superseding producer ladder completed a fresh read-only Opus 4.8 primary design under the exact
+d10 budget. The result is advisory until the separately governed GPT independent review; this lane
+does not itself update the central control plane.
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| primary design | `opus48-primary-designer-d10` / `claude-opus-4-8` / Claude CLI | `3600 s` | `774.945 s` | `41,712` input; `213,759` cache-create; `2,018,349` cache-read; `47,709` output; `2,321,529` total including cache, deduplicated over `51` request IDs | `UNCERTAIN` |
+
+Full evidence: `stage-1-opus48-primary.md`. Claude session:
+`bc4a68a4-8bdb-4c7f-a628-11cc6ede9f3a`.

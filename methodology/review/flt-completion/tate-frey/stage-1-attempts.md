@@ -31,3 +31,25 @@ estimated.
 
 The full independent-design prompt remains in `stage-1-prompt-non-fable.md` as advisory planning
 evidence. There is no `stage-1-sonnet5.md` or `stage-1-gpt56xhigh.md` result from this lane.
+
+## Opus-first primary producer
+
+The superseding producer ladder completed a fresh read-only Opus 4.8 primary design under the exact
+d8 budget. This does not itself advance the central control plane; it is ready for the separately
+governed GPT independent-review stage.
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| primary design | `opus48-primary-designer-d8` / `claude-opus-4-8` / Claude CLI | `3000 s` | `669.147 s` | `55,078` input; `281,398` cache-create; `2,394,660` cache-read; `37,978` output; `2,769,114` total including cache, deduplicated over `46` request IDs | `READY-FOR-GPT-REVIEW` |
+
+Full evidence: `stage-1-opus48-primary.md`. Claude session:
+`89186f12-5a49-417d-bef5-e7e0e9c682cb`.
+
+## GPT-5.6 xhigh independent review
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| independent review | `gpt56xhigh-independent-reviewer-d8` / `gpt-5.6-sol`, xhigh / Codex direct exec | `1800 s` | `467.232 s` | `4,393,053` input; `4,171,008` cached input; `22,099` output (`15,387` reasoning); `4,415,152` total | `REVISE`; Fable diversity trigger `YES` |
+
+Full evidence: `stage-2-gpt56xhigh-review.md`. Codex session:
+`019f6f0c-0fbb-7020-aa76-0a3db9e575d4`.

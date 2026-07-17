@@ -110,6 +110,30 @@ scaffold_ledger = ndjson(ROOT / "methodology/control/scaffold-admissions.ndjson"
 historical_ledger = ndjson(ROOT / "methodology/control/historical-assumptions.ndjson")
 attempts_path = ROOT / "methodology/control/flt-completion-attempts.ndjson"
 stage_attempts = ndjson(attempts_path) if attempts_path.exists() else []
+execution_path = ROOT / "methodology/control/flt-completion-execution.ndjson"
+component_runs = ndjson(execution_path) if execution_path.exists() else []
+attempt_outcomes: dict[str, int] = {}
+for attempt in stage_attempts:
+    outcome = attempt.get("transport_outcome", "UNKNOWN")
+    attempt_outcomes[outcome] = attempt_outcomes.get(outcome, 0) + 1
+known_token_rows = [
+    attempt["token_usage"]
+    for attempt in stage_attempts
+    if isinstance(attempt.get("token_usage"), dict)
+]
+token_totals = {
+    field: sum(row.get(field, 0) for row in known_token_rows)
+    for field in (
+        "input_tokens",
+        "cache_creation_input_tokens",
+        "cache_read_input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+        "total_including_cache_tokens",
+        "total_tokens",
+    )
+}
 t2_named_axioms = {
     row["lean_axiom"]
     for row in historical_ledger
@@ -223,6 +247,18 @@ record = {
     },
     "action_costing": {
         "attempts_recorded": len(stage_attempts),
+        "attempt_outcomes": attempt_outcomes,
+        "actual_elapsed_ms_recorded": sum(
+            attempt.get("actual_elapsed_ms", 0)
+            for attempt in stage_attempts
+            if isinstance(attempt.get("actual_elapsed_ms"), int)
+        ),
+        "token_rows_known": len(known_token_rows),
+        "token_rows_unavailable": len(stage_attempts) - len(known_token_rows),
+        "token_totals": token_totals,
+        "running_components": sorted(
+            run["component"] for run in component_runs if run.get("state") == "running"
+        ),
         "latest_attempt": stage_attempts[-1] if stage_attempts else None,
     },
     "graph": {

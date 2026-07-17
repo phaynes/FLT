@@ -818,7 +818,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Deep historical theorem with only a generic current boundary.",
+        "evidence": "Opus primary design identified the exact Serre 1987 terminal and a clean standard-trio signature probe; independent GPT review is running.",
         "loc_p50": 10000,
         "loc_p80": 70000,
         "loc_p95": 300000,
@@ -833,17 +833,19 @@
       "lean_risk": "unbounded",
       "lean_type": "(P : FreyPackage) -> let rho := P.freyCurve.galoisRep P.p P.hppos; GaloisRep.IsIrreducible rho",
       "library_candidates": [
-        "Mazur_statement"
+        "Serre1987.freyCurve_galoisRep_isIrreducible"
       ],
       "mathematical_name": "Mazur irreducibility input for Frey packages",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HIST-MAZUR",
-      "proof_pattern": "T1 exposes knownin1980s; T2 names the exact sourced isogeny theorem; T3 formalizes the modular-curve/Eisenstein-ideal route or an equivalent unconditional derivation.",
-      "review_state": "unreviewed",
+      "proof_pattern": "T2 names the exact Serre 1987 Frey-package irreducibility terminal; T3 formalizes the underlying Serre/Mazur route or an equivalent unconditional derivation.",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-HIST-MAZUR",
-      "source_condition_risks": "The exact theorem used is a consequence of Mazur's isogeny theorem, not merely the torsion theorem; hypotheses and exceptional primes require a source audit.",
+      "source_condition_risks": "Serre 1987 section 4.1 Proposition 6 p.201 is the proposed exact Frey irreducibility terminal. GPT review and the mandatory human gate must confirm the parity specialization and exact named-interface scope.",
       "source_refs": [
-        "SRC-006"
+        "SRC-006",
+        "SRC-020",
+        "SRC-021"
       ],
       "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
@@ -931,7 +933,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-FREY-HR",
       "proof_pattern": "Prove the four structure fields independently and assemble; replace admitted rank evidence first.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-FREY-HR",
       "source_condition_risks": "Semistability at 2, unramifiedness outside 2p, determinant, and flatness at p require distinct source locators.",
       "source_refs": [
@@ -1311,7 +1313,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "T1 may expose this as a sourced historical boundary; T2 names exact Langlands/Jacquet-Langlands assumptions; T3 formalizes the transfer and descent.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-CBASE",
       "source_condition_risks": "The Skinner-Wiles reduction also needs characterization of the image and multiplicity one, not only forward base change.",
       "source_refs": [
@@ -1432,7 +1434,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Central theorem and much of its geometric setting are absent.",
+        "evidence": "Opus primary design is uncertain; conditional Fable diversity is queued before GPT review.",
         "loc_p50": 25000,
         "loc_p80": 120000,
         "loc_p95": 500000,
@@ -1455,9 +1457,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MORET-BAILLY",
       "proof_pattern": "T1 may use a named sourced historical boundary only if pre-1990 scope is accepted; T3 requires algebraic-geometry and approximation formalization.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-MORET-BAILLY",
-      "source_condition_risks": "The exact variety, smoothness/geometric-integrality, local sets, and field-disjointness conclusion must match the source.",
+      "source_condition_risks": "Opus froze a candidate interface but returned UNCERTAIN because the exact 1989 theorem locator/text and local-point topology/rationalPoint primitives remain unresolved. Conditional Fable diversity and GPT review are active.",
       "source_refs": [
         "SRC-011"
       ],
@@ -1498,7 +1500,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Inventory Mathlib local/global class-field results, then introduce only missing named interfaces.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "A package must enumerate exact theorems rather than bundle a generic authority axiom.",
       "source_refs": [
@@ -1898,7 +1900,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Some PGL2 and discriminant infrastructure exists, but the integrated classification is absent.",
+        "evidence": "Opus primary design is uncertain; serialized Fable diversity is running before GPT review.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1921,9 +1923,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
-      "source_condition_risks": "The discriminant estimate, finite group classification, and finite-flat local constraints must collectively exclude every irreducible image.",
+      "source_condition_risks": "Opus returned UNCERTAIN: the existing Odlyzko_statement is insufficient and exact historical/numerical boundaries, quotient orientation, and Selmer exclusion remain unresolved. Conditional Fable diversity and GPT review are active.",
       "source_refs": [
         "SRC-003",
         "SRC-007"
@@ -2102,7 +2104,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
       "proof_pattern": "Retain the umbrella until either its finite joint-image terminal is proved or exact residual and characteristic-zero branches are both frozen. Reuse trace_asAlgebraHom_eq and prodAsModuleEquiv for the algebraically closed character/projector argument, and residualModel_finrank_eq_two for the residual branch; do not hide the compatible-family Chebotarev/semisimplicity terminal.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
       "source_condition_risks": "The arbitrary-field contract is true and signature-green, but the documented finite separable splitting-field route is incomplete over imperfect fields. The reviewed rank-two algebraically closed shortcut can serve only the residual coefficient branch; it cannot serve characteristic-zero compatible-family members or replace the absent Chebotarev bridge.",
       "source_refs": [
@@ -2438,7 +2440,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-FLAT",
       "proof_pattern": "Prove/source the universal default-resultant division-polynomial identity. Separately construct the Neron--Ogg--Shafarevich point specialization and local/global action bridge, then the finite-flat Hopf-algebra model at P.p. None of these three mathematical inputs substitutes for another.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-TATE-FLAT",
       "source_condition_risks": "Tate's primary source gives an explicit finite-flat group scheme G_{k,t,m}, its identification with E_t[m], and the good-reduction criterion for that torsion model. The pinned library lacks the required finite-flat scheme/Hopf-algebra vocabulary, so the citation is not an implementation. The padded resultant is reduced kernel-cleanly to the default resultant, but the universal Res(Phi_n,Psi_n^2)=+/-Delta^k identity is absent. Prime-to-residue-characteristic unramifiedness separately needs point specialization, inertia compatibility, torsion injectivity, and local/global torsion-action transport.",
       "source_refs": [
@@ -2495,7 +2497,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-UNRAMIFIED",
       "proof_pattern": "Under provider authorization, migrate the existing kernel-clean analytic, substitution, reduction, coordinate-boundary, and assembly probes. Evaluate the formal Tate X/Y series in the target local field and prove the concrete equation; prove the explicit point function respects multiplication and is surjective, retaining Tate's characteristic-two branch; then consume the automatic kernel and quotient assembly. Prefer the direct Silverman V.5.3 local split-form contract, with the proved quadratic-twist decomposition as fallback. Finish base-change, Galois, and separable-closure compatibility.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-TATE-UNRAMIFIED",
       "source_condition_risks": "Nine provider admissions remain. Tate Theorem 1 is pinned as the exact source for the point homomorphism and surjectivity, including characteristic two. The frozen repository already defines formal X/Y series and proves their Weierstrass identity. Methodology probes prove that concrete local-field coordinates plus the addition law and surjectivity mechanically give the point map, exact kernel q^Z, quotient equivalence, and general-curve assembly. Concrete evaluation of the formal coordinates and the addition/surjectivity proofs remain absent. Silverman V.5.3 supplies the direct local-form interface, but its printed hypothesis scope still needs visual verification. The final pairing belongs to FLT-TATE-WEIL.",
       "source_refs": [
@@ -2541,7 +2543,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-WEIL",
       "proof_pattern": "Construct a source-faithful Weil pairing with enough alternating, perfectness, base-change, or Galois-equivariance laws to exclude the zero inhabitant, then prove the exact Tate normalization theorem. Coordinate the latter with FLT-TATE-UNRAMIFIED because it consumes tateEquivSepClosure.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-TATE-WEIL",
       "source_condition_risks": "Tate's primary source gives the canonical finite-flat exact sequence and Weil-pairing formula on the Tate torsion model, up to a stated global sign convention. The exported Lean biadditive-map type is nevertheless inhabited by the zero pairing and does not characterize that source object. Pinned Mathlib has no Weil-pairing, Miller-function, divisor/Picard, or Cartier-duality construction.",
       "source_refs": [
@@ -2858,7 +2860,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-HIST-QUATERNION",
       "proof_pattern": "Construct a finite quotient model of the adelic stabilizer using order units modulo scalar units, prove that its kernel is exactly the scalar subgroup, then apply the kernel-clean finite-relative-index adapter.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-HIST-QUATERNION",
       "source_condition_risks": "Voight Lemma 17.7.13 proves only finiteness of norm-one units. The direct scalar-quotient-to-norm-one injection in the upstream comment is false without a square-norm condition. Lemma 26.5.1 gives the correct finite order-unit quotient, but compact-open-to-order and exact-kernel bridges remain open.",
       "source_refs": [
@@ -2908,7 +2910,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-SUPPORT-TATE",
       "proof_pattern": "Inventory join only: each explicit torsion, flatness, Tate-curve, and Weil-pairing subcluster closes first.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-SUPPORT-TATE",
       "source_condition_risks": "This is an inventory cluster, not a theorem shortcut; it must be decomposed into declaration nodes before its wave begins.",
       "source_refs": [
