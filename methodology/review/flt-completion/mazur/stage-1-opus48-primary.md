@@ -16,6 +16,11 @@
 - Verdict: **READY-FOR-GPT-REVIEW**
 - Promotion: none; GPT review and the human axiomatization gate remain mandatory
 
+> **Post-review correction.** The final paragraph of §6 claiming a broader semistable/full-
+> two-torsion statement is false was rejected by the independent GPT-5.6 review and is not
+> load-bearing. It is retained below only as raw producer history. The authoritative disposition is
+> `stage-2a-review-disposition.md`; no registered justification may repeat that claim.
+
 The bridge's final response summarized the report and pointed to Claude's automatically generated
 plan cache. The complete report below is preserved from that cache so the authorized repository
 artifact contains the full model deliverable. The model made no FLT repository edits.

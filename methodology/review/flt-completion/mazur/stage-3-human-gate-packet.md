@@ -1,6 +1,6 @@
 # Mandatory human gate — Mazur named T2 assumption
 
-Status: **READY FOR A HUMAN DECISION, NOT AUTHORIZED**.
+Status: **READY FOR OPERATOR AUTHORIZATION; NOT AUTHORIZED**.
 
 ## Evidence already established
 
@@ -16,7 +16,8 @@ Status: **READY FOR A HUMAN DECISION, NOT AUTHORIZED**.
 The Opus report's claimed counterexample outside the exact Frey specialization is not valid.
 Semistability plus full rational two-torsion already supplies the relevant irreducibility route for
 prime `p >= 5`. That incorrect rationale must not appear in the registered source justification.
-This correction does not change the specialized declaration below.
+This correction does not change the specialized declaration below. The authoritative correction
+overlay is `stage-2a-review-disposition.md`; the raw producer report is retained as review history.
 
 ## Exact decision proposed
 
@@ -30,8 +31,22 @@ Serre1987.freyCurve_galoisRep_isIrreducible (P : FreyPackage) :
   GaloisRep.IsIrreducible (E.galoisRep p P.hppos)
 ```
 
-Authorization must also approve its module placement and the explicit parity translations
-`a^p ≡ -1 (mod 4)` and `b^p ≡ 0 (mod 32)`. After registration, the stage audit must show this exact
-named axiom plus the standard trio, with no `sorryAx`. The assumption is forbidden at T3.
+The proposed module placement is now exact: declare the axiom in `namespace Serre1987`,
+co-located in `FLT/FreyCurve/Mazur.lean` immediately before `FreyPackage.mazur`.
+`/private/tmp/MazurNamedPlacementProbe.lean` confirms that this placement elaborates and supplies
+the consumer definitionally.
+
+The explicit parity translations are now proved in
+`FLTMethodology/Probes/MazurParityBoundary.lean`:
+
+- `a^p ≡ -1 (mod 4)` from `P.ha4` and `P.hp_odd`;
+- `b^p ≡ 0 (mod 32)` from `P.hb2` and `P.hp5`.
+
+Both declarations audit to exactly `[propext, Classical.choice, Quot.sound]`.
+
+Authorization must approve the exact name, type, co-located placement, source locator, parity
+translation and T2-only scope. After registration, the stage audit must show the exact named axiom
+plus the standard trio, with no `knownin1980s` or new `sorryAx` on the consumer path. The
+assumption is forbidden at T3.
 
 No authorization has been inferred or recorded by this packet.
