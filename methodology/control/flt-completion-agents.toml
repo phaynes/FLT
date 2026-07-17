@@ -12,6 +12,7 @@ role = "specialist"
 model = "claude-sonnet-5"
 permission_mode = "suggest"
 output_format = "text"
+timeout_secs = 1800
 append_system_prompt = """
 Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
 Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
@@ -26,6 +27,7 @@ role = "reviewer"
 model = "claude-fable-5"
 permission_mode = "suggest"
 output_format = "text"
+timeout_secs = 1800
 append_system_prompt = """
 Act as a hostile mathematical and Lean reviewer. Read the repository but do not edit it. For design
 turns, produce an independent design. For review turns, judge the supplied GPT synthesis against the
@@ -43,6 +45,7 @@ reasoning_effort = "xhigh"
 codex_transport = "exec"
 session_strategy = "fresh"
 output_format = "text"
+timeout_secs = 1800
 codex_sandbox = "read-only"
 append_system_prompt = """
 Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
@@ -61,6 +64,7 @@ reasoning_effort = "xhigh"
 codex_transport = "exec"
 session_strategy = "fresh"
 output_format = "text"
+timeout_secs = 3600
 codex_sandbox = "workspace-write"
 append_system_prompt = """
 Implement only the agreed bounded FLT component design. Preserve theorem statements and target-stage
@@ -76,6 +80,7 @@ role = "reviewer"
 model = "claude-opus-4-8"
 permission_mode = "suggest"
 output_format = "text"
+timeout_secs = 1800
 append_system_prompt = """
 Review the completed Lean tranche read-only. Return PASS or REVISE, but treat lake build and exact
 declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
