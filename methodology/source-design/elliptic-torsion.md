@@ -479,11 +479,17 @@ requires no `IsSepClosed k` or `PerfectField k` assumption.
 
 An independent audit of AINTLIB commit
 `b91f668cd447754b83880f353c34e4a1ed236f2c` found a kernel-clean algebraically closed
-torsion-card theorem and compiled an exact FLT-style adapter under the pinned FLT Lean/Mathlib
-environment. It was not imported: AINTLIB's capstone is `IsAlgClosed`, not the frozen
-`IsSepClosed` theorem, and its legacy non-`module` files cannot be imported from FLT's module
-files. The full evidence and integration options are recorded in
-`methodology/evidence/probes/FLT-TATE-TORSION-AINTLIB-AUDIT.md`.
+torsion-card theorem. A disposable module conversion builds its exact 52-module target slice under
+the frozen FLT Lean/Mathlib pin with no executable admissions in that slice.
+
+`FLTMethodology/Probes/PrePsiSeparableOfTorsionCard.lean` supplies the missing reverse bridge:
+an exact algebraically closed torsion count forces `preΨ' n` to be separable. A disposable FLT
+probe then base-changes to `AlgebraicClosure k`, consumes AINTLIB's count, descends separability,
+and applies the native root/fibre count to prove the exact frozen `[IsSepClosed k]`
+`n_torsion_card` statement. Every bridge theorem has only the standard axiom trio. The full
+evidence and migration options are recorded in
+`methodology/evidence/probes/FLT-TATE-TORSION-AINTLIB-AUDIT.md`. No external dependency or provider
+edit is retained in the governed checkout yet.
 
 ## Minimal implementation graph
 
@@ -499,13 +505,13 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, coprimality, local
-   dual-number tangent work, generic formal-group linearization, and algebraic-closure descent are
-   closed. Construct a geometry-linked `PrePsiFormalGroupAdapter` for the base-changed curve (or a
-   direct no-infinitesimal-kernel theorem) to prove `preΨ'` separable over the original field.
-7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
-   hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
-   may instead be used to discharge the same two mathematical facts.
+6. `FLT-TORSION-PARITY-COUNT` — source-design route closed in disposable integration: AINTLIB's
+   exact algebraically closed count plus `prePsi_separable_of_n_torsion_card` proves separability
+   after base change and descent. The native formal-group adapter remains an optional independent
+   route.
+7. `FLT-TORSION-ETALE-COUNT` — full frozen signature compiled in the disposable integration probe.
+   It is not a tracked provider theorem until the audited dependency slice is retained and the
+   provider migration is authorized.
 8. Migrate the two provider declarations and audit every exported consumer, especially
    `n_torsion_dimension`, `Module.Finite`, and `WeierstrassCurve.galoisRep`.
 
@@ -521,35 +527,25 @@ Build in this order:
 - Provider migration remains a separate task because the frozen source explicitly requests
   coordination with Kevin Buzzard and David Angdinata.
 
-## Next exact theorem
+## Next exact implementation
 
 The division-polynomial/Kummer lane and all-characteristic finiteness theorem are complete in the
-methodology tree. The next bounded mathematical obligation is the remaining frozen provider:
+methodology tree. The remaining frozen provider is:
 
 ```lean
 theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ}
     (hn : (n : k) ≠ 0) : Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-The next exact theorem is now:
+The exact theorem body has compiled in a disposable frozen-pin checkout by composing:
 
 ```lean
-theorem psiSqAffineZeroCard
-    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] [IsSepClosed k]
-    {n : ℕ} (hn : (n : k) ≠ 0) : PsiSqAffineZeroCard E n
+FLTMethodology.Torsion.n_torsion_card_of_prePsi_separable E hn
+  (prePsi_separable_of_aintlib_torsion_card E hn)
 ```
 
-The root-set parity split, splitting-to-root-count adapter, both fibre multiplicities, and the final
-odd/even sum arithmetic are now proved. The exact conditional assembly theorem needs only
-square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even coprimality lane is now
-closed by the specialized EDS formula described above, while the odd lane is closed in every
-characteristic. The exact conditional full torsion-card theorem now depends only on separability.
-The dual-number construction has reduced that input to excluding a concrete infinitesimal kernel
-witness via the differential of multiplication by `n`. The generic formal-group differential and
-the descent from an algebraic closure to the frozen base-field interface are now proved. The exact
-remaining elliptic dependency is a geometry-linked implementation of
-`PrePsiFormalGroupAdapter` for `E.map (algebraMap k (AlgebraicClosure k))`, or an equivalent direct
-no-infinitesimal-kernel theorem. A finite-etale kernel bridge remains the alternative route. The
-AINTLIB audit confirms the algebraically closed mathematics but cannot be imported directly due to
-its weaker field interface and non-`module` packaging. Provider migration remains separately
-authorized work.
+The next work is therefore not new mathematics. It is an authorized dependency/provider migration:
+retain the reviewed module-converted 52-module slice or pinned fork, add the subtype and
+algebraic-closure bridge, replace the two provider admissions, and rerun the full consumer and
+terminal axiom audits. Until that migration occurs, `FLT-TATE-TORSION` remains open and the graph
+countdown does not change.

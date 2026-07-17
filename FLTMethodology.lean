@@ -26,6 +26,7 @@ import FLTMethodology.Probes.PrePsiTwoTorsion
 import FLTMethodology.Probes.PrePsiInfinitesimal
 import FLTMethodology.Probes.PrePsiFormalGroupAdapter
 import FLTMethodology.Probes.PrePsiBaseChange
+import FLTMethodology.Probes.PrePsiSeparableOfTorsionCard
 import FLTMethodology.Probes.SpecialPreNormEDS
 import FLTMethodology.Probes.TateCoordinatePointMapBoundary
 import FLTMethodology.Probes.TateDeltaAnalyticBridge

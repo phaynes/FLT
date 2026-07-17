@@ -21,33 +21,56 @@ The declaration built at the reviewed commit and its axiom audit returned exactl
 [propext, Classical.choice, Quot.sound]
 ```
 
-A disposable FLT integration checkout proved both an equivalence between the two torsion
-subtypes and the corresponding FLT-style cardinality and rank-two statements. Those probes also
-had only the standard axiom trio. AINTLIB's torsion target built under FLT's pinned Lean
-`v4.32.0-rc1` and Mathlib `a3364faec42918fcd84a03a255b50570129f9ead`; no toolchain upgrade is
-mathematically required.
+A disposable module conversion and FLT integration checkout now proves the complete frozen
+`n_torsion_card` contract. AINTLIB's torsion target builds under FLT's pinned Lean `v4.32.0-rc1`
+and Mathlib `a3364faec42918fcd84a03a255b50570129f9ead`; no toolchain upgrade is required.
 
-## Why it was not imported
+The exact imported target slice contains 52 HasseWeil modules and 27,204 source lines after two
+unused admitted declarations and their consumer-free derived declarations are removed. A raw
+source scan of those 52 modules finds no executable `sorry`, `admit`, `axiom`, `unsafe`, or
+`native_decide`. The target rebuild succeeds, and
+`HasseWeil.WeilPairing.TorsionGeometric.card_torsion_ell` still audits to exactly the standard
+axiom trio.
 
-Two frozen interface mismatches remain:
+## Complete disposable bridge
 
-1. FLT exports `n_torsion_card` under `[IsSepClosed k]`, while AINTLIB's capstone requires
-   `[IsAlgClosed k]`. A separably closed field need not be algebraically closed in positive
-   characteristic, so this cannot be filled by typeclass inference or an assurance-only cast.
-2. FLT source files use Lean's `module` discipline, while the reviewed AINTLIB source files are
-   legacy non-`module` files. Lean rejects importing `TorsionCardEll` from
-   `FLT/EllipticCurve/Torsion.lean` with:
+The disposable integration proves the following chain:
 
-   ```text
-   cannot import non-`module` HasseWeil.HasseBound.WeilPairing.TorsionCardEll from `module`
-   ```
+1. `fltNTorsionEquivAintlibTorsion` identifies FLT's `E.nTorsion n` subtype with AINTLIB's
+   `torsionSubgroup E.toAffine (n : ℤ)`.
+2. `flt_n_torsion_card_of_aintlib` transports AINTLIB's theorem to FLT over an algebraically
+   closed field.
+3. The tracked methodology theorem `prePsi_separable_of_n_torsion_card` recovers separability of
+   `E.preΨ' n` from that exact algebraically closed torsion count.
+4. `prePsi_separable_of_aintlib_torsion_card` base-changes to `AlgebraicClosure k`, applies steps
+   2 and 3, and descends separability with `Polynomial.separable_map`.
+5. `flt_n_torsion_card_sepClosed_of_aintlib` applies the existing native root/fibre-count theorem
+   and proves the frozen `[IsSepClosed k]` result.
 
-The imported AINTLIB closure also reports two unrelated source declarations containing `sorry`.
-They do not occur in the axiom closure of `card_torsion_ell`, but a future dependency decision must
-state whether assurance is declaration-closure based or package-wide.
+Every theorem in this bridge audits to:
 
-The main FLT checkout was restored after the failed packaging probe. No AINTLIB dependency or
-provider edit was retained.
+```text
+[propext, Classical.choice, Quot.sound]
+```
+
+This resolves both previously identified technical mismatches. The legacy sources can be converted
+to Lean modules mechanically, and the `IsAlgClosed`/`IsSepClosed` gap is bridged without assuming
+that a separably closed field is algebraically closed.
+
+## Why it is still not imported
+
+The remaining boundary is governance and dependency provenance, not a missing mathematical lemma:
+
+1. the exact 52-module slice or a pinned module-converted fork must be selected and retained;
+2. the mechanical conversion, promoted helper visibility, and one collision-avoiding helper rename
+   must be reviewed as source changes;
+3. copyright/licence provenance must be packaged with the retained sources; and
+4. the two frozen provider declarations must be migrated under an authorized provider task and all
+   transitive consumers re-audited.
+
+No AINTLIB dependency, converted source, or provider edit has been retained in the main FLT
+checkout. The successful build and full provider theorem exist only in disposable audit trees and
+temporary probes.
 
 ## Reusable mathematical information
 
@@ -58,22 +81,23 @@ AINTLIB independently confirms the intended mathematical route and supplies usef
 - unramifiedness at torsion points; and
 - kernel cardinality over an algebraically closed field.
 
-The local methodology now removes the `IsSepClosed`/`IsAlgClosed` mismatch without importing
-AINTLIB: `prePsi_separable_of_algebraicClosure_formalGroupAdapter` base-changes the curve and
-division polynomial to `AlgebraicClosure k`, applies the algebraically closed infinitesimal
-argument there, and descends polynomial separability with `Polynomial.separable_map`.
-
-The remaining proof is the actual geometry-linked algebraic-closure adapter (or an equivalent
-direct no-infinitesimal-kernel theorem). The existing `PrePsiFormalGroupAdapter` is a conditional
-assembly boundary; its `nSeries_annihilates` field still contains the substantive elliptic claim.
+The local theorem `prePsi_separable_of_n_torsion_card` supplies the crucial reverse direction:
+exact torsion cardinality over an algebraic closure forces the division polynomial to be separable.
+It reuses the already-proved characteristic-safe detector, pointwise coprimality, fibre
+multiplicities, parity split, and degree formula. This avoids constructing a second elliptic formal
+group solely to repair the external theorem's stronger field assumption.
 
 ## Integration options
 
-1. Continue the native FLT methodology and prove the concrete algebraic-closure adapter. This
-   preserves the current package and module boundary.
-2. Create and independently audit a pinned `module`-converted AINTLIB fork, then use only the
-   clean declaration closure. This is a packaging project, not a one-line dependency update.
+1. Retain and independently review the exact 52-module converted slice, then migrate
+   `n_torsion_finite` and `n_torsion_card` through the proved bridge. This is the shortest route
+   already demonstrated against the frozen toolchain.
+2. Publish a pinned module-converted AINTLIB fork and depend on its audited torsion target rather
+   than vendoring the slice.
 3. Port a minimal, source-attributed subset of AINTLIB's formal-group/unramified proof into a
    native FLT module. This requires a fresh dependency-closure and licence/provenance audit.
+4. Continue the native dual-number/formal-group adapter route. It remains mathematically valid but
+   is no longer the smallest demonstrated route to the frozen provider theorem.
 
-Option 1 remains the smallest change to the governed FLT proof programme.
+Option 1 is the smallest verified implementation route. It still requires explicit provider and
+dependency authorization; this source-design tranche does not claim provider or graph closure.
