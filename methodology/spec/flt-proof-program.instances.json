@@ -2297,7 +2297,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUT-GALOIS",
       "proof_pattern": "Separate RACAR attachment, quaternionic attachment, coefficient transport, Frobenius compatibility, monodromy/local conditions, and only then build R-to-T.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-AUT-GALOIS",
       "source_condition_risks": "Weight, coefficient field, lattice reduction, semisimplification, local-global normalization, and GL2/quaternionic transfer must match exactly.",
       "source_refs": [
@@ -2958,7 +2958,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SUPPORT-AUTOMORPHIC",
       "proof_pattern": "First freeze the MLT/JL interfaces, then decompose only the dependency closure into exact nodes.",
-      "review_state": "unreviewed",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-SUPPORT-AUTOMORPHIC",
       "source_condition_risks": "Exploratory definitions may not match the final selected theorem; do not close irrelevant admissions merely to reduce a raw count. The selected quaternionic support module currently consumes the finite-relative-index historical boundary.",
       "source_refs": [
@@ -3050,7 +3050,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately; prove uniqueness through the explicit Brauer-Nesbitt dependency before freezing the source contract.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "A generic-fibre base change is not residual reduction. The provisional relation now requires the maximal ideal to lie in the coefficient-map kernel, but stable-lattice existence, lattice independence, Brauer-Nesbitt uniqueness, and the fixed residual algebraic-closure instantiation remain explicit obligations.",
       "source_refs": [
@@ -3094,7 +3094,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Freeze source-level predicates first, then formalize the weight-two comparison theorem under exact field and coefficient hypotheses.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "IsFlatAt does not definitionally imply crystallinity or the required Hodge-Tate weights; the bridge is substantial p-adic Hodge mathematics.",
       "source_refs": [
@@ -3137,7 +3137,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-RACAR-DEF",
       "proof_pattern": "Define the automorphic object and local/source data before proving attachment or Jacquet-Langlands bridges.",
-      "review_state": "revision-required",
+      "review_state": "reviewing",
       "scc_id": "SCC-FLT-RACAR-DEF",
       "source_condition_risks": "The repository's quaternionic eigenform predicate is not a generic GL2 RACAR. Local components and at-ell unramifiedness must be expressible without assuming attached-representation existence.",
       "source_refs": [
