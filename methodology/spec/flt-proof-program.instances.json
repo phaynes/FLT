@@ -1484,7 +1484,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Both class-field methodology probes and independent build review are green. Opus completed a bounded tame-residue graph design READY-FOR-GPT-REVIEW; the complete class-field theorem package remains absent.",
+        "evidence": "Both class-field methodology probes and independent build review are green. The tame-graph GPT review returned REVISE-SUBSTANTIVE and triggered the typed Fable pass; the complete class-field theorem package remains absent.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1497,7 +1497,7 @@
       "kernel_probe_state": "object-boundary-proof-green",
       "lean_declaration": "FLT.PotentialModularity.classField_package",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction.",
+      "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction, with tame residue separately owned.",
       "library_candidates": [
         "NumberField.AdeleRing",
         "FLTMethodology.Probes.ClassFieldCharacterBoundary",
@@ -1506,10 +1506,10 @@
       "mathematical_name": "Global and local class-field interfaces used in potential modularity",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
-      "proof_pattern": "Keep the independently reviewed object/type layer frozen, design and review the exact tame-residue ownership node, then prove or name each remaining source-exact theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-graph-review-queued",
+      "proof_pattern": "Keep the independently reviewed object/type layer frozen; complete the required diversity and synthesis pipeline before routing tame residue through a separate T1 node; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
+      "review_state": "tame-graph-diversity-design-queued",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. Opus proposes a distinct T1 tame-residue node; independent review must confirm ownership, source gate, and edge orientation before graph mutation.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. GPT accepted a distinct T1 tame-residue owner in principle but found substantive graph, wild-inertia, closedness, and source-gate defects; no node or edge has been added.",
       "source_refs": [
         "SRC-004"
       ],
