@@ -1366,7 +1366,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Define the missing source vocabulary, elaborate the theorem statement exactly, then prove separate coefficient, residual, and repository-level bridges.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "The primary route is selected, but its source vocabulary is absent. The conclusion is level-free GL2 automorphy and must not be replaced by IsAutomorphicOfLevel S or a generic integral-O theorem.",
       "source_refs": [
@@ -2208,7 +2208,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Elaborate the repository fields from existing vocabulary, then prove source-hypothesis bridges without hiding p-adic Hodge mathematics in the structure.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "This is a repository-local condition bundle, not Taylor's theorem statement. Flat-to-crystalline/Hodge-Tate and coefficient/lattice bridges must be separately proved.",
       "source_refs": [
