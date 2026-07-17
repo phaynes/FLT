@@ -1178,7 +1178,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HECKE-ACTION",
       "proof_pattern": "Separate automorphic module, Hecke localization, attached representation, trace compatibility, and surjectivity of R-to-T.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-HECKE-ACTION",
       "source_condition_risks": "Surjectivity, level, weight, localization, multiplicity one, coefficient normalization, and the attached representation must align.",
       "source_refs": [
@@ -1645,7 +1645,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUX-CURVE",
       "proof_pattern": "Formalize the moduli variety and use Moret-Bailly with explicitly verified local nonempty opens.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-AUX-CURVE",
       "source_condition_risks": "The moduli problem, disjointness, parity, local flatness, and two residual identifications must all be proved.",
       "source_refs": [
@@ -2255,7 +2255,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-RESIDUAL-IMAGE",
       "proof_pattern": "Prove induced-representation irreducibility over the cyclotomic compositum, then prove Moret-Bailly disjointness preserves each concrete image.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-RESIDUAL-IMAGE",
       "source_condition_risks": "Dihedrality or base-field irreducibility alone is insufficient; both field changes require exact avoidance and nontrivial character-ratio proofs.",
       "source_refs": [
@@ -2353,7 +2353,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUX-LOCAL-FIELD",
       "proof_pattern": "Encode source and project conditions as distinct fields and prove the Moret-Bailly local opens and disjointness conclusion supply each one.",
-      "review_state": "primary-design-running",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-AUX-LOCAL-FIELD",
       "source_condition_risks": "Taylor 2018 requires unramifiedness, not complete splitting. Good reduction and two avoidance conditions are needed for the concrete applications; even degree and Galoisness are project/Jacquet-Langlands requirements, not source hypotheses.",
       "source_refs": [
