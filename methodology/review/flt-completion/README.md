@@ -11,8 +11,10 @@ assignment is an Opus-first producer ladder:
 3. If that review is clean, Opus 4.8 performs the bounded Lean build at the scaled build budget.
 4. The Lean kernel build and exact declaration axiom audit decide the build gate; GPT-5.6 xhigh
    reviews source faithfulness and scope independently.
-5. Fable 5 is a conditional alternative design only for difficulty 8–10, and only after an Opus
-   timeout, a failed build/axiom audit, or a GPT review that explicitly reports design uncertainty.
+5. Fable 5 is a conditional alternative design only when both typed conditions hold: the scheduled
+   difficulty is greater than Opus's comfort ceiling of 7, and the mandatory GPT review returns a
+   substantive mathematical or statement-level `REVISE`. Mechanical, scope, or import-only repairs
+   do not trigger Fable.
 
 If the Opus path is clean and kernel-accepted, no Fable diversity pass is run. Below difficulty 8,
 Fable is not spent. If Fable is unavailable or exhausts its single retry, Opus may supply the
@@ -24,8 +26,10 @@ cannot promote a stage under this ladder.
 
 The model artifacts are advisory. Lean builds and declaration axiom audits are authoritative. A
 component cannot move to `proved` merely because a model reports success. Conditional Fable calls
-remain serialized across components; independent Opus producers and GPT reviewers may run in
-parallel across components.
+remain serialized across components and are ordered by critical-path value, then difficulty.
+Independent Opus producers may run concurrently across every prompt-ready component. The GPT-5.6
+xhigh independent-review lane remains single and serialized; it may not be widened with a
+same-family substitute. Skipping Fable never skips this mandatory independent review.
 
 ## Difficulty-scaled timeout and action-cost contract
 
