@@ -1900,7 +1900,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus primary design is uncertain; serialized Fable diversity is running before GPT review.",
+        "evidence": "Opus was uncertain; Fable returned DECOMPOSE-FIRST with an explicit e2=9 soundness hole; independent GPT comparison is pending after the operator pause.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1923,9 +1923,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "reviewing",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
-      "source_condition_risks": "Opus returned UNCERTAIN: the existing Odlyzko_statement is insufficient and exact historical/numerical boundaries, quotient orientation, and Selmer exclusion remain unresolved. Conditional Fable diversity and GPT review are active.",
+      "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, but identified an unresolved e2=9 inertia-cyclicity soundness hole. GPT comparison is paused.",
       "source_refs": [
         "SRC-003",
         "SRC-007"

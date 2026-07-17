@@ -1,0 +1,1 @@
+{"record_type":"ProgrammePause","paused_at":"2026-07-17T18:16:28+10:00","resume_not_before":"2026-07-17T19:30:00+10:00","timezone":"Australia/Sydney","reason":"operator-request","new_stage_launches_permitted":false,"inflight_policy":"cancel-and-record-no-verdict","resume_gate":"operator continuation at or after 19:30 AEST"}

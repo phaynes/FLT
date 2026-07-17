@@ -41,3 +41,12 @@ does not itself update the central control plane.
 
 Full evidence: `stage-1-opus48-primary.md`. Claude session:
 `bc4a68a4-8bdb-4c7f-a628-11cc6ede9f3a`.
+
+## Fable 5 conditional diversity design
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| alternative design | `fable5-designer-d10` / `claude-fable-5` / Claude CLI | `3600 s` | `1440.655 s` | `48,683` input; `325,538` cache-create; `1,583,459` cache-read; `102,320` output; `2,060,000` total including cache, deduplicated over `41` request IDs | `DECOMPOSE-FIRST` |
+
+Full evidence: `stage-1-fable5-alternative.md`. Claude session:
+`5ef88135-eb06-4305-8965-c4991ab876d3`.
