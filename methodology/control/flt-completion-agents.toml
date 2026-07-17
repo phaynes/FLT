@@ -1,0 +1,83 @@
+[settings]
+workspace_root = "."
+default_timeout_secs = 3600
+default_max_review_cycles = 2
+codex_bin = "/Volumes/second-store/devel/knowledge-base-mcp/external/codex/codex-rs/target/release/codex"
+
+[agents.sonnet5-designer]
+name = "sonnet5-designer"
+description = "Independent source-faithful FLT component designer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5-0"
+permission_mode = "suggest"
+output_format = "text"
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
+Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
+counterexample checks, and a stop-loss verdict. Never upgrade a scaffold or citation into a proof.
+"""
+
+[agents.fable5-designer-reviewer]
+name = "fable5-designer-reviewer"
+description = "Serialized Fable design and source-faithfulness review lane"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-fable-5"
+permission_mode = "suggest"
+output_format = "text"
+append_system_prompt = """
+Act as a hostile mathematical and Lean reviewer. Read the repository but do not edit it. For design
+turns, produce an independent design. For review turns, judge the supplied GPT synthesis against the
+source, actual Lean types, counterexamples, dependency closure, and target-stage axiom policy.
+"""
+
+[agents.gpt56xhigh-designer]
+name = "gpt56xhigh-designer"
+description = "Independent and synthesis FLT component designer"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
+interfaces and a dependency-ordered construction plan, distinguish proved dependencies from proposed
+ones, test statement viability, and reject any route that hides the target theorem in an assumption.
+"""
+
+[agents.gpt56xhigh-builder]
+name = "gpt56xhigh-builder"
+description = "Bounded Lean builder for an agreed FLT component design"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "full-auto"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+codex_sandbox = "workspace-write"
+append_system_prompt = """
+Implement only the agreed bounded FLT component design. Preserve theorem statements and target-stage
+axiom policy. Keep the control plane current, run targeted and umbrella builds, and stop on a
+statement-level obstruction rather than introducing an unreviewed assumption.
+"""
+
+[agents.opus48-build-reviewer]
+name = "opus48-build-reviewer"
+description = "Independent final build reviewer; Lean kernel remains authoritative"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+append_system_prompt = """
+Review the completed Lean tranche read-only. Return PASS or REVISE, but treat lake build and exact
+declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
+hidden assumptions, and control-plane honesty.
+"""
