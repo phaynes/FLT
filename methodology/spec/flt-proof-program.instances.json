@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "bounded-vocabulary-built-kernel-green-gpt-build-review-queued",
+      "review_state": "bounded-vocabulary-built-kernel-green-gpt-build-review-running",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "tier1-reviewed-g1-decompose-first-gpt-review-running",
+      "review_state": "tier1-reviewed-g1-substantive-repair-fable-queued",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
