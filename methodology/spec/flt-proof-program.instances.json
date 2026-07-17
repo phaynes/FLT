@@ -1484,7 +1484,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Both class-field methodology probes build in the umbrella, all declarations audit to the standard trio, and independent Opus build review returned PASS. The complete class-field theorem package remains absent.",
+        "evidence": "Both class-field methodology probes and independent build review are green. The exact tame-residue graph ownership is under bounded Opus design; the complete class-field theorem package remains absent.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1506,10 +1506,10 @@
       "mathematical_name": "Global and local class-field interfaces used in potential modularity",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
-      "proof_pattern": "Keep the independently reviewed standard-trio-clean object/type layer frozen, repair the exact tame-kernel graph scope, then prove or name each remaining source-exact theorem separately without placing full reciprocity on the immediate MLT path.",
-      "review_state": "build-reviewed-pass-next-graph-repair",
+      "proof_pattern": "Keep the independently reviewed object/type layer frozen, design and review the exact tame-residue ownership node, then prove or name each remaining source-exact theorem without placing full reciprocity on the immediate MLT path.",
+      "review_state": "tame-graph-design-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green, including named quotient topology/group instances and finite-to-full idele maps. Reciprocity, discreteness, profiniteness, globalization, exact source locators, and the exact tame-kernel graph ownership remain separate missing boundaries.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. A bounded design is now determining whether tame residue needs its own T1 obligation rather than an inaccurate class-field dependency edge.",
       "source_refs": [
         "SRC-004"
       ],
