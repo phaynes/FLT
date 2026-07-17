@@ -341,6 +341,14 @@ and a uniform-fibre specialization are kernel-clean. This makes the odd lane a r
 uniform two-point fibre proof. The even lane must partition the root set between `preΨₙ` and
 `Ψ₂Sq`, charge two points to the former and one to the latter, and prove disjointness.
 
+`FLTMethodology/Probes/TorsionParityCount.lean` now proves the exact root-set decomposition used by
+those two lanes. For odd `n`, the roots of `ΨSqₙ` are exactly the roots of `preΨ'ₙ`. For even `n`,
+they are exactly the union of the `preΨ'ₙ` roots and the `Ψ₂Sq` roots. It also proves that a
+separable curve y-fibre has exactly two points over a separably closed field and that separability
+of `preΨ'ₙ` converts its existing degree theorem into the required distinct-root count. The hard
+remainder is therefore the separability/coprimality content and the one-point two-torsion fibre,
+not the parity split or cardinality plumbing.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -355,10 +363,13 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-ETALE-COUNT` — partial: the bridge from the exact affine zero-locus count to
+6. `FLT-TORSION-PARITY-COUNT` — partial: the odd/even root-set decompositions, separable quadratic
+   fibre count, and separable `preΨ'` root count are closed. Prove `preΨ'` separable, prove its
+   even-case roots disjoint from `Ψ₂Sq`, and count the `Ψ₂Sq` one-point fibres.
+7. `FLT-TORSION-ETALE-COUNT` — partial: the bridge from the exact affine zero-locus count to
    `Nat.card (E.nTorsion n) = n ^ 2` is closed. Prove `PsiSqAffineZeroCard E n` under
    separable-closedness and `(n : k) ≠ 0` by multiplicity/fibre counting or finite etaleness.
-7. Migrate the two provider declarations and audit every exported consumer, especially
+8. Migrate the two provider declarations and audit every exported consumer, especially
    `n_torsion_dimension`, `Module.Finite`, and `WeierstrassCurve.galoisRep`.
 
 ## Stop-loss rules
@@ -391,8 +402,7 @@ theorem psiSqAffineZeroCard
     {n : ℕ} (hn : (n : k) ≠ 0) : PsiSqAffineZeroCard E n
 ```
 
-The likely elementary implementation needs square-freeness of `preΨₙ`, its coprimality with
-`Ψ₂Sq` in the even case, splitting over the separably closed field, and controlled two-point versus
-one-point y-fibres. The general dependent-sum and uniform-fibre counting plumbing is already
-proved. A finite-etale kernel bridge is the alternative. Provider migration remains
-separately authorized work.
+The root-set parity split, splitting-to-root-count adapter, and separable two-point y-fibre adapter
+are now proved. The likely elementary implementation still needs square-freeness of `preΨₙ`, its
+coprimality with `Ψ₂Sq` in the even case, and the one-point `Ψ₂Sq` y-fibre calculation. A finite-etale
+kernel bridge remains the alternative. Provider migration remains separately authorized work.
