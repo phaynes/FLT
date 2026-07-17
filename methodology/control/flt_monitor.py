@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 BASELINE = "ee47fd2abea29d0007dfed9c3c7cad2b1f4d642b"
-TASK_ID = "task:fg-flt-proof-methodology-plan-20260716"
+DEFAULT_TASK_ID = "task:fg-flt-proof-methodology-plan-20260716"
 STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 T1_AXIOMS = STANDARD_AXIOMS | {"knownin1980s"}
 ROOT = Path(__file__).resolve().parents[2]
@@ -59,7 +59,19 @@ parser.add_argument(
     default="methodology/output/flt-progress.ndjson",
     help="append destination relative to the repository root",
 )
+parser.add_argument(
+    "--task-id",
+    default=DEFAULT_TASK_ID,
+    help="governed task responsible for this progress record",
+)
+parser.add_argument(
+    "--note",
+    help="one-line component · stage · model · verdict journal note",
+)
 args = parser.parse_args()
+
+if args.note is not None and ("\n" in args.note or "\r" in args.note):
+    raise SystemExit("--note must be one line")
 
 sha = run("git", "rev-parse", "HEAD").stdout.strip()
 baseline_is_ancestor = run("git", "merge-base", "--is-ancestor", BASELINE, "HEAD").returncode == 0
@@ -192,7 +204,8 @@ record = {
     "timestamp": dt.datetime.now(dt.timezone.utc).isoformat(),
     "git_sha": sha,
     "frozen_baseline_sha": BASELINE,
-    "task_id": TASK_ID,
+    "task_id": args.task_id,
+    "note": args.note,
     "lean_version": lean_version,
     "build_result": build_results,
     "audit_result": audit.returncode == 0,

@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "Exactly two provider admissions remain. The detector assembly and n=0 through n=4 cases are kernel-clean. A denominator-free x-coordinate relation implies the exact formula and detector and is kernel-clean for n=0,1,2; a branch-free homogeneous xRep statement is kernel-cleanly equivalent. Generalized-Weierstrass Kummer differential addition and its bihomogeneous laws are kernel-clean. The denominator-gap square identity is proved for every integer. Both product and middle entries of the Kummer division-polynomial matrix have complete n=0,1,2,3,4 base blocks, and a synchronized ladder has exact even/odd step contracts plus all-natural-index assembly. The named two-equation prePsi window relation is kernel-cleanly sufficient for both entries in both parity classes, avoiding high-index coefficient expansion. Its n=0,1,2,3,4 bases, concrete binary step implementations, all-natural-index assembly, and Kummer adapter are kernel-clean, yielding an unconditional synchronized Kummer ladder. The homogeneous xRep point-level assembly, including equal-x and infinity branches, remains.",
+        "evidence": "A disposable production-shaped integration builds under Lean 4.32.0-rc1 and the pinned Mathlib revision. All 13 native torsion proof modules build as an owned FLT component; the AINTLIB torsion-cardinality slice builds as modules; the exact provider, WeierstrassCurve.n_torsion_finite, and WeierstrassCurve.n_torsion_card each have axiom closure exactly propext, Classical.choice, and Quot.sound. No provider source is retained in this worktree yet.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
@@ -2387,10 +2387,10 @@
       "mathematical_name": "Elliptic-curve torsion module support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-TORSION",
-      "proof_pattern": "Use the kernel-clean detector assembly for prime-to-characteristic finiteness; separately close the all-characteristic finite-morphism and n-squared point-count lanes, then audit galoisRep and torsion_rank.",
-      "review_state": "revision-required",
+      "proof_pattern": "Retain the audited AINTLIB torsion-cardinality slice, compose it with the native separability converse, discharge the two frozen provider admissions, then audit every galoisRep and torsion_rank consumer.",
+      "review_state": "reviewed",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "The general point/division-polynomial dictionary, the characteristic-dividing finiteness lane, and the exact finite-etale point-count bridge remain open.",
+      "source_condition_risks": "The exact provider architecture is validated in an isolated checkout, including module-safe native proof components, an audited 52-module AINTLIB slice, the algebraic-closure bridge, and the frozen IsSepClosed endpoint. Production migration and consumer audits remain outstanding, so the obligation is still admitted.",
       "source_refs": [
         "SRC-001",
         "SRC-025"
