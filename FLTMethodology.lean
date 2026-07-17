@@ -18,6 +18,7 @@ import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.MazurSourceBoundary
 import FLTMethodology.Probes.MazurTorsionAssembly
 import FLTMethodology.Probes.PGL2ClassificationAudit
+import FLTMethodology.Probes.PsiSqAllCharacteristic
 import FLTMethodology.Probes.TateCoordinatePointMapBoundary
 import FLTMethodology.Probes.TateDeltaAnalyticBridge
 import FLTMethodology.Probes.TateDeltaFormalRoute

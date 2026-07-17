@@ -106,6 +106,12 @@ theorem psiSqDetectsNTorsion_nat ... (n : ℕ) :
 theorem n_torsion_finite_prime_to_char ... {n : ℕ} (hn : (n : k) ≠ 0) :
     Finite (E.nTorsion n)
 
+theorem psiSq_ne_zero_all_characteristics ... {n : ℕ} (hn : 0 < n) :
+    E.ΨSq (n : ℤ) ≠ 0
+
+theorem n_torsion_finite_all_characteristics ... {n : ℕ} (hn : 0 < n) :
+    Finite (E.nTorsion n)
+
 theorem psiSqDetectsNTorsion_two
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 2
@@ -277,9 +283,22 @@ The same module exports `n_torsion_finite_prime_to_char`, so the complete
 characteristic-prime-to-`n` finiteness lane is kernel-clean. All load-bearing exports have exactly
 the standard axiom trio.
 
-This does not yet prove the frozen general finiteness theorem. When the characteristic divides
-`n`, `ΨSq_ne_zero` is unavailable and the proof needs either a different nonzero detector or the
-finite-morphism/group-scheme route.
+`FLTMethodology/Probes/PsiSqAllCharacteristic.lean` removes the remaining characteristic
+restriction. The new argument assumes `ΨSqₙ = 0`, base-changes to an algebraic closure, and chooses
+a root of the universally monic positive-degree polynomial `Φₙ`. At that root both coordinates of
+the evaluated division-polynomial representative would vanish, contradicting
+`divisionPolynomialRep_ne_zero`. Therefore `ΨSqₙ` is nonzero for every positive `n` in every
+characteristic. Combining this fact with `psiSqDetectsNTorsion_nat` and the finite detector assembly
+proves the exact frozen finiteness signature in the methodology tree:
+
+```lean
+theorem n_torsion_finite_all_characteristics
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {n : ℕ} (hn : 0 < n) : Finite (E.nTorsion n)
+```
+
+This theorem has only the standard axiom trio. Provider migration remains a separately authorized
+change, and the exact `n ^ 2` count is still open.
 
 ## Minimal implementation graph
 
@@ -293,8 +312,8 @@ Build in this order:
    branch-free homogeneous relation, denominator-free relation, exact x-coordinate consequence,
    and detector are connected through a kernel-clean projective Kummer induction.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
-5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
-   `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
+5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
+   existence and nonzero projective representatives; no finite-morphism scaffold is needed.
 6. `FLT-TORSION-ETALE-COUNT` — open: when `(n : k) ≠ 0` and `k` is separably closed, prove the
    kernel has exactly `n ^ 2` rational points, including the bridge to the affine point type.
 7. Migrate the two provider declarations and audit every exported consumer, especially
@@ -314,16 +333,16 @@ Build in this order:
 
 ## Next exact theorem
 
-The division-polynomial/Kummer lane is complete for `(n : k) ≠ 0`. The next bounded mathematical
-obligation must address the case `(n : k) = 0` in the frozen provider signature:
+The division-polynomial/Kummer lane and all-characteristic finiteness theorem are complete in the
+methodology tree. The next bounded mathematical obligation is the remaining frozen provider:
 
 ```lean
-theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) :
-    Finite (E.nTorsion n)
+theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ}
+    (hn : (n : k) ≠ 0) : Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-Do not attempt to reuse `ΨSq_ne_zero` in that branch. The next design spike should select and test
-one exact interface for the characteristic-primary kernel: either a nonzero detector for the
-separable part plus a proved bound on the inseparable-primary fibres, or a source-faithful
-finite-multiplication morphism whose rational-point kernel is explicitly identified with
-`E.nTorsion n`. Provider migration remains separately authorized work.
+The existing detector proves finiteness but does not count roots or y-fibres with multiplicity. The
+next design spike should identify the smallest source-faithful route from the now-proved exact
+point/division-polynomial dictionary to the cardinality statement—most likely a separability and
+root-count theorem for `ΨSqₙ` plus the controlled two-point y-fibres, or a finite-etale kernel bridge.
+Provider migration remains separately authorized work.

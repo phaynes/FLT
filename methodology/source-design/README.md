@@ -63,9 +63,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
   doubling, inverse, two-torsion, and infinity branches are covered by one projective theorem,
   closing the TODO in Mathlib's `Affine.AddSubMap`. Projective nonzeroness, scaling, cancellation,
   and the two-step induction are now kernel-clean too. They export the all-index homogeneous and
-  denominator-free x-coordinate relations, the all-index `PsiSqDetectsNTorsion` dictionary, and
-  prime-to-characteristic rational-torsion finiteness. The all-characteristic lane and exact `n²`
-  point count remain open.
+  denominator-free x-coordinate relations and the all-index `PsiSqDetectsNTorsion` dictionary.
+  Base change to an algebraic closure, monicity of `Φₙ`, and representative nonzeroness then prove
+  `ΨSqₙ ≠ 0` in every characteristic, yielding all-characteristic rational-torsion finiteness.
+  The exact `n²` point count and separately authorized provider migration remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.
