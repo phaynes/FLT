@@ -31,6 +31,7 @@ import FLTMethodology.Probes.TateTorsionTransportAudit
 import FLTMethodology.Probes.TateUniformizationAssembly
 import FLTMethodology.Probes.TorsionCardAssembly
 import FLTMethodology.Probes.TorsionClassificationAudit
+import FLTMethodology.Probes.TorsionFiberCount
 import FLTMethodology.Probes.WeilPairingBoundary
 import FLTMethodology.Scaffold
 

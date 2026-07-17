@@ -329,6 +329,18 @@ and proves that the named contract `PsiSqAffineZeroCard E n`, asserting that thi
 cardinality `n ^ 2 - 1`, implies the frozen `n_torsion_card` conclusion. Thus endpoint assembly,
 the infinity contribution, and the final natural-number arithmetic are already kernel-clean.
 
+`FLTMethodology/Probes/TorsionFiberCount.lean` decomposes the remaining locus into the exact finite
+sum
+
+```lean
+∑ x : (E.ΨSq n).rootSet k, Nat.card (curveYFiber E x).
+```
+
+The root-index equivalence, finiteness of the root type and every quadratic y-fibre, the sum formula,
+and a uniform-fibre specialization are kernel-clean. This makes the odd lane a root-count plus a
+uniform two-point fibre proof. The even lane must partition the root set between `preΨₙ` and
+`Ψ₂Sq`, charge two points to the former and one to the latter, and prove disjointness.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -381,5 +393,6 @@ theorem psiSqAffineZeroCard
 
 The likely elementary implementation needs square-freeness of `preΨₙ`, its coprimality with
 `Ψ₂Sq` in the even case, splitting over the separably closed field, and controlled two-point versus
-one-point y-fibres. A finite-etale kernel bridge is the alternative. Provider migration remains
+one-point y-fibres. The general dependent-sum and uniform-fibre counting plumbing is already
+proved. A finite-etale kernel bridge is the alternative. Provider migration remains
 separately authorized work.
