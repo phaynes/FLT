@@ -1178,7 +1178,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HECKE-ACTION",
       "proof_pattern": "Separate automorphic module, Hecke localization, attached representation, trace compatibility, and surjectivity of R-to-T.",
-      "review_state": "independent-review-queued",
+      "review_state": "independent-review-running",
       "scc_id": "SCC-FLT-HECKE-ACTION",
       "source_condition_risks": "Surjectivity, level, weight, localization, multiplicity one, coefficient normalization, and the attached representation must align.",
       "source_refs": [
