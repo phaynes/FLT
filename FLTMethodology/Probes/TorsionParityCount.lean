@@ -207,6 +207,141 @@ theorem prePsi_rootSet_card
     (IsSepClosed.splits_domain (f := algebraMap k k) (E.preΨ' n) hsep)]
   exact E.natDegree_preΨ' hn
 
+theorem sum_set_union_of_disjoint
+    {k : Type*} (s t : Set k) [Fintype s] [Fintype t]
+    [Fintype (s ∪ t : Set k)] (f : k → ℕ) (h : Disjoint s t) :
+    (∑ x : (s ∪ t : Set k), f x) = (∑ x : s, f x) + ∑ x : t, f x := by
+  classical
+  rw [Fintype.sum_equiv (Equiv.Set.union h)
+    (fun x : (s ∪ t : Set k) ↦ f x)
+    (fun x : s ⊕ t ↦ Sum.elim (fun y : s ↦ f y) (fun y : t ↦ f y) x)
+    (by
+      intro x
+      by_cases hx : (x : k) ∈ s
+      · rw [Equiv.Set.union_apply_left h hx]
+        rfl
+      · have hxt : (x : k) ∈ t := x.2.resolve_left hx
+        rw [Equiv.Set.union_apply_right h hxt]
+        rfl)]
+  exact Fintype.sum_sum_type _
+
+theorem sum_set_eq_of_eq
+    {k : Type*} {s t : Set k} [Fintype s] [Fintype t]
+    (f : k → ℕ) (h : s = t) :
+    (∑ x : s, f x) = ∑ x : t, f x := by
+  classical
+  exact Fintype.sum_equiv (Equiv.setCongr h)
+    (fun x : s ↦ f x) (fun x : t ↦ f x) (by intro x; rfl)
+
+/-- The characteristic-safe assembly boundary for the exact affine torsion count. -/
+theorem psiSqAffineZeroCard_of_prePsi_separable_coprime
+    [IsSepClosed k] (E : WeierstrassCurve k) [E.IsElliptic]
+    {n : ℕ} (hn : (n : k) ≠ 0)
+    (hpresep : (E.preΨ' n).Separable)
+    (hcoprime : ∀ x : k, (E.preΨ' n).eval x = 0 → E.Ψ₂Sq.eval x ≠ 0) :
+    PsiSqAffineZeroCard E n := by
+  have hn0 : n ≠ 0 := by
+    intro hnzero
+    subst n
+    exact hn (Nat.cast_zero)
+  have hnpos : 0 < n := Nat.pos_of_ne_zero hn0
+  unfold PsiSqAffineZeroCard
+  rw [psiSqAffineZeroCard_eq_sum_yFibers E hnpos]
+  rcases n.even_or_odd with heven | hodd
+  · have h2 : (2 : k) ≠ 0 := by
+      intro hzero
+      rcases heven with ⟨m, hm⟩
+      apply hn
+      rw [hm, Nat.cast_add]
+      calc
+        (m : k) + (m : k) = (2 : k) * (m : k) := by ring
+        _ = 0 := by rw [hzero, zero_mul]
+    have hpsiTwoSep := psiTwoSq_separable E h2
+    have hpsiTwo : E.Ψ₂Sq ≠ 0 := hpsiTwoSep.ne_zero
+    have hdisj : Disjoint ((E.preΨ' n).rootSet k) (E.Ψ₂Sq.rootSet k) := by
+      rw [Set.disjoint_left]
+      intro x hxpre hxpsi
+      have hxprezero : (E.preΨ' n).eval x = 0 := by
+        simpa using (Polynomial.mem_rootSet_of_ne hpresep.ne_zero).1 hxpre
+      have hxpsizero : E.Ψ₂Sq.eval x = 0 := by
+        simpa using (Polynomial.mem_rootSet_of_ne hpsiTwo).1 hxpsi
+      exact (hcoprime x hxprezero) hxpsizero
+    letI : Fintype ((E.preΨ' n).rootSet k ∪ E.Ψ₂Sq.rootSet k : Set k) :=
+      ((Polynomial.rootSet_finite (E.preΨ' n) k).union
+        (Polynomial.rootSet_finite E.Ψ₂Sq k)).fintype
+    rw [sum_set_eq_of_eq (fun x : k ↦ Nat.card (curveYFiber E x))
+      (psiSq_rootSet_eq_prePsi_union_psiTwo_of_even E hn heven)]
+    rw [sum_set_union_of_disjoint ((E.preΨ' n).rootSet k) (E.Ψ₂Sq.rootSet k)
+      (fun x : k ↦ Nat.card (curveYFiber E x)) hdisj]
+    have hpreSum :
+        (∑ x : (E.preΨ' n).rootSet k, Nat.card (curveYFiber E x)) =
+          Fintype.card ((E.preΨ' n).rootSet k) * 2 := by
+      calc
+        (∑ x : (E.preΨ' n).rootSet k, Nat.card (curveYFiber E x)) =
+            ∑ _x : (E.preΨ' n).rootSet k, 2 := by
+              apply Fintype.sum_congr
+              intro x
+              have hxprezero : (E.preΨ' n).eval (x : k) = 0 := by
+                simpa using (Polynomial.mem_rootSet_of_ne hpresep.ne_zero).1 x.2
+              have hxeval : E.Ψ₂Sq.eval (x : k) ≠ 0 := hcoprime (x : k) hxprezero
+              exact curveYFiber_card_eq_two_of_separable E (x : k)
+                (fiberPolynomial_separable_of_psiTwoSq_eval_ne_zero E (x : k) hxeval)
+        _ = Fintype.card ((E.preΨ' n).rootSet k) * 2 := by simp
+    have htwoSum :
+        (∑ x : E.Ψ₂Sq.rootSet k, Nat.card (curveYFiber E x)) =
+          Fintype.card (E.Ψ₂Sq.rootSet k) := by
+      calc
+        (∑ x : E.Ψ₂Sq.rootSet k, Nat.card (curveYFiber E x)) =
+            ∑ _x : E.Ψ₂Sq.rootSet k, 1 := by
+              apply Fintype.sum_congr
+              intro x
+              have hxzero : E.Ψ₂Sq.eval (x : k) = 0 := by
+                simpa using (Polynomial.mem_rootSet_of_ne hpsiTwo).1 x.2
+              exact curveYFiber_card_eq_one_of_psiTwoSq_root E (x : k) h2 hxzero
+        _ = Fintype.card (E.Ψ₂Sq.rootSet k) := by simp
+    rw [hpreSum, htwoSum]
+    rw [prePsi_rootSet_card E hn hpresep, if_pos heven]
+    rw [psiTwoSq_rootSet_card E h2]
+    have hfour : 4 ≤ n ^ 2 := by
+      have heven' := heven
+      rcases heven' with ⟨m, hm⟩
+      have hn2 : 2 ≤ n := by omega
+      nlinarith
+    have hdiv : 2 ∣ n ^ 2 - 4 := by
+      apply Nat.dvd_sub
+      · rw [pow_two]
+        exact dvd_mul_of_dvd_left (even_iff_two_dvd.mp heven) n
+      · norm_num
+    rw [Nat.div_mul_cancel hdiv]
+    omega
+  · rw [sum_set_eq_of_eq (fun x : k ↦ Nat.card (curveYFiber E x))
+      (psiSq_rootSet_eq_prePsi_of_odd E hn hodd)]
+    have hpreSum :
+        (∑ x : (E.preΨ' n).rootSet k, Nat.card (curveYFiber E x)) =
+          Fintype.card ((E.preΨ' n).rootSet k) * 2 := by
+      calc
+        (∑ x : (E.preΨ' n).rootSet k, Nat.card (curveYFiber E x)) =
+            ∑ _x : (E.preΨ' n).rootSet k, 2 := by
+              apply Fintype.sum_congr
+              intro x
+              have hxprezero : (E.preΨ' n).eval (x : k) = 0 := by
+                simpa using (Polynomial.mem_rootSet_of_ne hpresep.ne_zero).1 x.2
+              have hxeval : E.Ψ₂Sq.eval (x : k) ≠ 0 := hcoprime (x : k) hxprezero
+              exact curveYFiber_card_eq_two_of_separable E (x : k)
+                (fiberPolynomial_separable_of_psiTwoSq_eval_ne_zero E (x : k) hxeval)
+        _ = Fintype.card ((E.preΨ' n).rootSet k) * 2 := by simp
+    rw [hpreSum]
+    rw [prePsi_rootSet_card E hn hpresep]
+    rw [if_neg (Nat.not_even_iff_odd.mpr hodd)]
+    have hdiv : 2 ∣ n ^ 2 - 1 := by
+      have hoddsq : Odd (n ^ 2) := by
+        simpa only [pow_two] using Odd.mul hodd hodd
+      rcases hoddsq with ⟨m, hm⟩
+      refine ⟨m, ?_⟩
+      rw [hm]
+      omega
+    exact Nat.div_mul_cancel hdiv
+
 end
 
 end FLTMethodology.Torsion

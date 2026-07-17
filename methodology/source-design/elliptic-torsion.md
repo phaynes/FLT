@@ -357,6 +357,19 @@ identity between the quadratic fibre polynomial and its derivative proves that t
 is separable. Consequently every `preΨ'ₙ` root outside the `Ψ₂Sq` roots automatically has the
 required two-point y-fibre. No separate fibre-separability assumption remains.
 
+The endpoint assembly is now closed as well. The kernel-clean theorem
+`psiSqAffineZeroCard_of_prePsi_separable_coprime` proves `PsiSqAffineZeroCard E n` from precisely:
+
+```lean
+(E.preΨ' n).Separable
+∀ x, (E.preΨ' n).eval x = 0 → E.Ψ₂Sq.eval x ≠ 0
+```
+
+This pointwise formulation is intentional. It remains meaningful when characteristic two makes a
+root-set formulation vacuous, while the even branch derives `2 ≠ 0` from `(n : k) ≠ 0`. Thus all
+parity, fibre, distinct-root, union-sum, and natural-number arithmetic obligations are discharged;
+only the two division-polynomial hypotheses above remain.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -371,12 +384,11 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: the odd/even root-set decompositions, separable quadratic
-   fibre count, separable `preΨ'` root-count adapter, three-root `Ψ₂Sq` count, and one-point `Ψ₂Sq`
-   fibre count are closed. Prove `preΨ'` separable and its even-case roots disjoint from `Ψ₂Sq`.
-7. `FLT-TORSION-ETALE-COUNT` — partial: the bridge from the exact affine zero-locus count to
-   `Nat.card (E.nTorsion n) = n ^ 2` is closed. Prove `PsiSqAffineZeroCard E n` under
-   separable-closedness and `(n : k) ≠ 0` by multiplicity/fibre counting or finite etaleness.
+6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, and cardinality assembly is closed.
+   Prove `preΨ'` separable and the characteristic-safe pointwise coprimality implication above.
+7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
+   hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
+   may instead be used to discharge the same two mathematical facts.
 8. Migrate the two provider declarations and audit every exported consumer, especially
    `n_torsion_dimension`, `Module.Finite`, and `WeierstrassCurve.galoisRep`.
 
@@ -410,8 +422,8 @@ theorem psiSqAffineZeroCard
     {n : ℕ} (hn : (n : k) ≠ 0) : PsiSqAffineZeroCard E n
 ```
 
-The root-set parity split, splitting-to-root-count adapter, and separable two-point y-fibre adapter
-are now proved, as are the three-root and one-point-fibre `Ψ₂Sq` calculations. The likely elementary
-implementation still needs square-freeness of `preΨₙ` and its coprimality with `Ψ₂Sq` in the even
-case. A finite-etale kernel bridge remains the alternative. Provider migration remains separately
-authorized work.
+The root-set parity split, splitting-to-root-count adapter, both fibre multiplicities, and the final
+odd/even sum arithmetic are now proved. The exact conditional assembly theorem shows that the
+elementary implementation needs only square-freeness of `preΨₙ` and pointwise coprimality with
+`Ψ₂Sq`. A finite-etale kernel bridge remains the alternative route to those facts. Provider
+migration remains separately authorized work.
