@@ -1909,7 +1909,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus was uncertain; Fable returned DECOMPOSE-FIRST; GPT returned REVISE but approved the charP-three leaf. That bounded leaf is now built, independently reviewed, and standard-trio clean; S3, N1, N2, D, E, F, S11, and the larger obligation remain open.",
+        "evidence": "The charP-three leaf is independently reviewed and standard-trio clean. Opus is now designing the bounded S3 reducibility-to-stable-line/quotient bridge; N1, N2, D, E, F, S11, and the larger obligation remain open.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "bounded-charp-leaf-built-reviewed-larger-obligation-open",
+      "review_state": "s3-reducibility-primary-design-running-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
