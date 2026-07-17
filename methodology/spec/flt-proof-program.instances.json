@@ -1349,7 +1349,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Five mechanical probes are standard-trio clean, but GPT found four substantive source-contract defects. The second and final Fable repair is running; no probe or obligation is promoted.",
+        "evidence": "The five repository boundary probes remain standard-trio clean. Fable's second repair adds neutral closure-form absolute irreducibility, binds conditions to extracted weights, uses common-closure residual comparison, and corrects the graph direction. Opus synthesis and independent GPT agreement remain required before persistence or graph mutation.",
         "loc_p50": 3000,
         "loc_p80": 15000,
         "loc_p95": 60000,
@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "second-diversity-repair-running-substantive",
+      "review_state": "second-diversity-repair-complete-final-synthesis-queued",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -1909,7 +1909,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The charP-three leaf is independently reviewed and standard-trio clean. Opus is now designing the bounded S3 reducibility-to-stable-line/quotient bridge; N1, N2, D, E, F, S11, and the larger obligation remain open.",
+        "evidence": "The charP-three leaf is independently reviewed. Opus designed S3 and a 182-line controller probe proves thirteen reducibility, quotient, and character declarations with the standard trio; independent GPT review is queued before persistence. N1, N2, D, E, F and S11 remain open.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1919,7 +1919,7 @@
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.ModThreeCore",
       "graph_depth": 1,
-      "kernel_probe_state": "charp-leaf-proof-green-reviewed",
+      "kernel_probe_state": "charp-leaf-proof-green-reviewed-s3-temporary-proof-green",
       "lean_declaration": "FLT.HardlyRamified.modThree_classification_core",
       "lean_risk": "unbounded",
       "lean_type": "Proposed theorem yielding a Galois-stable one-dimensional trivial quotient for every two-dimensional hardly-ramified representation over a finite field of characteristic 3.",
@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "s3-reducibility-primary-design-running-larger-obligation-open",
+      "review_state": "s3-temporary-proof-green-awaiting-independent-review-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
@@ -2188,7 +2188,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Five mechanical probes are standard-trio clean, but GPT found four substantive source-contract defects. The second and final Fable repair is running; no probe or obligation is promoted.",
+        "evidence": "The five repository boundary probes remain standard-trio clean. Fable's second repair adds neutral closure-form absolute irreducibility, binds conditions to extracted weights, uses common-closure residual comparison, and corrects the graph direction. Opus synthesis and independent GPT agreement remain required before persistence or graph mutation.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "second-diversity-repair-running-substantive",
+      "review_state": "second-diversity-repair-complete-final-synthesis-queued",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
       "source_refs": [
@@ -3038,7 +3038,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable returned DESIGN-VIABLE with trio-clean temporary declarations. Opus synthesized a final repair but did not rerun the probes; GPT is now independently replaying them and auditing the closure-collapse boundary. Six providers remain open.",
+        "evidence": "Final GPT replay confirmed the internal temporary tranche and same-O comparisons are standard-trio clean, but refuted the claim that the named closure-valued consumer is already identified. The two automatic agreement iterations are exhausted and the component awaits operator adjudication; no persistence or promotion is authorized.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3062,9 +3062,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "final-repair-independent-review-running",
+      "review_state": "human-adjudication-required-after-final-substantive-review",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. The fresh review requires the generic-closure tower, generalized module universes, and residue local-hom adapter to remain explicit.",
+      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. The bounded tower and same-O comparison wiring is trio-clean, but the tower reaches rho.baseChange C rather than an arbitrary named closure-valued consumer. A seventh field-of-definition/closure-realization provider is required in addition to T-A1, T-A2, T-A3, M4, BN, and T-IND-CLOSURE.",
       "source_refs": [
         "SRC-016"
       ],
@@ -3085,7 +3085,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The Tier-1 file is kernel-green and GPT passed the design. After two immediate 529 responses, a new Opus build review launched in a later provider window once provider health was independently observed. The full G1/G2/G4/G5/G6/G7 graph remains open.",
+        "evidence": "The Tier-1 weight/dual vocabulary passed GPT design review, later-window Opus build review, targeted and umbrella builds, and exact nine-declaration standard-trio audits. G1/G2/G4/G5/G6/G7 remain open.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3095,7 +3095,7 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.PadicHodge",
       "graph_depth": 2,
-      "kernel_probe_state": "tier1-boundary-proof-green",
+      "kernel_probe_state": "tier1-boundary-proof-green-reviewed",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.PadicHodgeData",
       "lean_risk": "unbounded",
       "lean_type": "Definition gap: exact local predicates and weight data appearing in Taylor 2018 Theorem 2.1.1, together with the separately proved weight-two finite-flat-to-crystalline bridge used by the repository route.",
@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "build-review-running-later-provider-window",
+      "review_state": "tier1-boundary-built-reviewed-full-provider-graph-open",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
