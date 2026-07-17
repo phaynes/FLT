@@ -1349,7 +1349,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "GPT verified the at-ell witness condition and level-free boundary; Fable returned DESIGN-VIABLE with five trio-clean units. Opus synthesis produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
+        "evidence": "GPT verified the at-ell witness condition and level-free boundary; Fable returned DESIGN-VIABLE with five trio-clean units. The single authorized Opus synthesis retry is running after the provider reset.",
         "loc_p50": 3000,
         "loc_p80": 15000,
         "loc_p95": 60000,
@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "First freeze the repository-side SelectedGood boundary and upstream coefficient/weight/RACAR vocabulary, then elaborate the source theorem with one explicit data owner and separate bridge theorems.",
-      "review_state": "design-synthesis-waiting-provider-reset",
+      "review_state": "design-synthesis-running",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "The level-free Taylor route remains selected, but explicit coefficient ownership, one shared residual model, the dual/sign bridge, and the exact at-ell RACAR/local hypotheses are not yet frozen. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -1443,7 +1443,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The algebraic scheme-point and compositum-disjointness adapters are kernel-green, but source selection, local-point topology, Galoisness, and avoidance-field disjointness remain statement-level gates.",
+        "evidence": "The algebraic scheme-point and compositum-disjointness adapters are kernel-green and their independent Opus build review is running; source selection, local-point topology, Galoisness, and avoidance-field disjointness remain statement-level gates.",
         "loc_p50": 25000,
         "loc_p80": 120000,
         "loc_p95": 500000,
@@ -1466,7 +1466,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MORET-BAILLY",
       "proof_pattern": "T1 may use a named sourced historical boundary only if pre-1990 scope is accepted; T3 requires algebraic-geometry and approximation formalization.",
-      "review_state": "source-contract-repair-required",
+      "review_state": "bounded-adapter-build-review-running-source-contract-repair-still-required",
       "scc_id": "SCC-FLT-MORET-BAILLY",
       "source_condition_risks": "Independent review found that MB89 Theorem 1.3 does not directly supply the blueprint's Galois and avoidance-field disjointness conclusions, and the v-adic topology on scheme-valued points plus its source-topology comparison is absent. A later Proposition 3.1.1 may provide a stronger modern boundary but must be selected explicitly.",
       "source_refs": [
@@ -2188,7 +2188,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable returned DESIGN-VIABLE after consumer-exact temporary probes. Opus synthesis produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
+        "evidence": "Fable returned DESIGN-VIABLE after consumer-exact temporary probes. The single authorized Opus synthesis retry is running after the provider reset.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "First elaborate SelectedGoodRepository plus the exact generic-fibre tame quotient, then prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "design-synthesis-waiting-provider-reset",
+      "review_state": "design-synthesis-running",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The small repository-side boundary must add support away from ell and place the tame rank-one quotient on the generic AlgebraicClosure fibre exactly used by cyclic_base_change. It must not silently strengthen BlueprintSGood without a bridge or representability theorem.",
       "source_refs": [
@@ -3038,7 +3038,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fresh GPT review returned substantive REVISE after replaying the same-O charpoly route. The required Fable repair produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
+        "evidence": "Fresh GPT review returned substantive REVISE after replaying the same-O charpoly route. The required Fable repair is now running after the provider reset.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3062,7 +3062,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "second-diversity-repair-waiting-provider-reset",
+      "review_state": "second-diversity-repair-running",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. The fresh review requires the generic-closure tower, generalized module universes, and residue local-hom adapter to remain explicit.",
       "source_refs": [
@@ -3085,7 +3085,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The post-diversity GPT review passed. FLTMethodology.Probes.MLTPadicHodgeWeightData now builds with the exact standard axiom trio on seven definitions and two guards. The full G1/G2/G4/G5/G6/G7 provider graph is still open.",
+        "evidence": "The post-diversity GPT review passed. FLTMethodology.Probes.MLTPadicHodgeWeightData builds with the exact standard axiom trio on seven definitions and two guards; the mandatory independent Opus build review is running. The full G1/G2/G4/G5/G6/G7 provider graph is still open.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "build-review-waiting-provider-reset",
+      "review_state": "build-review-running",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
