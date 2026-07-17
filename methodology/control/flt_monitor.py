@@ -108,6 +108,8 @@ top_axioms = axioms.get("PNat.pow_add_pow_ne_pow", [])
 obligations = ndjson(ROOT / "methodology/control/proof-obligations.ndjson")
 scaffold_ledger = ndjson(ROOT / "methodology/control/scaffold-admissions.ndjson")
 historical_ledger = ndjson(ROOT / "methodology/control/historical-assumptions.ndjson")
+attempts_path = ROOT / "methodology/control/flt-completion-attempts.ndjson"
+stage_attempts = ndjson(attempts_path) if attempts_path.exists() else []
 t2_named_axioms = {
     row["lean_axiom"]
     for row in historical_ledger
@@ -218,6 +220,10 @@ record = {
     "historical_assumptions": {
         "permitted_t2_axioms": sorted(t2_named_axioms),
         "generic_knownin1980s_present": "knownin1980s" in top_axioms,
+    },
+    "action_costing": {
+        "attempts_recorded": len(stage_attempts),
+        "latest_attempt": stage_attempts[-1] if stage_attempts else None,
     },
     "graph": {
         "nodes": len(obligations),
