@@ -408,6 +408,35 @@ even-index part of the specialized recurrence only. That part is now discharged 
 `psiSqAffineZeroCard_of_prePsi_separable` and `n_torsion_card_of_prePsi_separable` assemble the exact
 affine and full torsion counts from separability of `preΨ'` alone.
 
+## Dual-number reduction of the separability input
+
+`FLTMethodology/Probes/DualTangent.lean` now proves the first-order algebra directly over Mathlib's
+`DualNumber k`. For every polynomial `p`, evaluation at `x + ε dx` is kernel-cleanly identified as
+
+```text
+p(x + ε dx) = p(x) + ε * p'(x) * dx.
+```
+
+The same module expands the mapped Weierstrass equation and proves that a dual point lies on the
+curve exactly when its base point lies on the curve and its infinitesimal coordinates obey
+
+```text
+W_X(x,y) * dx + W_Y(x,y) * dy = 0.
+```
+
+At a root of `preΨ' n`, the proved coprimality with `Ψ₂Sq` makes `W_Y(x,y)` nonzero. Therefore a
+chosen nonzero `dx` has a unique completing `dy`. `PrePsiInfinitesimal.lean` assembles these facts:
+a hypothetical common root of `preΨ' n` and its derivative produces a concrete nonconstant
+dual-number point on the mapped curve at which the mapped `preΨ' n` also vanishes. Over an
+algebraically closed field, excluding these witnesses implies separability.
+
+This closes the polynomial and tangent bookkeeping, but not yet the mathematical terminal. The
+smallest remaining interface must identify that dual division-polynomial zero with an
+infinitesimal element of the kernel of multiplication by `n`, then prove that the tangent map of
+`[n]` is multiplication by `(n : k)`. Its injectivity when `(n : k) ≠ 0` excludes the witness. The
+pinned library has no group law over dual numbers and no invariant-differential/formal-group API,
+so that bridge must be implemented explicitly or replaced by a sourced finite-etale component.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -422,8 +451,9 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, and coprimality work is
-   closed. Prove `preΨ'` separable.
+6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, coprimality, and local
+   dual-number tangent work is closed. Prove the multiplication-by-`n` differential bridge that
+   excludes the explicit infinitesimal witness and hence proves `preΨ'` separable.
 7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
    hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
    may instead be used to discharge the same two mathematical facts.
@@ -465,5 +495,6 @@ odd/even sum arithmetic are now proved. The exact conditional assembly theorem n
 square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even coprimality lane is now
 closed by the specialized EDS formula described above, while the odd lane is closed in every
 characteristic. The exact conditional full torsion-card theorem now depends only on separability.
-A finite-etale kernel bridge remains the alternative route to that fact. Provider migration remains
-separately authorized work.
+The dual-number construction has reduced that input to excluding a concrete infinitesimal kernel
+witness via the differential of multiplication by `n`. A finite-etale kernel bridge remains the
+alternative route to the same fact. Provider migration remains separately authorized work.

@@ -1,6 +1,7 @@
 import FLTMethodology.Probes.AutomorphicInfrastructureAudit
 import FLTMethodology.Probes.BrauerNesbittBoundary
 import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
+import FLTMethodology.Probes.DualTangent
 import FLTMethodology.Probes.EllipticTorsionSourceBoundary
 import FLTMethodology.Probes.ExistingContracts
 import FLTMethodology.Probes.FreySemistabilityBoundary
@@ -21,6 +22,7 @@ import FLTMethodology.Probes.PGL2ClassificationAudit
 import FLTMethodology.Probes.PsiSqAllCharacteristic
 import FLTMethodology.Probes.PsiSqExactDetection
 import FLTMethodology.Probes.PrePsiTwoTorsion
+import FLTMethodology.Probes.PrePsiInfinitesimal
 import FLTMethodology.Probes.SpecialPreNormEDS
 import FLTMethodology.Probes.TateCoordinatePointMapBoundary
 import FLTMethodology.Probes.TateDeltaAnalyticBridge

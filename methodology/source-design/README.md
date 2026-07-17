@@ -82,8 +82,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   characteristic by exact torsion detection and coprime scalar annihilation. The even specialized
   recurrence now has a kernel-clean closed form too, proving pointwise coprimality unconditionally.
   The complete torsion count is therefore assembled conditional only on separability of `preΨ'`.
-  That is the sole remaining mathematical input; separately authorized provider migration remains
-  open.
+  The dual-number Taylor law, Weierstrass tangent equation, and repeated-root witness construction
+  are now kernel-clean as well: any failure of separability produces an explicit nonconstant
+  infinitesimal zero on the curve. The remaining mathematical interface is therefore the
+  differential-of-multiplication statement excluding that witness when `(n : k) ≠ 0`; separately
+  authorized provider migration remains open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.
