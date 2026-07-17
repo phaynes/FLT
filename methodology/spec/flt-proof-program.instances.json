@@ -1507,7 +1507,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Inventory Mathlib local/global class-field results, then introduce only missing named interfaces.",
-      "review_state": "diversity-design-running",
+      "review_state": "design-synthesis-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "A package must enumerate exact theorems rather than bundle a generic authority axiom.",
       "source_refs": [
@@ -3057,7 +3057,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately; prove uniqueness through the explicit Brauer-Nesbitt dependency before freezing the source contract.",
-      "review_state": "independent-review-running",
+      "review_state": "diversity-design-running",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "A generic-fibre base change is not residual reduction. The provisional relation now requires the maximal ideal to lie in the coefficient-map kernel, but stable-lattice existence, lattice independence, Brauer-Nesbitt uniqueness, and the fixed residual algebraic-closure instantiation remain explicit obligations.",
       "source_refs": [
@@ -3101,7 +3101,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Freeze source-level predicates first, then formalize the weight-two comparison theorem under exact field and coefficient hypotheses.",
-      "review_state": "reviewing",
+      "review_state": "independent-review-running",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "IsFlatAt does not definitionally imply crystallinity or the required Hodge-Tate weights; the bridge is substantial p-adic Hodge mathematics.",
       "source_refs": [
