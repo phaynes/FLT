@@ -318,6 +318,17 @@ Consequently the remaining cardinality gap is not an endpoint or dictionary prob
 precise separability/multiplicity calculation matching the degree `n ^ 2 - 1` of `ΨSqₙ` to the
 nonzero points, including the two-point `P`/`-P` fibres and the one-point two-torsion fibres.
 
+`FLTMethodology/Probes/TorsionCardAssembly.lean` makes that boundary executable. It constructs an
+equivalence between `E.nTorsion n` and infinity plus the affine zero locus
+
+```lean
+{(x,y) | (E.ΨSq n).eval x = 0 ∧ E.toAffine.Equation x y}
+```
+
+and proves that the named contract `PsiSqAffineZeroCard E n`, asserting that this locus has
+cardinality `n ^ 2 - 1`, implies the frozen `n_torsion_card` conclusion. Thus endpoint assembly,
+the infinity contribution, and the final natural-number arithmetic are already kernel-clean.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -332,8 +343,9 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-ETALE-COUNT` — open: when `(n : k) ≠ 0` and `k` is separably closed, prove the
-   kernel has exactly `n ^ 2` rational points, including the bridge to the affine point type.
+6. `FLT-TORSION-ETALE-COUNT` — partial: the bridge from the exact affine zero-locus count to
+   `Nat.card (E.nTorsion n) = n ^ 2` is closed. Prove `PsiSqAffineZeroCard E n` under
+   separable-closedness and `(n : k) ≠ 0` by multiplicity/fibre counting or finite etaleness.
 7. Migrate the two provider declarations and audit every exported consumer, especially
    `n_torsion_dimension`, `Module.Finite`, and `WeierstrassCurve.galoisRep`.
 
@@ -359,9 +371,15 @@ theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ}
     (hn : (n : k) ≠ 0) : Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-The exact detector proves set membership but does not count roots or y-fibres with multiplicity.
-The next design spike should identify the smallest source-faithful route from that equivalence to
-the cardinality statement—most likely square-freeness of `preΨₙ`, its coprimality with `Ψ₂Sq` in the
-even case, splitting over the separably closed field, and controlled two-point versus one-point
-y-fibres; alternatively, use a finite-etale kernel bridge. Provider migration remains separately
-authorized work.
+The next exact theorem is now:
+
+```lean
+theorem psiSqAffineZeroCard
+    (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] [IsSepClosed k]
+    {n : ℕ} (hn : (n : k) ≠ 0) : PsiSqAffineZeroCard E n
+```
+
+The likely elementary implementation needs square-freeness of `preΨₙ`, its coprimality with
+`Ψ₂Sq` in the even case, splitting over the separably closed field, and controlled two-point versus
+one-point y-fibres. A finite-etale kernel bridge is the alternative. Provider migration remains
+separately authorized work.

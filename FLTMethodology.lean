@@ -29,6 +29,7 @@ import FLTMethodology.Probes.TateReductionBridge
 import FLTMethodology.Probes.TateSubstitutionBridge
 import FLTMethodology.Probes.TateTorsionTransportAudit
 import FLTMethodology.Probes.TateUniformizationAssembly
+import FLTMethodology.Probes.TorsionCardAssembly
 import FLTMethodology.Probes.TorsionClassificationAudit
 import FLTMethodology.Probes.WeilPairingBoundary
 import FLTMethodology.Scaffold

@@ -67,8 +67,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
   Base change to an algebraic closure, monicity of `Φₙ`, and representative nonzeroness then prove
   `ΨSqₙ ≠ 0` in every characteristic, yielding all-characteristic rational-torsion finiteness.
   The detector is now exact as well: for every affine point, `ΨSqₙ(x)=0` if and only if `nP=0`.
-  The exact `n²` point count still needs a separability/multiplicity and y-fibre count; separately
-  authorized provider migration remains open.
+  A kernel-clean cardinality assembly identifies `E[n]` with infinity plus the corresponding affine
+  zero locus and reduces the exact `n²` theorem to the named `PsiSqAffineZeroCard` contract. That
+  contract still needs a separability/multiplicity and y-fibre count; separately authorized provider
+  migration remains open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.
