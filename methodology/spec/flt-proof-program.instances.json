@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "final-synthesis-complete-gpt-agreement-queued",
+      "review_state": "final-synthesis-gpt-agreement-review-running",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "final-synthesis-complete-gpt-agreement-queued",
+      "review_state": "final-synthesis-gpt-agreement-review-running",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
       "source_refs": [
