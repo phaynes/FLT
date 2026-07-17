@@ -3038,7 +3038,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The second Fable repair returned DESIGN-VIABLE with 21 trio-clean temporary declarations, including proved closure descent. Final Opus synthesis and independent GPT agreement remain mandatory; six mathematical providers remain explicit.",
+        "evidence": "Fable returned DESIGN-VIABLE with trio-clean temporary declarations. Opus synthesized a final repair but did not rerun the probes; GPT is now independently replaying them and auditing the closure-collapse boundary. Six providers remain open.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3062,7 +3062,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "final-repair-synthesis-running",
+      "review_state": "final-repair-independent-review-running",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. The fresh review requires the generic-closure tower, generalized module universes, and residue local-hom adapter to remain explicit.",
       "source_refs": [
