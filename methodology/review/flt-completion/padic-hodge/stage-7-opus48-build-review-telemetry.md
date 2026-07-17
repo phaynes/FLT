@@ -16,5 +16,9 @@ API Error: 529 Overloaded. This is a server-side issue, usually temporary.
 ```
 
 This is an environment/resource outcome, not a content verdict. It cannot promote the bounded
-Tier-1 tranche or satisfy the mandatory independent build review. One same-budget retry is permitted;
-if that also returns no result, the review remains open while other lanes continue.
+Tier-1 tranche or satisfy the mandatory independent build review.
+
+The one permitted same-budget retry (bridge session `4180`) returned the same provider `529
+Overloaded` error before a completion envelope. Final transport disposition for this review wave:
+**NO-RESULT — engineering/provider overload**. The kernel-green tranche is unchanged, the mandatory
+review remains open, and other lanes continue; no third immediate retry is authorized.
