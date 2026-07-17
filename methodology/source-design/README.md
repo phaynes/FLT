@@ -59,8 +59,12 @@ are exact definitions or elementary adapters already audited in FLT-204.
   sufficient for both ladder entries in both parity classes. Its `n = 0,1,2,3,4` bases, exact
   even/odd step contracts, all-natural-index assembly, and Kummer-ladder adapter are kernel-clean.
   Generic commutative-ring certificates and their concrete binary-`preΨ` transports now prove both
-  step contracts, yielding an unconditional all-natural-index synchronized Kummer ladder. The next
-  residual is the point-level homogeneous `xRep` assembly, especially the equal-x branches.
+  step contracts, yielding an unconditional all-natural-index synchronized Kummer ladder. The
+  point-level add/sub map is now kernel-clean for every pair of points as well: distinct-x,
+  doubling, inverse, two-torsion, and infinity branches are covered by one projective theorem,
+  closing the TODO in Mathlib's `Affine.AddSubMap`. The next residual is the projective propagation
+  and cancellation step that combines this point theorem with the polynomial ladder to prove the
+  all-index `DivisionPolynomialXHomogeneous` relation.
   The all-characteristic lane and exact `n²` point count remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness

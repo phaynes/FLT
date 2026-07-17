@@ -158,11 +158,19 @@ x(P)² x(Q)² - b₄ x(P)x(Q) - b₆(x(P)+x(Q)) - b₈.
 The proof expands the actual affine slopes and uses both Weierstrass equations; its axiom closure is
 the standard trio. This is the x-only differential-addition primitive required by an adjacent-pair
 or Montgomery-ladder induction. No `ωₙ` library needs to be invented merely to close the x-coordinate
-dictionary. Degenerate equal-x and infinity branches still require explicit recurrence cases.
+dictionary. At that layer the degenerate equal-x and infinity branches required explicit cases.
 The corresponding bihomogeneous form is also kernel-clean, including its scaling law, symmetry,
 affine specialization, and infinity specializations. Consequently recurrence algebra can now be
 performed directly on representative pairs `[X,Z]`, without dividing by `Z` or losing the infinity
 case.
+
+`FLTMethodology/Probes/KummerAddSubPoint.lean` now closes those point-level cases. It proves the
+missing symmetric-sum affine identity, then proves that Mathlib's `addSubMap`, evaluated on
+`P.sym2x Q`, is projectively equivalent to `(P + Q).sym2x (P - Q)` for every pair of points. The
+proof covers distinct x-coordinates by exact scaling with `(x(P)-x(Q))²`; the equal-x case is
+reduced to the already kernel-clean `n = 2` homogeneous division-polynomial relation, so doubling,
+inverse, and two-torsion branches do not cancel a possibly zero tangent denominator. One or both
+points at infinity are proved separately. The exported theorem has only the standard axiom trio.
 
 The complete Kummer matrix, rather than only its product entry, is now the induction boundary. Its
 middle bihomogeneous entry is
@@ -239,6 +247,12 @@ doubles the remaining case, and consumes the separately named `preΨ₄`/doubled
 they confirm the detector interface's normalization and point representation in both parity classes
 and validate one recurrence-shaped step. They do not remove the open arbitrary-index recurrence.
 
+The arbitrary-index polynomial recurrence and the complete point-level add/sub theorem are now
+closed independently. What remains between them is an integration lemma: transport projective
+representatives through the homogeneous map and cancel the already-known adjacent representative
+without admitting the zero vector. This is narrower than either the former polynomial induction or
+the former equal-x case split, but it is still a real theorem rather than wiring.
+
 This does not yet prove the frozen general finiteness theorem. When the characteristic divides
 `n`, `ΨSq_ne_zero` is unavailable and the proof needs either a different nonzero detector or the
 finite-morphism/group-scheme route.
@@ -254,11 +268,10 @@ Build in this order:
 3. `FLT-TORSION-PSISQ-DICTIONARY` — partial: the full detector block `n = 0,1,2,3,4` is closed. The
    branch-free `DivisionPolynomialXHomogeneous` is equivalent to the denominator-free relation,
    which implies both the exact x-coordinate formula and detector and is proved for `n = 0,1,2`.
-   Prove the homogeneous relation for arbitrary `n` from the affine group law and
-   division-polynomial recurrences. The distinct-x differential-addition/Kummer
-   component needed by the adjacent-pair induction is closed; add the degenerate branch lemmas and
-   complete `KummerDivisionPolynomialRecurrence` by binary EDS induction. Its coordinate-gap square
-   identity, complete `n = 0,1,2,3,4` base block, bihomogeneous scaling, and infinity laws are closed.
+   Prove the homogeneous relation for arbitrary `n` by combining the unconditional synchronized
+   Kummer ladder with `addSubMap_sym2x_projective`. Both mathematical sides are now closed,
+   including all degenerate point branches. The residual is a generic projective-representative
+   nonzero/cancellation layer for the adjacent-pair induction.
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — assembly is already closed; instantiate step 3.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — open: cover the characteristic-dividing case without assuming
    `ΨSq n ≠ 0`, or introduce and connect a source-faithful finite multiplication morphism.
@@ -288,12 +301,11 @@ FLTMethodology.Torsion.DivisionPolynomialXHomogeneous E n
 ```
 
 Its equivalence to the match-based relation, that relation's `n = 0,1,2` cases, and its implications
-to `DivisionPolynomialXFormula` and `PsiSqDetectsNTorsion` are now proved. The first likely residual
-Lean goal is a recurrence step
-for an adjacent pair of multiples, consuming `addX_mul_addNegX_kummer` in the distinct-x branch and
-the existing doubling/vertical lemmas in the equal-x branch. The polynomial side must normalize the
-resulting `kummerBiquadratic` expression. The denominator-gap square is already proved generally;
-the product and middle Kummer recurrences are now kernel-clean for every natural index. The first
-residual is therefore the point-level homogeneous `xRep` recurrence: use the complete Kummer matrix
-for the distinct-x branch, then discharge the equal-x doubling, inverse, and infinity branches
-without adding a characteristic restriction.
+to `DivisionPolynomialXFormula` and `PsiSqDetectsNTorsion` are now proved. The synchronized product,
+middle, and gap recurrences are kernel-clean for every natural index, and
+`addSubMap_sym2x_projective` supplies the corresponding point theorem for every branch. The next
+exact intermediate theorem should prove that the evaluated representative
+`![(E.Φ n).eval x, (E.ΨSq n).eval x]` is nonzero and that equality of the symmetric-pair
+projective images cancels a known nonzero adjacent representative. The first likely residual Lean
+goal is a two-coordinate case split selecting a nonzero coordinate of that adjacent vector; no new
+elliptic-curve case split or characteristic restriction should be introduced.
