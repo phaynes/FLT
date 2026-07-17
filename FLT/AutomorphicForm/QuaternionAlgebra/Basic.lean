@@ -387,6 +387,29 @@ instance : (𝔸ˣ F).Normal := Subgroup.normal_of_le_center _ <| by
 
 open ConjAct Pointwise
 
+/-- Finiteness of the arithmetic stabiliser `(U·𝔸ᶠˣ ∩ g⁻¹Dˣg)/Fˣ` for a totally real `F` and a
+totally definite quaternion algebra `D/F`. Modern-synthesis T2 boundary (not a Lean proof).
+
+Faithful source: J. Voight, *Quaternion Algebras*, GTM 288 (2021), Main Thm 27.6.14, with
+order-unit endpoint Lemma 26.5.1 / 17.7.13 — the source the FLT blueprint itself cites. No single
+pre-1990 primary theorem states this in adelic packaging (three independent reviews concur);
+classical lineage A. Borel, Publ. IHÉS 16 (1963) §1.2 + M.-F. Vignéras, LNM 800 (1980) II.1.1.
+Openness of `U` is not required — compactness suffices; it is load-bearing only for
+double-coset/class-number finiteness. Full provenance, the adjoint-representation justification,
+and review data:
+`methodology/review/flt-completion/quaternion-boundary/stage-4-provenance-disposition.md`. -/
+axiom isFiniteRelIndex_stabilizer
+    (F : Type*) [Field F] [NumberField F] [NumberField.IsTotallyReal F]
+    (D : Type*) [Ring D] [Algebra F D] [WithRigidification F D]
+    [IsQuaternionAlgebra F D] [IsQuaternionAlgebra.IsTotallyDefinite F D]
+    (U : Subgroup GL₂(𝔸ᶠ[F])) (hUc : IsCompact (X := GL₂(𝔸ᶠ[F])) U)
+    (g : GL₂(𝔸ᶠ[F])) :
+    Subgroup.IsFiniteRelIndex
+      (MonoidHom.range (Units.map (RingHom.toMonoidHom (algebraMap F M₂(𝔸ᶠ[F])))))
+      ((U ⊔ MonoidHom.range
+          (Units.map (RingHom.toMonoidHom (algebraMap 𝔸ᶠ[F] M₂(𝔸ᶠ[F]))))) ⊓
+        toConjAct g⁻¹ • MonoidHom.range (WithRigidification.unitsIncl F D))
+
 variable {R} {M : Type*} [AddCommGroup M] [Module R M]
 
 namespace WeightTwoAutomorphicForm
@@ -496,7 +519,8 @@ where the latter is finite because it is discrete and bounded in `D ⊗_{ℚ} �
 instance isFiniteRelIndex_Δ [NumberField.IsTotallyReal F] [IsQuaternionAlgebra F D]
     [IsQuaternionAlgebra.IsTotallyDefinite F D] (ℒ : LevelStruct F R) (g : GL₂(𝔸ᶠ[F])) :
     Subgroup.IsFiniteRelIndex 𝓕ˣ (ℒ.Δ D g) := by
-  knownin1980s
+  exact TotallyDefiniteQuaternionAlgebra.isFiniteRelIndex_stabilizer
+    F D ℒ.U ℒ.isCompact_U g
 
 /-- `Dˣ＼GL₂(𝔸 F)／U` is notation for the type of double cosets by the image of `Dˣ` in
 `GL₂(𝔸ᶠ[F])` and by `U`. -/
