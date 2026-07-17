@@ -1484,7 +1484,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The four existing ClassFieldCharacterBoundary declarations build with the standard trio. Fresh GPT review returned only bounded mechanical/interface repair and skipped further Fable; the complete class-field theorem package remains absent.",
+        "evidence": "ClassFieldCharacterBoundary and ClassFieldIdeleTopologyBoundary targeted builds pass. The named quotient synthesizes CommGroup, TopologicalSpace, and IsTopologicalGroup; all finite/full idele declarations audit to the standard trio. Independent build review is running; the complete class-field theorem package remains absent.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1494,21 +1494,22 @@
       },
       "expected_module": "FLT.PotentialModularity.ClassField",
       "graph_depth": 0,
-      "kernel_probe_state": "partial-signature-green",
+      "kernel_probe_state": "object-boundary-proof-green",
       "lean_declaration": "FLT.PotentialModularity.classField_package",
       "lean_risk": "unbounded",
       "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction.",
       "library_candidates": [
         "NumberField.AdeleRing",
-        "FLTMethodology.Probes.ClassFieldCharacterBoundary"
+        "FLTMethodology.Probes.ClassFieldCharacterBoundary",
+        "FLTMethodology.Probes.ClassFieldIdeleTopologyBoundary"
       ],
       "mathematical_name": "Global and local class-field interfaces used in potential modularity",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
-      "proof_pattern": "First repair the exact idele object/type vocabulary with standard axiom closure, then prove or name each remaining source-exact theorem separately without placing full reciprocity on the immediate MLT tame-kernel path.",
-      "review_state": "build-repair-queued",
+      "proof_pattern": "Keep the standard-trio-clean object/type layer banked, repair the exact tame-kernel graph scope, then prove or name each remaining source-exact theorem separately without placing full reciprocity on the immediate MLT path.",
+      "review_state": "build-review-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele-object layer is signature-green. IdeleClassGroup is currently only a clean quotient-type definition: named topology/group instances and finite-to-full idele maps need a bounded repair. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing theorem boundaries.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is signature-green, including named quotient topology/group instances and finite-to-full idele maps. Reciprocity, discreteness, profiniteness, globalization, exact source locators, and the exact tame-kernel graph ownership remain separate missing boundaries.",
       "source_refs": [
         "SRC-004"
       ],
@@ -3033,7 +3034,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable temporarily elaborated the full explicit-O data boundary and proved residual charpoly agreement plus conditional two-lattice independence with the standard axiom trio. Opus synthesis and fresh GPT review remain open before persistence/promotion.",
+        "evidence": "Fable temporarily proved the repaired interface and Opus synthesis independently preserved it while correcting the live consumer ledger. Fresh GPT review is queued before any in-tree MLTCoefficientData probe or promotion.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3056,10 +3057,10 @@
       "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
-      "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "design-synthesis-running",
+      "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
+      "review_state": "independent-review-queued",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis.",
+      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. DVR strength and flat-vs-extends packaging await fresh review.",
       "source_refs": [
         "SRC-016"
       ],

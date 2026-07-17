@@ -32,7 +32,7 @@ variable (K : Type*) [Field K] [NumberField K]
 noncomputable def principalIdeles : Subgroup (AdeleRing (𝓞 K) K)ˣ :=
   (Units.map (algebraMap K (AdeleRing (𝓞 K) K)).toMonoidHom).range
 
-noncomputable def IdeleClassGroup := (AdeleRing (𝓞 K) K)ˣ ⧸ principalIdeles K
+abbrev IdeleClassGroup := (AdeleRing (𝓞 K) K)ˣ ⧸ principalIdeles K
 
 end FLT.PotentialModularity.ClassField
 
