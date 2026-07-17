@@ -3085,7 +3085,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The post-diversity GPT review passed and the Tier-1 file builds with the exact standard trio on seven definitions and two guards. Two immediate Opus build-review launches returned provider 529 before inference, so the review has NO-RESULT and remains open. The full G1/G2/G4/G5/G6/G7 provider graph is still open.",
+        "evidence": "The Tier-1 file is kernel-green and GPT passed the design. After two immediate 529 responses, a new Opus build review launched in a later provider window once provider health was independently observed. The full G1/G2/G4/G5/G6/G7 graph remains open.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "build-review-no-result-provider-overload",
+      "review_state": "build-review-running-later-provider-window",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
