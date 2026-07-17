@@ -1155,7 +1155,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The localized action and the surjective load-bearing R-to-T map are absent.",
+        "evidence": "GPT review kernel-tested a small U1/classifying-map/T-U-surjectivity surface but found substantive reconstruction, topology, coefficient, normalization, and dependency defects; Fable repair is required.",
         "loc_p50": 30000,
         "loc_p80": 130000,
         "loc_p95": 500000,
@@ -1165,22 +1165,24 @@
       },
       "expected_module": "FLT.ModularityLifting.Hecke",
       "graph_depth": 6,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "temporary-u1-and-adapter-signatures-green",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
       "lean_type": "Proposed data: a finite localized Hecke module, a complete local Hecke algebra T, and a proved surjective compatible map R -> T identifying Frobenius traces.",
       "library_candidates": [
         "HeckeAlgebra",
         "AutomorphicForm",
-        "GaloisRep.charFrob"
+        "GaloisRep.charFrob",
+        "CategoryTheory.Functor.CorepresentableBy.homEquiv",
+        "HeckeAlgebra.adjoin_T_U_eq_top"
       ],
       "mathematical_name": "Quaternionic Hecke module and surjective Galois-compatible Hecke action",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HECKE-ACTION",
-      "proof_pattern": "Separate automorphic module, Hecke localization, attached representation, trace compatibility, and surjectivity of R-to-T.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "Land the U1 algebraic module and exact data predicates first; then separately prove complete-local-factor existence, pseudorepresentation construction, reconstruction, deformation-point membership, T/U compatibility, and finally the patching-owned R-to-T adapter.",
+      "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-HECKE-ACTION",
-      "source_condition_risks": "Surjectivity, level, weight, localization, multiplicity one, coefficient normalization, and the attached representation must align.",
+      "source_condition_risks": "A genuine T0-valued Galois representation requires separately sourced pseudorepresentation, residual absolute-irreducibility, and reconstruction theorems. Localization.AtPrime lacks the required finite complete adic factor structure and coefficient-residue ownership. Frobenius normalization is currently only proved for the live Z_[p], Q-empty, trivial-character boundary, and R-to-T surjectivity requires every T and nonzero U generator image.",
       "source_refs": [
         "SRC-008",
         "SRC-009",
