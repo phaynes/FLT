@@ -345,9 +345,17 @@ uniform two-point fibre proof. The even lane must partition the root set between
 those two lanes. For odd `n`, the roots of `ΨSqₙ` are exactly the roots of `preΨ'ₙ`. For even `n`,
 they are exactly the union of the `preΨ'ₙ` roots and the `Ψ₂Sq` roots. It also proves that a
 separable curve y-fibre has exactly two points over a separably closed field and that separability
-of `preΨ'ₙ` converts its existing degree theorem into the required distinct-root count. The hard
-remainder is therefore the separability/coprimality content and the one-point two-torsion fibre,
-not the parity split or cardinality plumbing.
+of `preΨ'ₙ` converts its existing degree theorem into the required distinct-root count. The
+`Ψ₂Sq` branch is now closed too: its cubic discriminant is nonzero, so it is separable and has
+exactly three roots over a separably closed field; its vanishing is exactly the zero discriminant
+of the quadratic in y, whose unique root is `-(a₁x+a₃)/2` when 2 is nonzero. The hard remainder is
+therefore separability of `preΨ'ₙ` and its even-case coprimality with `Ψ₂Sq`, not the parity split or
+fibre/cardinality plumbing.
+
+The complementary fibre lemma is also closed: whenever `Ψ₂Sq(x)` is nonzero, an explicit Bezout
+identity between the quadratic fibre polynomial and its derivative proves that the fibre polynomial
+is separable. Consequently every `preΨ'ₙ` root outside the `Ψ₂Sq` roots automatically has the
+required two-point y-fibre. No separate fibre-separability assumption remains.
 
 ## Minimal implementation graph
 
@@ -364,8 +372,8 @@ Build in this order:
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
 6. `FLT-TORSION-PARITY-COUNT` — partial: the odd/even root-set decompositions, separable quadratic
-   fibre count, and separable `preΨ'` root count are closed. Prove `preΨ'` separable, prove its
-   even-case roots disjoint from `Ψ₂Sq`, and count the `Ψ₂Sq` one-point fibres.
+   fibre count, separable `preΨ'` root-count adapter, three-root `Ψ₂Sq` count, and one-point `Ψ₂Sq`
+   fibre count are closed. Prove `preΨ'` separable and its even-case roots disjoint from `Ψ₂Sq`.
 7. `FLT-TORSION-ETALE-COUNT` — partial: the bridge from the exact affine zero-locus count to
    `Nat.card (E.nTorsion n) = n ^ 2` is closed. Prove `PsiSqAffineZeroCard E n` under
    separable-closedness and `(n : k) ≠ 0` by multiplicity/fibre counting or finite etaleness.
@@ -403,6 +411,7 @@ theorem psiSqAffineZeroCard
 ```
 
 The root-set parity split, splitting-to-root-count adapter, and separable two-point y-fibre adapter
-are now proved. The likely elementary implementation still needs square-freeness of `preΨₙ`, its
-coprimality with `Ψ₂Sq` in the even case, and the one-point `Ψ₂Sq` y-fibre calculation. A finite-etale
-kernel bridge remains the alternative. Provider migration remains separately authorized work.
+are now proved, as are the three-root and one-point-fibre `Ψ₂Sq` calculations. The likely elementary
+implementation still needs square-freeness of `preΨₙ` and its coprimality with `Ψ₂Sq` in the even
+case. A finite-etale kernel bridge remains the alternative. Provider migration remains separately
+authorized work.

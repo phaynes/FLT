@@ -71,9 +71,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   zero locus and reduces the exact `n²` theorem to the named `PsiSqAffineZeroCard` contract. That
   locus is now decomposed kernel-cleanly as a finite sum of y-fibre cardinalities over the roots of
   `ΨSqₙ`. The exact odd/even root-set splits, separable `preΨ'` root-count adapter, and separable
-  two-point y-fibre adapter are kernel-clean too. The remaining work is separability of `preΨ'`,
-  even-case coprimality with `Ψ₂Sq`, and the one-point two-torsion fibre calculation; separately
-  authorized provider migration remains open.
+  two-point y-fibre adapter are kernel-clean too. The `Ψ₂Sq` cubic is proved separable with exactly
+  three roots; its vanishing is related explicitly to the quadratic fibre discriminant and its
+  resulting one-point fibre. Its nonvanishing now supplies an explicit Bezout proof that the
+  complementary quadratic fibre is separable. The remaining work is separability of `preΨ'` and
+  even-case coprimality with `Ψ₂Sq`; separately authorized provider migration remains open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.
