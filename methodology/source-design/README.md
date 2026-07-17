@@ -88,8 +88,12 @@ are exact definitions or elementary adapters already audited in FLT-204.
   kernel-clean too: the linear coefficient of the formal `n`-series is exactly `(n : k)`. An exact
   `PrePsiFormalGroupAdapter` freezes the remaining elliptic bridge. It must construct the local
   tangent coordinate, prove the witness has nonzero coordinate, and show that `[n]` annihilates
-  that coordinate. Constructing this adapter and separately authorized provider migration remain
-  open.
+  that coordinate. Algebraic-closure base change and separability descent now close the mismatch
+  between the root-level `IsAlgClosed` argument and the frozen `IsSepClosed` provider. An external
+  AINTLIB theorem independently validates the algebraically closed count under the pinned FLT
+  toolchain, but cannot be imported directly because it has the weaker field interface and uses
+  legacy non-`module` packaging. Constructing the geometry-linked adapter and separately
+  authorized provider migration remain open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

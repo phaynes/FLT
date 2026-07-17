@@ -462,6 +462,29 @@ postulated or instantiated: the next mathematical work is to construct the ellip
 nonzeroness lemma, and connect the dual division-polynomial zero to formal multiplication. Thus no
 separability or torsion-cardinality completion is claimed yet.
 
+The adapter is a proof-local conditional boundary, not yet a geometry-bearing implementation:
+its `formalGroup` field is not definitionally tied to `E`, and `nSeries_annihilates` still carries
+the substantive elliptic claim. A valid implementation may strengthen the structure so the formal
+group and translation map are constructed from `E`, or bypass it with a direct theorem excluding
+the infinitesimal witness.
+
+## Algebraic-closure descent and external implementation audit
+
+The explicit common-root argument is valid over an algebraically closed field, while the frozen
+provider assumes only `IsSepClosed`. That distinction matters for imperfect fields in positive
+characteristic. `FLTMethodology/Probes/PrePsiBaseChange.lean` now closes the interface mismatch:
+it maps `E` and `preΨ' n` to `AlgebraicClosure k`, consumes a concrete formal-group adapter there,
+and descends separability with `Polynomial.separable_map`. Its exported theorem is kernel-clean and
+requires no `IsSepClosed k` or `PerfectField k` assumption.
+
+An independent audit of AINTLIB commit
+`b91f668cd447754b83880f353c34e4a1ed236f2c` found a kernel-clean algebraically closed
+torsion-card theorem and compiled an exact FLT-style adapter under the pinned FLT Lean/Mathlib
+environment. It was not imported: AINTLIB's capstone is `IsAlgClosed`, not the frozen
+`IsSepClosed` theorem, and its legacy non-`module` files cannot be imported from FLT's module
+files. The full evidence and integration options are recorded in
+`methodology/evidence/probes/FLT-TATE-TORSION-AINTLIB-AUDIT.md`.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -477,9 +500,9 @@ Build in this order:
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
 6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, coprimality, local
-   dual-number tangent work, and generic formal-group linearization are closed. Construct the
-   concrete `PrePsiFormalGroupAdapter` to exclude the explicit infinitesimal witness and hence
-   prove `preΨ'` separable.
+   dual-number tangent work, generic formal-group linearization, and algebraic-closure descent are
+   closed. Construct a geometry-linked `PrePsiFormalGroupAdapter` for the base-changed curve (or a
+   direct no-infinitesimal-kernel theorem) to prove `preΨ'` separable over the original field.
 7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
    hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
    may instead be used to discharge the same two mathematical facts.
@@ -522,7 +545,11 @@ square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even
 closed by the specialized EDS formula described above, while the odd lane is closed in every
 characteristic. The exact conditional full torsion-card theorem now depends only on separability.
 The dual-number construction has reduced that input to excluding a concrete infinitesimal kernel
-witness via the differential of multiplication by `n`. The generic formal-group differential is
-now proved and the exact remaining elliptic dependency is frozen as `PrePsiFormalGroupAdapter`;
-constructing that adapter is the next theorem-building step. A finite-etale kernel bridge remains
-the alternative route to the same fact. Provider migration remains separately authorized work.
+witness via the differential of multiplication by `n`. The generic formal-group differential and
+the descent from an algebraic closure to the frozen base-field interface are now proved. The exact
+remaining elliptic dependency is a geometry-linked implementation of
+`PrePsiFormalGroupAdapter` for `E.map (algebraMap k (AlgebraicClosure k))`, or an equivalent direct
+no-infinitesimal-kernel theorem. A finite-etale kernel bridge remains the alternative route. The
+AINTLIB audit confirms the algebraically closed mathematics but cannot be imported directly due to
+its weaker field interface and non-`module` packaging. Provider migration remains separately
+authorized work.
