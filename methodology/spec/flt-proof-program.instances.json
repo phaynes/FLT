@@ -1622,7 +1622,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Central construction is presently blueprint prose.",
+        "evidence": "GPT review produced a standard-trio temporary AuxiliaryCurveData signature but found substantive source ownership, coefficient, and graph defects; Fable repair is required.",
         "loc_p50": 35000,
         "loc_p80": 160000,
         "loc_p95": 650000,
@@ -1632,7 +1632,7 @@
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryCurve",
       "graph_depth": 6,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "temporary-data-signature-green",
       "lean_declaration": "FLT.PotentialModularity.exists_auxiliary_curve",
       "lean_risk": "unbounded",
       "lean_type": "Proposed existence of an even-degree totally real Galois extension F disjoint from the residual kernel and an elliptic curve A/F whose mod-ell representation matches rho|G_F and whose mod-p representation is induced with all local conditions required by MLT.",
@@ -1644,10 +1644,10 @@
       "mathematical_name": "Auxiliary elliptic curve with prescribed mod-ell and mod-p representations",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUX-CURVE",
-      "proof_pattern": "Formalize the moduli variety and use Moret-Bailly with explicitly verified local nonempty opens.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "Formalize the moduli variety and use a source-exact Moret-Bailly specialization plus separately owned Galoisness and joint avoidance, prescribed local opens, coefficient transport, and induced-character data.",
+      "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-AUX-CURVE",
-      "source_condition_risks": "The moduli problem, disjointness, parity, local flatness, and two residual identifications must all be proved.",
+      "source_condition_risks": "The reviewed data boundary must use Representation.Equiv, coefficient-extended A[p], curve-relative good reduction, and explicit flatness. The existence theorem remains unsourced at the required Galois and joint-avoidance strength, and the HR/ZMod coefficient bridge is absent.",
       "source_refs": [
         "SRC-004",
         "SRC-011"
@@ -2234,7 +2234,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The corrected Taylor route requires cyclotomic irreducibility at two separate primes; no SL2 image bridge is used.",
+        "evidence": "GPT review kernel-tested exact absolute-irreducibility and image-preservation predicates and found the current ordinary-irreducibility statement and adequacy edge substantively wrong; Fable repair is required.",
         "loc_p50": 10000,
         "loc_p80": 50000,
         "loc_p95": 210000,
@@ -2244,20 +2244,21 @@
       },
       "expected_module": "FLT.ModularityLifting.ResidualImage",
       "graph_depth": 7,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "temporary-absolute-boundary-green",
       "lean_declaration": "FLT.ModularityLifting.cyclotomicRestrictionIrreducible",
       "lean_risk": "unbounded",
       "lean_type": "Proposed theorem package proving that the CM-induced seed at ell_1 and the auxiliary-curve residual representation at ell_2 remain irreducible after restriction to the corresponding cyclotomic extension, using explicit avoidance and field-disjointness data.",
       "library_candidates": [
+        "Representation.IsAbsolutelyIrreducible",
         "GaloisRep.IsIrreducible"
       ],
       "mathematical_name": "Cyclotomic restriction irreducibility at both Taylor applications",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-RESIDUAL-IMAGE",
-      "proof_pattern": "Prove induced-representation irreducibility over the cyclotomic compositum, then prove Moret-Bailly disjointness preserves each concrete image.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "First transport absolute irreducibility across equality of action ranges, then separately prove the induced Mackey/character-ratio case and the auxiliary joint-avoidance image-preservation case before assembling the two applications.",
+      "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-RESIDUAL-IMAGE",
-      "source_condition_risks": "Dihedrality or base-field irreducibility alone is insufficient; both field changes require exact avoidance and nontrivial character-ratio proofs.",
+      "source_condition_risks": "Taylor requires absolute, not ordinary, irreducibility after cyclotomic restriction. The induced and auxiliary applications need separate providers, and Taylor-Wiles adequacy is a distinct absent interface that cannot be inferred from this obligation.",
       "source_refs": [
         "SRC-004",
         "SRC-016"
@@ -2331,7 +2332,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The corrected source audit fixes the route to unramifiedness and two explicit good-reduction/cyclotomic-avoidance applications.",
+        "evidence": "GPT review kernel-tested a corrected standard-trio field-condition structure and found the existing place-level unramifiedness, disjointness orientation, and Moret-Bailly ownership substantively wrong; Fable repair is required.",
         "loc_p50": 7000,
         "loc_p80": 35000,
         "loc_p95": 140000,
@@ -2341,21 +2342,22 @@
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryField",
       "graph_depth": 5,
-      "kernel_probe_state": "absent",
+      "kernel_probe_state": "temporary-field-condition-signature-green",
       "lean_declaration": "FLT.PotentialModularity.AuxiliaryFieldCondition",
       "lean_risk": "unbounded",
       "lean_type": "Predicate and existence bridge for a totally real auxiliary field in which both selected primes are unramified, the auxiliary curve has good reduction above them, the field is disjoint from the two residual/cyclotomic avoidance extensions, and project-specific even-degree, Galois, and quaternionic conditions are exposed separately.",
       "library_candidates": [
         "NumberField",
-        "IsUnramified"
+        "Algebra.IsUnramifiedIn",
+        "Subalgebra.LinearDisjoint"
       ],
       "mathematical_name": "Taylor-2018-compatible auxiliary-field local and avoidance conditions",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-AUX-LOCAL-FIELD",
-      "proof_pattern": "Encode source and project conditions as distinct fields and prove the Moret-Bailly local opens and disjointness conclusion supply each one.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "Keep a field-only predicate for global unramifiedness, joint avoidance, total reality, parity, and Galoisness; move good reduction to curve data and source Galoisness/avoidance through a separately verified provider.",
+      "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-AUX-LOCAL-FIELD",
-      "source_condition_risks": "Taylor 2018 requires unramifiedness, not complete splitting. Good reduction and two avoidance conditions are needed for the concrete applications; even degree and Galoisness are project/Jacquet-Langlands requirements, not source hypotheses.",
+      "source_condition_risks": "Both rational primes require global unramifiedness in F. Joint avoidance must be expressed over Q in a common ambient field and carried against Kres \u2294 Kcyc; good reduction is curve-relative and does not belong in the field-only predicate. MB89 does not currently own Galoisness or arbitrary avoidance disjointness.",
       "source_refs": [
         "SRC-004",
         "SRC-011",
