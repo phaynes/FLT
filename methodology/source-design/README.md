@@ -84,9 +84,12 @@ are exact definitions or elementary adapters already audited in FLT-204.
   The complete torsion count is therefore assembled conditional only on separability of `preΨ'`.
   The dual-number Taylor law, Weierstrass tangent equation, and repeated-root witness construction
   are now kernel-clean as well: any failure of separability produces an explicit nonconstant
-  infinitesimal zero on the curve. The remaining mathematical interface is therefore the
-  differential-of-multiplication statement excluding that witness when `(n : k) ≠ 0`; separately
-  authorized provider migration remains open.
+  infinitesimal zero on the curve. The generic formal-group half of the terminal is now
+  kernel-clean too: the linear coefficient of the formal `n`-series is exactly `(n : k)`. An exact
+  `PrePsiFormalGroupAdapter` freezes the remaining elliptic bridge. It must construct the local
+  tangent coordinate, prove the witness has nonzero coordinate, and show that `[n]` annihilates
+  that coordinate. Constructing this adapter and separately authorized provider migration remain
+  open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

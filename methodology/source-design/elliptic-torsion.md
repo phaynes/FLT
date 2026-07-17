@@ -437,6 +437,31 @@ infinitesimal element of the kernel of multiplication by `n`, then prove that th
 pinned library has no group law over dual numbers and no invariant-differential/formal-group API,
 so that bridge must be implemented explicitly or replaced by a sourced finite-etale component.
 
+## Formal-group component split
+
+`FLTMethodology/Probes/FormalGroupLinearization.lean` now closes the reusable algebraic half for
+every one-dimensional formal group over a commutative ring. It defines the formal `n`-series and
+proves that its constant coefficient is zero and its linear coefficient is exactly `(n : R)`.
+Therefore, when `(n : R) ≠ 0`, the `n`-series is already nonzero at first order. These declarations
+have only the standard axiom trio.
+
+`FLTMethodology/Probes/PrePsiFormalGroupAdapter.lean` freezes the exact remaining dependency as
+`PrePsiFormalGroupAdapter E n`. The adapter owns three pieces of elliptic information:
+
+1. a local formal group and tangent coordinate at the identity;
+2. preservation of the nonzero tangent direction after translating the explicit witness to the
+   identity; and
+3. the fact that the witness lies in the infinitesimal kernel of `[n]`, expressed by annihilation
+   of that tangent coordinate by the formal `n`-series.
+
+Given the adapter, `isEmpty_prePsiInfinitesimalWitness_of_formalGroupAdapter` excludes every
+witness when `(n : k) ≠ 0`, and `prePsi_separable_of_formalGroupAdapter` proves the required
+separability. Both assembly results are kernel-clean. The adapter itself is deliberately not
+postulated or instantiated: the next mathematical work is to construct the elliptic formal group
+(for example from the local parameter `-x/y` at infinity), prove the translation/tangent
+nonzeroness lemma, and connect the dual division-polynomial zero to formal multiplication. Thus no
+separability or torsion-cardinality completion is claimed yet.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -451,9 +476,10 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, coprimality, and local
-   dual-number tangent work is closed. Prove the multiplication-by-`n` differential bridge that
-   excludes the explicit infinitesimal witness and hence proves `preΨ'` separable.
+6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, coprimality, local
+   dual-number tangent work, and generic formal-group linearization are closed. Construct the
+   concrete `PrePsiFormalGroupAdapter` to exclude the explicit infinitesimal witness and hence
+   prove `preΨ'` separable.
 7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
    hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
    may instead be used to discharge the same two mathematical facts.
@@ -496,5 +522,7 @@ square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even
 closed by the specialized EDS formula described above, while the odd lane is closed in every
 characteristic. The exact conditional full torsion-card theorem now depends only on separability.
 The dual-number construction has reduced that input to excluding a concrete infinitesimal kernel
-witness via the differential of multiplication by `n`. A finite-etale kernel bridge remains the
-alternative route to the same fact. Provider migration remains separately authorized work.
+witness via the differential of multiplication by `n`. The generic formal-group differential is
+now proved and the exact remaining elliptic dependency is frozen as `PrePsiFormalGroupAdapter`;
+constructing that adapter is the next theorem-building step. A finite-etale kernel bridge remains
+the alternative route to the same fact. Provider migration remains separately authorized work.

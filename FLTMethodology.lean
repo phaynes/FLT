@@ -4,6 +4,7 @@ import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
 import FLTMethodology.Probes.DualTangent
 import FLTMethodology.Probes.EllipticTorsionSourceBoundary
 import FLTMethodology.Probes.ExistingContracts
+import FLTMethodology.Probes.FormalGroupLinearization
 import FLTMethodology.Probes.FreySemistabilityBoundary
 import FLTMethodology.Probes.FreyTwoTorsionBoundary
 import FLTMethodology.Probes.FreyTorsionRankAudit
@@ -23,6 +24,7 @@ import FLTMethodology.Probes.PsiSqAllCharacteristic
 import FLTMethodology.Probes.PsiSqExactDetection
 import FLTMethodology.Probes.PrePsiTwoTorsion
 import FLTMethodology.Probes.PrePsiInfinitesimal
+import FLTMethodology.Probes.PrePsiFormalGroupAdapter
 import FLTMethodology.Probes.SpecialPreNormEDS
 import FLTMethodology.Probes.TateCoordinatePointMapBoundary
 import FLTMethodology.Probes.TateDeltaAnalyticBridge
