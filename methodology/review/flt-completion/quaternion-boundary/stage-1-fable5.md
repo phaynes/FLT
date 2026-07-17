@@ -89,13 +89,18 @@ consumers, then the automorphic support cluster and the top theorem. The intende
 new exact axiom plus `propext`, `Classical.choice`, and `Quot.sound`, with generic `knownin1980s`
 removed from this path.
 
-The exact signature has not yet been elaborated. The required next probe imports the quaternion
-basic module, declares a temporary copy of the signature, proves the exact existing instance goal by
-application at `ℒ.U`, and audits the probe declaration's axioms.
+The exact signature was subsequently tested in
+`methodology/evidence/probes/QuaternionStabilizerSignatureProbe.lean`. The proposed theorem is a
+local hypothesis, not a repository axiom. The probe compiles, definitionally supplies the exact
+existing `ℒ.Δ D g` consumer, and its declaration axiom audit is exactly:
+
+```text
+[propext, Classical.choice, Quot.sound]
+```
 
 ## 6. Verdict
 
 **REVISE.** The signature is a plausible minimal T2 boundary and is expected to discharge the real
-consumer without hiding the order-construction work. It is not yet `NAMEABLE`: first register an
-exact primary pre-1990 source locator and run the signature/application axiom probe. No T2 axiom was
-registered and no T3 proof was claimed.
+consumer without hiding the order-construction work. The signature/application probe is now green,
+but it is not yet `NAMEABLE`: an exact primary pre-1990 source locator remains missing. No T2 axiom
+was registered and no T3 proof was claimed.
