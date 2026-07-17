@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Philip Haynes
 -/
 
-import FLTMethodology.Probes.TorsionParityCount
+import FLTMethodology.Probes.SpecialPreNormEDS
 
 /-!
 # Division-polynomial values at two-torsion coordinates
@@ -218,6 +218,31 @@ theorem n_torsion_card_of_prePsi_separable_evenPreNormEDS
   apply n_torsion_card_of_psiSq_affine_zero_card E
   · exact Nat.pos_of_ne_zero (fun hnzero ↦ hn (hnzero ▸ Nat.cast_zero))
   · exact psiSqAffineZeroCard_of_prePsi_separable_evenPreNormEDS E hn hpresep hEven
+
+/-- The division-polynomial factor `preΨ' n` is pointwise coprime to `Ψ₂Sq` whenever `n` remains
+nonzero in the coefficient field. -/
+theorem prePsi_pointwise_coprime
+    (E : WeierstrassCurve k) [E.IsElliptic] {n : ℕ} (hn : (n : k) ≠ 0) :
+    ∀ x : k, (E.preΨ' n).eval x = 0 → E.Ψ₂Sq.eval x ≠ 0 :=
+  prePsi_pointwise_coprime_of_even_preNormEDS E hn fun hm hmk hc hrel ↦
+    specialEvenPreNormEDS_ne_zero hm hmk hc hrel
+
+/-- Exact affine torsion-coordinate count, conditional only on separability of `preΨ' n`. -/
+theorem psiSqAffineZeroCard_of_prePsi_separable
+    [IsSepClosed k] (E : WeierstrassCurve k) [E.IsElliptic]
+    {n : ℕ} (hn : (n : k) ≠ 0) (hpresep : (E.preΨ' n).Separable) :
+    PsiSqAffineZeroCard E n :=
+  psiSqAffineZeroCard_of_prePsi_separable_coprime E hn hpresep
+    (prePsi_pointwise_coprime E hn)
+
+/-- Exact `n`-torsion cardinality, conditional only on separability of `preΨ' n`. -/
+theorem n_torsion_card_of_prePsi_separable
+    [IsSepClosed k] (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k]
+    {n : ℕ} (hn : (n : k) ≠ 0) (hpresep : (E.preΨ' n).Separable) :
+    Nat.card (E.nTorsion n) = n ^ 2 := by
+  apply n_torsion_card_of_psiSq_affine_zero_card E
+  · exact Nat.pos_of_ne_zero (fun hnzero ↦ hn (hnzero ▸ Nat.cast_zero))
+  · exact psiSqAffineZeroCard_of_prePsi_separable E hn hpresep
 
 end
 

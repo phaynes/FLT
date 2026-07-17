@@ -385,18 +385,28 @@ Thus the residual even-case coprimality theorem is no longer a curve-coordinate 
 the abstract closed nonvanishing formula for `preNormEDS' 0 c d n` when `c ≠ 0`, `d ≠ 0`,
 `d² = -4c³`, and `(n : k) ≠ 0`. Computation supports the standard formula: odd terms are signed
 powers of `c`; terms congruent to two modulo four are `(n/2)` times a power of `c`; terms divisible
-by four are `(n/4)` times a power of `c` times `d`. This formula is a design target, not yet a
-kernel-checked theorem.
+by four are `(n/4)` times a power of `c` times `d`.
+
+That target is now proved in `FLTMethodology/Probes/SpecialPreNormEDS.lean`. After the
+parameterization `c = -t²`, `d = -2t³`, the simultaneous kernel-clean formula is
+
+```lean
+preNormEDS' 0 (-t²) (-2t³) (2r+1) = (-1)^r * t^(r(r+1))
+preNormEDS' 0 (-t²) (-2t³) (2(r+1)) = (-1)^(r+2) * (r+1) * t^(r(r+2)).
+```
+
+The relation `d² = -4c³`, together with `2 ≠ 0` and `c ≠ 0`, supplies this parameter directly as
+`t = d/(2c)`. Hence a nonzero even index makes every factor in the second formula nonzero.
 
 The odd coprimality lane is now closed independently of that formula, including characteristic two.
 After base change to an algebraic closure, a common root of `preΨ'ₙ` and `Ψ₂Sq` supplies an affine
 point killed by both `n` and `2`. Oddness makes those scalars coprime, so the point would be zero,
 contradicting its affine constructor. The kernel-clean
 `prePsi_pointwise_coprime_of_even_preNormEDS` therefore reduces all pointwise coprimality to the
-even-index part of the specialized recurrence only. The conditional endpoints
-`psiSqAffineZeroCard_of_prePsi_separable_evenPreNormEDS` and
-`n_torsion_card_of_prePsi_separable_evenPreNormEDS` assemble the exact affine and full torsion counts
-from this even recurrence theorem plus separability of `preΨ'`.
+even-index part of the specialized recurrence only. That part is now discharged by
+`specialEvenPreNormEDS_ne_zero`, so `prePsi_pointwise_coprime` is unconditional. The endpoints
+`psiSqAffineZeroCard_of_prePsi_separable` and `n_torsion_card_of_prePsi_separable` assemble the exact
+affine and full torsion counts from separability of `preΨ'` alone.
 
 ## Minimal implementation graph
 
@@ -412,9 +422,8 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, and cardinality assembly and the complete
-   odd coprimality lane are closed. Prove the remaining even specialized EDS nonvanishing formula
-   and prove `preΨ'` separable.
+6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, cardinality, and coprimality work is
+   closed. Prove `preΨ'` separable.
 7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
    hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
    may instead be used to discharge the same two mathematical facts.
@@ -454,7 +463,7 @@ theorem psiSqAffineZeroCard
 The root-set parity split, splitting-to-root-count adapter, both fibre multiplicities, and the final
 odd/even sum arithmetic are now proved. The exact conditional assembly theorem needs only
 square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even coprimality lane is now
-reduced to the specialized EDS formula described above, while the odd lane is closed in every
-characteristic. The exact conditional full torsion-card theorem is already assembled from that even
-formula and separability. A finite-etale kernel bridge remains the alternative route to those facts.
-Provider migration remains separately authorized work.
+closed by the specialized EDS formula described above, while the odd lane is closed in every
+characteristic. The exact conditional full torsion-card theorem now depends only on separability.
+A finite-etale kernel bridge remains the alternative route to that fact. Provider migration remains
+separately authorized work.
