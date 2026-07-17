@@ -3033,7 +3033,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable 5 and GPT-5.6 xhigh independently found the missing residual-map condition and absent Brauer-Nesbitt terminal; the repaired relations elaborate with the standard axiom trio.",
+        "evidence": "Fable temporarily elaborated the full explicit-O data boundary and proved residual charpoly agreement plus conditional two-lattice independence with the standard axiom trio. Opus synthesis and fresh GPT review remain open before persistence/promotion.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3043,22 +3043,23 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Coefficients",
       "graph_depth": 1,
-      "kernel_probe_state": "signature-green",
+      "kernel_probe_state": "temporary-proof-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.CoefficientData",
       "lean_risk": "unbounded",
       "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction through the maximal ideal, semisimplification, and coefficient-extension comparison.",
       "library_candidates": [
         "GaloisRep.baseChange",
         "Representation.IsSemisimpleRepresentation",
-        "IsLocalRing.maximalIdeal"
+        "IsLocalRing.maximalIdeal",
+        "LinearMap.charpoly_baseChange"
       ],
       "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
-      "proof_pattern": "Define coefficient, lattice, reduction, semisimplification, and scalar-extension interfaces separately; prove uniqueness through the explicit Brauer-Nesbitt dependency before freezing the source contract.",
-      "review_state": "diversity-design-running",
+      "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
+      "review_state": "design-synthesis-running",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "A generic-fibre base change is not residual reduction. The provisional relation now requires the maximal ideal to lie in the coefficient-map kernel, but stable-lattice existence, lattice independence, Brauer-Nesbitt uniqueness, and the fixed residual algebraic-closure instantiation remain explicit obligations.",
+      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis.",
       "source_refs": [
         "SRC-016"
       ],
@@ -3079,7 +3080,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "A read-only corrected AbstractWeightLocalData-style bundle elaborated with the standard axiom trio; GPT independently returned substantive REVISE on the full bundle and bridge.",
+        "evidence": "A read-only corrected AbstractWeightLocalData-style bundle elaborated with the standard axiom trio; GPT independently returned substantive REVISE and the typed Fable repair is now running.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3101,7 +3102,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "First bank AbstractWeightLocalData over global embeddings with the exact source interval, then expose the integral model, generic-fibre compatibility, and dual/sign comparison before formalizing the weight-two crystalline bridge.",
-      "review_state": "diversity-design-queued",
+      "review_state": "diversity-design-running",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The abstract global-embedding weight bundle is signature-viable, but full PadicHodgeData is not. IsFlatAt applies to an integral model while crystallinity applies after generic fibre, and the repository/source dual-sign convention remains unresolved; the bridge is substantial p-adic Hodge mathematics.",
       "source_refs": [
