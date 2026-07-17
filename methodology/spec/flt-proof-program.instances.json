@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "final-repair-synthesis-running",
+      "review_state": "final-synthesis-complete-gpt-agreement-queued",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -1486,7 +1486,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "Both class-field methodology probes and independent build review are green. The tame-graph GPT review returned REVISE-SUBSTANTIVE and triggered the typed Fable pass; the complete class-field theorem package remains absent.",
+        "evidence": "The object/type and idele boundaries remain reviewed. Fable repaired the tame-residue graph and found a short standard-trio inertia-closedness proof in the current pin; the first genuine residual is roots-of-unity reduction injectivity. Opus synthesis and GPT agreement remain required before adding FLT-TAME-RESIDUE or its four owner edges.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1509,7 +1509,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Keep the independently reviewed object/type layer frozen; complete the required diversity and synthesis pipeline before routing tame residue through a separate T1 node; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-graph-diversity-design-running",
+      "review_state": "tame-graph-diversity-complete-synthesis-queued",
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. GPT accepted a distinct T1 tame-residue owner in principle but found substantive graph, wild-inertia, closedness, and source-gate defects; no node or edge has been added.",
       "source_refs": [
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "final-repair-synthesis-running",
+      "review_state": "final-synthesis-complete-gpt-agreement-queued",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
       "source_refs": [
@@ -3085,7 +3085,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The Tier-1 weight/dual vocabulary passed GPT design review, later-window Opus build review, targeted and umbrella builds, and exact nine-declaration standard-trio audits. G1/G2/G4/G5/G6/G7 remain open.",
+        "evidence": "The Tier-1 vocabulary is built and reviewed. Opus reconfirmed the pin lacks A_cris/B_cris/D_cris and proposed only parameterized period-module infrastructure as a first honest G1 slice; independent GPT review is queued. G1/G2/G4/G5/G6/G7 remain open.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "tier1-boundary-reviewed-g1-primary-design-running",
+      "review_state": "tier1-reviewed-g1-decompose-first-gpt-review-queued",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
