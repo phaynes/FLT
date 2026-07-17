@@ -1359,7 +1359,7 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Statement",
       "graph_depth": 4,
-      "kernel_probe_state": "corrected-signatures-green-unpersisted",
+      "kernel_probe_state": "bounded-vocabulary-production-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.SourceContract",
       "lean_risk": "unbounded",
       "lean_type": "Definition gap: exact level-free GL2 automorphy contract for Taylor 2018 Theorem 2.1.1 over an algebraic ell-adic coefficient field, with stable lattice and semisimplified residual reduction, regular algebraicity, crystalline and Fontaine-Laffaille conditions, cyclotomic-restriction irreducibility, a RACAR witness with matching residual representation and Hodge-Tate weights, and witness unramifiedness at every v | ell.",
@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "substantive-agreement-mechanical-fix-kernel-green-build-running",
+      "review_state": "bounded-vocabulary-built-kernel-green-gpt-build-review-queued",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
