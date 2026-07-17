@@ -1347,7 +1347,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "GPT verified the at-ell witness condition and level-free boundary; Fable returned DESIGN-VIABLE with five trio-clean repository/source boundary units, and Opus synthesis is running.",
+        "evidence": "GPT verified the at-ell witness condition and level-free boundary; Fable returned DESIGN-VIABLE with five trio-clean units. Opus synthesis produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
         "loc_p50": 3000,
         "loc_p80": 15000,
         "loc_p95": 60000,
@@ -1366,7 +1366,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "First freeze the repository-side SelectedGood boundary and upstream coefficient/weight/RACAR vocabulary, then elaborate the source theorem with one explicit data owner and separate bridge theorems.",
-      "review_state": "design-synthesis-running",
+      "review_state": "design-synthesis-waiting-provider-reset",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "The level-free Taylor route remains selected, but explicit coefficient ownership, one shared residual model, the dual/sign bridge, and the exact at-ell RACAR/local hypotheses are not yet frozen. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -2186,7 +2186,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable returned DESIGN-VIABLE after consumer-exact temporary probes of SelectedGoodRepository, generic tame quotient, integral flat descent, cyclotomic degree, and complex embedding; Opus synthesis is running before persistence.",
+        "evidence": "Fable returned DESIGN-VIABLE after consumer-exact temporary probes. Opus synthesis produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2208,7 +2208,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "First elaborate SelectedGoodRepository plus the exact generic-fibre tame quotient, then prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "design-synthesis-running",
+      "review_state": "design-synthesis-waiting-provider-reset",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The small repository-side boundary must add support away from ell and place the tame rank-one quotient on the generic AlgebraicClosure fibre exactly used by cyclic_base_change. It must not silently strengthen BlueprintSGood without a bridge or representability theorem.",
       "source_refs": [
@@ -3034,7 +3034,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fresh GPT review returned substantive REVISE after replaying the same-O charpoly route: Opus had dropped a live generic-closure embedding and left universe/local-hom boundaries incomplete. A typed-rule Fable repair is running.",
+        "evidence": "Fresh GPT review returned substantive REVISE after replaying the same-O charpoly route. The required Fable repair produced NO VERDICT because the provider session limit was reached; retry is deferred until reset.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3058,7 +3058,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "second-diversity-repair-running",
+      "review_state": "second-diversity-repair-waiting-provider-reset",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. The fresh review requires the generic-closure tower, generalized module universes, and residue local-hom adapter to remain explicit.",
       "source_refs": [
@@ -3081,7 +3081,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus completed a conditioned synthesis preserving the trio-clean global-weight, interval, unramifiedness, dual, and sign-guard boundary. Fresh GPT review is running before persistence.",
+        "evidence": "The post-diversity GPT review passed. FLTMethodology.Probes.MLTPadicHodgeWeightData now builds with the exact standard axiom trio on seven definitions and two guards. The full G1/G2/G4/G5/G6/G7 provider graph is still open.",
         "loc_p50": 15000,
         "loc_p80": 80000,
         "loc_p95": 350000,
@@ -3091,7 +3091,7 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.PadicHodge",
       "graph_depth": 2,
-      "kernel_probe_state": "temporary-proof-green",
+      "kernel_probe_state": "tier1-boundary-proof-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.PadicHodgeData",
       "lean_risk": "unbounded",
       "lean_type": "Definition gap: exact local predicates and weight data appearing in Taylor 2018 Theorem 2.1.1, together with the separately proved weight-two finite-flat-to-crystalline bridge used by the repository route.",
@@ -3103,10 +3103,10 @@
       "mathematical_name": "Crystalline, Hodge-Tate, regular-algebraic, and Fontaine-Laffaille interfaces",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
-      "proof_pattern": "Bank the reviewed weight/dual vocabulary first, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "independent-review-running",
+      "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
+      "review_state": "build-review-waiting-provider-reset",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
-      "source_condition_risks": "The global-embedding weight bundle and GaloisRepDual are temporarily trio-clean, and determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
+      "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
         "SRC-016"
       ],
