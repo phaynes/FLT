@@ -76,8 +76,11 @@ are exact definitions or elementary adapters already audited in FLT-204.
   resulting one-point fibre. Its nonvanishing now supplies an explicit Bezout proof that the
   complementary quadratic fibre is separable. A characteristic-safe assembly theorem now proves
   the complete affine count from exactly two hypotheses: separability of `preΨ'` and pointwise
-  coprimality with `Ψ₂Sq`. Those two division-polynomial facts are the remaining mathematical
-  work; separately authorized provider migration remains open.
+  coprimality with `Ψ₂Sq`. At a `Ψ₂Sq` root, the initial specialized EDS values `Ψ₃` and
+  `preΨ₄` are now proved nonzero and every later `preΨ'` evaluation is reduced to
+  `preNormEDS' 0 c d n` with `d² = -4c³`. The closed nonvanishing formula for that recurrence and
+  separability of `preΨ'` are the remaining mathematical work; separately authorized provider
+  migration remains open.
 - `quaternion-boundary`: `PARTIAL`; the upstream norm-one injection has been rejected and replaced
   by the correct order-unit quotient route from Voight Lemma 26.5.1. Existing adelic cocompactness
   is reusable, but compact-open-to-order and quotient-injection bridges remain open.

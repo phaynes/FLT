@@ -370,6 +370,24 @@ root-set formulation vacuous, while the even branch derives `2 ≠ 0` from `(n :
 parity, fibre, distinct-root, union-sum, and natural-number arithmetic obligations are discharged;
 only the two division-polynomial hypotheses above remain.
 
+`FLTMethodology/Probes/PrePsiTwoTorsion.lean` now narrows the coprimality hypothesis further in the
+even lane. At a root `x` of `Ψ₂Sq`, with `2 ≠ 0`, it proves
+
+```lean
+(preΨ₄(x))² = -4 * (Ψ₃(x))³
+(Ψ₂Sq'(x))² = -16 * Ψ₃(x)
+Ψ₃(x) ≠ 0
+preΨ₄(x) ≠ 0
+preΨ'ₙ(x) = preNormEDS' 0 (Ψ₃(x)) (preΨ₄(x)) n.
+```
+
+Thus the residual even-case coprimality theorem is no longer a curve-coordinate calculation. It is
+the abstract closed nonvanishing formula for `preNormEDS' 0 c d n` when `c ≠ 0`, `d ≠ 0`,
+`d² = -4c³`, and `(n : k) ≠ 0`. Computation supports the standard formula: odd terms are signed
+powers of `c`; terms congruent to two modulo four are `(n/2)` times a power of `c`; terms divisible
+by four are `(n/4)` times a power of `c` times `d`. This formula is a design target, not yet a
+kernel-checked theorem.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -384,8 +402,9 @@ Build in this order:
 4. `FLT-TORSION-PRIME-TO-CHAR-FINITE` — closed in the methodology probe.
 5. `FLT-TORSION-ALL-CHAR-FINITE` — closed in the methodology probe by algebraic-closure root
    existence and nonzero projective representatives; no finite-morphism scaffold is needed.
-6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, and cardinality assembly is closed.
-   Prove `preΨ'` separable and the characteristic-safe pointwise coprimality implication above.
+6. `FLT-TORSION-PARITY-COUNT` — partial: all parity, fibre, and cardinality assembly is closed, and
+   the even coprimality lane is reduced to one specialized EDS formula. Prove that formula, cover
+   the odd characteristic-two lane, and prove `preΨ'` separable.
 7. `FLT-TORSION-ETALE-COUNT` — reduced: the exact affine count follows mechanically from those two
    hypotheses, and its bridge to `Nat.card (E.nTorsion n) = n ^ 2` is closed. A finite-etale proof
    may instead be used to discharge the same two mathematical facts.
@@ -423,7 +442,7 @@ theorem psiSqAffineZeroCard
 ```
 
 The root-set parity split, splitting-to-root-count adapter, both fibre multiplicities, and the final
-odd/even sum arithmetic are now proved. The exact conditional assembly theorem shows that the
-elementary implementation needs only square-freeness of `preΨₙ` and pointwise coprimality with
-`Ψ₂Sq`. A finite-etale kernel bridge remains the alternative route to those facts. Provider
-migration remains separately authorized work.
+odd/even sum arithmetic are now proved. The exact conditional assembly theorem needs only
+square-freeness of `preΨₙ` and pointwise coprimality with `Ψ₂Sq`; the even coprimality lane is now
+reduced to the specialized EDS formula described above. A finite-etale kernel bridge remains the
+alternative route to those facts. Provider migration remains separately authorized work.
