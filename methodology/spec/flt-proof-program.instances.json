@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "s3-bounded-build-kernel-green-review-queued-larger-obligation-open",
+      "review_state": "s3-bounded-build-review-running-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
