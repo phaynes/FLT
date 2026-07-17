@@ -839,7 +839,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HIST-MAZUR",
       "proof_pattern": "T2 names the exact Serre 1987 Frey-package irreducibility terminal; T3 formalizes the underlying Serre/Mazur route or an equivalent unconditional derivation.",
-      "review_state": "reviewing",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-HIST-MAZUR",
       "source_condition_risks": "Serre 1987 section 4.1 Proposition 6 p.201 is the proposed exact Frey irreducibility terminal. GPT review and the mandatory human gate must confirm the parity specialization and exact named-interface scope.",
       "source_refs": [
@@ -2860,7 +2860,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-HIST-QUATERNION",
       "proof_pattern": "Construct a finite quotient model of the adelic stabilizer using order units modulo scalar units, prove that its kernel is exactly the scalar subgroup, then apply the kernel-clean finite-relative-index adapter.",
-      "review_state": "reviewing",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-HIST-QUATERNION",
       "source_condition_risks": "Voight Lemma 17.7.13 proves only finiteness of norm-one units. The direct scalar-quotient-to-norm-one injection in the upstream comment is false without a square-norm condition. Lemma 26.5.1 gives the correct finite order-unit quotient, but compact-open-to-order and exact-kernel bridges remain open.",
       "source_refs": [
