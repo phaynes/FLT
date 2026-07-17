@@ -7,6 +7,7 @@ Read:
 
 - `methodology/review/flt-completion/hecke-action/stage-1-opus48-primary.md`;
 - `methodology/review/flt-completion/hecke-action/stage-2-gpt56xhigh-review.md`;
+- `methodology/review/flt-completion/hecke-action/stage-2-controller-axiom-audit.md`;
 - the exact `FLT-HECKE-ACTION`, `FLT-AUT-GALOIS`, `FLT-DEF-FUNCTOR`, `FLT-SGOOD-SELECTED`,
   `FLT-TW-PRIMES`, and `FLT-PATCHING` rows and edges;
 - the live Hecke, automorphy, deformation, localization, and `R = T` APIs cited by those reviews.
@@ -22,7 +23,12 @@ Produce an independent repair design, not a commentary rephrasing. Hostilely tes
    construction;
 4. whether the accepted U1 module, finite-over-Hecke instance, local base change, generic
    classifying map, `RToTActionData`, and T/U generator criterion are minimal and elaborate at the
-   current pin;
+   current pin. The controller independently found that `heckeModule_finite_over_heckeAlg` consumes
+   the authorized named quaternion T2 axiom `isFiniteRelIndex_stabilizer`, through the live U1
+   sufficiently-small instance, even though `finite_doubleCoset` itself is standard-trio clean.
+   Confirm whether this dependency is mathematically unavoidable at this boundary; either classify
+   the unit explicitly as T2-dependent or provide a probed standard-trio replacement. Do not call it
+   T1-clean merely because the declaration elaborates;
 5. the exact source and dependency owner for every missing theorem—especially local-factor
    existence, pseudorepresentation construction, reconstruction, deformation-point membership,
    multiplicity one, U-operator compatibility, and the patching adapter;

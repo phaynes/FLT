@@ -1139,7 +1139,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The localized Hecke action, trace compatibility, and surjective R-to-T map are kernel-clean with source-compatible hypotheses.",
+      "completion_gate": "The localized Hecke action, trace compatibility, and surjective R-to-T map are kernel-clean with source-compatible hypotheses; its T1 route contains no named T2 axiom, while T2 may consume only the registered quaternion boundary.",
       "completion_targets": [
         "T1",
         "T2",
@@ -1155,7 +1155,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "GPT review kernel-tested a small U1/classifying-map/T-U-surjectivity surface but found substantive reconstruction, topology, coefficient, normalization, and dependency defects; Fable repair is required.",
+        "evidence": "GPT review kernel-tested a small U1/classifying-map/T-U-surjectivity surface but found substantive reconstruction, topology, coefficient, normalization, and dependency defects. Controller axiom audit found the finite-over-Hecke instance is T2-dependent; Fable repair is required.",
         "loc_p50": 30000,
         "loc_p80": 130000,
         "loc_p95": 500000,
@@ -1165,7 +1165,7 @@
       },
       "expected_module": "FLT.ModularityLifting.Hecke",
       "graph_depth": 6,
-      "kernel_probe_state": "temporary-u1-and-adapter-signatures-green",
+      "kernel_probe_state": "temporary-signatures-green-finiteness-explicitly-quaternion-t2-dependent",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
       "lean_type": "Proposed data: a finite localized Hecke module, a complete local Hecke algebra T, and a proved surjective compatible map R -> T identifying Frobenius traces.",
@@ -1179,10 +1179,10 @@
       "mathematical_name": "Quaternionic Hecke module and surjective Galois-compatible Hecke action",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-HECKE-ACTION",
-      "proof_pattern": "Land the U1 algebraic module and exact data predicates first; then separately prove complete-local-factor existence, pseudorepresentation construction, reconstruction, deformation-point membership, T/U compatibility, and finally the patching-owned R-to-T adapter.",
+      "proof_pattern": "Land the U1 algebraic module and exact data predicates first, explicitly classifying or eliminating its quaternion T2 dependency; then separately prove complete-local-factor existence, pseudorepresentation construction, reconstruction, deformation-point membership, T/U compatibility, and finally the patching-owned R-to-T adapter.",
       "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-HECKE-ACTION",
-      "source_condition_risks": "A genuine T0-valued Galois representation requires separately sourced pseudorepresentation, residual absolute-irreducibility, and reconstruction theorems. Localization.AtPrime lacks the required finite complete adic factor structure and coefficient-residue ownership. Frobenius normalization is currently only proved for the live Z_[p], Q-empty, trivial-character boundary, and R-to-T surjectivity requires every T and nonzero U generator image.",
+      "source_condition_risks": "A genuine T0-valued Galois representation requires separately sourced pseudorepresentation, residual absolute-irreducibility, and reconstruction theorems. Localization.AtPrime lacks the required finite complete adic factor structure and coefficient-residue ownership. Frobenius normalization is currently only proved for the live Z_[p], Q-empty, trivial-character boundary, and R-to-T surjectivity requires every T and nonzero U generator image. The proposed U1 finite-over-Hecke instance also consumes the authorized named quaternion T2 axiom through the U1 sufficiently-small instance, so it is not T1-clean without a replacement proof.",
       "source_refs": [
         "SRC-008",
         "SRC-009",
