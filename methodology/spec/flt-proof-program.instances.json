@@ -660,6 +660,13 @@
       "to": "FLT-RACAR-DEF"
     },
     {
+      "edge_id": "E-MLT-PADIC-HODGE-RACAR-DEF",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-PADIC-HODGE",
+      "justification": "FLT-RACAR-DEF directly consumes FLT-MLT-PADIC-HODGE.",
+      "to": "FLT-RACAR-DEF"
+    },
+    {
       "edge_id": "E-SUPPORT-AUTOMORPHIC-RACAR-DEF",
       "edge_kind": "theorem",
       "from": "FLT-SUPPORT-AUTOMORPHIC",
@@ -1058,7 +1065,7 @@
         "tokens_p95": 30000000
       },
       "expected_module": "FLT.ModularityLifting.DeformationRing",
-      "graph_depth": 5,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.sGoodLiftFunctor_corepresentable",
       "lean_risk": "unbounded",
@@ -1106,7 +1113,7 @@
         "tokens_p95": 90000000
       },
       "expected_module": "FLT.ModularityLifting.LocalConditions",
-      "graph_depth": 6,
+      "graph_depth": 7,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localConditions_balanced",
       "lean_risk": "unbounded",
@@ -1157,7 +1164,7 @@
         "tokens_p95": 110000000
       },
       "expected_module": "FLT.ModularityLifting.Hecke",
-      "graph_depth": 5,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.localizedHeckeAction",
       "lean_risk": "unbounded",
@@ -1206,7 +1213,7 @@
         "tokens_p95": 65000000
       },
       "expected_module": "FLT.ModularityLifting.TaylorWilesPrimes",
-      "graph_depth": 7,
+      "graph_depth": 8,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.exists_taylorWiles_primes",
       "lean_risk": "unbounded",
@@ -1255,7 +1262,7 @@
         "tokens_p95": 75000000
       },
       "expected_module": "FLT.ModularityLifting.Patching",
-      "graph_depth": 8,
+      "graph_depth": 9,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.patched_point_factors_through_hecke",
       "lean_risk": "unbounded",
@@ -1349,7 +1356,7 @@
         "tokens_p95": 12000000
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Statement",
-      "graph_depth": 3,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.SourceContract",
       "lean_risk": "unbounded",
@@ -1398,7 +1405,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.ModularityLifting.Main",
-      "graph_depth": 9,
+      "graph_depth": 10,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.modularity_lifting_weight_two_of_taylor2018",
       "lean_risk": "unbounded",
@@ -1624,7 +1631,7 @@
         "tokens_p95": 150000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryCurve",
-      "graph_depth": 5,
+      "graph_depth": 6,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.exists_auxiliary_curve",
       "lean_risk": "unbounded",
@@ -1675,7 +1682,7 @@
         "tokens_p95": 45000000
       },
       "expected_module": "FLT.PotentialModularity.Main",
-      "graph_depth": 10,
+      "graph_depth": 11,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1723,7 +1730,7 @@
         "tokens_p95": 60000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Lift",
-      "graph_depth": 11,
+      "graph_depth": 12,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.lifts",
       "lean_risk": "unbounded",
@@ -1816,7 +1823,7 @@
         "tokens_p95": 95000000
       },
       "expected_module": "FLT.GaloisRepresentation.CompatibleFamily",
-      "graph_depth": 11,
+      "graph_depth": 12,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.CompatibleFamily.of_potentially_automorphic",
       "lean_risk": "unbounded",
@@ -1864,7 +1871,7 @@
         "tokens_p95": 35000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Family",
-      "graph_depth": 12,
+      "graph_depth": 13,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.mem_isCompatible",
       "lean_risk": "unbounded",
@@ -2139,7 +2146,7 @@
         "tokens_p95": 40000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reduction",
-      "graph_depth": 13,
+      "graph_depth": 14,
       "kernel_probe_state": "absent",
       "lean_declaration": "GaloisRepresentation.IsHardlyRamified.not_isIrreducible_of_family",
       "lean_risk": "unbounded",
@@ -2188,7 +2195,7 @@
         "tokens_p95": 10000000
       },
       "expected_module": "FLT.ModularityLifting.Conditions",
-      "graph_depth": 4,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.SelectedGood",
       "lean_risk": "unbounded",
@@ -2236,7 +2243,7 @@
         "tokens_p95": 42000000
       },
       "expected_module": "FLT.ModularityLifting.ResidualImage",
-      "graph_depth": 6,
+      "graph_depth": 7,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.ModularityLifting.cyclotomicRestrictionIrreducible",
       "lean_risk": "unbounded",
@@ -2284,7 +2291,7 @@
         "tokens_p95": 165000000
       },
       "expected_module": "FLT.Automorphic.AttachedGaloisRepresentation",
-      "graph_depth": 3,
+      "graph_depth": 4,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.attachedGaloisRepresentation",
       "lean_risk": "unbounded",
@@ -2333,7 +2340,7 @@
         "tokens_p95": 30000000
       },
       "expected_module": "FLT.PotentialModularity.AuxiliaryField",
-      "graph_depth": 4,
+      "graph_depth": 5,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.PotentialModularity.AuxiliaryFieldCondition",
       "lean_risk": "unbounded",
@@ -2577,7 +2584,7 @@
         "tokens_p95": 4000000
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.Reducible",
-      "graph_depth": 14,
+      "graph_depth": 15,
       "kernel_probe_state": "absent",
       "lean_declaration": "FreyCurve.torsion_not_isIrreducible",
       "lean_risk": "very-high",
@@ -2624,7 +2631,7 @@
         "tokens_p95": 250000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 15,
+      "graph_depth": 16,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B4_proof",
       "lean_risk": "high",
@@ -2670,7 +2677,7 @@
         "tokens_p95": 15000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 16,
+      "graph_depth": 17,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B3_proof",
       "lean_risk": "low",
@@ -2714,7 +2721,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 17,
+      "graph_depth": 18,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "FLT.Bosses.B2_proof",
       "lean_risk": "low",
@@ -2758,7 +2765,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FLT.Proof",
-      "graph_depth": 18,
+      "graph_depth": 19,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "flt",
       "lean_risk": "low",
@@ -2803,7 +2810,7 @@
         "tokens_p95": 8000
       },
       "expected_module": "FermatsLastTheorem",
-      "graph_depth": 19,
+      "graph_depth": 20,
       "kernel_probe_state": "signature-green",
       "lean_declaration": "PNat.pow_add_pow_ne_pow",
       "lean_risk": "low",
@@ -3114,6 +3121,7 @@
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-MLT-COEFFICIENTS",
+        "FLT-MLT-PADIC-HODGE",
         "FLT-SUPPORT-AUTOMORPHIC"
       ],
       "estimates": {
@@ -3127,7 +3135,7 @@
         "tokens_p95": 55000000
       },
       "expected_module": "FLT.Automorphic.RACAR",
-      "graph_depth": 2,
+      "graph_depth": 3,
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.Automorphic.RACAR",
       "lean_risk": "unbounded",
@@ -3137,7 +3145,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-RACAR-DEF",
       "proof_pattern": "Define the automorphic object and local/source data before proving attachment or Jacquet-Langlands bridges.",
-      "review_state": "reviewing",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-RACAR-DEF",
       "source_condition_risks": "The repository's quaternionic eigenform predicate is not a generic GL2 RACAR. Local components and at-ell unramifiedness must be expressible without assuming attached-representation existence.",
       "source_refs": [

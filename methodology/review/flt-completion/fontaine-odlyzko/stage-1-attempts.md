@@ -50,3 +50,12 @@ Full evidence: `stage-1-opus48-primary.md`. Claude session:
 
 Full evidence: `stage-1-fable5-alternative.md`. Claude session:
 `5ef88135-eb06-4305-8965-c4991ab876d3`.
+
+## GPT-5.6 xhigh comparison review
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| independent comparison | `gpt56xhigh-independent-reviewer-d10` / `gpt-5.6-sol` / Codex | `2100 s` | `506.108 s` | `5,184,301` input; `4,965,376` cached input; `22,170` output; `13,695` reasoning output (included in output); `5,206,471` total | `REVISE`; no further Fontaine model launch before checkpoint |
+
+Full evidence: `stage-3-gpt56xhigh-review.md`. Codex session:
+`019f6f86-d610-73d0-a1c7-eb7f1c398b28`.
