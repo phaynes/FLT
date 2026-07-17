@@ -184,6 +184,13 @@
       "to": "FLT-MLT-SOURCE"
     },
     {
+      "edge_id": "E-ABSIRRED-VOCAB-MLT-SOURCE",
+      "edge_kind": "definition",
+      "from": "FLT-ABSIRRED-VOCAB",
+      "justification": "FLT-MLT-SOURCE directly consumes FLT-ABSIRRED-VOCAB.",
+      "to": "FLT-MLT-SOURCE"
+    },
+    {
       "edge_id": "E-MLT-SOURCE-MLT",
       "edge_kind": "theorem",
       "from": "FLT-MLT-SOURCE",
@@ -478,10 +485,10 @@
       "to": "FLT-RESIDUAL-IMAGE"
     },
     {
-      "edge_id": "E-MLT-SOURCE-RESIDUAL-IMAGE",
-      "edge_kind": "theorem",
-      "from": "FLT-MLT-SOURCE",
-      "justification": "FLT-RESIDUAL-IMAGE directly consumes FLT-MLT-SOURCE.",
+      "edge_id": "E-ABSIRRED-VOCAB-RESIDUAL-IMAGE",
+      "edge_kind": "definition",
+      "from": "FLT-ABSIRRED-VOCAB",
+      "justification": "FLT-RESIDUAL-IMAGE directly consumes FLT-ABSIRRED-VOCAB.",
       "to": "FLT-RESIDUAL-IMAGE"
     },
     {
@@ -1345,11 +1352,12 @@
         "FLT-AUT-DEF",
         "FLT-MLT-COEFFICIENTS",
         "FLT-MLT-PADIC-HODGE",
-        "FLT-RACAR-DEF"
+        "FLT-RACAR-DEF",
+        "FLT-ABSIRRED-VOCAB"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The five repository boundary probes remain standard-trio clean. Fable and Opus repaired neutral closure-form absolute irreducibility, extracted-weight ownership, common-closure residual comparison, and graph direction. GPT accepted all four substantive repairs and found only a missing Cyclotomic import and universe pin. The controller compiled the corrected three-definition vocabulary with exactly the standard trio. Production and build review remain required before persistence of graph mutations.",
+        "evidence": "The five repository boundary probes and the three neutral absolute-residual vocabulary definitions are standard-trio clean. Opus built the bounded slice and GPT independently returned PASS-BOUNDED-BUILD. ClosureImpliesClassAbsIrred and every coefficient, p-adic-Hodge, RACAR, source-contract and selected-good provider remain open.",
         "loc_p50": 3000,
         "loc_p80": 15000,
         "loc_p95": 60000,
@@ -1368,7 +1376,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "bounded-vocabulary-built-kernel-green-gpt-build-review-running",
+      "review_state": "bounded-vocabulary-built-reviewed-provider-open",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -2231,7 +2239,7 @@
       "current_state": "definition-gap",
       "direct_dependencies": [
         "FLT-HR-DEF",
-        "FLT-MLT-SOURCE",
+        "FLT-ABSIRRED-VOCAB",
         "FLT-AUX-CURVE"
       ],
       "estimates": {
@@ -2260,7 +2268,7 @@
       "proof_pattern": "First transport absolute irreducibility across equality of action ranges, then separately prove the induced Mackey/character-ratio case and the auxiliary joint-avoidance image-preservation case before assembling the two applications.",
       "review_state": "diversity-design-queued-substantive-repair",
       "scc_id": "SCC-FLT-RESIDUAL-IMAGE",
-      "source_condition_risks": "Taylor requires absolute, not ordinary, irreducibility after cyclotomic restriction. The induced and auxiliary applications need separate providers, and Taylor-Wiles adequacy is a distinct absent interface that cannot be inferred from this obligation.",
+      "source_condition_risks": "Taylor requires absolute, not ordinary, irreducibility after cyclotomic restriction. Neutral closure-valued vocabulary is now independently built and reviewed; the induced and auxiliary applications still need separate providers, and Taylor-Wiles adequacy remains a distinct absent interface.",
       "source_refs": [
         "SRC-004",
         "SRC-016"
@@ -3159,6 +3167,49 @@
         "SRC-016"
       ],
       "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "ClosureImpliesClassAbsIrred is proved with standard axiom closure and the three definitions remain exact.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "Three exact definitions were built by Opus, controller-audited and independently reviewed by GPT. The bridge theorem is explicitly still open.",
+        "loc_p50": 500,
+        "loc_p80": 3000,
+        "loc_p95": 15000,
+        "tokens_p50": 80000,
+        "tokens_p80": 500000,
+        "tokens_p95": 2500000
+      },
+      "expected_module": "FLTMethodology.Probes.ResidualAbsoluteVocabulary",
+      "graph_depth": 0,
+      "kernel_probe_state": "definitions-standard-trio-green",
+      "lean_declaration": "FLTMethodology.Taylor2018.IsAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.IsCyclotomicAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.ClosureImpliesClassAbsIrred",
+      "lean_risk": "high",
+      "lean_type": "Definitions separating closure-valued absolute irreducibility, cyclotomic restriction, and the still-unproved bridge to class absolute irreducibility.",
+      "library_candidates": [
+        "Representation.IsAbsolutelyIrreducible",
+        "GaloisRep.IsIrreducible"
+      ],
+      "mathematical_name": "Neutral absolute residual irreducibility vocabulary",
+      "mathematical_novelty": "specialist",
+      "obligation_id": "FLT-ABSIRRED-VOCAB",
+      "proof_pattern": "Prove the closure-to-class bridge once, then reuse it in the Taylor source contract and both concrete residual-image providers.",
+      "review_state": "bounded-build-reviewed-pass",
+      "scc_id": "SCC-FLT-ABSIRRED-VOCAB",
+      "source_condition_risks": "The definitions are kernel-clean vocabulary only. ClosureImpliesClassAbsIrred remains a proposition without a proof, and neither cyclotomic residual-image application is discharged.",
+      "source_refs": [
+        "SRC-016"
+      ],
+      "stage_completion": "T1 closes the neutral vocabulary and bridge; the same theorem must retain standard axiom closure at T2 and T3.",
       "target_stage": "T1"
     }
   ],

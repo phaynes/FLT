@@ -50,3 +50,4 @@
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-MLT-COEFFICIENTS","target_stage":"T1","owner_work_item":"FLT-406","component":"coefficients","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-MLT-PADIC-HODGE","target_stage":"T1","owner_work_item":"FLT-407","component":"padic-hodge","coverage":"exact"}
 {"record_type":"ProofObligationBinding","obligation_id":"FLT-RACAR-DEF","target_stage":"T1","owner_work_item":"FLT-408","component":"automorphic-galois","coverage":"exact"}
+{"record_type":"ProofObligationBinding","obligation_id":"FLT-ABSIRRED-VOCAB","target_stage":"T1","owner_work_item":"FLT-404","component":"modularity-lifting","coverage":"exact"}

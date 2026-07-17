@@ -78,6 +78,7 @@ definition_obligations = {
     "FLT-AUT-DEF",
     "FLT-COMPAT-DEF",
     "FLT-RACAR-DEF",
+    "FLT-ABSIRRED-VOCAB",
 }
 for node in obligations:
     for dependency in node["direct_dependencies"]:
