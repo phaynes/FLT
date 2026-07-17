@@ -482,14 +482,15 @@ An independent audit of AINTLIB commit
 torsion-card theorem. A disposable module conversion builds its exact 52-module target slice under
 the frozen FLT Lean/Mathlib pin with no executable admissions in that slice.
 
-`FLTMethodology/Probes/PrePsiSeparableOfTorsionCard.lean` supplies the missing reverse bridge:
+`FLT/EllipticCurve/TorsionProof/PrePsiSeparableOfTorsionCard.lean` supplies the missing reverse bridge:
 an exact algebraically closed torsion count forces `preΨ' n` to be separable. A disposable FLT
 probe then base-changes to `AlgebraicClosure k`, consumes AINTLIB's count, descends separability,
 and applies the native root/fibre count to prove the exact frozen `[IsSepClosed k]`
 `n_torsion_card` statement. Every bridge theorem has only the standard axiom trio. The full
 evidence and migration options are recorded in
-`methodology/evidence/probes/FLT-TATE-TORSION-AINTLIB-AUDIT.md`. No external dependency or provider
-edit is retained in the governed checkout yet.
+`methodology/evidence/probes/FLT-TATE-TORSION-AINTLIB-AUDIT.md`. The exact audited dependency closure
+is now retained under `vendor/HasseWeil`, with its upstream commit, 52-module manifest, compatibility
+transformation, and license recorded in `vendor/HasseWeil/PROVENANCE.md`.
 
 ## Minimal implementation graph
 
@@ -509,11 +510,13 @@ Build in this order:
    exact algebraically closed count plus `prePsi_separable_of_n_torsion_card` proves separability
    after base change and descent. The native formal-group adapter remains an optional independent
    route.
-7. `FLT-TORSION-ETALE-COUNT` — full frozen signature compiled in the disposable integration probe.
-   It is not a tracked provider theorem until the audited dependency slice is retained and the
-   provider migration is authorized.
-8. Migrate the two provider declarations and audit every exported consumer, especially
-   `n_torsion_dimension`, `Module.Finite`, and `WeierstrassCurve.galoisRep`.
+7. `FLT-TORSION-ETALE-COUNT` — closed in production. The retained AINTLIB algebraically closed
+   count, native separability converse, separability descent, and native root/fibre count prove the
+   exact frozen separably closed signature.
+8. Provider and consumer integration — closed. Both frozen provider declarations and the exported
+   `n_torsion_dimension`, `Module.Finite`, `WeierstrassCurve.galoisRep`,
+   `FreyCurve.torsion_rank`, and `WeierstrassCurve.torsion_rank_two` paths have been rebuilt and
+   axiom-audited.
 
 ## Stop-loss rules
 
@@ -524,28 +527,33 @@ Build in this order:
   matter.
 - Do not substitute a scheme-theoretic kernel without proving that its rational points agree with
   the repository's affine point kernel.
-- Provider migration remains a separate task because the frozen source explicitly requests
-  coordination with Kevin Buzzard and David Angdinata.
+- Provider migration was executed as a separate governed task because the frozen source explicitly
+  requests coordination with Kevin Buzzard and David Angdinata; provenance and task history remain
+  part of the retained evidence.
 
-## Next exact implementation
+## Targeted production integration and full-graph blocker
 
-The division-polynomial/Kummer lane and all-characteristic finiteness theorem are complete in the
-methodology tree. The remaining frozen provider is:
+The division-polynomial/Kummer lane, all-characteristic finiteness theorem, and exact cardinality
+provider build in the production FLT tree. The frozen provider statement remains unchanged:
 
 ```lean
 theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ}
     (hn : (n : k) ≠ 0) : Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-The exact theorem body has compiled in a disposable frozen-pin checkout by composing:
+The production theorem body composes:
 
 ```lean
 FLTMethodology.Torsion.n_torsion_card_of_prePsi_separable E hn
   (prePsi_separable_of_aintlib_torsion_card E hn)
 ```
 
-The next work is therefore not new mathematics. It is an authorized dependency/provider migration:
-retain the reviewed module-converted 52-module slice or pinned fork, add the subtype and
-algebraic-closure bridge, replace the two provider admissions, and rerun the full consumer and
-terminal axiom audits. Until that migration occurs, `FLT-TATE-TORSION` remains open and the graph
-countdown does not change.
+The owned 13-module native proof component and exact 52-module dependency slice build in the main
+worktree. The provider, public torsion theorems, dimension theorem, Galois representation, and two
+rank consumers all have axiom closure exactly `[propext, Classical.choice, Quot.sound]`.
+
+The first full `FLT` umbrella build nevertheless found a packaging collision, not a mathematical
+failure: the retained AINTLIB slice and `FLT.KnownIn1980s.EllipticCurves.Flat` both export
+`WeierstrassCurve.isCoprime_Φ_ΨSq`, with different signatures. The minimal repair is to give the
+retained field-specific theorem a compatibility name and update its internal consumers. Until the
+full umbrella build and terminal audit pass after that repair, `FLT-TATE-TORSION` remains open.

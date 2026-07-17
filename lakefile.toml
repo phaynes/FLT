@@ -27,6 +27,13 @@ rev = "a3364faec42918fcd84a03a255b50570129f9ead"
 name = "FLT"
 globs = ["FLT", "FermatsLastTheorem"]
 
+# Audited, source-retained dependency slice for the elliptic torsion-cardinality provider.
+# See vendor/HasseWeil/PROVENANCE.md for the exact upstream commit and transformation record.
+[[lean_lib]]
+name = "HasseWeil"
+srcDir = "vendor"
+globs = ["HasseWeil.*"]
+
 [[lean_lib]]
 name = "FLTTest"
 globs = ["FLTTest.*"] # Build `FLTTest.lean` and all files in the directory `FLTTest`.

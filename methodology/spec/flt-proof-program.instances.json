@@ -2365,7 +2365,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "A disposable production-shaped integration builds under Lean 4.32.0-rc1 and the pinned Mathlib revision. All 13 native torsion proof modules build as an owned FLT component; the AINTLIB torsion-cardinality slice builds as modules; the exact provider, WeierstrassCurve.n_torsion_finite, and WeierstrassCurve.n_torsion_card each have axiom closure exactly propext, Classical.choice, and Quot.sound. No provider source is retained in this worktree yet.",
+        "evidence": "The production torsion target and exact downstream rank and Galois consumers build and audit with the standard axiom trio. The first full FLT plus FLTMethodology build fails only when FLT imports Flat after the provider, because the environment already contains WeierstrassCurve.isCoprime_\u03a6_\u03a8Sq from the retained HasseWeil slice. No mathematical statement has failed.",
         "loc_p50": 900,
         "loc_p80": 3500,
         "loc_p95": 12000,
@@ -2387,10 +2387,10 @@
       "mathematical_name": "Elliptic-curve torsion module support",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-TATE-TORSION",
-      "proof_pattern": "Retain the audited AINTLIB torsion-cardinality slice, compose it with the native separability converse, discharge the two frozen provider admissions, then audit every galoisRep and torsion_rank consumer.",
-      "review_state": "reviewed",
+      "proof_pattern": "Completed: the retained AINTLIB algebraically closed torsion count composes with the native separability converse and root-fibre count to discharge both frozen providers; downstream rank and Galois consumers are standard-axiom clean.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-TATE-TORSION",
-      "source_condition_risks": "The exact provider architecture is validated in an isolated checkout, including module-safe native proof components, an audited 52-module AINTLIB slice, the algebraic-closure bridge, and the frozen IsSepClosed endpoint. Production migration and consumer audits remain outstanding, so the obligation is still admitted.",
+      "source_condition_risks": "Targeted provider and consumer builds are standard-axiom clean, but the full FLT umbrella currently rejects a duplicate declaration name: both the retained AINTLIB slice and FLT.KnownIn1980s.EllipticCurves.Flat export WeierstrassCurve.isCoprime_\u03a6_\u03a8Sq with different signatures. A namespace-only compatibility rename is required before closure.",
       "source_refs": [
         "SRC-001",
         "SRC-025"

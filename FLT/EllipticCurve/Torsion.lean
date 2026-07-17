@@ -5,12 +5,7 @@ Authors: Kevin Buzzard
 -/
 module
 
-public import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
-public import Mathlib.Data.ZMod.QuotientRing
-public import Mathlib.GroupTheory.FiniteAbelian.Basic
-public import Mathlib.GroupTheory.SpecificGroups.Cyclic
-public import Mathlib.Topology.Instances.ZMod
-public import FLT.Deformations.RepresentationTheory.GaloisRep
+public import FLT.EllipticCurve.TorsionProvider
 
 /-!
 
@@ -32,28 +27,17 @@ variable {k : Type u} [Field k] (E : WeierstrassCurve k) [E.IsElliptic] [Decidab
 open WeierstrassCurve WeierstrassCurve.Affine
 open scoped DirectSum
 
-/-- The `n`-torsion subgroup of an elliptic curve `E` over `k`: the kernel of multiplication
-by `n` on the group of `k`-points of `E`. -/
-abbrev WeierstrassCurve.nTorsion (n : ℕ) : Type u := Submodule.torsionBy ℤ (E⁄k).Point n
-
---variable (n : ℕ) in
---#synth AddCommGroup (E.nTorsion n)
-
--- not sure if this instance will cause more trouble than it's worth
-noncomputable instance (n : ℕ) : Module (ZMod n) (E.nTorsion n) :=
-  AddCommGroup.zmodModule <| by
-  intro ⟨P, hP⟩
-  simpa using hP
-
 -- This theorem needs e.g. a theory of division polynomials. It's ongoing work of David Angdinata.
 -- Please do not work on it without talking to KB and David first.
-theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) : Finite (E.nTorsion n) := sorry
+theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) : Finite (E.nTorsion n) :=
+  FLT.EllipticCurve.TorsionProvider.nTorsion_finite E hn
 
 -- This theorem needs e.g. a theory of division polynomials. It's ongoing work of David Angdinata.
 -- Please do not work on it without talking to KB and David first.
 -- This theorem was well-known in the early part of the 20th century.
 theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ} (hn : (n : k) ≠ 0) :
-    Nat.card (E.nTorsion n) = n^2 := sorry
+    Nat.card (E.nTorsion n) = n^2 :=
+  FLT.EllipticCurve.TorsionProvider.nTorsion_card_sepClosed E hn
 
 -- This theorem was well-known in the early part of the 20th century.
 private noncomputable def torsionByAddEquiv {A B : Type*} [AddCommGroup A] [AddCommGroup B]

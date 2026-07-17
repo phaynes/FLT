@@ -5,7 +5,7 @@ Authors: Philip Haynes
 -/
 
 import FLTMethodology.Probes.DualTangent
-import FLTMethodology.Probes.PrePsiTwoTorsion
+import FLT.EllipticCurve.TorsionProof.PrePsiTwoTorsion
 
 /-!
 # Repeated division-polynomial roots as infinitesimal kernel witnesses
