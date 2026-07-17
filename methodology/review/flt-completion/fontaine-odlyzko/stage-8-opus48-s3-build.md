@@ -6,7 +6,7 @@
 
 Opus implemented exactly the reviewed five-declaration slice:
 
-- `FLTMethodology/Probes/FontaineOdlyzkoReducibility.lean` (113 lines);
+- `FLTMethodology/Probes/FontaineOdlyzkoReducibility.lean` (110 lines);
 - one umbrella import in `FLTMethodology.lean`.
 
 Persisted declarations:
