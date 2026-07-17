@@ -41,3 +41,9 @@ does not itself update the central control plane.
 
 Full evidence: `stage-1-opus48-primary.md`. Claude session:
 `8693c526-59f4-41dc-9450-8fd4c8e272b1`.
+
+## Fable 5 conditional diversity design
+
+| Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
+|---|---|---:|---:|---|---|
+| alternative design 1 | `fable5-designer-d10` / `claude-fable-5` / Claude CLI | `3600 s` | unavailable; interrupted before completion envelope | unavailable; no completion envelope | `CANCELLED / NO VERDICT`; superseded by the explicit attempt-2 restart at commit `67b0a1d` |
