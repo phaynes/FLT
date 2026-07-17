@@ -22,6 +22,8 @@ import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.MLTPadicHodgeWeightData
 import FLTMethodology.Probes.MazurSourceBoundary
 import FLTMethodology.Probes.MazurTorsionAssembly
+import FLTMethodology.Probes.MoretBaillyFieldAdapters
+import FLTMethodology.Probes.MoretBaillyLocalPointsAlgebraic
 import FLTMethodology.Probes.PGL2ClassificationAudit
 import FLT.EllipticCurve.TorsionProof.PsiSqAllCharacteristic
 import FLT.EllipticCurve.TorsionProof.PsiSqExactDetection
