@@ -1,6 +1,6 @@
 # Mandatory human gate — Mazur named T2 assumption
 
-Status: **READY FOR OPERATOR AUTHORIZATION; NOT AUTHORIZED**.
+Status: **AUTHORIZED by operator philip.haynes on 2026-07-18; applied and independently kernel-gated**.
 
 ## Evidence already established
 
@@ -49,4 +49,6 @@ translation and T2-only scope. After registration, the stage audit must show the
 plus the standard trio, with no `knownin1980s` or new `sorryAx` on the consumer path. The
 assumption is forbidden at T3.
 
-No authorization has been inferred or recorded by this packet.
+The operator authorization was supplied explicitly on 2026-07-18. Registration and the independent
+kernel gate are recorded in stage-4-operator-authorization-and-kernel-gate.md. This authorizes the
+named interface at T2 only and does not claim T3 discharge.
