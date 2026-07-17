@@ -112,6 +112,10 @@ theorem psiSq_ne_zero_all_characteristics ... {n : ℕ} (hn : 0 < n) :
 theorem n_torsion_finite_all_characteristics ... {n : ℕ} (hn : 0 < n) :
     Finite (E.nTorsion n)
 
+theorem psiSq_eval_eq_zero_iff_nsmul_eq_zero ... :
+    (E.ΨSq (n : ℤ)).eval x = 0 ↔
+      (n : ℤ) • (Point.some x y h : (E⁄k).Point) = 0
+
 theorem psiSqDetectsNTorsion_two
     (E : WeierstrassCurve k) [E.IsElliptic] [DecidableEq k] :
     PsiSqDetectsNTorsion E 2
@@ -300,6 +304,20 @@ theorem n_torsion_finite_all_characteristics
 This theorem has only the standard axiom trio. Provider migration remains a separately authorized
 change, and the exact `n ^ 2` count is still open.
 
+`FLTMethodology/Probes/PsiSqExactDetection.lean` also proves the missing converse. At a root of
+`ΨSqₙ`, representative nonzeroness forces `Φₙ` to be nonzero; the homogeneous relation then forces
+the scalar multiple's second Kummer coordinate to vanish, hence the multiple is infinity. Thus for
+every affine point the following equivalence is kernel-clean:
+
+```lean
+(E.ΨSq (n : ℤ)).eval x = 0 ↔
+  (n : ℤ) • (Point.some x y h : (E⁄k).Point) = 0
+```
+
+Consequently the remaining cardinality gap is not an endpoint or dictionary problem. It is the
+precise separability/multiplicity calculation matching the degree `n ^ 2 - 1` of `ΨSqₙ` to the
+nonzero points, including the two-point `P`/`-P` fibres and the one-point two-torsion fibres.
+
 ## Minimal implementation graph
 
 Build in this order:
@@ -341,8 +359,9 @@ theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ}
     (hn : (n : k) ≠ 0) : Nat.card (E.nTorsion n) = n ^ 2
 ```
 
-The existing detector proves finiteness but does not count roots or y-fibres with multiplicity. The
-next design spike should identify the smallest source-faithful route from the now-proved exact
-point/division-polynomial dictionary to the cardinality statement—most likely a separability and
-root-count theorem for `ΨSqₙ` plus the controlled two-point y-fibres, or a finite-etale kernel bridge.
-Provider migration remains separately authorized work.
+The exact detector proves set membership but does not count roots or y-fibres with multiplicity.
+The next design spike should identify the smallest source-faithful route from that equivalence to
+the cardinality statement—most likely square-freeness of `preΨₙ`, its coprimality with `Ψ₂Sq` in the
+even case, splitting over the separably closed field, and controlled two-point versus one-point
+y-fibres; alternatively, use a finite-etale kernel bridge. Provider migration remains separately
+authorized work.
