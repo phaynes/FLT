@@ -3108,7 +3108,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-PADIC-HODGE",
       "proof_pattern": "Use the independently reviewed weight/dual vocabulary, then expose integral-model/generic-fibre compatibility and discharge the named period-ring and finite-flat mathematics without placeholders.",
-      "review_state": "tier1-boundary-built-reviewed-full-provider-graph-open",
+      "review_state": "tier1-boundary-reviewed-g1-primary-design-running",
       "scc_id": "SCC-FLT-MLT-PADIC-HODGE",
       "source_condition_risks": "The persisted global-embedding weight bundle, unramifiedness predicate, GaloisRepDual, and two guards are trio-clean. Determinant conventions force {-1,0} at the repository rho versus {0,1} at its dual. Full crystalline/Hodge-Tate definitions, finite-flat comparison, place mapping, dual transport, and determinant-weight guard remain genuine gaps.",
       "source_refs": [
