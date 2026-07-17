@@ -47,3 +47,7 @@ Full evidence: `stage-1-opus48-primary.md`. Claude session:
 | Attempt | Agent / model / transport | Budget | Actual elapsed | Token telemetry | Outcome |
 |---|---|---:|---:|---|---|
 | alternative design 1 | `fable5-designer-d10` / `claude-fable-5` / Claude CLI | `3600 s` | unavailable; interrupted before completion envelope | unavailable; no completion envelope | `CANCELLED / NO VERDICT`; superseded by the explicit attempt-2 restart at commit `67b0a1d` |
+| alternative design 2 | `fable5-designer-d10` / `claude-fable-5` / Claude CLI | `3600 s` | `1129.367 s` | `45,058` input; `325,663` cache-create; `2,942,172` cache-read; `90,400` output; `3,403,293` total including cache, deduplicated over `61` request IDs | `INTERFACE-FIRST` |
+
+Full attempt-2 evidence: `stage-1-fable5-alternative.md`. Claude session:
+`649070fe-b9f0-44d3-a437-5d6707d945a4`.
