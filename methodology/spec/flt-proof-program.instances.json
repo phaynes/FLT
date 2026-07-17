@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "second-diversity-repair-complete-final-synthesis-queued",
+      "review_state": "final-repair-synthesis-running",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -1509,7 +1509,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Keep the independently reviewed object/type layer frozen; complete the required diversity and synthesis pipeline before routing tame residue through a separate T1 node; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-graph-diversity-design-queued",
+      "review_state": "tame-graph-diversity-design-running",
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. GPT accepted a distinct T1 tame-residue owner in principle but found substantive graph, wild-inertia, closedness, and source-gate defects; no node or edge has been added.",
       "source_refs": [
@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "s3-temporary-proof-green-awaiting-independent-review-larger-obligation-open",
+      "review_state": "s3-independent-review-running-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "second-diversity-repair-complete-final-synthesis-queued",
+      "review_state": "final-repair-synthesis-running",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
       "source_refs": [
