@@ -87,6 +87,54 @@ declaration axiom audits as final authority. Check source faithfulness, scope, m
 hidden assumptions, and control-plane honesty.
 """
 
+# Difficulty-scaled independent build-review profiles. New reviews must use the matching tier; the
+# unsuffixed profile above is retained only for historical runs made before the scaled-timeout policy.
+
+[agents.opus48-build-reviewer-d6]
+name = "opus48-build-reviewer-d6"
+description = "Difficulty-6/7 independent final build reviewer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 1500
+append_system_prompt = """
+Review the completed Lean tranche read-only. Return PASS or REVISE, but treat lake build and exact
+declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
+hidden assumptions, and control-plane honesty.
+"""
+
+[agents.opus48-build-reviewer-d8]
+name = "opus48-build-reviewer-d8"
+description = "Difficulty-8 independent final build reviewer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 1800
+append_system_prompt = """
+Review the completed Lean tranche read-only. Return PASS or REVISE, but treat lake build and exact
+declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
+hidden assumptions, and control-plane honesty.
+"""
+
+[agents.opus48-build-reviewer-d10]
+name = "opus48-build-reviewer-d10"
+description = "Difficulty-9/10 independent final build reviewer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-opus-4-8"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 2100
+append_system_prompt = """
+Review the completed Lean tranche read-only. Return PASS or REVISE, but treat lake build and exact
+declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
+hidden assumptions, and control-plane honesty.
+"""
+
 # Stage-1 design agents use component-difficulty budgets. The unsuffixed agents above remain only
 # for historical evidence from attempts made before the operator introduced the scaled timeout
 # contract. New design attempts must select one of these exact tiers; retries select the matching
