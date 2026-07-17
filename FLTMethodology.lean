@@ -4,6 +4,7 @@ import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
 import FLTMethodology.Probes.DualTangent
 import FLT.EllipticCurve.TorsionProof.EllipticTorsionSourceBoundary
 import FLTMethodology.Probes.ExistingContracts
+import FLTMethodology.Probes.FontaineOdlyzkoCharP
 import FLTMethodology.Probes.FormalGroupLinearization
 import FLTMethodology.Probes.FreySemistabilityBoundary
 import FLTMethodology.Probes.FreyTwoTorsionBoundary
