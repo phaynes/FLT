@@ -1,0 +1,40 @@
+[settings]
+workspace_root = "."
+default_timeout_secs = 3000
+default_max_review_cycles = 2
+codex_bin = "/Volumes/second-store/devel/knowledge-base-mcp/external/codex/codex-rs/target/release/codex"
+
+[agents.sonnet5-designer]
+name = "sonnet5-designer"
+description = "Independent source-faithful FLT component designer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3000
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
+Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
+counterexample checks, and a stop-loss verdict. Never upgrade a scaffold or citation into a proof.
+"""
+
+[agents.gpt56xhigh-designer]
+name = "gpt56xhigh-designer"
+description = "Independent and synthesis FLT component designer"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+codex_sandbox = "read-only"
+timeout_secs = 3000
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
+interfaces and a dependency-ordered construction plan, distinguish proved dependencies from proposed
+ones, test statement viability, and reject any route that hides the target theorem in an assumption.
+"""
+

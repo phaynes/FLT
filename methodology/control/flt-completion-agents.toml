@@ -86,3 +86,251 @@ Review the completed Lean tranche read-only. Return PASS or REVISE, but treat la
 declaration axiom audits as final authority. Check source faithfulness, scope, missing consumers,
 hidden assumptions, and control-plane honesty.
 """
+
+# Stage-1 design agents use component-difficulty budgets. The unsuffixed agents above remain only
+# for historical evidence from attempts made before the operator introduced the scaled timeout
+# contract. New design attempts must select one of these exact tiers; retries select the matching
+# `-retry` agent and receive 1.5x the scheduled budget, capped at 90 minutes.
+
+[agents.sonnet5-designer-d6]
+name = "sonnet5-designer-d6"
+description = "Difficulty-6/7 independent FLT component designer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 2400
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
+Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
+counterexample checks, and a stop-loss verdict. Never upgrade a scaffold or citation into a proof.
+"""
+
+[agents.fable5-designer-d6]
+name = "fable5-designer-d6"
+description = "Difficulty-6/7 serialized Fable independent FLT component designer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-fable-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 2400
+append_system_prompt = """
+Act as a hostile mathematical and Lean reviewer. Read the repository but do not edit it. Produce an
+independent design grounded in the actual Lean types, exact sources, counterexamples, dependency
+closure, and target-stage axiom policy.
+"""
+
+[agents.gpt56xhigh-designer-d6]
+name = "gpt56xhigh-designer-d6"
+description = "Difficulty-6/7 independent FLT component designer"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 2400
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
+interfaces and a dependency-ordered construction plan, distinguish proved dependencies from proposed
+ones, test statement viability, and reject any route that hides the target theorem in an assumption.
+"""
+
+[agents.sonnet5-designer-d8]
+name = "sonnet5-designer-d8"
+description = "Difficulty-8 independent FLT component designer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3000
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
+Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
+counterexample checks, and a stop-loss verdict. Never upgrade a scaffold or citation into a proof.
+"""
+
+[agents.fable5-designer-d8]
+name = "fable5-designer-d8"
+description = "Difficulty-8 serialized Fable independent FLT component designer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-fable-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3000
+append_system_prompt = """
+Act as a hostile mathematical and Lean reviewer. Read the repository but do not edit it. Produce an
+independent design grounded in the actual Lean types, exact sources, counterexamples, dependency
+closure, and target-stage axiom policy.
+"""
+
+[agents.gpt56xhigh-designer-d8]
+name = "gpt56xhigh-designer-d8"
+description = "Difficulty-8 independent FLT component designer"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 3000
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
+interfaces and a dependency-ordered construction plan, distinguish proved dependencies from proposed
+ones, test statement viability, and reject any route that hides the target theorem in an assumption.
+"""
+
+[agents.sonnet5-designer-d10]
+name = "sonnet5-designer-d10"
+description = "Difficulty-9/10 independent FLT component designer"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. Read the repository but do not edit it.
+Produce an implementable, dependency-ordered design with exact Lean signatures, source boundaries,
+counterexample checks, and a stop-loss verdict. Never upgrade a scaffold or citation into a proof.
+"""
+
+[agents.fable5-designer-d10]
+name = "fable5-designer-d10"
+description = "Difficulty-9/10 serialized Fable independent FLT component designer"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-fable-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+Act as a hostile mathematical and Lean reviewer. Read the repository but do not edit it. Produce an
+independent design grounded in the actual Lean types, exact sources, counterexamples, dependency
+closure, and target-stage axiom policy.
+"""
+
+[agents.gpt56xhigh-designer-d10]
+name = "gpt56xhigh-designer-d10"
+description = "Difficulty-9/10 independent FLT component designer"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 3600
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. Do not edit the repository. Produce exact Lean
+interfaces and a dependency-ordered construction plan, distinguish proved dependencies from proposed
+ones, test statement viability, and reject any route that hides the target theorem in an assumption.
+"""
+
+[agents.sonnet5-designer-d6-retry]
+name = "sonnet5-designer-d6-retry"
+description = "Difficulty-6/7 independent FLT component designer retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 3600
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. This is the single permitted timeout
+retry. Read the repository but do not edit it, and return an implementable source-faithful design.
+"""
+
+[agents.gpt56xhigh-designer-d6-retry]
+name = "gpt56xhigh-designer-d6-retry"
+description = "Difficulty-6/7 independent FLT component designer retry"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 3600
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. This is the single permitted timeout retry.
+Read the repository but do not edit it, and return exact Lean interfaces and a bounded design.
+"""
+
+[agents.sonnet5-designer-d8-retry]
+name = "sonnet5-designer-d8-retry"
+description = "Difficulty-8 independent FLT component designer retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 4500
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. This is the single permitted timeout
+retry. Read the repository but do not edit it, and return an implementable source-faithful design.
+"""
+
+[agents.gpt56xhigh-designer-d8-retry]
+name = "gpt56xhigh-designer-d8-retry"
+description = "Difficulty-8 independent FLT component designer retry"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 4500
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. This is the single permitted timeout retry.
+Read the repository but do not edit it, and return exact Lean interfaces and a bounded design.
+"""
+
+[agents.sonnet5-designer-d10-retry]
+name = "sonnet5-designer-d10-retry"
+description = "Difficulty-9/10 independent FLT component designer retry"
+backend = "claude-code"
+role = "specialist"
+model = "claude-sonnet-5"
+permission_mode = "suggest"
+output_format = "text"
+timeout_secs = 5400
+append_system_prompt = """
+Act as an independent mathematical and Lean design reviewer. This is the single permitted timeout
+retry. Read the repository but do not edit it, and return an implementable source-faithful design.
+"""
+
+[agents.gpt56xhigh-designer-d10-retry]
+name = "gpt56xhigh-designer-d10-retry"
+description = "Difficulty-9/10 independent FLT component designer retry"
+backend = "codex"
+role = "primary"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 5400
+codex_sandbox = "read-only"
+append_system_prompt = """
+Act as a source-faithful FLT mathematical architect. This is the single permitted timeout retry.
+Read the repository but do not edit it, and return exact Lean interfaces and a bounded design.
+"""
