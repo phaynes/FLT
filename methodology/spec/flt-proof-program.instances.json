@@ -1349,7 +1349,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus synthesized a conditioned design, but fresh GPT review returned REVISE-SUBSTANTIVE on four source-contract and graph defects. A second and final Fable repair is queued; the five mechanical probes remain unpersisted.",
+        "evidence": "Five mechanical probes are standard-trio clean, but GPT found four substantive source-contract defects. The second and final Fable repair is running; no probe or obligation is promoted.",
         "loc_p50": 3000,
         "loc_p80": 15000,
         "loc_p95": 60000,
@@ -1368,7 +1368,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-SOURCE",
       "proof_pattern": "Freeze the repository-side five-unit boundary only after the second agreement repair, introduce neutral absolute-residual vocabulary, tie weights to extraction data, and keep coefficient/weight/RACAR providers explicit before elaborating the source theorem.",
-      "review_state": "second-diversity-repair-queued-substantive",
+      "review_state": "second-diversity-repair-running-substantive",
       "scc_id": "SCC-FLT-MLT-SOURCE",
       "source_condition_risks": "Fresh GPT review found ordinary rather than absolute residual irreducibility, free weight data disconnected from the representation, same-field residual agreement without a common closure, and a reversed residual-image dependency. Repository-specific conditions must remain outside the source theorem.",
       "source_refs": [
@@ -1909,7 +1909,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Opus was uncertain; Fable returned DECOMPOSE-FIRST; GPT returned REVISE but independently approved the standard-trio charP-three leaf. That bounded leaf is now kernel-green and under mandatory independent build review; the larger obligation remains absent.",
+        "evidence": "Opus was uncertain; Fable returned DECOMPOSE-FIRST; GPT returned REVISE but approved the charP-three leaf. That bounded leaf is now built, independently reviewed, and standard-trio clean; S3, N1, N2, D, E, F, S11, and the larger obligation remain open.",
         "loc_p50": 18000,
         "loc_p80": 80000,
         "loc_p95": 300000,
@@ -1919,7 +1919,7 @@
       },
       "expected_module": "FLT.GaloisRepresentation.HardlyRamified.ModThreeCore",
       "graph_depth": 1,
-      "kernel_probe_state": "charp-leaf-proof-green",
+      "kernel_probe_state": "charp-leaf-proof-green-reviewed",
       "lean_declaration": "FLT.HardlyRamified.modThree_classification_core",
       "lean_risk": "unbounded",
       "lean_type": "Proposed theorem yielding a Galois-stable one-dimensional trivial quotient for every two-dimensional hardly-ramified representation over a finite field of characteristic 3.",
@@ -1932,7 +1932,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-FONTAINE-ODLYZKO",
       "proof_pattern": "Classify projective image, construct cut-out number field, bound root discriminant, and contradict Odlyzko; expose exact historical input at T2.",
-      "review_state": "bounded-charp-leaf-build-review-running-revision-required",
+      "review_state": "bounded-charp-leaf-built-reviewed-larger-obligation-open",
       "scc_id": "SCC-FLT-FONTAINE-ODLYZKO",
       "source_condition_risks": "Fable decomposes the route into two proposed human-gated T2 assumptions and three produced infrastructure components, and identified an unresolved e2=9 inertia-cyclicity proof hole. GPT confirmed only the exact quotient orientation and charP-three leaf are currently freezable; N1, N2, D, E, F, and S11 remain untyped or source-gated.",
       "source_refs": [
@@ -2188,7 +2188,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The five-unit temporary probe is standard-trio clean, but fresh GPT review returned REVISE-SUBSTANTIVE on the surrounding source/ownership graph. A second and final Fable repair is queued; no probe is persisted.",
+        "evidence": "Five mechanical probes are standard-trio clean, but GPT found four substantive source-contract defects. The second and final Fable repair is running; no probe or obligation is promoted.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2210,7 +2210,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
       "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "second-diversity-repair-queued-substantive",
+      "review_state": "second-diversity-repair-running-substantive",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
       "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
       "source_refs": [
@@ -3038,7 +3038,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fresh GPT review returned substantive REVISE after replaying the same-O charpoly route. The required Fable repair is now running after the provider reset.",
+        "evidence": "The second Fable repair returned DESIGN-VIABLE with 21 trio-clean temporary declarations, including proved closure descent. Final Opus synthesis and independent GPT agreement remain mandatory; six mathematical providers remain explicit.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3062,7 +3062,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
       "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "second-diversity-repair-running",
+      "review_state": "final-repair-synthesis-running",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
       "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. Residual characteristic-polynomial agreement across two lattices is temporarily proved; semisimple equivalence still consumes the exact Brauer-Nesbitt contract as an explicit hypothesis. The fresh review requires the generic-closure tower, generalized module universes, and residue local-hom adapter to remain explicit.",
       "source_refs": [
