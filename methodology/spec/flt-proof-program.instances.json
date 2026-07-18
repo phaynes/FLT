@@ -1345,7 +1345,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Fable's second final repair returned DESIGN-VIABLE: it deleted the refuted broad fiber claim, kernel-proved the quadratic regression exclusion, corrected the universe/JL claims, and replayed the bounded signatures with the standard trio. FLT-CBASE remains admitted.",
+        "evidence": "The second Fable repair was materialised as a production methodology module: four structural theorems, eight repaired interface definitions and the quadratic regression all build with exactly the standard trio. This remains bounded infrastructure; FLT-CBASE is still admitted.",
         "loc_p50": 15000,
         "loc_p80": 70000,
         "loc_p95": 300000,
@@ -1355,7 +1355,7 @@
       },
       "expected_module": "FLT.GaloisRepresentation.Automorphic",
       "graph_depth": 1,
-      "kernel_probe_state": "four-structural-and-regression-theorems-standard-trio-green-design-probes-only",
+      "kernel_probe_state": "thirteen-bounded-declarations-production-green-standard-trio",
       "lean_declaration": "cyclic_base_change",
       "lean_risk": "unbounded",
       "lean_type": "Exact theorem in FLT/GaloisRepresentation/Automorphic.lean transferring IsAutomorphicOfLevel across a cyclic extension subject to the current hypotheses.",
@@ -1366,7 +1366,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "Bank the four structural theorems and the regression-guarded conditional vocabulary in a bounded methodology probe, then independently review it. They are infrastructure only. T2 names exact analytic interfaces only after source authorization; T3 proves them.",
-      "review_state": "second-diversity-repair-design-viable-build-gate",
+      "review_state": "bounded-repair-built-independent-review-pending",
       "scc_id": "SCC-FLT-CBASE",
       "source_condition_risks": "The second Fable repair removes the false broad fiber interface and retains only a finite-Galois, algebraically-closed-coefficient, finite-dimensional, restricted-irreducible conditional signature. Future consumer universes remain unknown; the frozen two-universe theorem is unchanged. IsAutomorphicOfLevel still omits total definiteness/even degree, owned by FLT-AUT-DEF, and the J_v kernel semantics remain open in FLT-TAME-RESIDUE. Forward transfer, image/descent, cuspidality, Jacquet-Langlands in both directions, multiplicity one and level/conductor compatibility remain source-open.",
       "source_refs": [
