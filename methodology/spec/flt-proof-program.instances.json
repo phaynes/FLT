@@ -1531,7 +1531,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The object/type and idele boundaries remain reviewed. The complete-schema tame-residue node and four exact edges are installed; U1/U2 are independently sealed and U3 is persisted with targeted/full builds green and exact standard-trio audits pending independent build review. U4-U6, reciprocity, source promotion and any new T2 assumption remain open.",
+        "evidence": "The object/type and idele boundaries remain reviewed. The complete-schema tame-residue node and four exact edges are installed; U1/U2 are independently sealed and U3 is persisted with targeted/full controller builds green and exact standard-trio audits. Opus found the read-only audit clean but returned NO-RESULT because its profile did not execute the build/axiom commands. U4-U6, reciprocity, source promotion and any new T2 assumption remain open.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1554,9 +1554,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Keep the independently reviewed object/type layer frozen; route tame residue through its separate open T1 node and prove only reviewed bounded prefixes; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-u3-bounded-build-review-pending",
+      "review_state": "tame-u3-build-review-no-result-plan-only-paused",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The separate source-open FLT-TAME-RESIDUE owner now has kernel-green U1/U2 and production-green U3 pending independent build review; U4-U6 and the exact source gate remain open.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The separate source-open FLT-TAME-RESIDUE owner now has kernel-green U1/U2 and production-green U3 pending an executable independent build review; U4-U6 and the exact source gate remain open.",
       "source_refs": [
         "SRC-004"
       ],
@@ -3321,7 +3321,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "U1/U2 are independently rebuilt and reviewed PASS. The ten-declaration U3 slice has targeted/full builds green and exact standard-trio audits after independent design review; independent build review is pending. U4-U6 remain absent and U5 is the deepest Henselian arithmetic boundary.",
+        "evidence": "U1/U2 are independently rebuilt and reviewed PASS. The ten-declaration U3 slice has targeted/full controller builds green and exact standard-trio audits after independent design review. Opus independently found the read-only mathematical, module, and scope audit clean, but its plan-mode profile did not run builds or axiom audits, so the review gate remains open. U4-U6 remain absent and U5 is the deepest Henselian arithmetic boundary.",
         "loc_p50": 700,
         "loc_p80": 4000,
         "loc_p95": 18000,
@@ -3348,9 +3348,9 @@
       "mathematical_novelty": "standard",
       "obligation_id": "FLT-TAME-RESIDUE",
       "proof_pattern": "Use the independently built and reviewed U1/U2 topology/Galois-correspondence prefix and the kernel-green U3 roots-of-unity reduction, then construct the elementary tame character without reciprocity, prove the required root lifting, and identify the proxy with the mapped kernel.",
-      "review_state": "bounded-u3-built-review-pending",
+      "review_state": "bounded-u3-review-no-result-plan-only-paused",
       "scc_id": "SCC-FLT-TAME-RESIDUE",
-      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction and finite-field descent are production-green pending independent build review. U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
+      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction and finite-field descent are production-green pending an executable independent build review; the first Opus attempt was read-only clean but returned NO-RESULT. U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
       "source_refs": [
         "SRC-004"
       ],
