@@ -1531,7 +1531,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The object/type and idele boundaries remain reviewed. The complete-schema tame-residue node and four exact edges are installed; U1/U2 are persisted and standard-trio clean after one placement-only repair. U3-U6, reciprocity, source promotion and any new T2 assumption remain open.",
+        "evidence": "The object/type and idele boundaries remain reviewed. The complete-schema tame-residue node and four exact edges are installed; U1/U2 are independently sealed and U3 is persisted with targeted/full builds green and exact standard-trio audits pending independent build review. U4-U6, reciprocity, source promotion and any new T2 assumption remain open.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1541,7 +1541,7 @@
       },
       "expected_module": "FLT.PotentialModularity.ClassField",
       "graph_depth": 0,
-      "kernel_probe_state": "object-boundary-and-persisted-u1-u2-standard-trio-green",
+      "kernel_probe_state": "object-boundary-and-persisted-u1-u3-standard-trio-green",
       "lean_declaration": "FLT.PotentialModularity.classField_package",
       "lean_risk": "unbounded",
       "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction, with tame residue separately owned.",
@@ -1554,9 +1554,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Keep the independently reviewed object/type layer frozen; route tame residue through its separate open T1 node and prove only reviewed bounded prefixes; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-u1-u2-bounded-build-review-pending",
+      "review_state": "tame-u3-bounded-build-review-pending",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The separate source-open FLT-TAME-RESIDUE owner now has kernel-green U1/U2, while U3-U6 and the exact source gate remain open.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The separate source-open FLT-TAME-RESIDUE owner now has kernel-green U1/U2 and production-green U3 pending independent build review; U4-U6 and the exact source gate remain open.",
       "source_refs": [
         "SRC-004"
       ],
@@ -3310,7 +3310,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "All five named declarations exist and each audits to exactly [propext, Classical.choice, Quot.sound]; U3-U6 and a visually verified primary source locator are complete; consumer signatures remain unchanged; no reciprocity edge or historical assumption is introduced.",
+      "completion_gate": "All named declarations exist and each audits to exactly [propext, Classical.choice, Quot.sound]; U4-U6 and a visually verified primary source locator are complete; consumer signatures remain unchanged; no reciprocity edge or historical assumption is introduced.",
       "completion_targets": [
         "T1",
         "T2",
@@ -3321,7 +3321,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "U1/U2 are persisted, independently rebuilt and reviewed PASS with exactly the standard trio. U3-U6 are absent; U5 is the deepest Henselian arithmetic boundary.",
+        "evidence": "U1/U2 are independently rebuilt and reviewed PASS. The ten-declaration U3 slice has targeted/full builds green and exact standard-trio audits after independent design review; independent build review is pending. U4-U6 remain absent and U5 is the deepest Henselian arithmetic boundary.",
         "loc_p50": 700,
         "loc_p80": 4000,
         "loc_p95": 18000,
@@ -3331,24 +3331,26 @@
       },
       "expected_module": "FLT.Deformations.RepresentationTheory.AbsoluteGaloisGroup",
       "graph_depth": 0,
-      "kernel_probe_state": "u1-u2-independent-build-and-standard-trio-green",
-      "lean_declaration": "AddSubgroup.isClosed_inertia; isClosed_localInertiaGroup; localTameAbelianInertiaGroup_le_localInertiaGroup; tameResidueChar; localTameAbelianInertiaGroup_eq_ker",
+      "kernel_probe_state": "u1-u3-production-and-methodology-build-green-standard-trio",
+      "lean_declaration": "AddSubgroup.isClosed_inertia; isClosed_localInertiaGroup; localTameAbelianInertiaGroup_le_localInertiaGroup; eq_one_of_pow_eq_one_of_residue_eq_one; rootsOfUnity_residue_injective; finiteFieldUnitsEquivRootsOfUnity; isUnit_card_sub_one_ICv; residueUnitsEquivRootsOfUnity_at_place; tameRootsReduction_at_place; tameRootsReduction_at_place_injective; tameResidueChar; localTameAbelianInertiaGroup_eq_ker",
       "lean_risk": "high",
-      "lean_type": "Definition gap: U1 proves inertia closedness and U2 proves the repository proxy J_v is contained in inertia I_v. Remaining U3-U6 must construct the plain tame residue monoid hom localInertiaGroup v ->* (kappa O_v)^x and prove the existing localTameAbelianInertiaGroup equals its mapped kernel.",
+      "lean_type": "Definition gap: U1 proves inertia closedness, U2 proves the repository proxy J_v is contained in inertia I_v, and U3 constructs the injective reduction/descent map from integral (q-1)-st roots of unity to base residue-field units. Remaining U4-U6 must construct the plain tame residue monoid hom localInertiaGroup v ->* (kappa O_v)^x, prove the required Henselian lift, and identify the existing localTameAbelianInertiaGroup with its mapped kernel.",
       "library_candidates": [
         "AddSubgroup.inertia",
         "ContinuousSMulDiscrete",
         "InfiniteGalois.fixingSubgroup_fixedField",
         "IsLocalRing.ResidueField",
+        "restrictRootsOfUnity",
+        "card_rootsOfUnity",
         "Subgroup.map"
       ],
       "mathematical_name": "Tame residue character and canonical inertia kernel at a finite place",
       "mathematical_novelty": "standard",
       "obligation_id": "FLT-TAME-RESIDUE",
-      "proof_pattern": "Use the independently built and reviewed U1/U2 topology/Galois-correspondence prefix, then prove roots-of-unity reduction, construct the elementary tame character without reciprocity, prove the required root lifting, and identify the proxy with the mapped kernel.",
-      "review_state": "bounded-u1-u2-built-reviewed-pass",
+      "proof_pattern": "Use the independently built and reviewed U1/U2 topology/Galois-correspondence prefix and the kernel-green U3 roots-of-unity reduction, then construct the elementary tame character without reciprocity, prove the required root lifting, and identify the proxy with the mapped kernel.",
+      "review_state": "bounded-u3-built-review-pending",
       "scc_id": "SCC-FLT-TAME-RESIDUE",
-      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction injectivity, U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
+      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction and finite-field descent are production-green pending independent build review. U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
       "source_refs": [
         "SRC-004"
       ],

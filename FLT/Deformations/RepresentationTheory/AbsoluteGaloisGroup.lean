@@ -8,6 +8,7 @@ module
 public import FLT.Deformations.RepresentationTheory.Frobenius
 public import FLT.Deformations.RepresentationTheory.IntegralClosure
 public import FLT.Mathlib.FieldTheory.Galois.Infinite
+public import FLT.Mathlib.RingTheory.RootsOfUnity.ResidueField
 public import Mathlib.Analysis.Normed.Unbundled.SpectralNorm
 public import Mathlib.FieldTheory.AbsoluteGaloisGroup
 public import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
@@ -244,6 +245,42 @@ instance neZero_maximalIdeal_integralClosure :
     exact (Subring.topEquiv (R := Kᵥ)).isField (Semifield.toIsField Kᵥ)
   exact ⟨(Ideal.bot_lt_of_maximal (𝔪 _)
     (not_isField_integralClosure (L := Kᵥᵃˡᵍ) _ this)).ne'⟩
+
+/-- The residue-field unit exponent is a unit in the integral closure at a finite place. -/
+theorem isUnit_card_sub_one_ICv :
+    IsUnit
+      (((Nat.card (κ 𝒪ᵥ) - 1 : ℕ) : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) := by
+  have hbase : IsUnit (((Nat.card (κ 𝒪ᵥ) - 1 : ℕ) : 𝒪ᵥ)) := by
+    apply (IsLocalRing.residue_ne_zero_iff_isUnit _).mp
+    letI := Fintype.ofFinite (κ 𝒪ᵥ)
+    rw [map_natCast]
+    rw [Nat.cast_sub (Finite.one_lt_card (α := κ 𝒪ᵥ)).le]
+    simp [Nat.card_eq_fintype_card]
+  simpa only [map_natCast] using
+    hbase.map (algebraMap 𝒪ᵥ (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))
+
+/-- The units of the base residue field are the `(q - 1)`-st roots of unity in the residue field
+of the integral closure. This is residue-field descent, not Henselian lifting. -/
+noncomputable def residueUnitsEquivRootsOfUnity_at_place :
+    (κ 𝒪ᵥ)ˣ ≃*
+      rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1) (κ (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) :=
+  finiteFieldUnitsEquivRootsOfUnity _ _
+    (IsLocalRing.ResidueField.map (algebraMap 𝒪ᵥ (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))))
+    (IsLocalRing.ResidueField.map
+      (algebraMap 𝒪ᵥ (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))).injective
+
+/-- Reduction of tame roots of unity to units of the base residue field. -/
+noncomputable def tameRootsReduction_at_place :
+    rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1) (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) →* (κ 𝒪ᵥ)ˣ :=
+  (residueUnitsEquivRootsOfUnity_at_place v).symm.toMonoidHom.comp
+    (restrictRootsOfUnity (IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))
+      (Nat.card (κ 𝒪ᵥ) - 1))
+
+/-- Reduction of tame roots of unity at a finite place is injective. -/
+theorem tameRootsReduction_at_place_injective :
+    Function.Injective (tameRootsReduction_at_place v) :=
+  (residueUnitsEquivRootsOfUnity_at_place v).symm.injective.comp
+    (rootsOfUnity_residue_injective (isUnit_card_sub_one_ICv v))
 
 /-- An arbitrary choice of an (arithmetic) frobenious element of a local galois group. -/
 noncomputable
