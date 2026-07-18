@@ -1345,7 +1345,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The second Fable repair was materialised as a production methodology module: four structural theorems, eight repaired interface definitions and the quadratic regression all build with exactly the standard trio. This remains bounded infrastructure; FLT-CBASE is still admitted.",
+        "evidence": "The production methodology module and independent Opus build review establish four structural theorems, eight repaired interface definitions and the quadratic regression with exactly the standard trio. This remains bounded infrastructure; FLT-CBASE is still admitted.",
         "loc_p50": 15000,
         "loc_p80": 70000,
         "loc_p95": 300000,
@@ -1355,7 +1355,7 @@
       },
       "expected_module": "FLT.GaloisRepresentation.Automorphic",
       "graph_depth": 1,
-      "kernel_probe_state": "thirteen-bounded-declarations-production-green-standard-trio",
+      "kernel_probe_state": "thirteen-bounded-declarations-production-green-standard-trio-opus-sealed",
       "lean_declaration": "cyclic_base_change",
       "lean_risk": "unbounded",
       "lean_type": "Exact theorem in FLT/GaloisRepresentation/Automorphic.lean transferring IsAutomorphicOfLevel across a cyclic extension subject to the current hypotheses.",
@@ -1366,7 +1366,7 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "Bank the four structural theorems and the regression-guarded conditional vocabulary in a bounded methodology probe, then independently review it. They are infrastructure only. T2 names exact analytic interfaces only after source authorization; T3 proves them.",
-      "review_state": "bounded-repair-built-independent-review-pending",
+      "review_state": "bounded-repair-built-and-independently-reviewed-provider-open",
       "scc_id": "SCC-FLT-CBASE",
       "source_condition_risks": "The second Fable repair removes the false broad fiber interface and retains only a finite-Galois, algebraically-closed-coefficient, finite-dimensional, restricted-irreducible conditional signature. Future consumer universes remain unknown; the frozen two-universe theorem is unchanged. IsAutomorphicOfLevel still omits total definiteness/even degree, owned by FLT-AUT-DEF, and the J_v kernel semantics remain open in FLT-TAME-RESIDUE. Forward transfer, image/descent, cuspidality, Jacquet-Langlands in both directions, multiplicity one and level/conductor compatibility remain source-open.",
       "source_refs": [
@@ -3232,7 +3232,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "medium",
-        "evidence": "The controller proved the bridge in production via algebraically-closed density, descent of full image algebra, and extension to every field. Targeted build and all three new declaration audits are standard-trio green; independent review is queued.",
+        "evidence": "The controller proved the bridge in production via algebraically-closed density, descent of full image algebra, and extension to every field. GPT independently returned PASS-BRIDGE after a bounded build-profile retry; the final Opus seal is pending.",
         "loc_p50": 500,
         "loc_p80": 3000,
         "loc_p95": 15000,
@@ -3242,7 +3242,7 @@
       },
       "expected_module": "FLTMethodology.Probes.ResidualAbsoluteVocabulary",
       "graph_depth": 0,
-      "kernel_probe_state": "closure-bridge-three-declarations-standard-trio-green",
+      "kernel_probe_state": "closure-bridge-three-declarations-standard-trio-green-gpt-reviewed",
       "lean_declaration": "FLTMethodology.Taylor2018.IsAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.IsCyclotomicAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.ClosureImpliesClassAbsIrred; FLTMethodology.Taylor2018.closureImpliesClassAbsIrred",
       "lean_risk": "high",
       "lean_type": "Definitions separating closure-valued absolute irreducibility and cyclotomic restriction, plus a production proof of the bridge to class absolute irreducibility.",
@@ -3255,10 +3255,10 @@
       "mathematical_name": "Neutral absolute residual irreducibility vocabulary",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-ABSIRRED-VOCAB",
-      "proof_pattern": "Review the Burnside/Schur density proof and faithful scalar-descent dimension argument, then reuse the closed bridge in the Taylor source contract and both concrete residual-image providers.",
-      "review_state": "closure-bridge-built-independent-review-queued",
+      "proof_pattern": "Seal the Burnside/Schur density proof and faithful scalar-descent dimension argument, then reuse the closed bridge in the Taylor source contract and both concrete residual-image providers.",
+      "review_state": "closure-bridge-gpt-pass-opus-final-seal-pending",
       "scc_id": "SCC-FLT-ABSIRRED-VOCAB",
-      "source_condition_risks": "The closure-to-class bridge and both density lemmas are production-built with the standard trio, but independent mathematical review and a separate build seal remain outstanding. Neither concrete cyclotomic residual-image application is discharged.",
+      "source_condition_risks": "The closure-to-class bridge and both density lemmas are production-built with the standard trio and passed independent GPT mathematical/build review. A separate Opus final build seal remains outstanding. Neither concrete cyclotomic residual-image application is discharged.",
       "source_refs": [
         "SRC-016"
       ],
