@@ -30,6 +30,25 @@ variable {A B : Type*} [CommRing A] [TopologicalSpace A] [CommRing B] [Topologic
 variable {M N : Type*} [AddCommGroup M] [Module A M] [AddCommGroup N] [Module A N]
 variable {n : Type*} [Fintype n] [DecidableEq n]
 
+/-- The inertia subgroup of a discrete additive action is closed. -/
+theorem AddSubgroup.isClosed_inertia {M : Type*} [AddGroup M] (I : AddSubgroup M)
+    (G : Type*) [Group G] [TopologicalSpace G] [MulAction G M] [ContinuousSMulDiscrete G M] :
+    IsClosed (I.inertia G : Set G) := by
+  have h : (I.inertia G : Set G) = ⋂ x : M, {σ : G | σ • x - x ∈ I} := by
+    ext σ
+    simp [AddSubgroup.mem_inertia]
+  rw [h]
+  refine isClosed_iInter fun x ↦ ?_
+  have hopen : ∀ S : Set M, IsOpen {σ : G | σ • x ∈ S} := fun S ↦ by
+    have : {σ : G | σ • x ∈ S} = ⋃ y ∈ S, {σ : G | σ • x = y} := by
+      ext σ
+      simp
+    rw [this]
+    exact isOpen_biUnion fun y _ ↦ ContinuousSMulDiscrete.isOpen_smul_eq G x y
+  rw [show {σ : G | σ • x - x ∈ I} = {σ : G | σ • x ∈ {y | y - x ∈ I}} from rfl,
+    ← isOpen_compl_iff]
+  exact hopen {y | y - x ∈ I}ᶜ
+
 open NumberField
 
 variable [NumberField K]
@@ -167,6 +186,11 @@ noncomputable
 def localInertiaGroup : Subgroup (Γ Kᵥ) :=
   (𝔪 (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).toAddSubgroup.inertia (Γ Kᵥ)
 
+/-- The local inertia subgroup at a finite place is closed. -/
+theorem isClosed_localInertiaGroup :
+    IsClosed (localInertiaGroup v : Set (Γ Kᵥ)) :=
+  AddSubgroup.isClosed_inertia _ _
+
 open IntermediateField in
 /-- The subgroup of the local galois group which is the kernel of the canonical map `Iᵥ → k(v)ˣ`.
 Note that this definition is somewhat cheating, abusing the fact that the field corresponding
@@ -190,6 +214,19 @@ instance {K L : Type*} [Field K] [Field L] [Algebra K L] [IsGalois K L] :
     Algebra.IsInvariant K L (L ≃ₐ[K] L) :=
   ⟨fun _ H ↦ (InfiniteGalois.fixedField_fixingSubgroup
     (⊥ : IntermediateField K L)).le fun _ ↦ H _⟩
+
+/-- The repository's tame-abelian inertia proxy is contained in local inertia.
+
+Identifying this proxy with the kernel of the tame residue character is a separate arithmetic
+theorem. -/
+theorem localTameAbelianInertiaGroup_le_localInertiaGroup :
+    localTameAbelianInertiaGroup v ≤ localInertiaGroup v := by
+  intro σ hσ
+  have hfix : σ ∈ (IntermediateField.fixedField (localInertiaGroup v)).fixingSubgroup := by
+    rintro ⟨x, hx⟩
+    exact hσ x (pow_mem hx _)
+  rwa [InfiniteGalois.fixingSubgroup_fixedField
+    ⟨localInertiaGroup v, isClosed_localInertiaGroup v⟩] at hfix
 
 instance : Finite (IsLocalRing.ResidueField 𝒪ᵥ) := inferInstance
 

@@ -44,6 +44,13 @@
       "to": "FLT-SGOOD-DEF"
     },
     {
+      "edge_id": "E-TAME-RESIDUE-SGOOD-DEF",
+      "edge_kind": "theorem",
+      "from": "FLT-TAME-RESIDUE",
+      "justification": "FLT-SGOOD-DEF directly consumes FLT-TAME-RESIDUE.",
+      "to": "FLT-SGOOD-DEF"
+    },
+    {
       "edge_id": "E-SGOOD-SELECTED-DEF-FUNCTOR",
       "edge_kind": "theorem",
       "from": "FLT-SGOOD-SELECTED",
@@ -146,6 +153,13 @@
       "edge_kind": "definition",
       "from": "FLT-AUT-DEF",
       "justification": "FLT-CBASE directly consumes FLT-AUT-DEF.",
+      "to": "FLT-CBASE"
+    },
+    {
+      "edge_id": "E-TAME-RESIDUE-CBASE",
+      "edge_kind": "theorem",
+      "from": "FLT-TAME-RESIDUE",
+      "justification": "FLT-CBASE directly consumes FLT-TAME-RESIDUE.",
       "to": "FLT-CBASE"
     },
     {
@@ -478,6 +492,13 @@
       "to": "FLT-SGOOD-SELECTED"
     },
     {
+      "edge_id": "E-TAME-RESIDUE-SGOOD-SELECTED",
+      "edge_kind": "theorem",
+      "from": "FLT-TAME-RESIDUE",
+      "justification": "FLT-SGOOD-SELECTED directly consumes FLT-TAME-RESIDUE.",
+      "to": "FLT-SGOOD-SELECTED"
+    },
+    {
       "edge_id": "E-HR-DEF-RESIDUAL-IMAGE",
       "edge_kind": "definition",
       "from": "FLT-HR-DEF",
@@ -644,6 +665,13 @@
       "from": "FLT-HIST-QUATERNION",
       "justification": "FLT-SUPPORT-AUTOMORPHIC directly consumes FLT-HIST-QUATERNION.",
       "to": "FLT-SUPPORT-AUTOMORPHIC"
+    },
+    {
+      "edge_id": "E-TAME-RESIDUE-SUPPORT-DEFORMATION",
+      "edge_kind": "theorem",
+      "from": "FLT-TAME-RESIDUE",
+      "justification": "FLT-SUPPORT-DEFORMATION directly consumes FLT-TAME-RESIDUE.",
+      "to": "FLT-SUPPORT-DEFORMATION"
     },
     {
       "edge_id": "E-BRAUER-NESBITT-MLT-COEFFICIENTS",
@@ -965,7 +993,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The temporary four-field target elaborates and is used only as input to source reconciliation.",
+      "completion_gate": "The temporary four-field target elaborates and is used only as input to source reconciliation; canonical J_v semantics are discharged by FLT-TAME-RESIDUE.",
       "completion_targets": [
         "T1",
         "T2",
@@ -974,7 +1002,8 @@
       "critical_path": true,
       "current_state": "proved",
       "direct_dependencies": [
-        "FLT-HR-DEF"
+        "FLT-HR-DEF",
+        "FLT-TAME-RESIDUE"
       ],
       "estimates": {
         "confidence": "low",
@@ -1001,9 +1030,9 @@
       "mathematical_novelty": "standard",
       "obligation_id": "FLT-SGOOD-DEF",
       "proof_pattern": "Reuse the existing determinant, local-inertia, tame-kernel and finite-flat predicates without encoding Taylor 2018 or an automorphy conclusion.",
-      "review_state": "reviewed",
+      "review_state": "reviewed-tame-kernel-provider-open",
       "scc_id": "SCC-FLT-SGOOD-DEF",
-      "source_condition_risks": "The repository's localTameAbelianInertiaGroup is the intended J_v but retains an upstream TODO proving its concrete fixed-field definition is the canonical kernel; this is a dependency caveat rather than a defect in the four-field signature.",
+      "source_condition_risks": "The repository's localTameAbelianInertiaGroup is the intended J_v. Its containment in inertia is now proved, while the canonical tame-residue-kernel identification remains open in FLT-TAME-RESIDUE; this is a dependency caveat rather than a defect in the four-field signature.",
       "source_refs": [
         "SRC-004"
       ],
@@ -1303,7 +1332,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Forward transfer and the exact descent/image theorem required by MLT have acceptable target-stage axiom closure.",
+      "completion_gate": "Forward transfer and the exact descent/image theorem required by MLT have acceptable target-stage axiom closure; the tame subgroup semantics come from FLT-TAME-RESIDUE.",
       "completion_targets": [
         "T2",
         "T3"
@@ -1311,7 +1340,8 @@
       "critical_path": true,
       "current_state": "admitted",
       "direct_dependencies": [
-        "FLT-AUT-DEF"
+        "FLT-AUT-DEF",
+        "FLT-TAME-RESIDUE"
       ],
       "estimates": {
         "confidence": "low",
@@ -1336,9 +1366,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "Independently review the single-universe interface-first synthesis, then bank only agreed buildable adapters while keeping the two analytic transfer/descent boundaries explicit. T2 names exact interfaces only after source authorization; T3 proves them.",
-      "review_state": "post-diversity-synthesis-ready-for-independent-review",
+      "review_state": "post-diversity-independent-review-running",
       "scc_id": "SCC-FLT-CBASE",
-      "source_condition_risks": "The two-universe public theorem cannot use the in-tree tensor witness without ULift transport; the single-universe bounded route preserves concrete Type-0 consumers but cannot mutate the frozen public declaration without operator action. IsAutomorphicOfLevel also does not encode total definiteness/even degree. Two analytic transfer/descent boundaries remain source-open.",
+      "source_condition_risks": "The two-universe public theorem cannot use the in-tree tensor witness without ULift transport; the single-universe bounded route preserves concrete Type-0 consumers but cannot mutate the frozen public declaration without operator action. IsAutomorphicOfLevel also does not encode total definiteness/even degree. The hRhoTame hypothesis consumes the J_v subgroup whose canonical kernel identification remains open in FLT-TAME-RESIDUE. Two analytic transfer/descent boundaries remain source-open.",
       "source_refs": [
         "SRC-004"
       ],
@@ -1501,7 +1531,7 @@
       "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "The object/type and idele boundaries remain reviewed. Fable repaired the tame-residue graph; Opus synthesized it; GPT independently accepted the mathematics with complete-schema and axiom-gate corrections and authorized only the open node, four direct edges and bounded U1/U2 build. No reciprocity edge, source promotion or T2 assumption is authorized.",
+        "evidence": "The object/type and idele boundaries remain reviewed. The complete-schema tame-residue node and four exact edges are installed; U1/U2 are persisted and standard-trio clean after one placement-only repair. U3-U6, reciprocity, source promotion and any new T2 assumption remain open.",
         "loc_p50": 12000,
         "loc_p80": 60000,
         "loc_p95": 250000,
@@ -1511,7 +1541,7 @@
       },
       "expected_module": "FLT.PotentialModularity.ClassField",
       "graph_depth": 0,
-      "kernel_probe_state": "object-boundary-and-temporary-u1-u2-probes-green",
+      "kernel_probe_state": "object-boundary-and-persisted-u1-u2-standard-trio-green",
       "lean_declaration": "FLT.PotentialModularity.classField_package",
       "lean_risk": "unbounded",
       "lean_type": "Proposed package of reciprocity, induced characters, local prescriptions, and compatibility results exactly used by the auxiliary-curve construction, with tame residue separately owned.",
@@ -1524,9 +1554,9 @@
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CLASS-FIELD",
       "proof_pattern": "Keep the independently reviewed object/type layer frozen; route tame residue through its separate open T1 node and prove only reviewed bounded prefixes; then prove or name each source-exact reciprocity theorem without placing full reciprocity on the immediate MLT path.",
-      "review_state": "tame-graph-agreement-mechanical-correction-and-u1-u2-build-ready",
+      "review_state": "tame-u1-u2-bounded-build-review-pending",
       "scc_id": "SCC-FLT-CLASS-FIELD",
-      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The independent tame-residue review accepted a separate source-open T1 owner and P_v <= J_v <= I_v, but U3-U6 and the exact source gate remain open.",
+      "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. Reciprocity, discreteness, profiniteness, globalization, and exact source locators remain separate missing boundaries. The separate source-open FLT-TAME-RESIDUE owner now has kernel-green U1/U2, while U3-U6 and the exact source gate remain open.",
       "source_refs": [
         "SRC-004"
       ],
@@ -2187,7 +2217,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The repository structure elaborates and every source-compatibility bridge has an explicit dependency and independently reviewed signature.",
+      "completion_gate": "The repository structure elaborates and every source-compatibility bridge has an explicit dependency and independently reviewed signature, including FLT-TAME-RESIDUE.",
       "completion_targets": [
         "T1",
         "T2",
@@ -2199,11 +2229,12 @@
         "FLT-SGOOD-DEF",
         "FLT-MLT-SOURCE",
         "FLT-MLT-PADIC-HODGE",
-        "FLT-MLT-COEFFICIENTS"
+        "FLT-MLT-COEFFICIENTS",
+        "FLT-TAME-RESIDUE"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The five repository boundary probes remain standard-trio clean. Fable's second repair adds neutral closure-form absolute irreducibility, binds conditions to extracted weights, uses common-closure residual comparison, and corrects the graph direction. Opus synthesis and independent GPT agreement remain required before persistence or graph mutation.",
+        "evidence": "The five repository boundary probes remain standard-trio clean and directly name the tame subgroup. The neutral absolute-residual vocabulary is built and reviewed; coefficient, p-adic-Hodge, RACAR, source-contract and FLT-TAME-RESIDUE providers remain open.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2219,15 +2250,16 @@
       "lean_type": "Definition gap: repository-local bundle of cyclotomic determinant, unramifiedness outside S and ell, tame rank-one quotient at S, and a finite-flat integral model above ell. Separate bridge theorems must connect it to the source-level crystalline Hodge-Tate conditions.",
       "library_candidates": [
         "DeformationCondition",
-        "GaloisRep.IsFlatAt"
+        "GaloisRep.IsFlatAt",
+        "localTameAbelianInertiaGroup"
       ],
       "mathematical_name": "Repository weight-two local conditions selected after Taylor 2018",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
-      "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, and RACAR vocabulary lands.",
-      "review_state": "final-synthesis-gpt-agreement-review-running",
+      "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, RACAR and tame-kernel vocabulary lands.",
+      "review_state": "bounded-vocabulary-built-reviewed-providers-open",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
-      "source_condition_risks": "The five proposed repository declarations elaborate cleanly, but the adjacent source contract still misstates absolute irreducibility, weight ownership, residual closure, and graph orientation. They cannot be persisted under the agreement gate until that substantive repair passes.",
+      "source_condition_risks": "The five proposed repository declarations elaborate cleanly and directly name the J_v subgroup. The source-side neutral vocabulary and ownership graph are reviewed, but coefficient, p-adic-Hodge, RACAR, source-contract and canonical tame-kernel providers remain open.",
       "source_refs": [
         "SRC-004",
         "SRC-016"
@@ -2995,7 +3027,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Every selected generic deformation declaration has no sorryAx.",
+      "completion_gate": "Every selected generic deformation declaration has no sorryAx and the tame subgroup semantics are discharged by FLT-TAME-RESIDUE.",
       "completion_targets": [
         "T1",
         "T2",
@@ -3003,10 +3035,12 @@
       ],
       "critical_path": true,
       "current_state": "admitted",
-      "direct_dependencies": [],
+      "direct_dependencies": [
+        "FLT-TAME-RESIDUE"
+      ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Several explicit admissions with source hints exist.",
+        "evidence": "Several explicit admissions with source hints exist; traceConditionFunctor directly consumes localTameAbelianInertiaGroup.",
         "loc_p50": 6000,
         "loc_p80": 25000,
         "loc_p95": 90000,
@@ -3015,7 +3049,7 @@
         "tokens_p95": 16000000
       },
       "expected_module": "FLT.Deformations",
-      "graph_depth": 0,
+      "graph_depth": 1,
       "kernel_probe_state": "absent",
       "lean_declaration": "Deformation.corepresentable and SLiftFunctor support",
       "lean_risk": "very-high",
@@ -3023,15 +3057,16 @@
       "library_candidates": [
         "CategoryTheory.Functor",
         "CorepresentableBy",
-        "CompleteLocalRing"
+        "CompleteLocalRing",
+        "traceConditionFunctor"
       ],
       "mathematical_name": "Generic deformation representability support cluster",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SUPPORT-DEFORMATION",
-      "proof_pattern": "Close generic categorical and commutative-algebra admissions before specialization.",
-      "review_state": "unreviewed",
+      "proof_pattern": "Close generic categorical and commutative-algebra admissions before specialization, with tame-subgroup semantics discharged by FLT-TAME-RESIDUE.",
+      "review_state": "unreviewed-tame-kernel-provider-open",
       "scc_id": "SCC-FLT-SUPPORT-DEFORMATION",
-      "source_condition_risks": "Generic representability theorems must be strong enough for constrained deformation subfunctors and must not import classical existence as an axiom.",
+      "source_condition_risks": "Generic representability theorems must be strong enough for constrained deformation subfunctors and must not import classical existence as an axiom. The trace-condition functor consumes the repository J_v subgroup whose canonical kernel semantics remain open in FLT-TAME-RESIDUE.",
       "source_refs": [
         "SRC-001",
         "SRC-015"
@@ -3268,6 +3303,52 @@
         "SRC-016"
       ],
       "stage_completion": "T1 requires the provider to be proved for every live consumer; T2 and T3 retain the same standard-trio requirement.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "All five named declarations exist and each audits to exactly [propext, Classical.choice, Quot.sound]; U3-U6 and a visually verified primary source locator are complete; consumer signatures remain unchanged; no reciprocity edge or historical assumption is introduced.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "U1/U2 are persisted and compile with exactly the standard trio. U3-U6 are absent; U5 is the deepest Henselian arithmetic boundary.",
+        "loc_p50": 700,
+        "loc_p80": 4000,
+        "loc_p95": 18000,
+        "tokens_p50": 100000,
+        "tokens_p80": 650000,
+        "tokens_p95": 3500000
+      },
+      "expected_module": "FLT.Deformations.RepresentationTheory.AbsoluteGaloisGroup",
+      "graph_depth": 0,
+      "kernel_probe_state": "u1-u2-standard-trio-green",
+      "lean_declaration": "AddSubgroup.isClosed_inertia; isClosed_localInertiaGroup; localTameAbelianInertiaGroup_le_localInertiaGroup; tameResidueChar; localTameAbelianInertiaGroup_eq_ker",
+      "lean_risk": "high",
+      "lean_type": "Definition gap: U1 proves inertia closedness and U2 proves the repository proxy J_v is contained in inertia I_v. Remaining U3-U6 must construct the plain tame residue monoid hom localInertiaGroup v ->* (kappa O_v)^x and prove the existing localTameAbelianInertiaGroup equals its mapped kernel.",
+      "library_candidates": [
+        "AddSubgroup.inertia",
+        "ContinuousSMulDiscrete",
+        "InfiniteGalois.fixingSubgroup_fixedField",
+        "IsLocalRing.ResidueField",
+        "Subgroup.map"
+      ],
+      "mathematical_name": "Tame residue character and canonical inertia kernel at a finite place",
+      "mathematical_novelty": "standard",
+      "obligation_id": "FLT-TAME-RESIDUE",
+      "proof_pattern": "Bank the topology and Galois-correspondence prefix U1/U2 with standard axiom closure, then prove roots-of-unity reduction, construct the elementary tame character without reciprocity, prove the required root lifting, and identify the proxy with the mapped kernel.",
+      "review_state": "bounded-u1-u2-built-review-pending",
+      "scc_id": "SCC-FLT-TAME-RESIDUE",
+      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction injectivity, U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
+      "source_refs": [
+        "SRC-004"
+      ],
+      "stage_completion": "T1 closes only after tameResidueChar and localTameAbelianInertiaGroup_eq_ker are proved with standard axiom closure. T2 and T3 retain the same theorem and source requirements; no tame-residue T2 assumption is presently authorized.",
       "target_stage": "T1"
     }
   ],
