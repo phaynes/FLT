@@ -653,6 +653,13 @@
       "to": "FLT-MLT-COEFFICIENTS"
     },
     {
+      "edge_id": "E-MLT-COEFF-REALIZATION-MLT-COEFFICIENTS",
+      "edge_kind": "theorem",
+      "from": "FLT-MLT-COEFF-REALIZATION",
+      "justification": "FLT-MLT-COEFFICIENTS directly consumes FLT-MLT-COEFF-REALIZATION.",
+      "to": "FLT-MLT-COEFFICIENTS"
+    },
+    {
       "edge_id": "E-MLT-COEFFICIENTS-MLT-PADIC-HODGE",
       "edge_kind": "theorem",
       "from": "FLT-MLT-COEFFICIENTS",
@@ -3033,7 +3040,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Every coefficient/lattice/residual definition elaborates and its comparison laws have no sorryAx.",
+      "completion_gate": "All seven providers are proved and every coefficient/lattice/residual declaration and comparison law has standard axiom closure.",
       "completion_targets": [
         "T1",
         "T2",
@@ -3042,11 +3049,12 @@
       "critical_path": true,
       "current_state": "definition-gap",
       "direct_dependencies": [
-        "FLT-BRAUER-NESBITT"
+        "FLT-BRAUER-NESBITT",
+        "FLT-MLT-COEFF-REALIZATION"
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Final GPT replay confirmed the internal temporary tranche and same-O comparisons are standard-trio clean, but refuted the claim that the named closure-valued consumer is already identified. The two automatic agreement iterations are exhausted and the component awaits operator adjudication; no persistence or promotion is authorized.",
+        "evidence": "Operator chose option 1 on 2026-07-18. The bounded vocabulary and conditional composition are persisted and audit to exactly the standard trio. All seven providers remain open; no obligation was promoted.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3056,11 +3064,14 @@
       },
       "expected_module": "FLT.ModularityLifting.Taylor2018.Coefficients",
       "graph_depth": 1,
-      "kernel_probe_state": "temporary-proof-green",
+      "kernel_probe_state": "bounded-scaffolding-and-conditional-composition-standard-trio-green",
       "lean_declaration": "FLT.ModularityLifting.Taylor2018.CoefficientData",
       "lean_risk": "unbounded",
-      "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction through the maximal ideal, semisimplification, and coefficient-extension comparison.",
+      "lean_type": "Definition gap: source-faithful data for an algebraic ell-adic coefficient field, a continuous two-dimensional representation, a chosen stable integral lattice, residual reduction through the maximal ideal, semisimplification, coefficient-extension comparison, and a named closure-consumer realization.",
       "library_candidates": [
+        "FLTMethodology.Taylor2018.Coefficients.StableLatticeData",
+        "FLTMethodology.Taylor2018.Coefficients.CoefficientData",
+        "FLTMethodology.Taylor2018.Coefficients.exists_descent_to_named_consumer",
         "GaloisRep.baseChange",
         "Representation.IsSemisimpleRepresentation",
         "IsLocalRing.maximalIdeal",
@@ -3069,14 +3080,14 @@
       "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
-      "proof_pattern": "Bank the explicit coefficient/lattice/residual data and proved comparison wiring after fresh review, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, and the visible Brauer-Nesbitt dependency.",
-      "review_state": "human-adjudication-required-after-final-substantive-review",
+      "proof_pattern": "Use the persisted bounded coefficient/lattice/residual vocabulary and conditional named-consumer composition, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, Brauer-Nesbitt, cross-coefficient independence, and the named closure realization.",
+      "review_state": "operator-adjudicated-bounded-scaffolding-built-seven-providers-open",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. The bounded tower and same-O comparison wiring is trio-clean, but the tower reaches rho.baseChange C rather than an arbitrary named closure-valued consumer. A seventh field-of-definition/closure-realization provider is required in addition to T-A1, T-A2, T-A3, M4, BN, and T-IND-CLOSURE.",
+      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. The bounded tower and same-O comparison wiring is trio-clean, but the tower reaches rho.baseChange C rather than an arbitrary named closure-valued consumer. The operator accepted the seventh field-of-definition/closure-realization provider; it remains open in addition to T-A1, T-A2, T-A3, M4, BN, and T-IND-CLOSURE.",
       "source_refs": [
         "SRC-016"
       ],
-      "stage_completion": "T1 closes this obligation under the T1 axiom policy; the same declaration remains in the T2 and T3 dependency closure and must satisfy each stricter terminal audit.",
+      "stage_completion": "T1 closes this obligation only after all seven providers, including FLT-MLT-COEFF-REALIZATION, are proved; the same closure must remain standard-trio clean at T2 and T3.",
       "target_stage": "T1"
     },
     {
@@ -3210,6 +3221,50 @@
         "SRC-016"
       ],
       "stage_completion": "T1 closes the neutral vocabulary and bridge; the same theorem must retain standard axiom closure at T2 and T3.",
+      "target_stage": "T1"
+    },
+    {
+      "completion_gate": "Every live named closure-valued consumer supplies NamedClosureRealization with standard axiom closure and no custom axiom or admission.",
+      "completion_targets": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [],
+      "estimates": {
+        "confidence": "low",
+        "evidence": "Operator chose option 1 on 2026-07-18. The exact provider predicate and conditional composition are standard-trio clean; realization research is operator-side and the provider remains OPEN.",
+        "loc_p50": 2500,
+        "loc_p80": 14000,
+        "loc_p95": 65000,
+        "tokens_p50": 350000,
+        "tokens_p80": 2200000,
+        "tokens_p95": 12000000
+      },
+      "expected_module": "FLT.ModularityLifting.Taylor2018.Coefficients",
+      "graph_depth": 0,
+      "kernel_probe_state": "provider-predicate-and-conditional-composition-green-provider-unproved",
+      "lean_declaration": "FLTMethodology.Taylor2018.Coefficients.NamedClosureRealization",
+      "lean_risk": "unbounded",
+      "lean_type": "Open provider gap: for each named live closure-valued consumer rhoc and its selected finite coefficient-field representation rho, construct ec : C tensor[E] V equiv Vc and prove (rho.baseChange C).conj ec = rhoc. The predicate and its conditional composition elaborate, but no consumer witness is produced here.",
+      "library_candidates": [
+        "FLTMethodology.Taylor2018.Coefficients.NamedClosureRealization",
+        "FLTMethodology.Taylor2018.Coefficients.exists_closure_descent",
+        "FLTMethodology.Taylor2018.Coefficients.exists_descent_to_named_consumer"
+      ],
+      "mathematical_name": "Field-of-definition realization for named closure-valued consumers",
+      "mathematical_novelty": "research-level",
+      "obligation_id": "FLT-MLT-COEFF-REALIZATION",
+      "proof_pattern": "For each live consumer, expose its finite field of definition, construct the scalar-extension equivalence, prove representation conjugacy, then feed the resulting NamedClosureRealization to the trio-clean conditional descent theorem.",
+      "review_state": "operator-adjudicated-open-provider",
+      "scc_id": "SCC-FLT-MLT-COEFF-REALIZATION",
+      "source_condition_risks": "The finite coefficient field and the actual closure-valued consumer must be linked by explicit module and representation conjugacy data. The provider cannot quantify over arbitrary unrelated rhoc, and must not be replaced by an axiom, admit, knownin1980s, or a fresh unrelated representation.",
+      "source_refs": [
+        "SRC-016"
+      ],
+      "stage_completion": "T1 requires the provider to be proved for every live consumer; T2 and T3 retain the same standard-trio requirement.",
       "target_stage": "T1"
     }
   ],
