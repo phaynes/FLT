@@ -3228,11 +3228,11 @@
         "T3"
       ],
       "critical_path": true,
-      "current_state": "definition-gap",
+      "current_state": "proved",
       "direct_dependencies": [],
       "estimates": {
-        "confidence": "medium",
-        "evidence": "The controller proved the bridge in production via algebraically-closed density, descent of full image algebra, and extension to every field. GPT independently returned PASS-BRIDGE after a bounded build-profile retry; the final Opus seal is pending.",
+        "confidence": "high",
+        "evidence": "The production bridge passed targeted/full builds, exact standard-trio audits, GPT independent mathematical review, and an Opus final build seal. Scope is limited to the neutral vocabulary and closure-to-class implication.",
         "loc_p50": 500,
         "loc_p80": 3000,
         "loc_p95": 15000,
@@ -3242,7 +3242,7 @@
       },
       "expected_module": "FLTMethodology.Probes.ResidualAbsoluteVocabulary",
       "graph_depth": 0,
-      "kernel_probe_state": "closure-bridge-three-declarations-standard-trio-green-gpt-reviewed",
+      "kernel_probe_state": "closure-bridge-three-declarations-standard-trio-green-two-family-reviewed",
       "lean_declaration": "FLTMethodology.Taylor2018.IsAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.IsCyclotomicAbsolutelyIrreducibleInResidualClosure; FLTMethodology.Taylor2018.ClosureImpliesClassAbsIrred; FLTMethodology.Taylor2018.closureImpliesClassAbsIrred",
       "lean_risk": "high",
       "lean_type": "Definitions separating closure-valued absolute irreducibility and cyclotomic restriction, plus a production proof of the bridge to class absolute irreducibility.",
@@ -3255,10 +3255,10 @@
       "mathematical_name": "Neutral absolute residual irreducibility vocabulary",
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-ABSIRRED-VOCAB",
-      "proof_pattern": "Seal the Burnside/Schur density proof and faithful scalar-descent dimension argument, then reuse the closed bridge in the Taylor source contract and both concrete residual-image providers.",
-      "review_state": "closure-bridge-gpt-pass-opus-final-seal-pending",
+      "proof_pattern": "Reuse the proved Burnside/Schur density and faithful scalar-descent bridge in the Taylor source contract and both concrete residual-image providers.",
+      "review_state": "proved-gpt-reviewed-opus-final-sealed",
       "scc_id": "SCC-FLT-ABSIRRED-VOCAB",
-      "source_condition_risks": "The closure-to-class bridge and both density lemmas are production-built with the standard trio and passed independent GPT mathematical/build review. A separate Opus final build seal remains outstanding. Neither concrete cyclotomic residual-image application is discharged.",
+      "source_condition_risks": "The neutral closure-to-class bridge is complete and standard-trio clean. Neither concrete cyclotomic residual-image application is discharged; those remain separate consumer obligations.",
       "source_refs": [
         "SRC-016"
       ],
