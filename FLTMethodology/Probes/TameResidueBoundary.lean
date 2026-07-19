@@ -45,6 +45,10 @@ character kernel.
 #check tameResidueCharFun_mul
 #check tameResidueChar
 #check localTameAbelianInertiaGroup_le_mapped_tameResidueKer
+#check TameKummerDecomposition
+#check tameKummerRoot_fixed_of_mem_ker
+#check mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition
+#check localTameAbelianInertiaGroup_eq_ker_of_decomposition
 
 #print axioms AddSubgroup.isClosed_inertia
 #print axioms isClosed_localInertiaGroup
@@ -82,3 +86,6 @@ character kernel.
 #print axioms tameResidueCharFun_mul
 #print axioms tameResidueChar
 #print axioms localTameAbelianInertiaGroup_le_mapped_tameResidueKer
+#print axioms tameKummerRoot_fixed_of_mem_ker
+#print axioms mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition
+#print axioms localTameAbelianInertiaGroup_eq_ker_of_decomposition

@@ -637,6 +637,75 @@ theorem localTameAbelianInertiaGroup_le_mapped_tameResidueKer :
     rw [tameResidueCharFun, hratio, map_one]
   exact ⟨σI, hker, rfl⟩
 
+/-- The final valuation-theoretic leaf for the tame-kernel theorem. It says that an element whose
+`(q - 1)`-st power is unramified is, up to a fixed-field factor and a tame root of unity, an integer
+power of the chosen Kummer root of the uniformizer. -/
+def TameKummerDecomposition : Prop :=
+  ∀ {x : Kᵥᵃˡᵍ}, x ≠ 0 →
+    x ^ (Nat.card (κ 𝒪ᵥ) - 1) ∈
+      IntermediateField.fixedField (localInertiaGroup v) →
+    ∃ (m : ℤ) (y : Kᵥᵃˡᵍ)
+      (z : rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1)
+        (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))),
+      y ∈ IntermediateField.fixedField (localInertiaGroup v) ∧
+      x = tameKummerRoot v ^ m * y *
+        (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+          IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1
+
+theorem tameKummerRoot_fixed_of_mem_ker
+    (σ : localInertiaGroup v) (hσ : σ ∈ (tameResidueChar v).ker) :
+    σ.1 (tameKummerRoot v) = tameKummerRoot v := by
+  have hchar : tameResidueCharFun v σ = 1 := hσ
+  have hratio : tameKummerRatioRoot v σ = 1 := by
+    apply tameRootsReduction_at_place_injective v
+    simpa only [tameResidueCharFun, map_one] using hchar
+  have hc := congrArg
+    (fun r : rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1)
+        (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =>
+      (((r : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1) hratio
+  change σ.1 (tameKummerRoot v) / tameKummerRoot v = 1 at hc
+  exact (div_eq_one_iff_eq (tameKummerRoot_ne_zero v)).mp hc
+
+/-- The valuation decomposition is sufficient for the hard inclusion in the kernel theorem. -/
+theorem mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition
+    (hdecomp : TameKummerDecomposition v) :
+    (tameResidueChar v).ker.map (localInertiaGroup v).subtype ≤
+      localTameAbelianInertiaGroup v := by
+  intro σ hσ
+  rcases hσ with ⟨σI, hσI, rfl⟩
+  intro x hxpow
+  by_cases hx0 : x = 0
+  · rw [hx0, map_zero]
+  rcases hdecomp hx0 hxpow with ⟨m, y, z, hy, hxyz⟩
+  have hroot := tameKummerRoot_fixed_of_mem_ker v σI hσI
+  have hy' : σI.1 y = y := hy σI
+  have hzIC := localInertia_fix_tameRoot v σI z
+  have hz : σI.1
+      ((((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1) =
+      (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1 := by
+    exact congrArg Subtype.val hzIC
+  rw [hxyz, map_mul, map_mul, map_zpow₀]
+  change σI.1 (tameKummerRoot v) ^ m * σI.1 y *
+      σI.1 ((((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1) =
+    tameKummerRoot v ^ m * y *
+      (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1
+  rw [hroot, hy', hz]
+
+/-- Conditional assembly of the exact repository kernel statement. The only remaining premise is
+`TameKummerDecomposition`; all character, lifting, action, and subgroup plumbing is discharged. -/
+theorem localTameAbelianInertiaGroup_eq_ker_of_decomposition
+    (hdecomp : TameKummerDecomposition v) :
+    localTameAbelianInertiaGroup v =
+      (tameResidueChar v).ker.map (localInertiaGroup v).subtype :=
+  le_antisymm
+    (localTameAbelianInertiaGroup_le_mapped_tameResidueKer v)
+    (mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition v hdecomp)
+
 /-- An arbitrary choice of an (arithmetic) frobenious element of a local galois group. -/
 noncomputable
 def Field.AbsoluteGaloisGroup.adicArithFrob : Γ Kᵥ :=
