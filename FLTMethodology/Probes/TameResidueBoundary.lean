@@ -3,9 +3,10 @@ import FLT.Deformations.RepresentationTheory.AbsoluteGaloisGroup
 /-!
 # Tame-residue boundary audit
 
-This probe audits only the bounded U1/U2/U3 prefix: inertia closedness, containment of the existing
-tame-abelian proxy in local inertia, and the roots-of-unity reduction bridge. It does not construct
-a tame residue character, prove Henselian lifting, or identify the proxy with the character kernel.
+This probe audits the bounded U1--U4 prefix: inertia closedness, containment of the existing
+tame-abelian proxy in local inertia, the roots-of-unity reduction bridge, and construction of the
+tame Kummer residue character. It does not prove Henselian lifting or identify the proxy with the
+character kernel.
 -/
 
 #check AddSubgroup.isClosed_inertia
@@ -21,6 +22,36 @@ a tame residue character, prove Henselian lifting, or identify the proxy with th
 #check residueUnitsEquivRootsOfUnity_at_place
 #check tameRootsReduction_at_place
 #check tameRootsReduction_at_place_injective
+#check integralClosureRootsEquiv
+#check integralClosure_card_rootsOfUnity
+#check tameRootsReduction_at_place_surjective
+#check tameRootsReductionEquiv
+#check galoisRatio_pow_eq_one
+#check integralGaloisRatioRoot
+#check tameUniformizer
+#check tameUniformizer_valuation
+#check tameUniformizer_ne_zero
+#check tameKummerRoot
+#check tameKummerRoot_pow
+#check tameKummerRoot_ne_zero
+#check tameKummerRatioRoot
+#check tameResidueCharFun
+#check localInertia_residue_smul_eq
+#check localInertia_fix_tameRoot
+#check exists_tameRoot_mem_fixedField_of_integral_unit
+#check galoisRatio_mul
+#check tameKummerRatioRoot_one
+#check tameResidueCharFun_one
+#check tameResidueCharFun_mul
+#check tameResidueChar
+#check localTameAbelianInertiaGroup_le_mapped_tameResidueKer
+#check TameKummerDecomposition
+#check FixedFieldUniformizerDecomposition
+#check tameKummerDecomposition_of_fixedFieldUniformizerDecomposition
+#check tameKummerRoot_fixed_of_mem_ker
+#check mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition
+#check localTameAbelianInertiaGroup_eq_ker_of_decomposition
+#check localTameAbelianInertiaGroup_eq_ker_of_fixedFieldUniformizerDecomposition
 
 #print axioms AddSubgroup.isClosed_inertia
 #print axioms isClosed_localInertiaGroup
@@ -35,3 +66,32 @@ a tame residue character, prove Henselian lifting, or identify the proxy with th
 #print axioms residueUnitsEquivRootsOfUnity_at_place
 #print axioms tameRootsReduction_at_place
 #print axioms tameRootsReduction_at_place_injective
+#print axioms integralClosureRootsEquiv
+#print axioms integralClosure_card_rootsOfUnity
+#print axioms tameRootsReduction_at_place_surjective
+#print axioms tameRootsReductionEquiv
+#print axioms galoisRatio_pow_eq_one
+#print axioms integralGaloisRatioRoot
+#print axioms tameUniformizer
+#print axioms tameUniformizer_valuation
+#print axioms tameUniformizer_ne_zero
+#print axioms tameKummerRoot
+#print axioms tameKummerRoot_pow
+#print axioms tameKummerRoot_ne_zero
+#print axioms tameKummerRatioRoot
+#print axioms tameResidueCharFun
+#print axioms localInertia_residue_smul_eq
+#print axioms localInertia_fix_tameRoot
+#print axioms exists_tameRoot_mem_fixedField_of_integral_unit
+#print axioms galoisRatio_mul
+#print axioms tameKummerRatioRoot_one
+#print axioms tameResidueCharFun_one
+#print axioms tameResidueCharFun_mul
+#print axioms tameResidueChar
+#print axioms localTameAbelianInertiaGroup_le_mapped_tameResidueKer
+#print axioms FixedFieldUniformizerDecomposition
+#print axioms tameKummerDecomposition_of_fixedFieldUniformizerDecomposition
+#print axioms tameKummerRoot_fixed_of_mem_ker
+#print axioms mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition
+#print axioms localTameAbelianInertiaGroup_eq_ker_of_decomposition
+#print axioms localTameAbelianInertiaGroup_eq_ker_of_fixedFieldUniformizerDecomposition
