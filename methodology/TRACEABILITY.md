@@ -84,6 +84,15 @@ Tate-curve, and Weil-pairing subclusters before scheduling.
 The generator, schema, scaffold probes, independent reviews, and monitor provide distinct gates.
 Passing one does not imply any other.
 
+## Literature-assurance delta
+
+The supplied 2026-07-19 research synthesis is routed through
+`control/literature-assurance-delta-20260719.ndjson`. Its nine records map `A1`--`A6` and
+`B1`--`B3` to the existing proof obligations, verified source bytes, corrected locators, rejected
+claims, and Lean design actions. Every record has `may_promote: false` and
+`programme_state_changed: false`; the delta is assurance input, not a second source-of-truth for
+obligation state.
+
 `target_stage` records the first stage at which an obligation becomes explicit.
 `completion_targets` records every terminal closure in which it remains load-bearing. In particular,
 the T2 historical-interface nodes also list T3, and their `stage_completion` requires a

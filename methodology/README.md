@@ -17,3 +17,10 @@ The experiment separates three completion targets:
 Scaffold modules under `FLTMethodology/` are design probes. They are deliberately outside the
 verified `FLT` module root and are not proof progress. Only declaration-level axiom audits and the
 fail-closed monitor can promote a graph node to kernel-clean.
+
+The 2026-07-19 primary-literature review intake is recorded in
+`evidence/sources/primary-literature-review-intake-20260719.md`, with a machine-readable
+non-promoting delta in `control/literature-assurance-delta-20260719.ndjson` and bounded
+Lean-construction aids in
+`source-design/literature-assisted-proof-design-20260719.md`. These artefacts correct several
+source identities and locators but do not change any proof-obligation or source-design status.
