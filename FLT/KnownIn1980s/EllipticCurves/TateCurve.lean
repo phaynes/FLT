@@ -11,6 +11,7 @@ public import FLT.KnownIn1980s.EllipticCurves.WeilPairing
 public import FLT.KnownIn1980s.EllipticCurves.TateParameter
 public import FLT.KnownIn1980s.EllipticCurves.TateCurveBaseChange
 public import FLT.KnownIn1980s.EllipticCurves.ReductionBaseChange
+public import FLT.Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
 
 /-!
 
@@ -331,21 +332,13 @@ theorem WeierstrassCurve.valuation_q_lt_one : valuation k E.q < 1 :=
 noncomputable def WeierstrassCurve.qUnit : kˣ :=
   Units.mk0 E.q E.q_ne_zero
 
--- `DecidableEq k` is needed for the group law on `(E⁄k).Point`
-variable [DecidableEq k] in
-/-- Tate's uniformization theorem: if `E/k` is an elliptic curve with split multiplicative
-reduction then `E(k)` is isomorphic to `kˣ/⟨q⟩`.
--/
-noncomputable def WeierstrassCurve.tateEquiv :
-    Additive (kˣ ⧸ Subgroup.zpowers E.qUnit) ≃+ (E⁄k).Point :=
-  sorry
-
 -- Tate's theorem (Silverman, ATAEC V.5.3): an elliptic curve with split multiplicative
 -- reduction is isomorphic, by a change of Weierstrass coordinates, to the Tate curve of its
 -- Tate parameter. Since `j(E)` is non-integral, `Aut` of the curve is `{±1}` and there are
--- exactly *two* such `C`, differing by negation. `tateEquiv` is `tateCurveEquiv` transported
--- along a choice of one of them; this binary choice, for each `E`, is the only choice in
--- the whole theory, and it cannot be made functorially in `E` — see `tateEquiv_baseChange`.
+-- exactly *two* such `C`, differing by negation. `tateEquiv` below transports
+-- `tateCurveEquiv` along a choice of one of them; this binary choice, for each `E`, is the only
+-- choice in the whole theory, and it cannot be made functorially in `E` — see
+-- `tateEquiv_baseChange`.
 theorem WeierstrassCurve.exists_variableChange_tateCurve :
     ∃ C : VariableChange k, C • tateCurve E.q = E :=
   sorry
@@ -438,6 +431,36 @@ theorem WeierstrassCurve.isElliptic_tateCurve (q : kˣ)
     TateCurve.coeff_one_weierstrassDiscriminantFormal
   rw [hzero, map_zero] at hval
   exact ((valuation k).ne_zero_iff.mpr q.ne_zero) hval.symm
+
+/-- Assemble the uniformisation of a split-multiplicative curve from the explicit Tate-curve
+uniformisation and a change of Weierstrass coordinates. This is the algebraic join: the analytic
+uniformisation and local-form classification remain separate inputs. -/
+noncomputable def WeierstrassCurve.tateEquivOfComponents [DecidableEq k]
+    (curveEquiv :
+      Additive (kˣ ⧸ Subgroup.zpowers E.qUnit) ≃+
+        ((tateCurve E.q)⁄k).Point)
+    (C : VariableChange k) (hC : C • tateCurve E.q = E) :
+    Additive (kˣ ⧸ Subgroup.zpowers E.qUnit) ≃+ (E⁄k).Point := by
+  letI : (tateCurve E.q).IsElliptic :=
+    WeierstrassCurve.isElliptic_tateCurve E.qUnit E.valuation_q_lt_one
+  exact curveEquiv.trans
+    ((Affine.Point.equivVariableChange (tateCurve E.q) C).symm.trans
+      (Affine.Point.equivOfEq hC))
+
+-- `DecidableEq k` is needed for the group law on `(E⁄k).Point`
+variable [DecidableEq k] in
+/-- Tate's uniformization theorem: if `E/k` is an elliptic curve with split multiplicative
+reduction then `E(k)` is isomorphic to `kˣ/⟨q⟩`.
+-/
+noncomputable def WeierstrassCurve.tateEquiv :
+    Additive (kˣ ⧸ Subgroup.zpowers E.qUnit) ≃+ (E⁄k).Point := by
+  letI : (tateCurve E.q).IsElliptic :=
+    WeierstrassCurve.isElliptic_tateCurve E.qUnit E.valuation_q_lt_one
+  let curveEquiv :=
+    WeierstrassCurve.tateCurveEquiv E.qUnit E.valuation_q_lt_one
+  let C := E.exists_variableChange_tateCurve.choose
+  exact E.tateEquivOfComponents curveEquiv C
+    E.exists_variableChange_tateCurve.choose_spec
 
 /-- The reciprocal of the concrete Tate curve's `j`-invariant is the evaluation of the
 Weierstrass-derived reciprocal-`j` series. -/

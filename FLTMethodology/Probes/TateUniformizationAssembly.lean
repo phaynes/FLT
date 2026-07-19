@@ -58,5 +58,7 @@ theorem nonempty_tateEquiv_of_components [DecidableEq k]
 
 #print axioms assembleTateEquiv
 #print axioms nonempty_tateEquiv_of_components
+#print axioms WeierstrassCurve.tateEquivOfComponents
+#print axioms WeierstrassCurve.tateEquiv
 
 end TateUniformizationAssemblyProbe
