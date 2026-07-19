@@ -22,6 +22,10 @@ character kernel.
 #check residueUnitsEquivRootsOfUnity_at_place
 #check tameRootsReduction_at_place
 #check tameRootsReduction_at_place_injective
+#check integralClosureRootsEquiv
+#check integralClosure_card_rootsOfUnity
+#check tameRootsReduction_at_place_surjective
+#check tameRootsReductionEquiv
 #check galoisRatio_pow_eq_one
 #check integralGaloisRatioRoot
 #check tameUniformizer
@@ -52,6 +56,10 @@ character kernel.
 #print axioms residueUnitsEquivRootsOfUnity_at_place
 #print axioms tameRootsReduction_at_place
 #print axioms tameRootsReduction_at_place_injective
+#print axioms integralClosureRootsEquiv
+#print axioms integralClosure_card_rootsOfUnity
+#print axioms tameRootsReduction_at_place_surjective
+#print axioms tameRootsReductionEquiv
 #print axioms galoisRatio_pow_eq_one
 #print axioms integralGaloisRatioRoot
 #print axioms tameUniformizer

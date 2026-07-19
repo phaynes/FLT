@@ -12,6 +12,7 @@ public import FLT.Mathlib.RingTheory.RootsOfUnity.ResidueField
 public import Mathlib.Analysis.Normed.Unbundled.SpectralNorm
 public import Mathlib.FieldTheory.AbsoluteGaloisGroup
 public import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+public import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
 
 import FLT.NumberField.Completion.Finite
 import Mathlib.FieldTheory.Galois.Infinite
@@ -281,6 +282,74 @@ theorem tameRootsReduction_at_place_injective :
     Function.Injective (tameRootsReduction_at_place v) :=
   (residueUnitsEquivRootsOfUnity_at_place v).symm.injective.comp
     (rootsOfUnity_residue_injective (isUnit_card_sub_one_ICv v))
+
+/-- Every root of unity in the algebraic closure is integral, so passing to the integral closure
+does not change the group of `n`-th roots of unity. -/
+noncomputable def integralClosureRootsEquiv (n : ℕ) [NeZero n] :
+    rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) ≃*
+      rootsOfUnity n (Kᵥᵃˡᵍ) := by
+  let f := restrictRootsOfUnity
+    (algebraMap (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) (Kᵥᵃˡᵍ)) n
+  apply MulEquiv.ofBijective f
+  constructor
+  · intro x y hxy
+    apply rootsOfUnity.coe_injective
+    apply Subtype.ext
+    exact congrArg (fun z : rootsOfUnity n (Kᵥᵃˡᵍ) =>
+      ((z : (Kᵥᵃˡᵍ)ˣ) : Kᵥᵃˡᵍ)) hxy
+  · intro z
+    have hzpow : (((z : (Kᵥᵃˡᵍ)ˣ) : Kᵥᵃˡᵍ)) ^ n = 1 := by
+      simpa only [Units.val_pow_eq_pow_val, Units.val_one] using
+        congrArg Units.val ((mem_rootsOfUnity n _).mp z.prop)
+    have hzint : IsIntegral 𝒪ᵥ (((z : (Kᵥᵃˡᵍ)ˣ) : Kᵥᵃˡᵍ)) :=
+      IsIntegral.of_pow (NeZero.pos n) (hzpow ▸ isIntegral_one)
+    let zi : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ) :=
+      ⟨((z : (Kᵥᵃˡᵍ)ˣ) : Kᵥᵃˡᵍ), hzint⟩
+    let ziRoot : rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) :=
+      rootsOfUnity.mkOfPowEq zi (by
+        apply Subtype.ext
+        exact hzpow)
+    refine ⟨ziRoot, ?_⟩
+    apply rootsOfUnity.coe_injective
+    rfl
+
+theorem integralClosure_card_rootsOfUnity (n : ℕ) [NeZero n] :
+    Nat.card (rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) = n := by
+  rw [Nat.card_congr (integralClosureRootsEquiv v n).toEquiv]
+  have hn : (n : Kᵥ) ≠ 0 := by exact_mod_cast (NeZero.ne n)
+  letI : NeZero (n : Kᵥ) := ⟨hn⟩
+  exact HasEnoughRootsOfUnity.natCard_rootsOfUnity (Kᵥᵃˡᵍ) n
+
+/-- Reduction on the prime-to-residue-characteristic roots of unity is surjective as well as
+injective. This finite-cardinality proof supplies the Teichmüller lifting direction without adding
+a separate Henselian-ring interface. -/
+theorem tameRootsReduction_at_place_surjective :
+    Function.Surjective (tameRootsReduction_at_place v) := by
+  letI : NeZero (Nat.card (κ 𝒪ᵥ) - 1) :=
+    ⟨(tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))).ne'⟩
+  letI : Finite
+      (rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1)
+        (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) :=
+    Finite.of_injective (integralClosureRootsEquiv v (Nat.card (κ 𝒪ᵥ) - 1)).toFun
+      (integralClosureRootsEquiv v (Nat.card (κ 𝒪ᵥ) - 1)).injective
+  letI := Fintype.ofFinite
+    (rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1)
+      (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))
+  letI := Fintype.ofFinite (κ 𝒪ᵥ)ˣ
+  have hb : Function.Bijective (tameRootsReduction_at_place v) :=
+    (Fintype.bijective_iff_injective_and_card _).mpr ⟨
+      tameRootsReduction_at_place_injective v, by
+        rw [Fintype.card_eq_nat_card, Fintype.card_eq_nat_card,
+          integralClosure_card_rootsOfUnity, Nat.card_units]⟩
+  exact hb.surjective
+
+/-- Teichmüller lifting, packaged as a multiplicative equivalence. -/
+noncomputable def tameRootsReductionEquiv :
+    rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1) (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) ≃*
+      (κ 𝒪ᵥ)ˣ :=
+  MulEquiv.ofBijective (tameRootsReduction_at_place v)
+    ⟨tameRootsReduction_at_place_injective v,
+      tameRootsReduction_at_place_surjective v⟩
 
 /-- If a local Galois automorphism fixes an `n`-th power, the corresponding quotient
 `σ(x) / x` is an `n`-th root of unity. This is the elementary Kummer calculation used by the
