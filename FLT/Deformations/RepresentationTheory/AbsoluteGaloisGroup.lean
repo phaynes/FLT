@@ -282,6 +282,155 @@ theorem tameRootsReduction_at_place_injective :
   (residueUnitsEquivRootsOfUnity_at_place v).symm.injective.comp
     (rootsOfUnity_residue_injective (isUnit_card_sub_one_ICv v))
 
+/-- If a local Galois automorphism fixes an `n`-th power, the corresponding quotient
+`σ(x) / x` is an `n`-th root of unity. This is the elementary Kummer calculation used by the
+tame residue character. -/
+theorem galoisRatio_pow_eq_one
+    (σ : Γ Kᵥ) {x : Kᵥᵃˡᵍ} (hx : x ≠ 0) {n : ℕ}
+    (hpow : σ (x ^ n) = x ^ n) :
+    (σ x / x) ^ n = 1 := by
+  rw [div_pow, ← map_pow, hpow, div_self (pow_ne_zero n hx)]
+
+/-- Package the Galois ratio as an integral root of unity. Integrality follows directly from its
+positive power being one; no Henselian lifting or reciprocity theorem is used here. -/
+noncomputable def integralGaloisRatioRoot
+    (σ : Γ Kᵥ) {x : Kᵥᵃˡᵍ} (hx : x ≠ 0) {n : ℕ} [NeZero n]
+    (hpow : σ (x ^ n) = x ^ n) :
+    rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) := by
+  have hratio : (σ x / x) ^ n = 1 := galoisRatio_pow_eq_one v σ hx hpow
+  have hintegral : IsIntegral 𝒪ᵥ (σ x / x) :=
+    IsIntegral.of_pow (NeZero.pos n) (hratio ▸ isIntegral_one)
+  exact rootsOfUnity.mkOfPowEq
+    (⟨σ x / x, hintegral⟩ : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) (by
+      apply Subtype.ext
+      exact hratio)
+
+/-- A fixed uniformizer used to normalize the elementary tame Kummer character. -/
+noncomputable def tameUniformizer : Kᵥ :=
+  algebraMap K Kᵥ (v.valuation_exists_uniformizer K).choose
+
+theorem tameUniformizer_valuation :
+    Valued.v (tameUniformizer v) = Multiplicative.ofAdd (-1 : ℤ) := by
+  let u := (v.valuation_exists_uniformizer K).choose
+  have h : (IsDedekindDomain.HeightOneSpectrum.valuation K v) u =
+      Multiplicative.ofAdd (-1 : ℤ) :=
+    (v.valuation_exists_uniformizer K).choose_spec
+  change Valued.v (algebraMap K Kᵥ u) = Multiplicative.ofAdd (-1 : ℤ)
+  rwa [← IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation' v u] at h
+
+theorem tameUniformizer_ne_zero : tameUniformizer v ≠ 0 := by
+  intro h
+  apply_fun Valued.v at h
+  rw [tameUniformizer_valuation] at h
+  simp at h
+
+/-- A chosen `(q - 1)`-st root of the fixed uniformizer in the algebraic closure. -/
+noncomputable def tameKummerRoot : Kᵥᵃˡᵍ :=
+  (IsAlgClosed.exists_pow_nat_eq
+    (algebraMap Kᵥ (Kᵥᵃˡᵍ) (tameUniformizer v))
+    (tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ)))).choose
+
+theorem tameKummerRoot_pow :
+    tameKummerRoot v ^ (Nat.card (κ 𝒪ᵥ) - 1) =
+      algebraMap Kᵥ (Kᵥᵃˡᵍ) (tameUniformizer v) :=
+  (IsAlgClosed.exists_pow_nat_eq
+    (algebraMap Kᵥ (Kᵥᵃˡᵍ) (tameUniformizer v))
+    (tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ)))).choose_spec
+
+theorem tameKummerRoot_ne_zero : tameKummerRoot v ≠ 0 := by
+  intro h
+  have hp := tameKummerRoot_pow v
+  rw [h, zero_pow (tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))).ne'] at hp
+  exact (map_ne_zero (algebraMap Kᵥ (Kᵥᵃˡᵍ))).mpr
+    (tameUniformizer_ne_zero v) hp.symm
+
+/-- The integral `(q - 1)`-st root of unity obtained from the Kummer ratio of an inertia
+automorphism. -/
+noncomputable def tameKummerRatioRoot (σ : localInertiaGroup v) :
+    rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1) (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) := by
+  letI : NeZero (Nat.card (κ 𝒪ᵥ) - 1) :=
+    ⟨(tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))).ne'⟩
+  exact integralGaloisRatioRoot v σ.1 (tameKummerRoot_ne_zero v) (by
+    rw [tameKummerRoot_pow]
+    exact σ.1.commutes (tameUniformizer v))
+
+/-- The underlying function of the tame residue character. -/
+noncomputable def tameResidueCharFun (σ : localInertiaGroup v) : (κ 𝒪ᵥ)ˣ :=
+  tameRootsReduction_at_place v (tameKummerRatioRoot v σ)
+
+/-- Inertia fixes the residue of every element of the integral closure. -/
+theorem localInertia_residue_smul_eq (σ : localInertiaGroup v)
+    (y : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) :
+    IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) (σ.1 • y) =
+      IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) y := by
+  apply sub_eq_zero.mp
+  rw [← map_sub]
+  exact (IsLocalRing.residue_eq_zero_iff (σ.1 • y - y)).mpr (σ.property y)
+
+/-- The Galois quotient is a crossed homomorphism before passing to inertia-invariant residue. -/
+theorem galoisRatio_mul
+    (σ τ : Γ Kᵥ) {x : Kᵥᵃˡᵍ} (hx : x ≠ 0) :
+    (σ * τ) x / x = σ (τ x / x) * (σ x / x) := by
+  rw [map_div₀]
+  change σ (τ x) / x = (σ (τ x) / σ x) * (σ x / x)
+  have hsx : σ x ≠ 0 := (map_ne_zero σ).mpr hx
+  field_simp
+
+theorem tameKummerRatioRoot_one : tameKummerRatioRoot v 1 = 1 := by
+  apply rootsOfUnity.coe_injective
+  apply Subtype.ext
+  change tameKummerRoot v / tameKummerRoot v = 1
+  exact div_self (tameKummerRoot_ne_zero v)
+
+theorem tameResidueCharFun_one : tameResidueCharFun v 1 = 1 := by
+  rw [tameResidueCharFun, tameKummerRatioRoot_one, map_one]
+
+/-- Reduction turns the crossed Kummer quotient into a multiplicative character because inertia
+acts trivially on the residue field. -/
+theorem tameResidueCharFun_mul (σ τ : localInertiaGroup v) :
+    tameResidueCharFun v (σ * τ) =
+      tameResidueCharFun v σ * tameResidueCharFun v τ := by
+  have hcalc :
+      ((↑(tameKummerRatioRoot v (σ * τ)) :
+          (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+          IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =
+        σ.1 • (((↑(tameKummerRatioRoot v τ) :
+          (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+          IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) *
+        (((↑(tameKummerRatioRoot v σ) :
+          (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+          IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) := by
+    apply Subtype.ext
+    change (σ.1 * τ.1) (tameKummerRoot v) / tameKummerRoot v =
+      σ.1 (τ.1 (tameKummerRoot v) / tameKummerRoot v) *
+        (σ.1 (tameKummerRoot v) / tameKummerRoot v)
+    exact galoisRatio_mul v σ.1 τ.1 (tameKummerRoot_ne_zero v)
+  let red := restrictRootsOfUnity
+    (IsLocalRing.residue
+      (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))
+    (Nat.card (κ 𝒪ᵥ) - 1)
+  have hred : red (tameKummerRatioRoot v (σ * τ)) =
+      red (tameKummerRatioRoot v σ) * red (tameKummerRatioRoot v τ) := by
+    apply rootsOfUnity.coe_injective
+    simp only [red, restrictRootsOfUnity_coe_apply,
+      Subgroup.coe_mul, Units.val_mul]
+    rw [hcalc, map_mul, localInertia_residue_smul_eq]
+    exact mul_comm _ _
+  change (residueUnitsEquivRootsOfUnity_at_place v).symm
+      (red (tameKummerRatioRoot v (σ * τ))) =
+    (residueUnitsEquivRootsOfUnity_at_place v).symm
+        (red (tameKummerRatioRoot v σ)) *
+      (residueUnitsEquivRootsOfUnity_at_place v).symm
+        (red (tameKummerRatioRoot v τ))
+  rw [← map_mul]
+  exact congrArg (residueUnitsEquivRootsOfUnity_at_place v).symm hred
+
+/-- The tame Kummer character on local inertia, valued in the base residue-field units. -/
+noncomputable def tameResidueChar : localInertiaGroup v →* (κ 𝒪ᵥ)ˣ where
+  toFun := tameResidueCharFun v
+  map_one' := tameResidueCharFun_one v
+  map_mul' := tameResidueCharFun_mul v
+
 /-- An arbitrary choice of an (arithmetic) frobenious element of a local galois group. -/
 noncomputable
 def Field.AbsoluteGaloisGroup.adicArithFrob : Γ Kᵥ :=
