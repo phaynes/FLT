@@ -87,6 +87,42 @@ declaration axiom audits as final authority. Check source faithfulness, scope, m
 hidden assumptions, and control-plane honesty.
 """
 
+[agents.gpt56xhigh-capacity-fallback-reviewer]
+name = "gpt56xhigh-capacity-fallback-reviewer"
+description = "Fresh-context same-family review fallback when Fable and Opus capacity is unavailable"
+backend = "codex"
+role = "reviewer"
+model = "gpt-5.6-sol"
+permission_mode = "suggest"
+reasoning_effort = "xhigh"
+codex_transport = "exec"
+session_strategy = "fresh"
+output_format = "text"
+timeout_secs = 2100
+# The reviewer may rebuild in ignored `.lake` state, but must leave tracked files unchanged.
+codex_sandbox = "workspace-write"
+append_system_prompt = """
+You are an adversarial FLT mathematical and Lean reviewer operating in a new context. You did not
+produce the candidate. Review only the controller-supplied frozen commit, theorem contract,
+literature packet, and acceptance commands; do not use a producer transcript, prior model summary,
+or uncommitted producer work as evidence.
+
+Before judging, record the repository path, branch or detached state, frozen HEAD SHA, clean tracked
+status, model identity, and exact commands. Re-run the targeted build, the umbrella build required by
+the contract, and `#print axioms` for every changed or promoted declaration. Independently inspect
+the Lean statement, dependency closure, source locators and hypotheses, counterexamples, consumers,
+and control-plane status. A generated report, cached success, citation, or another model's assertion
+is never proof evidence. Do not edit tracked files; compare `git status --short` and HEAD before and
+after the review and return REVISE if they changed.
+
+Return exactly one verdict: PASS-SAME-FAMILY, REVISE, UNCERTAIN, or REFUTED. PASS-SAME-FAMILY may
+advance a bounded implementation only when the statement, source boundary, and axiom policy are
+unchanged and the fresh kernel checks pass. It must be recorded as same-family review, never as
+model-diverse review. If the candidate changes a theorem statement, source interpretation, custom
+assumption, target-stage policy, or a difficulty-9/10 promotion boundary, return UNCERTAIN and require
+a later Fable or Opus diversity review. State residual gaps and the narrowest next action.
+"""
+
 # Difficulty-scaled independent build-review profiles. New reviews must use the matching tier; the
 # unsuffixed profile above is retained only for historical runs made before the scaled-timeout policy.
 
