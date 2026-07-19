@@ -8,8 +8,8 @@ module
 public import FLT.KnownIn1980s.EllipticCurves.Flat
 
 /-!
-This methodology-only audit records the completed Bézout construction and makes its remaining
-dependency on the admitted division-polynomial resultant identity visible.
+This methodology-only audit records the completed Bézout construction and verifies that it is
+independent of the separately admitted division-polynomial resultant identity.
 -/
 
 #print axioms WeierstrassCurve.isCoprime_Φ_ΨSq
