@@ -436,6 +436,51 @@ theorem localInertia_residue_smul_eq (σ : localInertiaGroup v)
   rw [← map_sub]
   exact (IsLocalRing.residue_eq_zero_iff (σ.1 • y - y)).mpr (σ.property y)
 
+/-- Local inertia fixes every `(q - 1)`-st root of unity in the integral closure. Reduction
+commutes with the action, inertia is trivial on residue, and tame-root reduction is injective. -/
+theorem localInertia_fix_tameRoot (σ : localInertiaGroup v)
+    (z : rootsOfUnity (Nat.card (κ 𝒪ᵥ) - 1)
+      (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) :
+    σ.1 • (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+      IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =
+      (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) := by
+  let n := Nat.card (κ 𝒪ᵥ) - 1
+  letI : NeZero n :=
+    ⟨(tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))).ne'⟩
+  let y : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ) :=
+    (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+      IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))
+  have hy : y ^ n = 1 := by
+    simpa only [y, Units.val_pow_eq_pow_val, Units.val_one] using
+      congrArg Units.val ((mem_rootsOfUnity n _).mp z.prop)
+  let zσ : rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) :=
+    rootsOfUnity.mkOfPowEq (σ.1 • y) (by
+      apply Subtype.ext
+      exact congrArg Subtype.val (by
+        change (σ.1 • y) ^ n = 1
+        change ((MulSemiringAction.toRingHom _ _ σ.1) y) ^ n = 1
+        rw [← map_pow (MulSemiringAction.toRingHom _ _ σ.1), hy, map_one]))
+  have hred : tameRootsReduction_at_place v zσ =
+      tameRootsReduction_at_place v z := by
+    change (residueUnitsEquivRootsOfUnity_at_place v).symm
+        (restrictRootsOfUnity
+          (IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) n zσ) =
+      (residueUnitsEquivRootsOfUnity_at_place v).symm
+        (restrictRootsOfUnity
+          (IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) n z)
+    apply congrArg (residueUnitsEquivRootsOfUnity_at_place v).symm
+    apply rootsOfUnity.coe_injective
+    simp only [restrictRootsOfUnity_coe_apply, zσ, y]
+    exact localInertia_residue_smul_eq v σ _
+  have hzσ : zσ = z := tameRootsReduction_at_place_injective v hred
+  have hc := congrArg
+    (fun w : rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =>
+    (((w : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+      IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))) hzσ
+  simp only [zσ, rootsOfUnity.coe_mkOfPowEq] at hc
+  simpa only [y] using hc
+
 /-- The Galois quotient is a crossed homomorphism before passing to inertia-invariant residue. -/
 theorem galoisRatio_mul
     (σ τ : Γ Kᵥ) {x : Kᵥᵃˡᵍ} (hx : x ≠ 0) :
