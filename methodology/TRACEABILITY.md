@@ -93,6 +93,14 @@ claims, and Lean design actions. Every record has `may_promote: false` and
 `programme_state_changed: false`; the delta is assurance input, not a second source-of-truth for
 obligation state.
 
+The operator-supplied follow-up PDFs are routed through
+`control/literature-assurance-supplement-20260719.ndjson`. Its two non-promoting records replace only
+the former source-access findings for `A6` and `B2`: SRC-033/SRC-034 verify Joshi's restricted
+mod-3 discriminant chain and SRC-024 is now visually verified with its official erratum. The
+supplement does not change an obligation's `current_state`, authorize a provider, or repair the
+remaining quotient-orientation, coefficient-field, generic-local-field, finite-flat, Weil-pairing,
+or 3-adic trace gaps.
+
 `target_stage` records the first stage at which an obligation becomes explicit.
 `completion_targets` records every terminal closure in which it remains load-bearing. In particular,
 the T2 historical-interface nodes also list T3, and their `stage_completion` requires a

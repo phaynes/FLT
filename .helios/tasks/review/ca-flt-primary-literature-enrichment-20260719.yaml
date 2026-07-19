@@ -1,0 +1,30 @@
+id: ca-flt-primary-literature-enrichment-20260719
+name: Verify supplied FLT literature review and enrich trusted proof repository
+state: reviewing
+priority: 3
+assigned_to: agent:codex-flt-literature-enrichment
+history:
+- from: pending
+  to: queued
+  at: 2026-07-19T06:52:38.034469+00:00
+  by: agent:codex-flt-literature-enrichment
+- from: queued
+  to: executing
+  at: 2026-07-19T06:52:38.044301+00:00
+  by: agent:codex-flt-literature-enrichment
+- from: executing
+  to: reviewing
+  at: 2026-07-19T07:06:37.851261+00:00
+  by: agent:codex-flt-literature-enrichment
+- from: reviewing
+  to: executing
+  at: 2026-07-19T07:47:00Z
+  by: agent:codex-flt-literature-enrichment
+  note: Reopened after the user supplied the previously unavailable Silverman and Diaz y Diaz primary PDFs and a new evidence register.
+- from: executing
+  to: reviewing
+  at: 2026-07-19T08:05:32Z
+  by: agent:codex-flt-literature-enrichment
+  note: Silverman V.5.3 and errata visually verified; Diaz y Diaz numerical thresholds reconciled against Joshi Theorem 4.1; non-promoting source, graph, and Lean-design artifacts regenerated and validated.
+started_at: 2026-07-19T06:52:38.044301+00:00
+submitted_at: 2026-07-19T08:05:32Z

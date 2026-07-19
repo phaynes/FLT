@@ -24,3 +24,10 @@ non-promoting delta in `control/literature-assurance-delta-20260719.ndjson` and 
 Lean-construction aids in
 `source-design/literature-assisted-proof-design-20260719.md`. These artefacts correct several
 source identities and locators but do not change any proof-obligation or source-design status.
+
+The follow-up Silverman and Diaz y Diaz primary PDFs are adjudicated separately in
+`evidence/sources/silverman-diaz-primary-supplement-20260719.md` and
+`control/literature-assurance-supplement-20260719.ndjson`. They close the visual-source gap for
+Silverman V.5.3 and the numerical-table gap in Joshi's mod-3 argument. They do not close the generic
+local-field scope adapter, the oriented mod-3 quotient, the coefficient-field generalization, or any
+finite-flat, Weil-pairing, or 3-adic trace provider.

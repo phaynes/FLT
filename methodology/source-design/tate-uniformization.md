@@ -20,10 +20,11 @@ primary source, and its homomorphism/kernel/surjectivity boundary now has an exa
 The repository already defines the formal `X/Y` series and proves their Weierstrass identity. A
 second probe shows that concrete coordinates plus the addition law and surjectivity yield the exact
 provider equivalence, with the kernel proof automatic. Concrete local-field evaluation of the
-formal coordinates, the addition law, and surjectivity remain. The exact printed hypotheses of
-Silverman V.5.3 also
-remain to be visually checked before authorizing provider construction across the repository's full
-`IsNonarchimedeanLocalField` scope.
+formal coordinates, the addition law, and surjectivity remain. Silverman V.5.3 has now been visually
+checked with the official erratum: it supplies the local-form theorem for p-adic fields, including
+residue characteristic 2. The repository signature remains broader than that source because
+`IsNonarchimedeanLocalField` also admits a generic local-field formulation; a p-adic scope adapter or
+a broader source is still required before authorizing the generic provider.
 
 ## Exact sources
 
@@ -60,6 +61,13 @@ Joseph H. Silverman, *Advanced Topics in the Arithmetic of Elliptic Curves*, GTM
 - Lemma V.5.2 and Theorem V.5.3: the inverse `j` parameter and the equivalence between being the
   base-field Tate form and having split multiplicative reduction.
 
+The book scan was visually checked at printed pp. 441--447, with Theorem V.5.3 and its proof on
+printed pp. 442--444. Its SHA-256 is
+`d06410160f5648135b060955e3a937c2f7de2361a02b0782e60ffec49fd49314`. The official errata p. 20
+corrects part (a) to state first an algebraic-closure isomorphism while retaining that the unique
+parameter lies in `K`; the errata SHA-256 is
+`3d524535d7d5d50777b8a0fe66ef290d594effea46dc330b4df2486e8e017b8d`.
+
 The local-form consequence required here is stronger and smaller than the two-proof decomposition
 currently exposed in `TateLocalFormBoundary.lean`:
 
@@ -68,14 +76,16 @@ same nonintegral j + split multiplicative reduction on both curves
   -> base-field variable change between the curves.
 ```
 
-The exact printed theorem must be checked for its field, completeness, discreteness, and residue
-characteristic hypotheses before this source is marked implementation-ready.
+The exact theorem assumes a p-adic field. This covers finite extensions of `Q_p`, including `p = 2`,
+but not arbitrary equal-characteristic complete nonarchimedean fields. It is source-ready for the
+FLT characteristic-zero application after an exact p-adic Lean scope adapter is identified; it is
+not source-ready for the current generic provider type without that restriction.
 
 ## Hypothesis translation
 
 | Source hypothesis/data | Lean data | State |
 |---|---|---|
-| complete nonarchimedean field with nontrivial real-valued valuation | `[ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]` | provider scope is narrower; exact instance bridge available |
+| Tate: complete nonarchimedean field with nontrivial real-valued valuation; Silverman: p-adic field | `[ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]` | Tate's construction is broader; Silverman's local-form theorem requires a p-adic/characteristic-zero scope adapter |
 | parameter `t != 0`, `0 < abs(t) < 1` | `(q : k^x)` and `valuation k (q : k) < 1` | exact provider arguments; nonzero comes from `q : k^x` |
 | cyclic subgroup `t^Z` | `Subgroup.zpowers q` | exact library match |
 | quotient group `k^*/t^Z` | `Additive (k^x / Subgroup.zpowers q)` | exact up to additive notation |
@@ -158,6 +168,7 @@ mechanical. No pinned declaration is a source-faithful Weil pairing.
    descent or twist argument.
 4. The characteristic-two branch in Tate's surjectivity proof must not be silently replaced by an
    argument that divides by two.
+   Silverman's p-adic theorem includes residue characteristic 2, but not equal characteristic 2.
 5. The provider's `[DecidableEq k]` is a Lean implementation condition, not a mathematical source
    hypothesis.
 6. Functoriality of the explicit Tate map is on the nose, while functoriality of a general curve's

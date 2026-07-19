@@ -35,6 +35,16 @@ the machine-readable `source-design.ndjson` authority are unchanged.
 | `B2.2` | Tate torsion local/global bridge | Tate parameterization over separable closure, local torsion action, specialization | exact uniformization and specialization sources | characteristic 2 and nonsplit multiplicative cases remain separate tests |
 | `B3` | quaternion relative-index T3 proof | compact-open-to-order model, scalar quotient, norm-one units, finite square classes | keep Voight 2021 plus source the missing injection; do not substitute Voight 2017 Theorem 5.1 | a finite ideal-class set alone must not discharge the exact stabilizer-relative-index theorem |
 
+## Primary-source supplement
+
+The supplied Silverman and Diaz y Diaz PDFs change two source gates without promoting either
+obligation.
+
+| Packet | Newly verified source boundary | Lean construction aid | Residual gap |
+|---|---|---|---|
+| `A6.1` | Diaz y Diaz Table 1 gives the exact totally imaginary thresholds `n = 22 -> 10.25752840`, `n = 24 -> 10.66833176`, and `n = 4 -> 3.25456113`; Joshi Theorem 4.1 pp. 5--6 uses them in the restricted `F_3` nonirreducibility proof | first model the numerical thresholds and the totally-imaginary/even-degree adapters, then isolate Joshi's finite-group case split as a restricted nonirreducibility provider | the repository still needs a bridge from `IsHardlyRamified`, generalization beyond `F_3`, and the exact trivial-quotient orientation; `e_2 = 9` and the 3-adic trace lift remain separate no-results |
+| `B2.2` | corrected Silverman V.5.3, printed pp. 442--444, equates base-field Tate form and split multiplicative reduction for a p-adic field with nonintegral `j` | restrict or bridge the local-form provider to the p-adic scope, instantiate the theorem, and combine it with the separately proved explicit Tate uniformization | the current generic local-field signature is broader; the theorem does not supply the analytic point map, finite-flat torsion object, or source-faithful Weil pairing |
+
 ## Admission rule
 
 A future Lean task may select one row only when it records:

@@ -59,3 +59,12 @@ sketch elaborates, or that the old proof loop is safe to restart. Each future so
 promotion still requires primary bytes, an exact printed locator, a one-to-one
 hypothesis map, a discriminating consumer and negative probe, an axiom audit, and
 independent source-fidelity review.
+
+## Follow-up source access
+
+The later operator-supplied Silverman and Diaz y Diaz PDFs supersede only the `A6` and `B2`
+source-access findings above. See
+`silverman-diaz-primary-supplement-20260719.md` and
+`../../control/literature-assurance-supplement-20260719.ndjson` for the inspected hashes, printed
+locators, exact numerical rows, and residual Lean gaps. All non-promotion rules in this intake remain
+in force.
