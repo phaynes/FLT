@@ -481,6 +481,72 @@ theorem localInertia_fix_tameRoot (σ : localInertiaGroup v)
   simp only [zσ, rootsOfUnity.coe_mkOfPowEq] at hc
   simpa only [y] using hc
 
+/-- Every integral unit in the inertia fixed field has a `(q - 1)`-st root in that fixed field.
+The root is chosen in the algebraic closure; integrality of it and its inverse makes its residue a
+unit, after which tame-root reduction injectivity proves inertia invariance. -/
+theorem exists_tameRoot_mem_fixedField_of_integral_unit
+    {u : Kᵥᵃˡᵍ} (hu0 : u ≠ 0)
+    (hu : IsIntegral 𝒪ᵥ u) (huinv : IsIntegral 𝒪ᵥ u⁻¹)
+    (hufix : u ∈ IntermediateField.fixedField (localInertiaGroup v)) :
+    ∃ x : Kᵥᵃˡᵍ,
+      x ^ (Nat.card (κ 𝒪ᵥ) - 1) = u ∧
+      x ∈ IntermediateField.fixedField (localInertiaGroup v) := by
+  let n := Nat.card (κ 𝒪ᵥ) - 1
+  have hnpos : 0 < n := tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))
+  letI : NeZero n := ⟨hnpos.ne'⟩
+  let x : Kᵥᵃˡᵍ := (IsAlgClosed.exists_pow_nat_eq u hnpos).choose
+  have hxpow : x ^ n = u := (IsAlgClosed.exists_pow_nat_eq u hnpos).choose_spec
+  have hx0 : x ≠ 0 := by
+    intro hx
+    rw [hx, zero_pow hnpos.ne'] at hxpow
+    exact hu0 hxpow.symm
+  have hxint : IsIntegral 𝒪ᵥ x :=
+    IsIntegral.of_pow hnpos (hxpow ▸ hu)
+  have hxinvpow : x⁻¹ ^ n = u⁻¹ := by rw [inv_pow, hxpow]
+  have hxinvint : IsIntegral 𝒪ᵥ x⁻¹ :=
+    IsIntegral.of_pow hnpos (hxinvpow ▸ huinv)
+  let xI : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ) := ⟨x, hxint⟩
+  let xInvI : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ) := ⟨x⁻¹, hxinvint⟩
+  have hmul : xI * xInvI = 1 := by
+    apply Subtype.ext
+    exact mul_inv_cancel₀ hx0
+  let xIU : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ :=
+    Units.mkOfMulEqOne xI xInvI hmul
+  refine ⟨x, hxpow, ?_⟩
+  intro τ
+  have hτpow : τ.1 (x ^ n) = x ^ n := by
+    rw [hxpow]
+    exact hufix τ
+  let ratio := integralGaloisRatioRoot v τ.1 hx0 hτpow
+  have hratio : ratio = 1 := by
+    apply tameRootsReduction_at_place_injective v
+    rw [map_one]
+    simp only [tameRootsReduction_at_place, MonoidHom.comp_apply]
+    rw [← map_one (residueUnitsEquivRootsOfUnity_at_place v).symm]
+    apply congrArg (residueUnitsEquivRootsOfUnity_at_place v).symm
+    apply rootsOfUnity.coe_injective
+    simp only [restrictRootsOfUnity_coe_apply, Subgroup.coe_one]
+    have hrval :
+        (((ratio : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ)) :
+          IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =
+        (τ.1 • xI) * (↑xIU⁻¹ : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) := by
+      apply Subtype.ext
+      change τ.1 x / x = τ.1 x * x⁻¹
+      exact div_eq_mul_inv _ _
+    rw [hrval, map_mul, localInertia_residue_smul_eq]
+    rw [← map_mul]
+    change (IsLocalRing.residue (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)))
+      ((xIU : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) * ↑xIU⁻¹) = 1
+    rw [Units.mul_inv]
+    exact map_one _
+  have hrfield := congrArg
+    (fun r : rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) =>
+      (((r : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
+        IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1) hratio
+  change τ.1 x / x = 1 at hrfield
+  change τ.1 x = x
+  exact (div_eq_one_iff_eq hx0).mp hrfield
+
 /-- The Galois quotient is a crossed homomorphism before passing to inertia-invariant residue. -/
 theorem galoisRatio_mul
     (σ τ : Γ Kᵥ) {x : Kᵥᵃˡᵍ} (hx : x ≠ 0) :

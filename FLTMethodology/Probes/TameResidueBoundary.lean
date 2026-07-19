@@ -38,6 +38,7 @@ character kernel.
 #check tameResidueCharFun
 #check localInertia_residue_smul_eq
 #check localInertia_fix_tameRoot
+#check exists_tameRoot_mem_fixedField_of_integral_unit
 #check galoisRatio_mul
 #check tameKummerRatioRoot_one
 #check tameResidueCharFun_one
@@ -74,6 +75,7 @@ character kernel.
 #print axioms tameResidueCharFun
 #print axioms localInertia_residue_smul_eq
 #print axioms localInertia_fix_tameRoot
+#print axioms exists_tameRoot_mem_fixedField_of_integral_unit
 #print axioms galoisRatio_mul
 #print axioms tameKummerRatioRoot_one
 #print axioms tameResidueCharFun_one
