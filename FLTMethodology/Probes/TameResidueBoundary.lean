@@ -43,6 +43,7 @@ character kernel.
 #check tameResidueCharFun_one
 #check tameResidueCharFun_mul
 #check tameResidueChar
+#check localTameAbelianInertiaGroup_le_mapped_tameResidueKer
 
 #print axioms AddSubgroup.isClosed_inertia
 #print axioms isClosed_localInertiaGroup
@@ -78,3 +79,4 @@ character kernel.
 #print axioms tameResidueCharFun_one
 #print axioms tameResidueCharFun_mul
 #print axioms tameResidueChar
+#print axioms localTameAbelianInertiaGroup_le_mapped_tameResidueKer

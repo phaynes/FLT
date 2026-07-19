@@ -545,6 +545,32 @@ noncomputable def tameResidueChar : localInertiaGroup v →* (κ 𝒪ᵥ)ˣ wher
   map_one' := tameResidueCharFun_one v
   map_mul' := tameResidueCharFun_mul v
 
+/-- The repository's tame-abelian proxy lies in the mapped kernel of the tame residue character.
+This is the elementary inclusion: the proxy fixes the chosen Kummer root of the uniformizer. -/
+theorem localTameAbelianInertiaGroup_le_mapped_tameResidueKer :
+    localTameAbelianInertiaGroup v ≤
+      (tameResidueChar v).ker.map (localInertiaGroup v).subtype := by
+  intro σ hσ
+  have hI : σ ∈ localInertiaGroup v :=
+    localTameAbelianInertiaGroup_le_localInertiaGroup v hσ
+  let σI : localInertiaGroup v := ⟨σ, hI⟩
+  have hpowFixed : tameKummerRoot v ^ (Nat.card (κ 𝒪ᵥ) - 1) ∈
+      IntermediateField.fixedField (localInertiaGroup v) := by
+    rw [tameKummerRoot_pow]
+    intro τ
+    exact τ.1.commutes (tameUniformizer v)
+  have hrootFixed : σ (tameKummerRoot v) = tameKummerRoot v :=
+    hσ (tameKummerRoot v) hpowFixed
+  have hratio : tameKummerRatioRoot v σI = 1 := by
+    apply rootsOfUnity.coe_injective
+    apply Subtype.ext
+    change σ (tameKummerRoot v) / tameKummerRoot v = 1
+    rw [hrootFixed, div_self (tameKummerRoot_ne_zero v)]
+  have hker : σI ∈ (tameResidueChar v).ker := by
+    change tameResidueCharFun v σI = 1
+    rw [tameResidueCharFun, hratio, map_one]
+  exact ⟨σI, hker, rfl⟩
+
 /-- An arbitrary choice of an (arithmetic) frobenious element of a local galois group. -/
 noncomputable
 def Field.AbsoluteGaloisGroup.adicArithFrob : Γ Kᵥ :=
