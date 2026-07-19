@@ -91,6 +91,21 @@ theorem relating `localInertiaGroup`'s fixed field to an unchanged value group. 
   of the final declaration; and
 - no aggregate class-field or tame-residue closure may be inferred from this literature result.
 
+## First Lean bridge checkpoint
+
+`FLTMethodology.Probes.FixedFieldValueGroupBridge` now proves, with standard axiom closure:
+
+1. `localInertiaGroup_normal`: the repository inertia subgroup is normal in the absolute Galois
+   group. The proof uses uniqueness of the maximal ideal of the integral-closure local ring and a
+   direct conjugation calculation.
+2. `fixedField_localInertia_isGalois`: the inertia fixed field is Galois over `Kᵥ`, by the infinite
+   Galois correspondence and the existing closedness theorem.
+
+This is genuine kernel-clean structural progress, not the value-group theorem. The remaining bridge
+is to pass through finite Galois subextensions, identify their inertia/ramification index, and use
+Mathlib's `HeightOneSpectrum.valuation_liesOver` (together with the ramification-index-one result) to
+show that fixed-field elements have values in the base value group.
+
 ## Counterexample and weakening review
 
 The source chain depends essentially on the fixed field being the maximal **unramified** extension.
@@ -101,6 +116,8 @@ bridge must therefore establish value zero (unit status), not merely nonnegative
 
 ## Next gate
 
-Run a bounded GPT-5.6 xhigh design/build cycle for the fixed-field/value-group bridge. Its output
-must include targeted builds, a fresh axiom audit, and an explicit residual-gap report. Independent
-review is assigned to Fable, with Claude Opus 4.8 as the declared fallback if Fable is unavailable.
+Extend the kernel-clean normality/Galois checkpoint through one finite Galois subextension containing
+an arbitrary fixed-field element. The next bounded target is an exact lemma reducing unchanged value
+group to trivial inertia, ramification index one, and `HeightOneSpectrum.valuation_liesOver`. Do not
+attempt the final decomposition until that finite-level valuation bridge builds. Independent review
+is assigned to Fable, with Claude Opus 4.8 as the declared capacity fallback.
