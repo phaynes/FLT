@@ -652,6 +652,66 @@ def TameKummerDecomposition : Prop :=
         (((z : (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))ˣ) :
           IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ))).1
 
+/-- The precise local-valuation input still needed for the tame-kernel theorem: every nonzero
+element of the maximal unramified fixed field is an integral unit times an integer power of the
+chosen base uniformizer. All Kummer, root-lifting, and subgroup arguments are separate from this
+value-group statement. -/
+def FixedFieldUniformizerDecomposition : Prop :=
+  ∀ {u : Kᵥᵃˡᵍ}, u ≠ 0 →
+    u ∈ IntermediateField.fixedField (localInertiaGroup v) →
+    ∃ (m : ℤ) (a : Kᵥᵃˡᵍ),
+      IsIntegral 𝒪ᵥ a ∧ IsIntegral 𝒪ᵥ a⁻¹ ∧
+      a ∈ IntermediateField.fixedField (localInertiaGroup v) ∧
+      u = (algebraMap Kᵥ (Kᵥᵃˡᵍ) (tameUniformizer v)) ^ m * a
+
+/-- Discreteness of the fixed-field value group implies the complete Kummer decomposition. -/
+theorem tameKummerDecomposition_of_fixedFieldUniformizerDecomposition
+    (hvaluation : FixedFieldUniformizerDecomposition v) :
+    TameKummerDecomposition v := by
+  intro x hx hxfixed
+  let n := Nat.card (κ 𝒪ᵥ) - 1
+  have hnpos : 0 < n := tsub_pos_of_lt (Finite.one_lt_card (α := κ 𝒪ᵥ))
+  letI : NeZero n := ⟨hnpos.ne'⟩
+  have hxpow0 : x ^ n ≠ 0 := pow_ne_zero n hx
+  rcases hvaluation hxpow0 hxfixed with ⟨m, a, haint, hainv, hafixed, hxa⟩
+  have ha0 : a ≠ 0 := by
+    intro ha
+    rw [ha, mul_zero] at hxa
+    exact hxpow0 hxa
+  rcases exists_tameRoot_mem_fixedField_of_integral_unit v ha0 haint hainv hafixed with
+    ⟨y, hypow, hyfixed⟩
+  let r : Kᵥᵃˡᵍ := tameKummerRoot v
+  let π : Kᵥᵃˡᵍ := algebraMap Kᵥ (Kᵥᵃˡᵍ) (tameUniformizer v)
+  have hr0 : r ≠ 0 := tameKummerRoot_ne_zero v
+  have hy0 : y ≠ 0 := by
+    intro hy
+    rw [hy, zero_pow hnpos.ne'] at hypow
+    exact ha0 hypow.symm
+  have hrpow : r ^ n = π := tameKummerRoot_pow v
+  have hrzpow : (r ^ m) ^ n = π ^ m := by
+    calc
+      (r ^ m) ^ n = (r ^ m) ^ (n : ℤ) := (zpow_natCast (r ^ m) n).symm
+      _ = r ^ (m * (n : ℤ)) := (zpow_mul r m (n : ℤ)).symm
+      _ = r ^ ((n : ℤ) * m) := by rw [mul_comm]
+      _ = (r ^ (n : ℤ)) ^ m := zpow_mul r (n : ℤ) m
+      _ = (r ^ n) ^ m := by rw [zpow_natCast]
+      _ = π ^ m := by rw [hrpow]
+  let w : Kᵥᵃˡᵍ := x / (r ^ m * y)
+  have hwden : r ^ m * y ≠ 0 := mul_ne_zero (zpow_ne_zero m hr0) hy0
+  have hwpow : w ^ n = 1 := by
+    change (x / (r ^ m * y)) ^ n = 1
+    rw [div_pow, mul_pow, hrzpow, hypow, ← hxa, div_self hxpow0]
+  have hwint : IsIntegral 𝒪ᵥ w :=
+    IsIntegral.of_pow hnpos (hwpow ▸ isIntegral_one)
+  let z : rootsOfUnity n (IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) :=
+    rootsOfUnity.mkOfPowEq
+      (⟨w, hwint⟩ : IntegralClosure 𝒪ᵥ (Kᵥᵃˡᵍ)) (by
+        apply Subtype.ext
+        exact hwpow)
+  refine ⟨m, y, z, hyfixed, ?_⟩
+  change x = r ^ m * y * (x / (r ^ m * y))
+  rw [mul_div_cancel₀ x hwden]
+
 theorem tameKummerRoot_fixed_of_mem_ker
     (σ : localInertiaGroup v) (hσ : σ ∈ (tameResidueChar v).ker) :
     σ.1 (tameKummerRoot v) = tameKummerRoot v := by
@@ -705,6 +765,14 @@ theorem localTameAbelianInertiaGroup_eq_ker_of_decomposition
   le_antisymm
     (localTameAbelianInertiaGroup_le_mapped_tameResidueKer v)
     (mapped_tameResidueKer_le_localTameAbelianInertiaGroup_of_decomposition v hdecomp)
+
+/-- The exact tame-kernel theorem, reduced to the one remaining value-group input. -/
+theorem localTameAbelianInertiaGroup_eq_ker_of_fixedFieldUniformizerDecomposition
+    (hvaluation : FixedFieldUniformizerDecomposition v) :
+    localTameAbelianInertiaGroup v =
+      (tameResidueChar v).ker.map (localInertiaGroup v).subtype :=
+  localTameAbelianInertiaGroup_eq_ker_of_decomposition v
+    (tameKummerDecomposition_of_fixedFieldUniformizerDecomposition v hvaluation)
 
 /-- An arbitrary choice of an (arithmetic) frobenious element of a local galois group. -/
 noncomputable
