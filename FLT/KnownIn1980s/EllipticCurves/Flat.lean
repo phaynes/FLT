@@ -13,6 +13,7 @@ public import Mathlib.RingTheory.Etale.Basic
 public import Mathlib.RingTheory.Flat.Basic
 public import Mathlib.RingTheory.HopfAlgebra.Basic
 public import Mathlib.RingTheory.Polynomial.Resultant.Basic
+public import HasseWeil.Foundation.Auxiliary.DivisionPolynomial
 
 /-!
 
@@ -258,28 +259,51 @@ stable under base change, so it suffices to prove it for the universal Weierstra
 over `ℤ[a₁, …, a₆][Δ⁻¹]`. -/
 theorem WeierstrassCurve.isCoprime_Φ_ΨSq {R₀ : Type*} [CommRing R₀] (W : WeierstrassCurve R₀)
     {n : ℤ} (hn : n ≠ 0) (hΔ : IsUnit W.Δ) :
-    IsCoprime (W.Φ n) (W.ΨSq n) :=
-  by
-    let m := n.natAbs ^ 2
-    let d := n.natAbs ^ 2 - 1
-    have hm : m ≠ 0 := by
-      simp only [m, pow_ne_zero_iff two_ne_zero]
-      exact Int.natAbs_ne_zero.mpr hn
-    obtain ⟨a, b, _ha, _hb, hab⟩ :=
-      Polynomial.exists_mul_add_mul_eq_C_resultant (W.Φ n) (W.ΨSq n)
-        (by simpa [m] using W.natDegree_Φ_le n)
-        (by simpa [d] using W.natDegree_ΨSq_le n)
-        (Or.inl hm)
-    change W.Φ n * a + W.ΨSq n * b =
-      Polynomial.C ((W.Φ n).resultant (W.ΨSq n) m d) at hab
-    have hres : IsUnit ((W.Φ n).resultant (W.ΨSq n) m d) := by
-      rcases W.resultant_Φ_ΨSq hn with h | h
-      · rw [show (W.Φ n).resultant (W.ΨSq n) m d =
-            W.Δ ^ ((n.natAbs ^ 4 - n.natAbs ^ 2) / 6) by simpa [m, d] using h]
-        exact hΔ.pow _
-      · rw [show (W.Φ n).resultant (W.ΨSq n) m d =
-            -W.Δ ^ ((n.natAbs ^ 4 - n.natAbs ^ 2) / 6) by simpa [m, d] using h]
-        exact (hΔ.pow _).neg
-    exact ⟨Polynomial.C (hres.unit⁻¹).1 * a, Polynomial.C (hres.unit⁻¹).1 * b, by
-      simp only [mul_assoc, ← mul_add, mul_comm a, mul_comm b, hab,
-        ← map_mul, IsUnit.val_inv_mul, map_one]⟩
+    IsCoprime (W.Φ n) (W.ΨSq n) := by
+  classical
+  rw [show IsCoprime (W.Φ n) (W.ΨSq n) ↔
+      1 ∈ Ideal.span ({W.Φ n, W.ΨSq n} : Set (Polynomial R₀)) by
+    exact Ideal.mem_span_pair.symm]
+  by_contra hmem
+  have hproper : Ideal.span ({W.Φ n, W.ΨSq n} : Set (Polynomial R₀)) ≠ ⊤ := by
+    intro htop
+    apply hmem
+    rw [htop]
+    simp
+  obtain ⟨M, hMmax, hle⟩ :=
+    Ideal.exists_le_maximal
+      (Ideal.span ({W.Φ n, W.ΨSq n} : Set (Polynomial R₀))) hproper
+  let S := Polynomial R₀ ⧸ M
+  letI : M.IsMaximal := hMmax
+  letI : Field S := Ideal.Quotient.field M
+  let quotientMap : Polynomial R₀ →+* S := Ideal.Quotient.mk M
+  let f : R₀ →+* S := quotientMap.comp Polynomial.C
+  let xbar : S := quotientMap Polynomial.X
+  let W' : WeierstrassCurve S := W.map f
+  have hΔ' : W'.Δ ≠ 0 := by
+    change (W.map f).Δ ≠ 0
+    rw [WeierstrassCurve.map_Δ]
+    exact (hΔ.map f).ne_zero
+  have hfield : IsCoprime (W'.Φ n) (W'.ΨSq n) :=
+    W'.isCoprime_Φ_ΨSq_field hΔ' hn
+  have hevalHom : Polynomial.eval₂RingHom f xbar = quotientMap := by
+    ext a <;> simp [f, xbar, quotientMap]
+  have hΦmem : W.Φ n ∈ M := hle (Ideal.subset_span (by simp))
+  have hΨmem : W.ΨSq n ∈ M := hle (Ideal.subset_span (by simp))
+  have hΦzero : Polynomial.eval₂ f xbar (W.Φ n) = 0 := by
+    rw [show Polynomial.eval₂ f xbar (W.Φ n) = quotientMap (W.Φ n) by
+      exact DFunLike.congr_fun hevalHom (W.Φ n)]
+    exact Ideal.Quotient.eq_zero_iff_mem.mpr hΦmem
+  have hΨzero : Polynomial.eval₂ f xbar (W.ΨSq n) = 0 := by
+    rw [show Polynomial.eval₂ f xbar (W.ΨSq n) = quotientMap (W.ΨSq n) by
+      exact DFunLike.congr_fun hevalHom (W.ΨSq n)]
+    exact Ideal.Quotient.eq_zero_iff_mem.mpr hΨmem
+  have hcontra := hfield.map (Polynomial.eval₂RingHom (RingHom.id S) xbar)
+  change IsCoprime
+    (Polynomial.eval₂ (RingHom.id S) xbar ((W.map f).Φ n))
+    (Polynomial.eval₂ (RingHom.id S) xbar ((W.map f).ΨSq n)) at hcontra
+  rw [WeierstrassCurve.map_Φ, WeierstrassCurve.map_ΨSq,
+    Polynomial.eval₂_map, Polynomial.eval₂_map] at hcontra
+  have hid : (RingHom.id S).comp f = f := by ext; rfl
+  rw [hid, hΦzero, hΨzero] at hcontra
+  exact not_isCoprime_zero_zero hcontra
