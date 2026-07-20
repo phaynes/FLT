@@ -147,6 +147,41 @@ theorem faithfulSMul_prod :
     have hw := congrArg Prod.snd (h (0, w))
     exact hw
 
+/-- A linear equivalence over the joint-image algebra is automatically an equivalence of the
+original group representations. -/
+noncomputable def representationEquivOfJointImageLinearEquiv
+    (rho : Representation k G V) (sigma : Representation k G W) :
+    letI := fstModule rho sigma
+    letI := sndModule rho sigma
+    (V ≃ₗ[jointImageAlgebra rho sigma] W) → Representation.Equiv rho sigma := by
+  letI := fstModule rho sigma
+  letI := sndModule rho sigma
+  letI : IsScalarTower k (jointImageAlgebra rho sigma) V :=
+    IsScalarTower.of_compHom k (jointImageAlgebra rho sigma) V
+  letI : IsScalarTower k (jointImageAlgebra rho sigma) W :=
+    IsScalarTower.of_compHom k (jointImageAlgebra rho sigma) W
+  intro e
+  apply Representation.Equiv.mk (e.restrictScalars k)
+  intro g
+  apply LinearMap.ext
+  intro v
+  change e (rho g v) = sigma g (e v)
+  have h := e.map_smul (jointImageElement rho sigma g) v
+  change e (jointImageFst rho sigma (jointImageElement rho sigma g) v) =
+    jointImageSnd rho sigma (jointImageElement rho sigma g) (e v) at h
+  simpa only [jointImageFst_element, jointImageSnd_element] using h
+
+/-- Nonempty joint-image linear equivalence is enough for the representation-level conclusion. -/
+theorem nonempty_representationEquiv_of_jointImageLinearEquiv
+    (rho : Representation k G V) (sigma : Representation k G W) :
+    letI := fstModule rho sigma
+    letI := sndModule rho sigma
+    Nonempty (V ≃ₗ[jointImageAlgebra rho sigma] W) →
+      Nonempty (Representation.Equiv rho sigma) := by
+  letI := fstModule rho sigma
+  letI := sndModule rho sigma
+  exact Nonempty.map (representationEquivOfJointImageLinearEquiv rho sigma)
+
 variable [Module.Finite k V] [Module.Finite k W]
 
 /-- The joint-image algebra of two semisimple finite-dimensional representations is semisimple. -/

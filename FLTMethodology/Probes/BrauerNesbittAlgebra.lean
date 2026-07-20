@@ -17,6 +17,8 @@ open FLT.Components.BrauerNesbitt
 #print axioms isSemisimpleModule_fst
 #print axioms isSemisimpleModule_snd
 #print axioms faithfulSMul_prod
+#print axioms representationEquivOfJointImageLinearEquiv
+#print axioms nonempty_representationEquiv_of_jointImageLinearEquiv
 #print axioms isSemisimpleRing_jointImageAlgebra
 
 end
