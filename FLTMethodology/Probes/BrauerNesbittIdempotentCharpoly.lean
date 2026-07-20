@@ -15,5 +15,8 @@ open FLT.Components.BrauerNesbitt
 
 #print axioms LinearMap.charpoly_of_isIdempotentElem
 #print axioms charpoly_lsmul_of_isIdempotentElem
+#print axioms LinearMap.rootMultiplicity_one_charpoly_of_isIdempotentElem
+#print axioms LinearMap.finrank_range_eq_of_charpoly_eq_of_isIdempotentElem
+#print axioms finrank_range_lsmul_eq_of_charpoly_eq_of_isIdempotentElem
 
 end
