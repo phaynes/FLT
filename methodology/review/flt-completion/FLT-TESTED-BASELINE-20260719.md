@@ -24,7 +24,7 @@ previous trusted revision for proof promotion or mutation authority.
 ### Class-field / tame-residue tranche
 
 - Source branch: `task/flt-class-field-proof-20260719`
-- Source head: `85a0f22056f2ffb51da54ce50f7ae7b897c56ec7`
+- Source head: `85a0f2200e5dccfcab5860af38fa207018893403`
 - Remote equality: confirmed before integration
 - Merge commit: `04b276b`
 - Handoff:
@@ -38,7 +38,7 @@ therefore still open.
 ### Tate–Frey tranche
 
 - Source branch: `task/flt-tate-frey-proof-20260719`
-- Source head: `160050be2a4ca5c70eb09a739eb299b0c04f3027`
+- Source head: `160050be4d7066affd510f8076ca38f1f6980cf7`
 - Remote equality: confirmed before integration
 - Merge commit: `0e0c84c`
 - Handoff:

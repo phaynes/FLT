@@ -140,4 +140,3 @@ remote task branch.
    components with their own interfaces and source gates.
 5. Re-run targeted builds, `#print axioms`, and the full umbrella build after each component closes.
 6. Do not mark Tate–Frey complete while the public path still contains `sorryAx`.
-
