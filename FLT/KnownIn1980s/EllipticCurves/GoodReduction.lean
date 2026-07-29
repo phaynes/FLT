@@ -51,6 +51,63 @@ theorem inertia_residue_smul_eq (A : ValuationSubring L)
   simpa using A.inertia_smul_residue_eq K σ hσ
     (algebraMap A (IsLocalRing.ResidueField A) x)
 
+/-- The base ring maps into a valuation subring whose intersection with the base field is the
+given image of that ring. -/
+noncomputable def baseRingHom (R : Type*) [CommRing R] [Algebra R K]
+    (A : ValuationSubring L)
+    (hA : (A.comap (algebraMap K L)).toSubring = (algebraMap R K).range) : R →+* A :=
+  ((algebraMap K L).comp (algebraMap R K)).codRestrict A.toSubring fun r ↦ by
+    have hr : algebraMap R K r ∈ (algebraMap R K).range := ⟨r, rfl⟩
+    rw [← hA] at hr
+    exact hr
+
+@[simp]
+theorem coe_baseRingHom (R : Type*) [CommRing R] [Algebra R K]
+    (A : ValuationSubring L)
+    (hA : (A.comap (algebraMap K L)).toSubring = (algebraMap R K).range) (r : R) :
+    ((A.baseRingHom K R hA r : A) : L) =
+      algebraMap K L (algebraMap R K r) :=
+  rfl
+
+/-- The map from the base ring to a valuation subring lying above it is local when the base ring
+has the given field as its fraction field. -/
+theorem isLocalHom_baseRingHom (R : Type*) [CommRing R] [IsDomain R]
+    [Algebra R K] [IsFractionRing R K] (A : ValuationSubring L)
+    (hA : (A.comap (algebraMap K L)).toSubring = (algebraMap R K).range) :
+    IsLocalHom (A.baseRingHom K R hA) := by
+  constructor
+  intro r hr
+  obtain ⟨u, hu⟩ := hr
+  have hur : ((u : A) : L) = algebraMap K L (algebraMap R K r) := by
+    rw [hu]
+    rfl
+  have hinv_mem : algebraMap K L (algebraMap R K r)⁻¹ ∈ A := by
+    rw [map_inv₀, ← hur]
+    have huinv : ((((u⁻¹ : Aˣ) : A) : L)) = (((u : A) : L))⁻¹ := by
+      change ((Units.map A.subtype.toMonoidHom (u⁻¹) : Lˣ) : L) =
+        ((Units.map A.subtype.toMonoidHom u : Lˣ) : L)⁻¹
+      rw [map_inv]
+      exact Units.val_inv_eq_inv_val _
+    rw [← huinv]
+    exact (u⁻¹ : Aˣ).val.property
+  have hinv_comap : (algebraMap R K r)⁻¹ ∈ A.comap (algebraMap K L) :=
+    hinv_mem
+  have hinv_range : (algebraMap R K r)⁻¹ ∈ (algebraMap R K).range := by
+    rw [← hA]
+    exact hinv_comap
+  obtain ⟨s, hs⟩ := hinv_range
+  have hrK : algebraMap R K r ≠ 0 := by
+    intro hr0
+    have hu0 : ((u : A) : L) = 0 := by rw [hur, hr0, map_zero]
+    exact u.ne_zero (Subtype.ext hu0)
+  apply isUnit_iff_exists.mpr
+  refine ⟨s, ?_, ?_⟩
+  · apply IsFractionRing.injective R K
+    simpa [map_mul, hs] using mul_inv_cancel₀ hrK
+  · rw [mul_comm]
+    apply IsFractionRing.injective R K
+    simpa [map_mul, hs] using mul_inv_cancel₀ hrK
+
 end ValuationSubring
 
 /-- A reduction map which is injective on `n`-torsion and invariant under a collection
