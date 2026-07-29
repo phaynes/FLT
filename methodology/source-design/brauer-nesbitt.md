@@ -1,132 +1,128 @@
-# Brauer--Nesbitt definition-of-ready packet
+# Brauer–Nesbitt source and implementation packet
 
 Component: `brauer-nesbitt`  
 Owner: `FLT-309`  
 Obligation: `FLT-BRAUER-NESBITT`  
-Decision: **PARTIAL - NOT READY FOR TERMINAL IMPLEMENTATION**
+Decision: **PROVED FOR THE FLT-SCOPED RANK-TWO BOUNDARY; PRIMARY-SOURCE LOCATOR OPEN**
 
 ## Exact Lean boundary
 
-The production contract is:
+The theorem used by the FLT programme is:
 
 ```lean
-FLT.Components.BrauerNesbitt.Contract
+FLT.Components.BrauerNesbitt.nonempty_representationEquiv_of_finrank_eq_two
 ```
 
-It quantifies over an arbitrary field and group, two finite-dimensional semisimple
-representations, equality of their characteristic polynomials on every group element, and concludes
-that the representations are linearly equivalent. No finiteness, topology, perfectness, algebraic
-closure, characteristic-zero, or trace-only assumption is present.
+It quantifies over an arbitrary field and group, two finite-dimensional
+semisimple representations of finrank exactly two, and equality of their
+characteristic polynomials on every group element. It concludes
+`Nonempty (Representation.Equiv rho sigma)`.
 
-The contract and its finite joint-image reduction elaborate in
-`FLT/Components/Contracts/BrauerNesbitt.lean`. Their audit is
-`methodology/evidence/contracts/BrauerNesbittContractAudit.lean`.
+The reusable contract and its kernel-clean witness are:
+
+```lean
+FLT.Components.BrauerNesbitt.RankTwoContract
+FLT.Components.BrauerNesbitt.rankTwoContract
+```
+
+The general-dimensional `FLT.Components.BrauerNesbitt.Contract` remains a
+separate unproved proposition. It is not needed by the presently encoded FLT
+consumers and is not counted as completed.
 
 ## Source adjudication
 
-- `SRC-019`, Wiese Theorem 2.4.6 and Remark 2.4.7(iii), gives the exact modern statement and a
-  detailed proof route, but is a secondary source.
-- `SRC-018`, Brauer--Nesbitt 1937, was checked against all five scanned pages. It assumes an
-  algebraically closed field and studies regular representations, radicals, indecomposable
-  constituents, and symmetric/Frobenius algebras. It does not state the unchanged modern
-  arbitrary-field group contract.
-- Consequently the component still lacks the exact primary theorem locator demanded by FLT-205.
-  The name of a historical paper is not being treated as source equivalence.
+- `SRC-019`, Wiese Theorem 2.4.6 and Remark 2.4.7(iii), gives the modern
+  arbitrary-field statement and a detailed secondary-source proof route.
+- `SRC-018`, Brauer–Nesbitt 1937, is genuine primary provenance but assumes an
+  algebraically closed field and does not state the modern arbitrary-field
+  group contract.
+- An exact primary-source locator for the unchanged modern formulation remains
+  open. Per the programme's current policy, this is recorded as literature
+  assurance debt rather than used to erase a kernel-checked theorem.
 
 ## Hypothesis translation
 
-| Source notion | Lean boundary | Status |
+| Mathematical condition | Lean boundary | Status |
 |---|---|---|
 | arbitrary coefficient field | `[Field k]` | exact |
 | arbitrary group | `[Group G]` | exact |
 | finite-dimensional representations | `Module.Finite k V`, `Module.Finite k W` | exact |
-| completely reducible/semisimple | `Representation.IsSemisimpleRepresentation` | exact |
-| identical characteristic polynomials at every group element | `∀ g, (rho g).charpoly = (sigma g).charpoly` | exact |
+| rank two | `Module.finrank k V = 2`, `Module.finrank k W = 2` | exact and FLT-scoped |
+| semisimple | `Representation.IsSemisimpleRepresentation` | exact |
+| identical characteristic polynomials on every group element | `∀ g, (rho g).charpoly = (sigma g).charpoly` | exact |
 | equivalence of representations | `Nonempty (Representation.Equiv rho sigma)` | exact |
 
-## Banked proof graph
+## Proved architecture
 
 ```text
-characteristic-polynomial equality
+charpoly equality on group elements
         |
-        +--> trace_eq_of_charpoly_eq                         PROVED
+        +--> trace and determinant equality
         |
-        +--> jointImagePoint / jointImageSpan                PROVED
-                  |
-                  +--> jointImageAlgebra                     PROVED
-                  +--> both projection homomorphisms         PROVED
-                  +--> actual group-element embedding        PROVED
-                  +--> basis selected from group image       PROVED
-                              |
-                              v
-                     FiniteJointImageContract                OPEN
-                              |
-                              v
-                     Contract                                REDUCTION PROVED
+        +--> degree-two Amitsur identity
+                 |
+                 v
+      charpoly equality on joint-image algebra
+                 |
+                 +--> joint-image algebra is semisimple
+                 |
+                 +--> Wedderburn–Artin matrix/division-ring blocks
+                 |
+                 +--> central-idempotent charpolys recover block ranks
+                 |
+                 +--> Morita reconstruction and blockwise equivalence
+                 v
+      joint-image linear equivalence
+                 |
+                 v
+      Representation.Equiv                          PROVED
 ```
 
-The remaining theorem is finite-dimensional but still mathematical: prove that two semisimple
-modules over the finite joint-image algebra have identical simple multiplicities from the retained
-characteristic-polynomial data.
+The degree-two determinant identity is denominator-free, so the proof does not
+require interpolation, a large or perfect field, algebraic closure, or a
+characteristic restriction. The Wedderburn decomposition retains possibly
+noncommutative division rings.
 
-## Intended terminal architecture
+## Direct consumer
 
-1. Pass both actions through the finite joint-image algebra already constructed.
-2. Transport semisimplicity from the group representations to modules over this algebra.
-3. Quotient by the Jacobson radical, or work componentwise with the semisimple action algebra.
-4. Use central/simple-component projectors to recover every composition multiplicity from the
-   characteristic-polynomial data without assuming a separable splitting field.
-5. Construct the module equivalence and transport it back to a `Representation.Equiv`.
+`FLTMethodology.Taylor2018.Coefficients.latticeIndependent_rankTwo` consumes
+the theorem without accepting a Brauer–Nesbitt proposition as an assumption.
+The existing coefficient bundles supply semisimplicity, both rank-two facts,
+and characteristic-polynomial equality on every Galois element.
 
-Step 4 is the first missing theorem. It must be source-checked over imperfect fields before its Lean
-signature is frozen.
+The compatible-family use remains conditional on `FLT-CHEBOTAREV`, which owns
+the distinct passage from almost-all Frobenius data to equality on every group
+element.
 
-## Counterexample and stop-loss review
+## Counterexample and stop-loss boundaries
 
-- Trace equality alone is false in positive characteristic: the existing `ZMod 2` regression uses
-  trivial representations in dimensions one and three.
-- Characteristic polynomials do not extend linearly from group elements to group-algebra elements.
-  Only trace equality is extended linearly.
-- A finite separable splitting-field proof does not cover arbitrary imperfect fields.
-- The algebraically closed, two-dimensional, odd-characteristic shortcut covers only the residual
-  coefficient consumer. It does not cover the characteristic-zero compatible-family consumer.
-- Chebotarev is separate: almost-all Frobenius equality is not the all-group-elements hypothesis of
-  this contract.
+- Trace equality alone is false in positive characteristic; the `ZMod 2`
+  regression remains in the repository.
+- Characteristic polynomials cannot be extended linearly. Only the trace and,
+  in dimension two, the denominator-free determinant identity are used.
+- The result does not establish the general-dimensional `Contract`.
+- It does not establish Chebotarev or any consumer's separate semisimplicity,
+  rank, or characteristic-polynomial premise.
 
-No counterexample to the unchanged contract was found. The rejected weakenings remain recorded so
-they cannot re-enter through a downstream convenience lemma.
+## Verification
 
-## Pinned-library matches
+- Targeted provider build: 2,322 jobs, success.
+- Direct consumer build: 3,851 jobs, success.
+- `lake build FLT FLTMethodology`: 9,043 jobs, success.
+- Provider and consumer axiom closure:
+  `[propext, Classical.choice, Quot.sound]`.
+- Fresh GPT-5.6 xhigh theorem review: `PASS`.
+- Fresh GPT-5.6 xhigh consumer review: `PASS`.
+- Fable 5 static mathematical review: positive, but its executable phase was
+  unavailable and is not counted as an approval.
 
-Reusable:
+The complete evidence packet is
+`methodology/evidence/probes/FLT-BRAUER-NESBITT-RANK-TWO-20260730.md`.
 
-- `Representation.IsSemisimpleRepresentation`;
-- `Submodule.exists_fun_fin_finrank_span_eq`;
-- `IsSemisimpleRing.exists_algEquiv_pi_matrix_of_isAlgClosed` for the algebraically closed branch;
-- `LinearMap.trace_eq_matrix_trace` and characteristic-polynomial/trace bridges; and
-- semisimple-module and isotypic-component APIs.
+## Disposition
 
-Missing:
-
-- arbitrary-field Brauer--Nesbitt;
-- the finite joint-image multiplicity terminal;
-- a componentwise imperfect-field descent theorem; and
-- the separate Chebotarev continuity bridge.
-
-The isolated current-Mathlib scan at commit `15e888f098dc8d8844f935ca6a12bae4d4582bff`
-found no new exact Brauer--Nesbitt declaration; the proof must therefore be supplied locally or by a
-later dependency upgrade.
-
-## Definition-of-ready decision
-
-`PARTIAL`.
-
-The contract, hypothesis translation, counterexample review, library survey, and finite reduction
-are ready and kernel-clean. Terminal construction is blocked on two exact items:
-
-1. an exact primary-source locator for the arbitrary-field theorem or an independently reviewed
-   source for the finite-algebra terminal; and
-2. an elaborating signature and proof outline for the imperfect-field-safe multiplicity theorem.
-
-The next theorem to freeze is the finite-algebra multiplicity terminal, not a weakened residual-only
-replacement.
+The FLT-scoped rank-two obligation is implementation-complete and may be shown
+as proved after the control-record change passes independent review. The exact
+primary-source locator remains a visible literature-assurance gap. The next
+mathematical comparison gate is `FLT-CHEBOTAREV`, not more Brauer–Nesbitt proof
+work.

@@ -40,7 +40,7 @@ transitive-sorry audits are the authority for individual declarations.
 | Auxiliary-field prime condition | Unramified in blueprint; split completely in the Taylor near-reference | Source choice unresolved | Explicit definition/source gap after Opus HR-04 |
 | Potential-modularity assembly | Moret-Bailly, auxiliary curve, induced modularity, Jacquet–Langlands | Mostly absent as an integrated Lean route | Critical path |
 | Automorphic-to-Galois compatible family | Blueprint nodes `compatible_family` and associated construction | Central definitions/theorems absent or exploratory | Critical path |
-| Brauer--Nesbitt comparison | `FLTProbe.BrauerNesbitt.GroupContract` and its consumer bridges | Joint-image reduction, group-algebra trace extension, product-module equivalence, residual specialization, and residual rank transport are kernel-clean; reviewed narrowing is partial only and the central projector/character terminal remains absent | Coefficient and compatible-family prerequisite |
+| Brauer--Nesbitt comparison | `FLT.Components.BrauerNesbitt.nonempty_representationEquiv_of_finrank_eq_two` and `latticeIndependent_rankTwo` | FLT-scoped rank-two arbitrary-field provider and direct coefficient/lattice consumer are kernel-clean and independently reviewed; the retained general-dimensional contract is unproved | Proved for encoded FLT rank-two use; compatible-family premise remains under Chebotarev |
 | Historical finite assumptions | `Mazur_statement`, `Odlyzko_statement`, local/global class field and related results | Some named axioms; many interfaces absent | T2 boundary; T3 proof work |
 | Top theorem | `flt`, `PNat.pow_add_pow_ne_pow` | Compiles upstream but is not kernel-clean | T1–T3 terminal |
 

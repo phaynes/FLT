@@ -68,7 +68,7 @@ Tate-curve, and Weil-pairing subclusters before scheduling.
 | Hardly-ramified blueprint | `FLT-LIFT`, `FLT-FAMILY`, `FLT-MOD3`, `FLT-THREEADIC`, `FLT-COMPAT-CONTRA` | Four admitted terminals plus absent composition |
 | Potential modularity | `FLT-MORET-BAILLY`, `FLT-AUX-CURVE`, `FLT-INDUCED-MOD`, `FLT-JL`, `FLT-POTMOD` | Mostly prose or absent interfaces |
 | Modularity lifting | `FLT-MLT-COEFFICIENTS`, `FLT-MLT-PADIC-HODGE`, `FLT-RACAR-DEF`, `FLT-SGOOD-DEF`, `FLT-MLT-SOURCE`, `FLT-SGOOD-SELECTED`, `FLT-RESIDUAL-IMAGE`, `FLT-AUT-GALOIS` through `FLT-MLT` | Taylor 2018 selected; source vocabulary and repository-level bridges remain absent |
-| Compatible families | `FLT-COMPAT-DEF`, `FLT-BRAUER-FAMILY`, `FLT-CHEBOTAREV`, `FLT-BRAUER-NESBITT` | Brauer--Nesbitt has a reviewed signature-green arbitrary-field boundary and kernel-clean consumer wiring; its theorem and the other construction/comparison nodes remain absent |
+| Compatible families | `FLT-COMPAT-DEF`, `FLT-BRAUER-FAMILY`, `FLT-CHEBOTAREV`, `FLT-BRAUER-NESBITT` | The FLT-scoped rank-two Brauer--Nesbitt theorem and direct coefficient consumer are proved and independently reviewed. Compatible-family construction and the Chebotarev passage from almost-all Frobenius data to all elements remain open. |
 | Historical boundary | `FLT-HIST-MAZUR`, `FLT-HIST-QUATERNION`, `FLT-FONTAINE-ODLYZKO`, `FLT-CBASE`, `FLT-JL` | T1/T2/T3 treatment differs and must remain explicit |
 
 ## State meanings

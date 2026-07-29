@@ -22,9 +22,10 @@ are exact definitions or elementary adapters already audited in FLT-204.
 ## Current frontier
 
 - `existing-*`: 7 `READY` contract/adapter components.
-- `brauer-nesbitt`: `PARTIAL`; exact signature, counterexamples, library survey, and the
-  finite-joint-image reduction are kernel-clean. The exact primary-source theorem and the finite
-  algebra terminal remain open.
+- `brauer-nesbitt`: `PROVED-BOUNDED-SOURCE-GAP`; the FLT-scoped rank-two arbitrary-field theorem
+  and direct coefficient/lattice consumer are standard-trio clean and independently reviewed.
+  The general-dimensional contract and exact primary-source locator remain outside the bounded
+  completion; the compatible-family all-elements premise belongs to `FLT-CHEBOTAREV`.
 - `mazur`: `PARTIAL`; Serre's exact Frey irreducibility proposition, its character-dichotomy source,
   and Mazur's torsion theorem are pinned to primary pages. Semistability, the non-vacuous finite
   torsion bound, full two-torsion, the exact line/quotient character dichotomy, and the terminal
