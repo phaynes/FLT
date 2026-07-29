@@ -1,6 +1,7 @@
 import FLTMethodology.Probes.AutomorphicInfrastructureAudit
 import FLTMethodology.Probes.BrauerNesbittBoundary
 import FLTMethodology.Probes.BrauerNesbittRankTwo
+import FLTMethodology.Probes.ChebotarevRankTwo
 import FLTMethodology.Probes.DivisionPolynomialCoprimeAudit
 import FLTMethodology.Probes.DualTangent
 import FLT.EllipticCurve.TorsionProof.EllipticTorsionSourceBoundary

@@ -55,6 +55,7 @@ public import FLT.FreyCurve.Basic
 public import FLT.FreyCurve.FreyPackage
 public import FLT.FreyCurve.Mazur
 public import FLT.GaloisRepresentation.Automorphic
+public import FLT.GaloisRepresentation.CompatibleFamilyComparison
 public import FLT.GaloisRepresentation.Cyclotomic
 public import FLT.GaloisRepresentation.HardlyRamified.Defs
 public import FLT.GaloisRepresentation.HardlyRamified.Family
