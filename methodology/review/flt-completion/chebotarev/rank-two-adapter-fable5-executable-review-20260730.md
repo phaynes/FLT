@@ -10,6 +10,10 @@ Candidate commit reviewed: `ee0f49e`
 
 Session: `2f100c5c-6dbb-4929-9f08-424e1c30d1d9`
 
+Terminology correction: the response uses “uninhabited” once. The authoritative classification is
+**unwitnessed**: repository search found no witness, which is not a proof that the proposition is
+uninhabited.
+
 Whitespace-normalized response follows; wording is exact. The byte-exact transcript remains in the
 session ledger named above.
 

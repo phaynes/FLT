@@ -36,6 +36,7 @@ Targeted build:
 lake -H build FLT.GaloisRepresentation.CompatibleFamilyComparison
   FLTMethodology.Probes.ChebotarevRankTwo
 Build completed successfully (3629 jobs).
+Controller wall time: 3.06 s.
 ```
 
 Umbrella build:
@@ -43,7 +44,11 @@ Umbrella build:
 ```text
 lake -H build FLT FLTMethodology
 Build completed successfully (9045 jobs).
+Controller wall time: 6.22 s.
 ```
+
+The controller build-attempt telemetry records 9,280 ms, the sum of those two final command wall
+times. Earlier exploratory/recovery builds are not included in that bounded attempt duration.
 
 Every theorem printed by `FLTMethodology.Probes.ChebotarevRankTwo` depends on exactly:
 
