@@ -1,7 +1,9 @@
 # Chebotarev rank-two comparison source and implementation packet
 
-Component: `chebotarev`  
-Obligation: `FLT-CHEBOTAREV`  
+Component: `chebotarev`
+
+Obligation: `FLT-CHEBOTAREV`
+
 Decision: **DETERMINISTIC ADAPTER PROVED; ARITHMETIC DENSITY PROVIDER OPEN**
 
 ## Exact split
@@ -36,8 +38,9 @@ It proves `Nonempty (Representation.Equiv ...)`, not literal equality of Galois 
   image.
 - `SRC-019`, lines 246 and 266--270, fixes arithmetic Frobenius and explains why choices over one
   prime form a conjugacy class.
-- `SRC-013`, Gee Fact 2.27, and `SRC-016`, Taylor's automorphy-lifting notes, independently use the
-  same Chebotarev-plus-Brauer--Nesbitt comparison pattern.
+- `SRC-013`, Gee Fact 2.27, gives the required conjugacy-saturated Chebotarev density statement;
+  Gee Remark 2.31 explicitly states the Chebotarev-plus-Brauer--Nesbitt comparison pattern.
+- `SRC-016`, Taylor's automorphy-lifting notes, independently uses the same comparison pattern.
 
 These sources strongly support the exact contract. They are secondary/lecture-note sources for
 this purpose; a visually verified primary-source locator has not yet been registered. The user has
@@ -81,4 +84,3 @@ The deterministic definitions and theorems build and audit to exactly
 `[propext, Classical.choice, Quot.sound]`. The pinned Mathlib revision contains no global
 Chebotarev theorem. Consequently `FLT-CHEBOTAREV` is not yet a proved T3 obligation, and no custom
 T2 density axiom has been introduced.
-

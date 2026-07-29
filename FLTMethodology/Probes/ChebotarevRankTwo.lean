@@ -9,8 +9,9 @@ import FLT.GaloisRepresentation.CompatibleFamilyComparison
 # Rank-two Chebotarev comparison audit
 
 The printed declarations distinguish the kernel-clean deterministic adapter from the still
-unproved number-theoretic density contract.  In particular, `ChebotarevDensityContract` is a
-definition of the remaining proposition and is not an axiom or theorem.
+unproved number-theoretic density contract. In particular,
+`RatArithmeticFrobeniusConjugacyDensity` is a definition of the remaining proposition and is not
+an axiom or theorem.
 -/
 
 #print axioms FLT.CompatibleFamily.charpoly_conjugate

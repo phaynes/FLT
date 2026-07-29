@@ -1,8 +1,12 @@
 # FLT-CHEBOTAREV rank-two deterministic adapter evidence
 
-Date: 2026-07-30  
-Branch: `codex/ca-flt-chebotarev-rank-two-20260730`  
+Date: 2026-07-30
+
+Branch: `codex/ca-flt-chebotarev-rank-two-20260730`
+
 Base: Brauer--Nesbitt reviewed milestone `8929b77866985a66fa7299c418a2fad2867cc606`
+
+Production commit reviewed: `3e418d53b6de47dacf976a43f5416267e7b94751`
 
 ## Produced declarations
 
@@ -27,15 +31,15 @@ claims.
 Targeted build:
 
 ```text
-lake build FLT.GaloisRepresentation.CompatibleFamilyComparison
+lake -H build FLT.GaloisRepresentation.CompatibleFamilyComparison
   FLTMethodology.Probes.ChebotarevRankTwo
-Build completed successfully (3611 jobs).
+Build completed successfully (3629 jobs).
 ```
 
 Umbrella build:
 
 ```text
-lake build FLT FLTMethodology
+lake -H build FLT FLTMethodology
 Build completed successfully (9045 jobs).
 ```
 
@@ -47,6 +51,12 @@ Every theorem printed by `FLTMethodology.Probes.ChebotarevRankTwo` depends on ex
 
 No theorem in the adapter depends on `sorryAx` or a custom density assumption.
 
+The first independent execution review correctly rejected the original umbrella evidence because
+the cached `FLT.olean` predated the final root import. After correcting the evidence defects, the
+controller repeated both builds with hash checking against the repaired Lean source tree in a
+writable worktree-local build directory. A second independent reviewer must reproduce the result
+before the adapter can be marked independently reviewed.
+
 ## Independent design evidence
 
 GPT-5.6 xhigh returned `REVISE` on the prior combined graph design and validated the split used
@@ -54,8 +64,11 @@ here. It independently elaborated the dense-set trace/determinant route, require
 saturation, narrowed the missing contract to `ℚ`, and required the representation-equivalence name.
 Its exact prompt and response are retained beside this evidence packet.
 
-The literature-grounded Fable design was still pending when this mechanical evidence snapshot was
-created and cannot be counted as approval.
+Fable 5 produced a detailed literature-grounded static plan after 1,455,677 ms. It independently
+confirmed the local-to-global map, conjugacy saturation, finite-exception quantification,
+trace/determinant continuity route, explicit density contract, and the need for a separate density
+graph node. Its bridge response terminated in plan mode while promising a later synthesis, so it is
+retained as design evidence and is not counted as an implementation approval.
 
 ## Honest promotion boundary
 
@@ -66,4 +79,3 @@ full compatible-family consumer. The next gates are:
 2. exact source review and operator decision for any T2 density assumption;
 3. consumer-specific same-coefficient, determinant, and semisimplicity wiring;
 4. a standard-trio proof of density for T3.
-

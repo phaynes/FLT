@@ -210,4 +210,3 @@ Stop immediately if:
 - the T2 source locator remains absent.
 
 This is a viable bounded implementation slice, but `FLT-CHEBOTAREV`, the compatible-family terminal, and FLT remain unproved.
-
