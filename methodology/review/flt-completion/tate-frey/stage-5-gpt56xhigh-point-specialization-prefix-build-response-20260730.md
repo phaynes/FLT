@@ -87,4 +87,3 @@ under `NeZero (n : IsLocalRing.ResidueField R)`. Only then can the existing
 
 This prefix is real reusable proof progress, but it is not obligation closure and has no graph
 promotion effect by itself.
-
