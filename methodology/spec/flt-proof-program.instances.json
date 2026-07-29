@@ -1014,7 +1014,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The exact declaration builds and independent Fable 5 and GPT-5.6 xhigh reviews accept all four fields.",
+        "evidence": "The exact declaration builds and independent Fable 5 and GPT-5.6 xhigh reviews accept all four fields. The canonical J_v kernel provider is now separately kernel-complete and Fable-reviewed.",
         "loc_p50": 3000,
         "loc_p80": 12000,
         "loc_p95": 45000,
@@ -1031,15 +1031,16 @@
       "library_candidates": [
         "GaloisRep.IsUnramifiedAt",
         "GaloisRep.IsFlatAt",
-        "localTameAbelianInertiaGroup"
+        "localTameAbelianInertiaGroup",
+        "localTameAbelianInertiaGroup_eq_ker"
       ],
       "mathematical_name": "Blueprint-temporary S-good condition",
       "mathematical_novelty": "standard",
       "obligation_id": "FLT-SGOOD-DEF",
       "proof_pattern": "Reuse the existing determinant, local-inertia, tame-kernel and finite-flat predicates without encoding Taylor 2018 or an automorphy conclusion.",
-      "review_state": "reviewed-tame-kernel-provider-open",
+      "review_state": "reviewed-tame-kernel-provider-available-source-pending",
       "scc_id": "SCC-FLT-SGOOD-DEF",
-      "source_condition_risks": "The repository's localTameAbelianInertiaGroup is the intended J_v. Its containment in inertia is now proved, while the canonical tame-residue-kernel identification remains open in FLT-TAME-RESIDUE; this is a dependency caveat rather than a defect in the four-field signature.",
+      "source_condition_risks": "The repository's localTameAbelianInertiaGroup is the intended J_v. Its containment in inertia and canonical mapped tame-residue-kernel identification are now proved and independently reviewed. FLT-TAME-RESIDUE remains source-assurance pending; that does not alter this four-field signature or close later source-reconciliation work.",
       "source_refs": [
         "SRC-004"
       ],
@@ -1352,7 +1353,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The production methodology module and independent Opus build review establish four structural theorems, eight repaired interface definitions and the quadratic regression with exactly the standard trio. This remains bounded infrastructure; FLT-CBASE is still admitted.",
+        "evidence": "The production methodology module and independent Opus build review establish four structural theorems, eight repaired interface definitions and the quadratic regression with exactly the standard trio. The tame-kernel provider is now separately kernel-complete and Fable-reviewed. FLT-CBASE itself remains admitted.",
         "loc_p50": 15000,
         "loc_p80": 70000,
         "loc_p95": 300000,
@@ -1367,15 +1368,16 @@
       "lean_risk": "unbounded",
       "lean_type": "Exact theorem in FLT/GaloisRepresentation/Automorphic.lean transferring IsAutomorphicOfLevel across a cyclic extension subject to the current hypotheses.",
       "library_candidates": [
-        "cyclic_base_change"
+        "cyclic_base_change",
+        "localTameAbelianInertiaGroup_eq_ker"
       ],
       "mathematical_name": "Cyclic base change and descent characterization",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CBASE",
       "proof_pattern": "Bank the four structural theorems and the regression-guarded conditional vocabulary in a bounded methodology probe, then independently review it. They are infrastructure only. T2 names exact analytic interfaces only after source authorization; T3 proves them.",
-      "review_state": "bounded-repair-built-and-independently-reviewed-provider-open",
+      "review_state": "bounded-repair-built-and-independently-reviewed-tame-provider-available-source-pending",
       "scc_id": "SCC-FLT-CBASE",
-      "source_condition_risks": "The second Fable repair removes the false broad fiber interface and retains only a finite-Galois, algebraically-closed-coefficient, finite-dimensional, restricted-irreducible conditional signature. Future consumer universes remain unknown; the frozen two-universe theorem is unchanged. IsAutomorphicOfLevel still omits total definiteness/even degree, owned by FLT-AUT-DEF, and the J_v kernel semantics remain open in FLT-TAME-RESIDUE. Forward transfer, image/descent, cuspidality, Jacquet-Langlands in both directions, multiplicity one and level/conductor compatibility remain source-open.",
+      "source_condition_risks": "The second Fable repair removes the false broad fiber interface and retains only a finite-Galois, algebraically-closed-coefficient, finite-dimensional, restricted-irreducible conditional signature. Future consumer universes remain unknown; the frozen two-universe theorem is unchanged. IsAutomorphicOfLevel still omits total definiteness/even degree, owned by FLT-AUT-DEF. The J_v kernel semantics are now kernel-complete and independently reviewed, with source assurance still pending in FLT-TAME-RESIDUE. Forward transfer, image/descent, cuspidality, Jacquet-Langlands in both directions, multiplicity one and level/conductor compatibility remain source-open.",
       "source_refs": [
         "SRC-004"
       ],
@@ -2291,7 +2293,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "The five repository boundary probes remain standard-trio clean and directly name the tame subgroup. The neutral absolute-residual vocabulary is built and reviewed; coefficient, p-adic-Hodge, RACAR, source-contract and FLT-TAME-RESIDUE providers remain open.",
+        "evidence": "The five repository boundary probes remain standard-trio clean and directly name the tame subgroup. The neutral absolute-residual vocabulary and tame-kernel theorem are built and reviewed; coefficient, p-adic-Hodge, RACAR and source-contract providers remain open.",
         "loc_p50": 3000,
         "loc_p80": 14000,
         "loc_p95": 55000,
@@ -2308,15 +2310,16 @@
       "library_candidates": [
         "DeformationCondition",
         "GaloisRep.IsFlatAt",
-        "localTameAbelianInertiaGroup"
+        "localTameAbelianInertiaGroup",
+        "localTameAbelianInertiaGroup_eq_ker"
       ],
       "mathematical_name": "Repository weight-two local conditions selected after Taylor 2018",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SGOOD-SELECTED",
-      "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges only after coefficient, p-adic-Hodge, RACAR and tame-kernel vocabulary lands.",
-      "review_state": "bounded-vocabulary-built-reviewed-providers-open",
+      "proof_pattern": "Preserve the five-unit repository boundary while repairing the source-side neutral vocabulary and ownership graph; prove source bridges after coefficient, p-adic-Hodge, RACAR and remaining source vocabulary land, using the now-proved tame-kernel theorem.",
+      "review_state": "bounded-vocabulary-built-reviewed-tame-provider-available-other-providers-open",
       "scc_id": "SCC-FLT-SGOOD-SELECTED",
-      "source_condition_risks": "The five proposed repository declarations elaborate cleanly and directly name the J_v subgroup. The source-side neutral vocabulary and ownership graph are reviewed, but coefficient, p-adic-Hodge, RACAR, source-contract and canonical tame-kernel providers remain open.",
+      "source_condition_risks": "The five proposed repository declarations elaborate cleanly and directly name the J_v subgroup. The canonical tame-kernel provider is now kernel-complete and independently reviewed, with its primary-source assurance still pending. The source-side neutral vocabulary and ownership graph are reviewed, but coefficient, p-adic-Hodge, RACAR and source-contract providers remain open.",
       "source_refs": [
         "SRC-004",
         "SRC-016"
@@ -3097,7 +3100,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Several explicit admissions with source hints exist; traceConditionFunctor directly consumes localTameAbelianInertiaGroup.",
+        "evidence": "Several explicit admissions with source hints exist; traceConditionFunctor directly consumes localTameAbelianInertiaGroup, whose canonical kernel theorem is now production-green and Fable-reviewed.",
         "loc_p50": 6000,
         "loc_p80": 25000,
         "loc_p95": 90000,
@@ -3115,15 +3118,16 @@
         "CategoryTheory.Functor",
         "CorepresentableBy",
         "CompleteLocalRing",
-        "traceConditionFunctor"
+        "traceConditionFunctor",
+        "localTameAbelianInertiaGroup_eq_ker"
       ],
       "mathematical_name": "Generic deformation representability support cluster",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-SUPPORT-DEFORMATION",
-      "proof_pattern": "Close generic categorical and commutative-algebra admissions before specialization, with tame-subgroup semantics discharged by FLT-TAME-RESIDUE.",
-      "review_state": "unreviewed-tame-kernel-provider-open",
+      "proof_pattern": "Close generic categorical and commutative-algebra admissions before specialization, reusing the proved tame-subgroup kernel semantics from FLT-TAME-RESIDUE.",
+      "review_state": "unreviewed-tame-kernel-provider-available-source-pending",
       "scc_id": "SCC-FLT-SUPPORT-DEFORMATION",
-      "source_condition_risks": "Generic representability theorems must be strong enough for constrained deformation subfunctors and must not import classical existence as an axiom. The trace-condition functor consumes the repository J_v subgroup whose canonical kernel semantics remain open in FLT-TAME-RESIDUE.",
+      "source_condition_risks": "Generic representability theorems must be strong enough for constrained deformation subfunctors and must not import classical existence as an axiom. The trace-condition functor consumes the repository J_v subgroup; its canonical mapped tame-residue-kernel semantics are now proved and independently reviewed, with source assurance still pending in FLT-TAME-RESIDUE.",
       "source_refs": [
         "SRC-001",
         "SRC-015"
@@ -3374,11 +3378,11 @@
         "T3"
       ],
       "critical_path": true,
-      "current_state": "definition-gap",
+      "current_state": "kernel-complete-source-pending",
       "direct_dependencies": [],
       "estimates": {
-        "confidence": "low",
-        "evidence": "U1/U2 are independently rebuilt and reviewed PASS. The ten-declaration U3 slice has targeted/full controller builds green and exact standard-trio audits after independent design review. Opus independently found the read-only mathematical, module, and scope audit clean, but its plan-mode profile did not run builds or axiom audits, so the review gate remains open. U4-U6 remain absent and U5 is the deepest Henselian arithmetic boundary.",
+        "confidence": "high",
+        "evidence": "U1-U6 passed controller forced-hash targeted and 9047-job umbrella builds. Every new declaration and the existing tame-boundary declarations audit to exactly [propext, Classical.choice, Quot.sound]. Fable 5 independently re-elaborated, rebuilt and mathematically reviewed the exact frozen candidate PASS-TAME-RESIDUE-KERNEL.",
         "loc_p50": 700,
         "loc_p80": 4000,
         "loc_p95": 18000,
@@ -3386,16 +3390,17 @@
         "tokens_p80": 650000,
         "tokens_p95": 3500000
       },
-      "expected_module": "FLT.Deformations.RepresentationTheory.AbsoluteGaloisGroup",
+      "expected_module": "FLT.Deformations.RepresentationTheory.FixedFieldUniformizer",
       "graph_depth": 0,
-      "kernel_probe_state": "u1-u3-production-and-methodology-build-green-standard-trio",
+      "kernel_probe_state": "u1-u6-production-and-methodology-build-green-standard-trio-fable-reviewed",
       "lean_declaration": "AddSubgroup.isClosed_inertia; isClosed_localInertiaGroup; localTameAbelianInertiaGroup_le_localInertiaGroup; eq_one_of_pow_eq_one_of_residue_eq_one; rootsOfUnity_residue_injective; finiteFieldUnitsEquivRootsOfUnity; isUnit_card_sub_one_ICv; residueUnitsEquivRootsOfUnity_at_place; tameRootsReduction_at_place; tameRootsReduction_at_place_injective; tameResidueChar; localTameAbelianInertiaGroup_eq_ker",
       "lean_risk": "high",
-      "lean_type": "Definition gap: U1 proves inertia closedness, U2 proves the repository proxy J_v is contained in inertia I_v, and U3 constructs the injective reduction/descent map from integral (q-1)-st roots of unity to base residue-field units. Remaining U4-U6 must construct the plain tame residue monoid hom localInertiaGroup v ->* (kappa O_v)^x, prove the required Henselian lift, and identify the existing localTameAbelianInertiaGroup with its mapped kernel.",
+      "lean_type": "U1-U6 are implemented: inertia closedness and containment, roots-of-unity reduction and finite-field descent, the plain tame residue monoid hom, the finite-level unramified/fixed-field uniformizer decomposition, and the unconditional identification of localTameAbelianInertiaGroup with the mapped tame-residue kernel.",
       "library_candidates": [
         "AddSubgroup.inertia",
         "ContinuousSMulDiscrete",
         "InfiniteGalois.fixingSubgroup_fixedField",
+        "Ideal.Quotient.stabilizerHom_surjective_of_profinite",
         "IsLocalRing.ResidueField",
         "restrictRootsOfUnity",
         "card_rootsOfUnity",
@@ -3404,14 +3409,14 @@
       "mathematical_name": "Tame residue character and canonical inertia kernel at a finite place",
       "mathematical_novelty": "standard",
       "obligation_id": "FLT-TAME-RESIDUE",
-      "proof_pattern": "Use the independently built and reviewed U1/U2 topology/Galois-correspondence prefix and the kernel-green U3 roots-of-unity reduction, then construct the elementary tame character without reciprocity, prove the required root lifting, and identify the proxy with the mapped kernel.",
-      "review_state": "bounded-u3-review-no-result-plan-only-paused",
+      "proof_pattern": "Construct the tame character without reciprocity; lift finite inertia by a profinite residue-action correction; deduce ramification index one at finite Galois levels inside the inertia fixed field; factor by the base uniformizer; and apply the unchanged conditional kernel theorem.",
+      "review_state": "kernel-complete-fable-independent-pass-source-pending",
       "scc_id": "SCC-FLT-TAME-RESIDUE",
-      "source_condition_risks": "SRC-004 is explicitly incomplete and no primary Local Fields locator has been visually verified. P_v <= J_v <= I_v is the reviewed relation; universal equality, universal strictness, and wild-inertia exclusion are false. U3 roots-of-unity reduction and finite-field descent are production-green pending an executable independent build review; the first Opus attempt was read-only clean but returned NO-RESULT. U4 tameResidueChar, U5 Henselian lifting, and U6 the kernel theorem remain open.",
+      "source_condition_risks": "SRC-004 remains explicitly incomplete. The retained independent locator review identifies Neukirch, Algebraic Number Theory, II.3.8, II.7.5 and II.9.11 and is consistent with the proved route, but no hash-verified local primary-source copy or registered SRC-026 is present. P_v <= J_v <= I_v remains the reviewed relation; universal equality, universal strictness and wild-inertia exclusion remain false. This is a source-assurance gap, not a kernel or statement gap.",
       "source_refs": [
         "SRC-004"
       ],
-      "stage_completion": "T1 closes only after tameResidueChar and localTameAbelianInertiaGroup_eq_ker are proved with standard axiom closure. T2 and T3 retain the same theorem and source requirements; no tame-residue T2 assumption is presently authorized.",
+      "stage_completion": "The T1 code/kernel/review condition is complete. The obligation remains open under its full completion gate until a primary-source locator is visually verified and registered. T2 and T3 retain the same theorem and source requirements; no tame-residue T2 assumption is authorized.",
       "target_stage": "T1"
     }
   ],

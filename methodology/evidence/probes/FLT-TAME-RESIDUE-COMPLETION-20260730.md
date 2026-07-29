@@ -1,8 +1,11 @@
 # FLT tame-residue completion candidate — controller evidence
 
-Date: 2026-07-30  
-Obligation: `FLT-TAME-RESIDUE`  
-Worktree: `/Volumes/second-store/devel/proof-forks/FLT-tame-residue-completion-20260730`  
+Date: 2026-07-30
+
+Obligation: `FLT-TAME-RESIDUE`
+
+Worktree: `/Volumes/second-store/devel/proof-forks/FLT-tame-residue-completion-20260730`
+
 Branch: `codex/ca-flt-tame-residue-completion-20260730`
 
 ## Exact declarations
@@ -56,7 +59,11 @@ In particular:
 ```
 
 A prohibited-token scan found no `sorry`, `sorryAx`, or new `axiom` in the production module or
-its audit probe. `git diff --check` passed.
+its audit probe. The controller's initial worktree-level `git diff --check` passed before this
+packet was added. Fable correctly found that the frozen candidate-range check then failed on three
+Markdown hard-breaks in this packet. Those trailing spaces were removed after review; the
+corrected-HEAD range check now passes, while the immutable frozen-candidate result remains recorded
+as the historical finding. No Lean source was affected.
 
 ## Source and promotion boundary
 
