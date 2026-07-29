@@ -1,0 +1,31 @@
+[settings]
+workspace_root = "."
+default_timeout_secs = 5400
+default_max_review_cycles = 1
+claude_bin = "/Users/philiphaynes/.local/bin/claude"
+
+[agents.fable5-tame-completion-reviewer]
+name = "fable5-tame-completion-reviewer"
+description = "Independent executable adversarial reviewer for the FLT tame-residue completion candidate"
+backend = "claude-code"
+role = "reviewer"
+model = "claude-fable-5"
+permission_mode = "full-auto"
+reasoning_effort = "max"
+claude_transport = "stream-json"
+output_format = "stream-json"
+session_strategy = "fresh"
+timeout_secs = 5400
+max_retries = 0
+append_system_prompt = """
+Treat every prior report and AI claim as untrusted. Review the exact frozen candidate and execute
+only the authorized read/build checks. Do not edit source, control, prompt, configuration, or review
+files. You have no authority to commit, push, mutate the proof graph, change an obligation state, or
+promote a result. Return an adversarial evidence-based verdict and distinguish operational failure,
+source-assurance incompleteness, statement weakness, and a mathematical defect.
+"""
+
+[agents.fable5-tame-completion-reviewer.env]
+GIT_CONFIG_COUNT = "1"
+GIT_CONFIG_KEY_0 = "remote.origin.pushurl"
+GIT_CONFIG_VALUE_0 = "disabled://no-push"
