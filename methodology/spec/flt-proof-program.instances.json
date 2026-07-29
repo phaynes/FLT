@@ -2079,7 +2079,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "Comparison theorem has the target-stage axiom closure and exact family specializations.",
+      "completion_gate": "The exact rank-two family comparison is kernel-clean, with the almost-all-Frobenius to all-elements passage explicit and no duplicated Brauer-Nesbitt assumption.",
       "completion_targets": [
         "T2",
         "T3"
@@ -2092,7 +2092,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "No exact theorem found in the pinned library; independent consumer reviews confirmed that almost-all Frobenius compatibility does not directly satisfy the all-group-element residual specialization.",
+        "evidence": "No exact theorem found in the pinned library; independent consumer reviews confirmed that almost-all Frobenius compatibility does not directly satisfy the all-group-elements premise.",
         "loc_p50": 12000,
         "loc_p80": 55000,
         "loc_p95": 220000,
@@ -2105,22 +2105,22 @@
       "kernel_probe_state": "absent",
       "lean_declaration": "FLT.CompatibleFamily.equal_of_charFrob_eq",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed: semisimple continuous Galois representations with equal characteristic polynomials on all but finitely many Frobenius elements are isomorphic (or have the exact trace consequence needed).",
+      "lean_type": "Proposed: two semisimple continuous rank-two Galois representations in the encoded compatible family, with equal characteristic polynomials on all but finitely many Frobenius elements, have equal characteristic polynomials on every Galois element and hence are equivalent by the proved rank-two Brauer-Nesbitt theorem.",
       "library_candidates": [
         "NumberField.chebotarev",
         "GaloisRep.charFrob"
       ],
-      "mathematical_name": "Chebotarev density specialization for compatible Galois representations",
+      "mathematical_name": "Chebotarev density specialization for compatible rank-two Galois representations",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CHEBOTAREV",
-      "proof_pattern": "Use sourced Chebotarev plus trace continuity and the characteristic-zero branch of Brauer--Nesbitt.",
+      "proof_pattern": "Use sourced Chebotarev plus coefficient transport and continuity to prove the all-elements characteristic-polynomial identity for the encoded rank-two family, then apply the proved rank-two Brauer-Nesbitt theorem.",
       "review_state": "revision-required",
       "scc_id": "SCC-FLT-CHEBOTAREV",
-      "source_condition_risks": "Continuity, semisimplicity, coefficient embeddings, density topology, and the characteristic-zero Brauer--Nesbitt terminal must be explicit.",
+      "source_condition_risks": "Continuity, semisimplicity, rank-two coefficient embeddings, the density topology, and the passage from almost-all Frobenius data to equality on every Galois element must be explicit. Brauer-Nesbitt begins only after that all-elements premise is established.",
       "source_refs": [
         "SRC-003"
       ],
-      "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
+      "stage_completion": "T2 replaces the generic historical authority with this exact named rank-two interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"
     },
     {
@@ -2158,7 +2158,7 @@
       "mathematical_novelty": "specialist",
       "obligation_id": "FLT-BRAUER-NESBITT",
       "proof_pattern": "Completed via the denominator-free degree-two Amitsur determinant identity, semisimplicity of the faithful joint-image algebra, Wedderburn-Artin decomposition over possibly noncommutative division rings, central-idempotent rank recovery, Morita reconstruction, and transport to a Representation.Equiv.",
-      "review_state": "rank-two-provider-and-live-coefficient-consumer-independently-reviewed-pass",
+      "review_state": "reviewed",
       "scc_id": "SCC-FLT-BRAUER-NESBITT",
       "source_condition_risks": "The proved theorem is deliberately rank two because the live FLT representation consumers are rank two. It does not prove the retained general-dimensional Contract. The compatible-family path still needs the separate FLT-CHEBOTAREV bridge from almost-all Frobenius comparison to equality on every group element. The exact primary-source locator for the arbitrary-field formulation remains a literature-assurance gap, not a kernel gap.",
       "source_refs": [
@@ -3076,7 +3076,7 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "All seven providers are proved and every coefficient/lattice/residual declaration and comparison law has standard axiom closure.",
+      "completion_gate": "All six remaining providers are proved and every coefficient/lattice/residual declaration and comparison law has standard axiom closure.",
       "completion_targets": [
         "T1",
         "T2",
@@ -3090,7 +3090,7 @@
       ],
       "estimates": {
         "confidence": "low",
-        "evidence": "Operator chose option 1 on 2026-07-18. The bounded vocabulary and conditional composition are persisted and audit to exactly the standard trio. All seven providers remain open; no obligation was promoted.",
+        "evidence": "Operator chose option 1 on 2026-07-18. The bounded vocabulary, conditional composition, and direct rank-two Brauer-Nesbitt lattice comparison are persisted and audit to exactly the standard trio. Six non-Brauer-Nesbitt providers remain open; the coefficient obligation is not promoted.",
         "loc_p50": 6000,
         "loc_p80": 30000,
         "loc_p95": 120000,
@@ -3116,14 +3116,14 @@
       "mathematical_name": "Algebraic ell-adic coefficients, stable lattices, and semisimplified residual reduction",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-MLT-COEFFICIENTS",
-      "proof_pattern": "Use the persisted bounded coefficient/lattice/residual vocabulary and conditional named-consumer composition, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, Brauer-Nesbitt, cross-coefficient independence, and the named closure realization.",
-      "review_state": "operator-adjudicated-bounded-scaffolding-built-seven-providers-open",
+      "proof_pattern": "Use the persisted bounded coefficient/lattice/residual vocabulary and proved rank-two comparison, then separately discharge coefficient glue, stable-lattice existence, semisimplification existence, semisimplicity ascent, cross-coefficient independence, and the named closure realization.",
+      "review_state": "revision-required",
       "scc_id": "SCC-FLT-MLT-COEFFICIENTS",
-      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. The bounded tower and same-O comparison wiring is trio-clean, but the tower reaches rho.baseChange C rather than an arbitrary named closure-valued consumer. The operator accepted the seventh field-of-definition/closure-realization provider; it remains open in addition to T-A1, T-A2, T-A3, M4, BN, and T-IND-CLOSURE.",
+      "source_condition_risks": "The coefficient ring must be explicit choice data and the residue topology discrete. Stable-lattice and semisimplification existence remain genuine T1 mathematics. The bounded tower and same-O comparison wiring, including the direct rank-two Brauer-Nesbitt consumer, is trio-clean. Six providers remain open: T-A1, T-A2, T-A3, M4, T-IND-CLOSURE, and the operator-accepted field-of-definition/closure-realization provider.",
       "source_refs": [
         "SRC-016"
       ],
-      "stage_completion": "T1 closes this obligation only after all seven providers, including FLT-MLT-COEFF-REALIZATION, are proved; the same closure must remain standard-trio clean at T2 and T3.",
+      "stage_completion": "T1 closes this obligation only after all six remaining providers, including FLT-MLT-COEFF-REALIZATION, are proved; the same closure must remain standard-trio clean at T2 and T3.",
       "target_stage": "T1"
     },
     {

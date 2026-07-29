@@ -52,7 +52,7 @@ node are now complete.
 
 | Node | Classification | Immediate reason |
 |---|---|---|
-| `FLT-MLT-COEFFICIENTS` | ACTIVE | Four coefficient/residual relations and the exact Brauer--Nesbitt consumer boundary are signature-green; trace extension and product-module transport are kernel-clean, while stable-lattice independence and the central Brauer--Nesbitt character/projector theorem remain open |
+| `FLT-MLT-COEFFICIENTS` | ACTIVE | The bounded vocabulary and direct same-coefficient-field rank-two lattice comparison are kernel-clean; six distinct providers remain open: stable lattice, coefficient glue, semisimplified reduction, semisimplicity ascent, cross-coefficient independence, and named closure realization |
 | `FLT-MLT-PADIC-HODGE` | BLOCKED | Depends on the coefficient/lattice boundary |
 | `FLT-RACAR-DEF` | BLOCKED | Depends on coefficient data and the admitted automorphic support cluster |
 | `FLT-SGOOD-DEF` | COMPLETE | Exact four-field definition builds with the standard axiom trio and independent Fable/GPT reviews accept it |
