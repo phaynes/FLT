@@ -56,6 +56,10 @@ here rather than hidden.
   approval gate.
 - GPT-5.6 xhigh fresh independent session: `PASS`, after mathematical inspection,
   fresh targeted/umbrella elaboration, and declaration-level axiom audit.
+- The first graph-promotion review returned `REVISE` for three control-plane
+  inconsistencies. After repair, a fresh independent re-review returned `PASS`
+  with byte-for-byte generator replay, 55 obligations, 102 edges, no cycles,
+  and a repeated 9,043-job umbrella build.
 
 Exact review records are adjacent under
 `methodology/review/flt-completion/brauer-nesbitt/`.
