@@ -1,4 +1,5 @@
 import FLTMethodology.Probes.BrauerNesbittBoundary
+import FLT.Components.BrauerNesbitt.RankTwo
 import FLT.GaloisRepresentation.HardlyRamified.Lift
 import FLT.GaloisRepresentation.HardlyRamified.Family
 import FLT.Deformations.Categories
@@ -257,6 +258,39 @@ theorem latticeIndependent_of_groupContract'
     (hBN : GroupContract.{uO, uF, uW1, uW2}) :
     LatticeIndependent.{uO, uF, uE, uV, uV01, uV02, uW1, uW2} p hp O hV rho :=
   fun D1 D2 => latticeIndependent_of_groupContract p hp O hV rho hBN D1 D2
+
+/-- The rank-two Brauer--Nesbitt theorem discharges the comparison provider for the bounded
+coefficient-data consumer. Unlike `latticeIndependent_of_groupContract`, this theorem does not
+receive a Brauer--Nesbitt proposition as an assumption: the rank facts stored in each coefficient
+bundle and the already-proved characteristic-polynomial comparison supply all of its premises. -/
+theorem latticeIndependent_rankTwo
+    (D1 : CoefficientData.{uO, uF, uE, uV, uV01, uW1} p hp O hV rho)
+    (D2 : CoefficientData.{uO, uF, uE, uV, uV02, uW2} p hp O hV rho) :
+    SemisimpleResidualEquivalent D1.rhobar D2.rhobar := by
+  have hs1 : Representation.IsSemisimpleRepresentation D1.rhobar.toRepresentation :=
+    D1.isSemisimplifiedResidualModel.2.1
+  have hs2 : Representation.IsSemisimpleRepresentation D2.rhobar.toRepresentation :=
+    D2.isSemisimplifiedResidualModel.2.1
+  have hchar : ∀ g, (D1.rhobar.toRepresentation g).charpoly
+      = (D2.rhobar.toRepresentation g).charpoly :=
+    fun g => residual_charpoly_eq_of_two_integral_models p hp O hV rho D1 D2 g
+  obtain ⟨e⟩ :=
+    FLT.Components.BrauerNesbitt.nonempty_representationEquiv_of_finrank_eq_two
+      D1.rhobar.toRepresentation D2.rhobar.toRepresentation hs1 hs2
+      (D1.finrank_wbar_eq_two p hp O hV rho)
+      (D2.finrank_wbar_eq_two p hp O hV rho) hchar
+  refine ⟨e.toLinearEquiv, ?_⟩
+  apply GaloisRep.ext
+  intro g
+  exact e.conj_apply_self g
+
+/-- Bundle form of the now-unconditional rank-two lattice-independence consumer. -/
+theorem latticeIndependent_rankTwo' :
+    LatticeIndependent.{uO, uF, uE, uV, uV01, uV02, uW1, uW2} p hp O hV rho :=
+  fun D1 D2 => latticeIndependent_rankTwo p hp O hV rho D1 D2
+
+#print axioms latticeIndependent_rankTwo
+#print axioms latticeIndependent_rankTwo'
 
 /-- T-A2a residue local-hom adapter (open named boundary; NOT proved). -/
 def ResidueLocalHomAdapter
