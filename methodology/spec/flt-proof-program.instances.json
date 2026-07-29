@@ -436,6 +436,13 @@
       "to": "FLT-CHEBOTAREV"
     },
     {
+      "edge_id": "E-CHEBOTAREV-DENSITY-CHEBOTAREV",
+      "edge_kind": "theorem",
+      "from": "FLT-CHEBOTAREV-DENSITY",
+      "justification": "FLT-CHEBOTAREV directly consumes FLT-CHEBOTAREV-DENSITY.",
+      "to": "FLT-CHEBOTAREV"
+    },
+    {
       "edge_id": "E-FAMILY-COMPAT-CONTRA",
       "edge_kind": "theorem",
       "from": "FLT-FAMILY",
@@ -2079,48 +2086,97 @@
       "target_stage": "T1"
     },
     {
-      "completion_gate": "The exact rank-two family comparison is kernel-clean, with the almost-all-Frobenius to all-elements passage explicit and no duplicated Brauer-Nesbitt assumption.",
+      "completion_gate": "T2 has an explicitly operator-authorized, source-exact named density interface or T3 has a standard-trio proof of RatArithmeticFrobeniusConjugacyDensity; no chosen-representative or finite-exception weakening is accepted.",
       "completion_targets": [
         "T2",
         "T3"
       ],
       "critical_path": true,
       "current_state": "absent",
-      "direct_dependencies": [
-        "FLT-COMPAT-DEF",
-        "FLT-BRAUER-NESBITT"
-      ],
+      "direct_dependencies": [],
       "estimates": {
         "confidence": "low",
-        "evidence": "No exact theorem found in the pinned library; independent consumer reviews confirmed that almost-all Frobenius compatibility does not directly satisfy the all-group-elements premise.",
-        "loc_p50": 12000,
-        "loc_p80": 55000,
-        "loc_p95": 220000,
-        "tokens_p50": 1500000,
-        "tokens_p80": 8000000,
-        "tokens_p95": 45000000
+        "evidence": "Gee Fact 2.27 and Wiese Theorem 1.2.8/Corollary 1.2.9 support the exact contract; the proposition definition and all deterministic consumers are kernel-green, but the pinned library supplies no density provider.",
+        "loc_p50": 8000,
+        "loc_p80": 35000,
+        "loc_p95": 150000,
+        "tokens_p50": 1000000,
+        "tokens_p80": 6000000,
+        "tokens_p95": 32000000
+      },
+      "expected_module": "FLT.GaloisRepresentation.CompatibleFamilyComparison",
+      "graph_depth": 0,
+      "kernel_probe_state": "proposition-definition-green-provider-absent",
+      "lean_declaration": "FLT.CompatibleFamily.RatArithmeticFrobeniusConjugacyDensity",
+      "lean_risk": "very-high",
+      "lean_type": "Definition gap: for every finite exceptional set of finite places of \u211a, the conjugacy saturation of the repository's chosen global arithmetic-Frobenius elements is dense in the absolute Galois group.",
+      "library_candidates": [
+        "Set.IsDense",
+        "Field.AbsoluteGaloisGroup.adicArithFrob"
+      ],
+      "mathematical_name": "Chebotarev density for arithmetic Frobenius conjugacy classes over \u211a",
+      "mathematical_novelty": "standard",
+      "obligation_id": "FLT-CHEBOTAREV-DENSITY",
+      "proof_pattern": "At T2, introduce a source-exact named historical interface only after explicit operator authorization. At T3, formalize finite Chebotarev and the inverse-limit/profinite passage, proving the exact proposition with standard axiom closure.",
+      "review_state": "source-and-signature-reviewed-provider-absent",
+      "scc_id": "SCC-FLT-CHEBOTAREV-DENSITY",
+      "source_condition_risks": "The pinned library has no global Chebotarev theorem. Chosen Frobenius representatives alone are not dense; the union of their conjugacy classes is required. The present secondary sources support the exact proposition, but no exact primary-source locator or T2 assumption authorization is registered.",
+      "source_refs": [
+        "SRC-013",
+        "SRC-019"
+      ],
+      "stage_completion": "T2 may close only through the separately governed historical-assumption gate. T3 requires the same density proposition to be proved with exactly the standard trio.",
+      "target_stage": "T2"
+    },
+    {
+      "completion_gate": "The exact density provider is discharged at the target stage and the fixed-coefficient compatible-family consumer closes through the independently reviewed deterministic adapter without a duplicate Brauer-Nesbitt or density assumption.",
+      "completion_targets": [
+        "T2",
+        "T3"
+      ],
+      "critical_path": true,
+      "current_state": "definition-gap",
+      "direct_dependencies": [
+        "FLT-COMPAT-DEF",
+        "FLT-BRAUER-NESBITT",
+        "FLT-CHEBOTAREV-DENSITY"
+      ],
+      "estimates": {
+        "confidence": "medium",
+        "evidence": "The seven-theorem deterministic adapter was hash-built by the controller, independently re-elaborated, independently rebuilt by Fable 5, and audited to exactly propext, Classical.choice, and Quot.sound. The density provider and family consumer are explicitly separate.",
+        "loc_p50": 5000,
+        "loc_p80": 25000,
+        "loc_p95": 100000,
+        "tokens_p50": 650000,
+        "tokens_p80": 4000000,
+        "tokens_p95": 22000000
       },
       "expected_module": "FLT.GaloisRepresentation.CompatibleFamilyComparison",
       "graph_depth": 1,
-      "kernel_probe_state": "absent",
-      "lean_declaration": "FLT.CompatibleFamily.equal_of_charFrob_eq",
+      "kernel_probe_state": "deterministic-adapter-proof-green",
+      "lean_declaration": "FLT.CompatibleFamily.nonempty_representationEquiv_of_charFrob_eq_of_density; FLT.CompatibleFamily.GaloisRepFamily.isCompatible_charFrob_eq",
       "lean_risk": "unbounded",
-      "lean_type": "Proposed: two semisimple continuous rank-two Galois representations in the encoded compatible family, with equal characteristic polynomials on all but finitely many Frobenius elements, have equal characteristic polynomials on every Galois element and hence are equivalent by the proved rank-two Brauer-Nesbitt theorem.",
+      "lean_type": "The deterministic rank-two adapter is proved: explicit density of arithmetic-Frobenius conjugacy saturation plus full characteristic-polynomial equality outside one finite exceptional set yields Nonempty (Representation.Equiv ...) for two common-coefficient, semisimple, rank-two representations. The density provider and fixed-coefficient compatible-family consumer remain separate gaps.",
       "library_candidates": [
-        "NumberField.chebotarev",
-        "GaloisRep.charFrob"
+        "GaloisRep.charFrob",
+        "Set.IsDense",
+        "Continuous.ext_on",
+        "LinearMap.charpoly_of_finrank_eq_two"
       ],
       "mathematical_name": "Chebotarev density specialization for compatible rank-two Galois representations",
       "mathematical_novelty": "research-level",
       "obligation_id": "FLT-CHEBOTAREV",
-      "proof_pattern": "Use sourced Chebotarev plus coefficient transport and continuity to prove the all-elements characteristic-polynomial identity for the encoded rank-two family, then apply the proved rank-two Brauer-Nesbitt theorem.",
-      "review_state": "revision-required",
+      "proof_pattern": "Use the reviewed deterministic adapter after separately discharging arithmetic-Frobenius conjugacy density and fixed-coefficient family wiring; do not duplicate Brauer-Nesbitt or replace conjugacy saturation by chosen representatives.",
+      "review_state": "deterministic-adapter-reviewed-density-and-family-consumer-open",
       "scc_id": "SCC-FLT-CHEBOTAREV",
-      "source_condition_risks": "Continuity, semisimplicity, rank-two coefficient embeddings, the density topology, and the passage from almost-all Frobenius data to equality on every Galois element must be explicit. Brauer-Nesbitt begins only after that all-elements premise is established.",
+      "source_condition_risks": "The conditional adapter is kernel-clean and independently reviewed. RatArithmeticFrobeniusConjugacyDensity remains unwitnessed; no T2 density assumption is authorized. The live family consumer must still select two representations over a common coefficient field and supply semisimplicity, rank, determinant/full-characteristic-polynomial transport, and one common finite exceptional set.",
       "source_refs": [
-        "SRC-003"
+        "SRC-003",
+        "SRC-013",
+        "SRC-016",
+        "SRC-019"
       ],
-      "stage_completion": "T2 replaces the generic historical authority with this exact named rank-two interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
+      "stage_completion": "T2 requires an authorized source-exact density interface plus the standard-trio deterministic adapter and consumer wiring. T3 requires the density provider, adapter, and consumer to have exactly standard axiom closure.",
       "target_stage": "T2"
     },
     {

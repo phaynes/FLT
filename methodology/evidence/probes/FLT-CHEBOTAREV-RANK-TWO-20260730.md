@@ -6,7 +6,9 @@ Branch: `codex/ca-flt-chebotarev-rank-two-20260730`
 
 Base: Brauer--Nesbitt reviewed milestone `8929b77866985a66fa7299c418a2fad2867cc606`
 
-Production commit reviewed: `3e418d53b6de47dacf976a43f5416267e7b94751`
+Initial production commit: `3e418d53b6de47dacf976a43f5416267e7b94751`
+
+Independently reviewed repaired candidate: `ee0f49e`
 
 ## Produced declarations
 
@@ -54,8 +56,20 @@ No theorem in the adapter depends on `sorryAx` or a custom density assumption.
 The first independent execution review correctly rejected the original umbrella evidence because
 the cached `FLT.olean` predated the final root import. After correcting the evidence defects, the
 controller repeated both builds with hash checking against the repaired Lean source tree in a
-writable worktree-local build directory. A second independent reviewer must reproduce the result
-before the adapter can be marked independently reviewed.
+writable worktree-local build directory. A second GPT rereview independently elaborated every exact
+source and reproduced the axiom closures, but correctly returned `REVISE` because its read-only
+sandbox could not write Lake artifacts.
+
+Fable 5 then ran under an executable, tracked-source-read-only review contract. It independently
+completed all four direct source elaborations, the 3,629-job targeted build, the 9,045-job umbrella
+build, and every axiom audit. Its terminal verdict was `PASS` after 279,967 ms. The exact review is:
+
+```text
+methodology/review/flt-completion/chebotarev/
+  rank-two-adapter-fable5-executable-review-20260730.md
+```
+
+This approves the deterministic adapter only.
 
 ## Independent design evidence
 
@@ -73,9 +87,14 @@ retained as design evidence and is not counted as an implementation approval.
 ## Honest promotion boundary
 
 This evidence closes the deterministic adapter, not the arithmetic Chebotarev theorem and not the
-full compatible-family consumer. The next gates are:
+full compatible-family consumer. The control graph therefore records two distinct open obligations:
 
-1. independent executable review of this implementation;
-2. exact source review and operator decision for any T2 density assumption;
-3. consumer-specific same-coefficient, determinant, and semisimplicity wiring;
-4. a standard-trio proof of density for T3.
+- `FLT-CHEBOTAREV-DENSITY` owns the unwitnessed arithmetic density proposition;
+- `FLT-CHEBOTAREV` owns the remaining fixed-coefficient compatible-family consumer and depends on
+  that density provider plus the proved rank-two Brauer--Nesbitt theorem.
+
+The next gates are:
+
+1. exact source review and operator decision for any T2 density assumption;
+2. consumer-specific same-coefficient, determinant, and semisimplicity wiring;
+3. a standard-trio proof of density for T3.
