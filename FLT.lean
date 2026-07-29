@@ -15,6 +15,8 @@ public import FLT.Basic.Lemmas
 public import FLT.Components.BossInterface
 public import FLT.Components.BrauerNesbitt.IdempotentCharpoly
 public import FLT.Components.BrauerNesbitt.JointImageAlgebra
+public import FLT.Components.BrauerNesbitt.RankTwo
+public import FLT.Components.BrauerNesbitt.SemisimpleReconstruction
 public import FLT.Components.Contracts.BrauerNesbitt
 public import FLT.Components.Contracts.QuaternionRelativeIndex
 public import FLT.Components.Existing
