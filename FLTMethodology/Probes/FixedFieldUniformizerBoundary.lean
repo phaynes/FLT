@@ -1,0 +1,82 @@
+/-
+Copyright (c) 2026 Philip Haynes. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Philip Haynes
+-/
+import FLT.Deformations.RepresentationTheory.FixedFieldUniformizer
+
+/-!
+# Fixed-field uniformizer boundary audit
+
+This probe audits the finite-level ring pack and the fixed-field uniformizer provider.
+-/
+
+#check finiteIntegralClosure_isDiscreteValuationRing
+#check localInertiaGroup_normal
+#check fixedField_localInertia_isGalois
+#check tameUniformizerInteger
+#check tameUniformizerInteger_val
+#check maximalIdeal_eq_span_tameUniformizerInteger
+#check finiteIntegralClosure_moduleFinite
+#check finiteIntegralClosure_moduleFree
+#check finiteIntegralClosure_isFractionRing
+#check finiteIntegralClosureAlgHom
+#check finiteIntegralClosure_algebra
+#check finiteIntegralClosure_isScalarTower
+#check finiteIntegralClosure_top_isIntegral
+#check finiteIntegralClosure_smulDistribClass
+#check maximalIdeal_integralClosure_comap
+#check finiteIntegralClosure_maximalIdeal_liesOver
+#check finiteIntegralClosure_residueField_finite
+#check finiteIntegralClosure_isGaloisGroup
+#check map_localInertiaGroup_le_finiteInertia
+#check fixingSubgroup_smulCommClass_integralClosure
+#check fixingSubgroup_continuousSMulDiscrete_integralClosure
+#check isInvariant_finiteIntegralClosure_fixingSubgroup
+#check finiteIntegralClosure_fixingSubgroup_isInvariant
+#check infiniteMaximalIdeal_liesOver_finiteMaximalIdeal
+#check finiteInertia_le_map_localInertiaGroup
+#check map_localInertiaGroup_eq_finiteInertia
+#check finiteInertia_eq_bot_of_le_fixedField
+#check ramificationIdx_eq_one_of_le_fixedField
+#check finiteTameUniformizerInteger_irreducible
+#check map_maximalIdeal_eq_maximalIdeal_of_le_fixedField
+#check exists_eq_tameUniformizerInteger_zpow_mul_integralUnit
+#check exists_finiteGaloisIntermediateField_le_fixedField
+#check fixedFieldUniformizerDecomposition
+#check localTameAbelianInertiaGroup_eq_ker
+
+#print axioms finiteIntegralClosure_isDiscreteValuationRing
+#print axioms localInertiaGroup_normal
+#print axioms fixedField_localInertia_isGalois
+#print axioms tameUniformizerInteger
+#print axioms tameUniformizerInteger_val
+#print axioms maximalIdeal_eq_span_tameUniformizerInteger
+#print axioms finiteIntegralClosure_moduleFinite
+#print axioms finiteIntegralClosure_moduleFree
+#print axioms finiteIntegralClosure_isFractionRing
+#print axioms finiteIntegralClosureAlgHom
+#print axioms finiteIntegralClosure_algebra
+#print axioms finiteIntegralClosure_isScalarTower
+#print axioms finiteIntegralClosure_top_isIntegral
+#print axioms finiteIntegralClosure_smulDistribClass
+#print axioms maximalIdeal_integralClosure_comap
+#print axioms finiteIntegralClosure_maximalIdeal_liesOver
+#print axioms finiteIntegralClosure_residueField_finite
+#print axioms finiteIntegralClosure_isGaloisGroup
+#print axioms map_localInertiaGroup_le_finiteInertia
+#print axioms fixingSubgroup_smulCommClass_integralClosure
+#print axioms fixingSubgroup_continuousSMulDiscrete_integralClosure
+#print axioms isInvariant_finiteIntegralClosure_fixingSubgroup
+#print axioms finiteIntegralClosure_fixingSubgroup_isInvariant
+#print axioms infiniteMaximalIdeal_liesOver_finiteMaximalIdeal
+#print axioms finiteInertia_le_map_localInertiaGroup
+#print axioms map_localInertiaGroup_eq_finiteInertia
+#print axioms finiteInertia_eq_bot_of_le_fixedField
+#print axioms ramificationIdx_eq_one_of_le_fixedField
+#print axioms finiteTameUniformizerInteger_irreducible
+#print axioms map_maximalIdeal_eq_maximalIdeal_of_le_fixedField
+#print axioms exists_eq_tameUniformizerInteger_zpow_mul_integralUnit
+#print axioms exists_finiteGaloisIntermediateField_le_fixedField
+#print axioms fixedFieldUniformizerDecomposition
+#print axioms localTameAbelianInertiaGroup_eq_ker

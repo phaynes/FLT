@@ -24,6 +24,7 @@ import FLTMethodology.Probes.ClassFieldCharacterBoundary
 import FLTMethodology.Probes.ClassFieldIdeleTopologyBoundary
 import FLTMethodology.Probes.CyclicBaseChangeBoundary
 import FLTMethodology.Probes.TameResidueBoundary
+import FLTMethodology.Probes.FixedFieldUniformizerBoundary
 import FLTMethodology.Probes.MLTSourceBoundary
 import FLTMethodology.Probes.MLTCoefficientData
 import FLTMethodology.Probes.MLTPadicHodgeWeightData
