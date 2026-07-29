@@ -6,7 +6,7 @@ Model: `gpt-5.6-sol`
 
 Effort: `xhigh`
 
-Elapsed: `705243 ms` bridge total; `705241 ms` model task.
+Elapsed: `705243 ms` bridge total; `704270 ms` transcript-native model task.
 
 Candidate reviewed: `b5e950f5fecfc7b61ec2444c47115ed65e407866`
 
