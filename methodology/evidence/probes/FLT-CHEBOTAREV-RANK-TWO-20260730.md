@@ -76,6 +76,14 @@ methodology/review/flt-completion/chebotarev/
 
 This approves the deterministic adapter only.
 
+The graph/evidence classification was separately reviewed after two fail-closed repair cycles. The
+final GPT-5.6 xhigh review returned `PASS` on candidate `ca29a3f` after independently reconciling
+the review telemetry, validating the two exact obligation rows, and recomputing 56 unique
+obligations, 103 unique edges, endpoint closure, dependency consistency, acyclicity, and exact
+canonical/derived equality. Its approval scope is only the deterministic adapter's graph
+classification; it explicitly excludes a density witness or assumption, the fixed-coefficient
+consumer, `FLT-COMPAT-CONTRA`, and FLT.
+
 ## Independent design evidence
 
 GPT-5.6 xhigh returned `REVISE` on the prior combined graph design and validated the split used
