@@ -22,6 +22,7 @@ import FLT.EllipticCurve.TorsionProof.KummerProjectivePropagation
 import FLTMethodology.Probes.LibraryMatches
 import FLTMethodology.Probes.ClassFieldCharacterBoundary
 import FLTMethodology.Probes.ClassFieldIdelicModuleBoundary
+import FLTMethodology.Probes.ClassFieldIdelicModuleTopologyBoundary
 import FLTMethodology.Probes.ClassFieldIdeleTopologyBoundary
 import FLTMethodology.Probes.CyclicBaseChangeBoundary
 import FLTMethodology.Probes.TameResidueBoundary
