@@ -13,10 +13,15 @@ public import Mathlib.Topology.Algebra.ContinuousMonoidHom
 
 This file defines the identity-component quotient and its canonical continuous maps.
 
-The second quotient intentionally retains the inherited `Group` together with the proposition-level
-`IsMulCommutative` mixin. It does not install a second bundled `CommGroup`: doing so would introduce
-a competing structure path for the quotient. Consumers should use `mul_comm'` when commutativity is
-required.
+The second quotient retains the inherited `Group` together with the proposition-level
+`IsMulCommutative` mixin. At the pinned Lean/Mathlib revision, bundled
+`CommGroup (ComponentGroup K)` synthesis is order-sensitive: a fresh lookup fails, explicit
+construction through `QuotientGroup.Quotient.commGroup` exceeds a bounded reduction budget, yet a
+later lookup can succeed after the component-group instance path has been elaborated. The
+transparent `IdeleClassGroup` quotient exposes competing inherited group and commutative-group
+reduction paths. This is an elaboration-stability boundary, not a mathematical non-existence claim.
+The supported deterministic contract for this slice is the inherited `Group`,
+`IsMulCommutative`, and `mul_comm'`.
 -/
 
 @[expose] public section

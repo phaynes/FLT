@@ -23,9 +23,22 @@ namespace FLT.PotentialModularity.ClassField
 
 variable (K : Type*) [Field K] [NumberField K]
 
+-- A fresh bundled lookup is currently unstable through the quotient instance diamond. Keep this
+-- before all positive component-group probes so the expected failure cannot be warmed away.
+/-
+error: failed to synthesize
+-/
+#guard_msgs (error, substring := true) in
+#synth CommGroup (ComponentGroup K)
+
 #synth CommGroup (IdeleClassGroup K)
 #synth TopologicalSpace (IdeleClassGroup K)
 #synth IsTopologicalGroup (IdeleClassGroup K)
+#synth T3Space (IdeleClassGroup K)
+
+example :
+    IsClosed ((principalIdeles K) : Set (AdeleRing (𝓞 K) K)ˣ) :=
+  principalIdeles_isClosed K
 
 -- The component quotient deliberately has one bundled group path and a proposition-level
 -- commutativity mixin. These positive probes are the consumer contract for this slice.
