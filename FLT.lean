@@ -70,6 +70,7 @@ public import FLT.GroupScheme.FiniteFlat
 public import FLT.HaarMeasure.FiniteAdeleRing
 public import FLT.HaarMeasure.HaarChar.AddEquiv
 public import FLT.HaarMeasure.HaarChar.AdeleRing
+public import FLT.HaarMeasure.HaarChar.AdicCompletion
 public import FLT.HaarMeasure.HaarChar.FiniteAdeleRing
 public import FLT.HaarMeasure.HaarChar.FiniteDimensional
 public import FLT.HaarMeasure.HaarChar.Padic
