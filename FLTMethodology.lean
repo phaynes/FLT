@@ -21,6 +21,7 @@ import FLTMethodology.Probes.HurwitzRatHatAudit
 import FLT.EllipticCurve.TorsionProof.KummerProjectivePropagation
 import FLTMethodology.Probes.LibraryMatches
 import FLTMethodology.Probes.ClassFieldCharacterBoundary
+import FLTMethodology.Probes.ClassFieldFujisakiScalarExtensionBoundary
 import FLTMethodology.Probes.ClassFieldIdelicModuleBoundary
 import FLTMethodology.Probes.ClassFieldIdelicModuleComparisonBoundary
 import FLTMethodology.Probes.ClassFieldIdelicModuleTopologyBoundary
