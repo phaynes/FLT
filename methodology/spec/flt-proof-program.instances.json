@@ -1567,7 +1567,8 @@
       "scc_id": "SCC-FLT-CLASS-FIELD",
       "source_condition_risks": "The rank-one carrier and idele object/type layer is reviewed kernel-green. The separately owned FLT-TAME-RESIDUE obligation is proved, source-grounded and independently reviewed. Reciprocity, discreteness, profiniteness, globalization, and exact source locators for this class-field package remain separate missing boundaries.",
       "source_refs": [
-        "SRC-004"
+        "SRC-004",
+        "SRC-027"
       ],
       "stage_completion": "T2 replaces the generic historical authority with this exact named interface; T3 requires the same mathematical obligation to be proved with standard axiom closure.",
       "target_stage": "T2"

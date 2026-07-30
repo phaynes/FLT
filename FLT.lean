@@ -245,6 +245,7 @@ public import FLT.Patching.Utils.TopologicallyFG
 public import FLT.Patching.VanishingFilter
 public import FLT.PotentialModularity.ClassField.Components
 public import FLT.PotentialModularity.ClassField.IdelicModule
+public import FLT.PotentialModularity.ClassField.IdelicModuleComparison
 public import FLT.PotentialModularity.ClassField.IdelicModuleTopology
 public import FLT.PotentialModularity.ClassField.Objects
 public import FLT.PotentialModularity.ClassField.PrincipalIdeles
