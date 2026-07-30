@@ -42,8 +42,14 @@ example :
 
 example (a b : ComponentGroup K) : a * b = b * a := mul_comm' a b
 
--- Mathlib's sanctioned opt-in bridge produces the bundled structure deterministically.
+-- Pin the direct-context synthesis budget so this probe necessarily exercises Mathlib's
+-- sanctioned mixin-to-bundled bridge rather than the deeper quotient instance path.
+set_option maxSynthPendingDepth 1 in
 open scoped IsMulCommutative in
+#synth CommGroup (ComponentGroup K)
+
+-- Pin the package budget too, so direct and Lake builds exercise the same quotient instance path.
+set_option maxSynthPendingDepth 3 in
 #synth CommGroup (ComponentGroup K)
 
 end FLT.PotentialModularity.ClassField

@@ -14,13 +14,13 @@ public import Mathlib.Topology.Algebra.ContinuousMonoidHom
 This file defines the identity-component quotient and its canonical continuous maps.
 
 The second quotient retains the inherited `Group` together with the proposition-level
-`IsMulCommutative` mixin. At the pinned Lean/Mathlib revision, bare
-`CommGroup (ComponentGroup K)` synthesis is not a stable interface: a fresh direct Lean process can
-fail while compiled-module elaboration can resolve `QuotientGroup.Quotient.commGroup`. This slice
-therefore neither asserts an unscoped failure nor relies on an unscoped success. Mathlib
-deliberately provides the mixin-to-bundled bridge as a scoped instance: consumers that need a
-bundled commutative group may use `open scoped IsMulCommutative`, which is tested below as the
-deterministic contract.
+`IsMulCommutative` mixin. Bare `CommGroup (ComponentGroup K)` synthesis is controlled by the
+synthesis budget: it resolves through `QuotientGroup.Quotient.commGroup` at this package's
+`maxSynthPendingDepth = 3`, while it deterministically fails at Lean's default depth of one.
+Mathlib gates the mixin-to-bundled bridge behind `open scoped IsMulCommutative`; that bridge
+resolves at either budget and is tested below with the depth pinned to one. The explicit mixin
+instances in this slice are therefore redundant at the package budget but make the interface robust
+in a direct default-budget Lean context.
 The default in-slice contract remains the inherited `Group`, `IsMulCommutative`, and `mul_comm'`.
 -/
 
@@ -41,8 +41,8 @@ theorem identityComponent_isClosed :
       Set (IdeleClassGroup K)) :=
   isClosed_connectedComponent
 
-/-- Commutativity for the component quotient, exposed as a proposition-level mixin so that the
-inherited quotient `Group` remains the unique bundled group structure. -/
+/-- Commutativity for the component quotient, exposed as a proposition-level mixin so that direct
+default-budget consumers do not depend on the deeper bundled quotient synthesis path. -/
 instance instIsMulCommutativeComponentGroup :
     IsMulCommutative (ComponentGroup K) :=
   ⟨⟨fun a b =>
