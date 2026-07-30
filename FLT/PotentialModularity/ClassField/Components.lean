@@ -14,14 +14,14 @@ public import Mathlib.Topology.Algebra.ContinuousMonoidHom
 This file defines the identity-component quotient and its canonical continuous maps.
 
 The second quotient retains the inherited `Group` together with the proposition-level
-`IsMulCommutative` mixin. At the pinned Lean/Mathlib revision, bundled
-`CommGroup (ComponentGroup K)` synthesis is order-sensitive: a fresh lookup fails, explicit
-construction through `QuotientGroup.Quotient.commGroup` exceeds a bounded reduction budget, yet a
-later lookup can succeed after the component-group instance path has been elaborated. The
-transparent `IdeleClassGroup` quotient exposes competing inherited group and commutative-group
-reduction paths. This is an elaboration-stability boundary, not a mathematical non-existence claim.
-The supported deterministic contract for this slice is the inherited `Group`,
-`IsMulCommutative`, and `mul_comm'`.
+`IsMulCommutative` mixin. At the pinned Lean/Mathlib revision, bare
+`CommGroup (ComponentGroup K)` synthesis is not a stable interface: a fresh direct Lean process can
+fail while compiled-module elaboration can resolve `QuotientGroup.Quotient.commGroup`. This slice
+therefore neither asserts an unscoped failure nor relies on an unscoped success. Mathlib
+deliberately provides the mixin-to-bundled bridge as a scoped instance: consumers that need a
+bundled commutative group may use `open scoped IsMulCommutative`, which is tested below as the
+deterministic contract.
+The default in-slice contract remains the inherited `Group`, `IsMulCommutative`, and `mul_comm'`.
 -/
 
 @[expose] public section

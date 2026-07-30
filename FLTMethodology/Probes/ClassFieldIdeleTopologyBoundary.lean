@@ -23,14 +23,6 @@ namespace FLT.PotentialModularity.ClassField
 
 variable (K : Type*) [Field K] [NumberField K]
 
--- A fresh bundled lookup is currently unstable through the quotient instance diamond. Keep this
--- before all positive component-group probes so the expected failure cannot be warmed away.
-/-
-error: failed to synthesize
--/
-#guard_msgs (error, substring := true) in
-#synth CommGroup (ComponentGroup K)
-
 #synth CommGroup (IdeleClassGroup K)
 #synth TopologicalSpace (IdeleClassGroup K)
 #synth IsTopologicalGroup (IdeleClassGroup K)
@@ -49,6 +41,10 @@ example :
 #synth IsMulCommutative (ComponentGroup K)
 
 example (a b : ComponentGroup K) : a * b = b * a := mul_comm' a b
+
+-- Mathlib's sanctioned opt-in bridge produces the bundled structure deterministically.
+open scoped IsMulCommutative in
+#synth CommGroup (ComponentGroup K)
 
 end FLT.PotentialModularity.ClassField
 
