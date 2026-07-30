@@ -1,5 +1,10 @@
+/-
+Copyright (c) 2026 Philip Haynes. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Philip Haynes
+-/
 import FLTMethodology.Probes.ClassFieldCharacterBoundary
-import FLT.DedekindDomain.FiniteAdeleRing.LocalUnits
+import FLT.PotentialModularity.ClassField.Components
 
 /-!
 # Class-field idele topology boundary probe
@@ -18,25 +23,6 @@ namespace FLT.PotentialModularity.ClassField
 
 variable (K : Type*) [Field K] [NumberField K]
 
-/-- Embed the multiplicative monoid of finite adeles into the full adele monoid by putting `1` at
-every infinite place. This is intentionally a monoid homomorphism, not a ring homomorphism. -/
-noncomputable def finiteAdeleToAdele :
-    IsDedekindDomain.FiniteAdeleRing (𝓞 K) K →* AdeleRing (𝓞 K) K :=
-  MonoidHom.inr (InfiniteAdeleRing K) (IsDedekindDomain.FiniteAdeleRing (𝓞 K) K)
-
-/-- The induced map from finite ideles to full ideles. -/
-noncomputable def finiteIdeleEmbedding :
-    (IsDedekindDomain.FiniteAdeleRing (𝓞 K) K)ˣ →* (AdeleRing (𝓞 K) K)ˣ :=
-  Units.map (finiteAdeleToAdele K)
-
-/-- A chosen full idele which is a uniformiser at `v`, one at every other finite place, and one at
-every infinite place. -/
-noncomputable def localUniformiserIdele
-    (v : IsDedekindDomain.HeightOneSpectrum (𝓞 K))
-    [DecidableEq (IsDedekindDomain.HeightOneSpectrum (𝓞 K))] :
-    (AdeleRing (𝓞 K) K)ˣ :=
-  finiteIdeleEmbedding K (IsDedekindDomain.FiniteAdeleRing.localUniformiserUnit K v)
-
 #synth CommGroup (IdeleClassGroup K)
 #synth TopologicalSpace (IdeleClassGroup K)
 #synth IsTopologicalGroup (IdeleClassGroup K)
@@ -46,3 +32,15 @@ end FLT.PotentialModularity.ClassField
 #print axioms FLT.PotentialModularity.ClassField.finiteAdeleToAdele
 #print axioms FLT.PotentialModularity.ClassField.finiteIdeleEmbedding
 #print axioms FLT.PotentialModularity.ClassField.localUniformiserIdele
+#print axioms FLT.PotentialModularity.ClassField.instIsMulCommutativeIdeleClassGroup
+#print axioms FLT.PotentialModularity.ClassField.instDiscreteTopologyPrincipalIdeles
+#print axioms FLT.PotentialModularity.ClassField.principalIdeles_isClosed
+#print axioms FLT.PotentialModularity.ClassField.instT3SpaceIdeleClassGroup
+#print axioms FLT.PotentialModularity.ClassField.ComponentGroup
+#print axioms FLT.PotentialModularity.ClassField.identityComponent_isClosed
+#print axioms FLT.PotentialModularity.ClassField.instIsMulCommutativeComponentGroup
+#print axioms FLT.PotentialModularity.ClassField.instT3SpaceComponentGroup
+#print axioms FLT.PotentialModularity.ClassField.ideleToClass
+#print axioms FLT.PotentialModularity.ClassField.ideleClassToComponent
+#print axioms FLT.PotentialModularity.ClassField.ideleToComponent
+#print axioms FLT.PotentialModularity.ClassField.localUniformiserComponent
