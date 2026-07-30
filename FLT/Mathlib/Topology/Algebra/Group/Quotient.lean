@@ -39,3 +39,18 @@ theorem QuotientGroup.isOpenQuotientMap_rightrel_mk {G : Type*} [Group G] [Topol
   [ContinuousMul G] (H : Subgroup G) : IsOpenQuotientMap (Quot.mk ⇑(QuotientGroup.rightRel H))
   := {surjective := Quot.mk_surjective, continuous := continuous_quot_mk,
       isOpenMap := isOpenMap_quotient_mk'_mul}
+
+/-- Right-coset and left-coset quotient presentations are homeomorphic by inversion. -/
+@[to_additive
+  /-- Right-coset and left-coset quotient presentations are homeomorphic by negation. -/]
+def QuotientGroup.quotientRightRelHomeomorphQuotientLeftRel
+    {G : Type*} [Group G] [TopologicalSpace G] [ContinuousInv G]
+    (H : Subgroup G) :
+    Quotient (QuotientGroup.rightRel H) ≃ₜ G ⧸ H where
+  __ := QuotientGroup.quotientRightRelEquivQuotientLeftRel H
+  continuous_toFun := by
+    apply continuous_quot_lift
+    exact continuous_quot_mk.comp continuous_inv
+  continuous_invFun := by
+    apply continuous_quot_lift
+    exact continuous_quot_mk.comp continuous_inv
