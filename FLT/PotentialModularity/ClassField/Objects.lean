@@ -5,7 +5,6 @@ Authors: Philip Haynes
 -/
 module
 
-public import FLT.Deformations.RepresentationTheory.GaloisRep
 public import FLT.DedekindDomain.FiniteAdeleRing.LocalUnits
 public import Mathlib.NumberTheory.NumberField.AdeleRing
 public import Mathlib.Topology.Algebra.Group.Quotient
@@ -13,7 +12,8 @@ public import Mathlib.Topology.Algebra.Group.Quotient
 /-!
 # Class-field object interfaces
 
-This file defines the bounded idele and character objects used by the first class-field slice.
+This file defines the bounded idele objects used by the first class-field slice. Character and
+globalisation interfaces remain methodology-only until a later source-approved slice selects them.
 -/
 
 @[expose] public section
@@ -21,20 +21,6 @@ This file defines the bounded idele and character objects used by the first clas
 open NumberField
 
 namespace FLT.PotentialModularity.ClassField
-
-def IsFiniteOrderCharacter
-    {F : Type*} [Field F]
-    {A : Type*} [CommRing A] [Nontrivial A] [TopologicalSpace A]
-    (χ : GaloisRep F A A) : Prop :=
-  (Set.range (fun σ => χ σ)).Finite
-
-def HasPrescribedLocalComponents
-    {F : Type*} [Field F] [NumberField F]
-    {A : Type*} [CommRing A] [Nontrivial A] [TopologicalSpace A]
-    (χ : GaloisRep F A A)
-    (S : Finset (IsDedekindDomain.HeightOneSpectrum (𝓞 F)))
-    (χloc : ∀ v ∈ S, GaloisRep (v.adicCompletion F) A A) : Prop :=
-  ∀ v (hv : v ∈ S), χ.toLocal v = χloc v hv
 
 variable (K : Type*) [Field K] [NumberField K]
 

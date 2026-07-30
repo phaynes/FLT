@@ -59,9 +59,4 @@ theorem principalIdeles_isClosed :
     IsClosed ((principalIdeles K) : Set (AdeleRing (𝓞 K) K)ˣ) :=
   Subgroup.isClosed_of_discrete
 
-instance instT3SpaceIdeleClassGroup : T3Space (IdeleClassGroup K) := by
-  haveI : IsClosed ((principalIdeles K) : Set (AdeleRing (𝓞 K) K)ˣ) :=
-    principalIdeles_isClosed K
-  infer_instance
-
 end FLT.PotentialModularity.ClassField

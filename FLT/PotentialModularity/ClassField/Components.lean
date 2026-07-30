@@ -12,6 +12,11 @@ public import Mathlib.Topology.Algebra.ContinuousMonoidHom
 # Idele-class components
 
 This file defines the identity-component quotient and its canonical continuous maps.
+
+The second quotient intentionally retains the inherited `Group` together with the proposition-level
+`IsMulCommutative` mixin. It does not install a second bundled `CommGroup`: doing so would introduce
+a competing structure path for the quotient. Consumers should use `mul_comm'` when commutativity is
+required.
 -/
 
 @[expose] public section
@@ -31,6 +36,8 @@ theorem identityComponent_isClosed :
       Set (IdeleClassGroup K)) :=
   isClosed_connectedComponent
 
+/-- Commutativity for the component quotient, exposed as a proposition-level mixin so that the
+inherited quotient `Group` remains the unique bundled group structure. -/
 instance instIsMulCommutativeComponentGroup :
     IsMulCommutative (ComponentGroup K) :=
   ⟨⟨fun a b =>

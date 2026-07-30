@@ -27,6 +27,16 @@ variable (K : Type*) [Field K] [NumberField K]
 #synth TopologicalSpace (IdeleClassGroup K)
 #synth IsTopologicalGroup (IdeleClassGroup K)
 
+-- The component quotient deliberately has one bundled group path and a proposition-level
+-- commutativity mixin. These positive probes are the consumer contract for this slice.
+#synth Group (ComponentGroup K)
+#synth TopologicalSpace (ComponentGroup K)
+#synth IsTopologicalGroup (ComponentGroup K)
+#synth T3Space (ComponentGroup K)
+#synth IsMulCommutative (ComponentGroup K)
+
+example (a b : ComponentGroup K) : a * b = b * a := mul_comm' a b
+
 end FLT.PotentialModularity.ClassField
 
 #print axioms FLT.PotentialModularity.ClassField.finiteAdeleToAdele
@@ -35,7 +45,6 @@ end FLT.PotentialModularity.ClassField
 #print axioms FLT.PotentialModularity.ClassField.instIsMulCommutativeIdeleClassGroup
 #print axioms FLT.PotentialModularity.ClassField.instDiscreteTopologyPrincipalIdeles
 #print axioms FLT.PotentialModularity.ClassField.principalIdeles_isClosed
-#print axioms FLT.PotentialModularity.ClassField.instT3SpaceIdeleClassGroup
 #print axioms FLT.PotentialModularity.ClassField.ComponentGroup
 #print axioms FLT.PotentialModularity.ClassField.identityComponent_isClosed
 #print axioms FLT.PotentialModularity.ClassField.instIsMulCommutativeComponentGroup
