@@ -16,7 +16,8 @@ import FLT.DedekindDomain.AdicValuation
 /-!
 # The Haar character of an arbitrary finite completion
 
-For the local-field mathematics, `SRC-027` points to Voight, 29.4.1--8 and 29.6.1--3. The
+For the local-field mathematics, the FLT repository's `methodology/SOURCE-REGISTER.md`
+entry `SRC-027` points to Voight, 29.4.1--8 and 29.6.1--3. The
 quotation motivates the valuation-ring index calculation; compilation and the kernel audit, not
 the quotation, prove the Lean theorem below.
 -/
